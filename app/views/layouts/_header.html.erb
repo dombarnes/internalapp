@@ -1,0 +1,13 @@
+<header>
+	<% logo = image_tag("logo.jpg", :alt => "Internal Client Management", :class => "round") %>
+	<%= link_to logo , root_path %>
+	<nav class="round">
+		<ul>
+			<li><%= link_to "Home", root_path %></li>
+			<li>><%= link_to "Clients", clients_path %></li>
+			<li>><%= link_to "Ad Hoc Support", adhoc_supports_path %></li>
+			<li><%= link_to "Help", help_path %></li>
+			<li><%= link_to "Sign in", '#' %></li>
+		</ul>
+	</nav>
+</header>

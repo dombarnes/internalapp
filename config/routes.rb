@@ -1,12 +1,14 @@
 Internalapp::Application.routes.draw do
   resources :adhoc_supports
-
   resources :clients
 
   get "home/index"
   match '/help', :to =>'home#help'
+  match '/clients', :to => 'clients#index'
+  match '/adhocsupport', :to => 'adhoc_supports#index'
   match '/', :to => 'home#index'
-  
+  root :to => "home#index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -56,7 +58,6 @@ Internalapp::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-root :to => "home#index"
 
   # See how all your routes lay out with "rake routes"
 
