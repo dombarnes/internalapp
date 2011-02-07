@@ -1,12 +1,16 @@
 Internalapp::Application.routes.draw do
+  get "users/new"
+
   resources :adhoc_supports
   resources :clients
 
   get "home/index"
+  match '/signup', :to => 'users#new'
   match '/help', :to =>'home#help'
   match '/clients', :to => 'clients#index'
   match '/adhocsupport', :to => 'adhoc_supports#index'
   match '/', :to => 'home#index'
+
   root :to => "home#index"
 
   # The priority is based upon order of creation:
