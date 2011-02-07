@@ -3,7 +3,7 @@ class ClientsController < ApplicationController
   # GET /clients.xml
   def index
     @clients = Client.all
-
+    @title = "Clients"
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @clients }

@@ -3,7 +3,7 @@ class AdhocSupportsController < ApplicationController
   # GET /adhoc_supports.xml
   def index
     @adhoc_supports = AdhocSupport.all
-
+    @title = "Ad Hoc Support Contracts"
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @adhoc_supports }
