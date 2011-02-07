@@ -1,4 +1,8 @@
 Internalapp::Application.routes.draw do
+  resources :adhoc_supports
+
+  resources :clients
+
   get "home/index"
 
   # The priority is based upon order of creation:

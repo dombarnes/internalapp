@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  date: 
+  type: MyString
+  technicians: 1
+  client_id: 1
+  notes: MyText
+
+two:
+  date: 
+  type: MyString
+  technicians: 1
+  client_id: 1
+  notes: MyText

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Date:</b>
+  <%= @adhoc_support.date %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @adhoc_support.type %>
+</p>
+
+<p>
+  <b>Technicians:</b>
+  <%= @adhoc_support.technicians %>
+</p>
+
+<p>
+  <b>Client:</b>
+  <%= @adhoc_support.client_id %>
+</p>
+
+<p>
+  <b>Notes:</b>
+  <%= @adhoc_support.notes %>
+</p>
+
+
+<%= link_to 'Edit', edit_adhoc_support_path(@adhoc_support) %> |
+<%= link_to 'Back', adhoc_supports_path %>
