@@ -8,22 +8,12 @@ describe HomeController do
       response.should be_success
     end
   end
-end
 
-describe ClientsController do
-  describe "GET 'index'" do
+  describe "GET 'help'" do
     it "should be successful" do
-      get 'clients'
+      get 'help'
       response.should be_success
     end
   end
-end
 
-describe AdhocSupportsController do
-  describe "GET 'index'" do
-    it "should be successful" do
-      get 'adhoc_supports'
-      response.should be_success
-    end
-  end
 end

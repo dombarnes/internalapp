@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Internal Cient Management Tool | <%= @title %></title>
+    <title>Internal Client Management Tool | <%= @title %></title>
+	<%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
+    <%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
   </head>
   <body>
+	<li><a href="/">Home</a></li>
+	<li><a href="/clients">Clients</a></li>
+	<li><a href="/adhoc_supports">Ad Hoc Support</a></li>
+	<li><a href="/profile">Profile</a></li>		
+	<li><a href="/help">Help</a></li>		
 	<%= yield %>
 	</body>
 </html>
