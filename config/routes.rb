@@ -1,8 +1,7 @@
 Internalapp::Application.routes.draw do
-  get "users/new"
-
   resources :adhoc_supports
   resources :clients
+  resources :users
 
   get "home/index"
   match '/signup', :to => 'users#new'
