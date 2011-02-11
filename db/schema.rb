@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110210165033) do
+ActiveRecord::Schema.define(:version => 20110211114356) do
 
   create_table "adhoc_supports", :force => true do |t|
     t.date     "date"
@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(:version => 20110210165033) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "encrypted_password"
+    t.string   "salt"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
