@@ -3,10 +3,18 @@
 	<nav class="round">
 		<ul>
 			<li><%= link_to "> Home", root_path %></li>
-			<li><%= link_to "> Clients", clients_path %></li>
-			<li><%= link_to "> Ad Hoc Support", adhoc_supports_path %></li>
+			<% if signed_in? %>
+			  <li><%= link_to "> Clients", clients_path %></li>
+			  <li><%= link_to "> Ad Hoc Support", adhoc_supports_path %></li>
+        <li><%= link_to "> Profile", current_user %></li>
+      <% end %>
 			<li><%= link_to "> Help", help_path %></li>
-			<li><%= link_to "> Sign in", signup_path, :class => "signup_button_round" %></li>
+			<% if signed_in? %>
+      <li><%= link_to "> Sign Out", signout_path, :method => :delete %></li>
+      <% else %>
+		  <li><%= link_to "> Sign In", signin_path %></li>
+		  <li><%= link_to "> Signup", signup_path, :class => "signup_button_round" %></li>
+		  <% end %>
 		</ul>
 	</nav>
 </header>

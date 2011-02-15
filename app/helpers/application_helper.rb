@@ -1,7 +1,6 @@
 module ApplicationHelper
 def logo
-  return image_tag("logo.jpg")
-  options[:title] |= options[:alt]
+  image_tag("logo.png", :alt => "Internalapp", :class => "round")
 end
   def title
   end
