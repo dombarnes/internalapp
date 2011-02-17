@@ -24,4 +24,6 @@
 
 class Client < ActiveRecord::Base
   has_many :adhoc_supports
+  cattr_reader :per_page
+  @@per_page = 15
 end

@@ -1,12 +1,13 @@
 <h1>Ad Hoc Support</h1>
 <p>Below is a list of ad-hoc support days provided.
+<p>
+<%= link_to 'New Adhoc support', new_adhoc_support_path %>
 <table>
   <tr>
     <th>Date</th>
     <th>Type</th>
     <th>Technicians</th>
     <th>Client</th>
-    <th>Notes</th>
     <th></th>
     <th></th>
     <th></th>
@@ -18,7 +19,6 @@
     <td><%= adhoc_support.type %></td>
     <td><%= adhoc_support.technicians %></td>
     <td><%= adhoc_support.client_id %></td>
-    <td><%= adhoc_support.notes %></td>
     <td><%= link_to 'Show', adhoc_support %></td>
     <td><%= link_to 'Edit', edit_adhoc_support_path(adhoc_support) %></td>
     <td><%= link_to 'Destroy', adhoc_support, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -27,6 +27,3 @@
 </table>
 
 <br />
-
-<%= link_to 'New Adhoc support', new_adhoc_support_path %>
-<%= link_to 'Home', '/' %>

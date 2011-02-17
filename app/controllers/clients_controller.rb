@@ -1,4 +1,7 @@
 class ClientsController < ApplicationController
+before_filter :authenticate, :only => [:edit, :update, :show, :index]
+# before_filter :correct_user, :only => [:edit, :update, :show, :index]
+
   # GET /clients
   # GET /clients.xml
   def index
@@ -8,6 +11,7 @@ class ClientsController < ApplicationController
       format.html # index.html.erb
       format.xml  { render :xml => @clients }
     end
+    @clients = Client.paginate(:page => params[:page])
   end
 
   # GET /clients/1
@@ -80,4 +84,15 @@ class ClientsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  private
+  def authenticate
+    deny_access unless signed_in?
+  end
+
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_path) unless current_user?(@user)
+  end
+  
 end

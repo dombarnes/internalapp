@@ -1,4 +1,7 @@
 class AdhocSupportsController < ApplicationController
+before_filter :authenticate, :only => [:edit, :update, :show, :index]
+# before_filter :correct_user, :only => [:edit, :update, :show, :index]
+
   # GET /adhoc_supports
   # GET /adhoc_supports.xml
   def index
@@ -8,6 +11,7 @@ class AdhocSupportsController < ApplicationController
       format.html # index.html.erb
       format.xml  { render :xml => @adhoc_supports }
     end
+    @adhoc_supports= AdhocSupport.paginate(:page => params[:page])
   end
 
   # GET /adhoc_supports/1
@@ -80,4 +84,14 @@ class AdhocSupportsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  private
+  def authenticate
+    deny_access unless signed_in?
+  end
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_path) unless current_user?(@user)
+  end
+
 end
