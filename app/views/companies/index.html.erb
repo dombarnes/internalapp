@@ -1,0 +1,22 @@
+<h1>Listing companies</h1>
+<%= link_to 'New Company', new_company_path %>
+<table>
+  <tr>
+    <th>Company Name</th>
+    <th></th>
+  </tr>
+<% content_for :sidebar do %>
+    Companies Sidebar Content
+<% end %>
+  
+<% @companies.each do |company| %>
+  <tr>
+    <td><%= company.company_name %></td>
+    <td><%= link_to 'Show', company %></td>
+    <td><%= link_to 'Edit', edit_company_path(company) %></td>
+    <td><%= link_to 'Destroy', company, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />

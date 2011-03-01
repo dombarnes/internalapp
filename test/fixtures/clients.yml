@@ -14,7 +14,7 @@
 #  county          :string(255)
 #  postcode        :string(255)
 #  position        :string(255)
-#  telephon_number :integer
+#  telephone_number :integer
 #  mobile_number   :integer
 #  source          :string(255)
 #  email_address   :string(255)
@@ -35,7 +35,7 @@ one:
   county: MyString
   postcode: MyString
   position: MyString
-  telephon_number: 1
+  telephone_number: 1
   mobile_number: 1
   source: MyString
   email_address: MyString
@@ -51,7 +51,7 @@ two:
   county: MyString
   postcode: MyString
   position: MyString
-  telephon_number: 1
+  telephone_number: 1
   mobile_number: 1
   source: MyString
   email_address: MyString

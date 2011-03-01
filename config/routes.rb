@@ -3,6 +3,7 @@ Internalapp::Application.routes.draw do
   resources :adhoc_supports
   resources :clients
   resources :users
+  resources :companies
   resources :sessions, :only => [:new, :create, :destroy]
 
   get "home/index"
@@ -12,7 +13,10 @@ Internalapp::Application.routes.draw do
   match '/help', :to =>'home#help'
   match '/clients', :to => 'clients#index'
   match '/adhocsupport', :to => 'adhoc_supports#index'
+  match '/companies', :to => 'companies#index'
+  match '/dashboard', :to => 'home#dashboard'
   match '/', :to => 'home#index'
+
 
   root :to => "home#index"
 

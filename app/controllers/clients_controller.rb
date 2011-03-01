@@ -2,8 +2,6 @@ class ClientsController < ApplicationController
 before_filter :authenticate, :only => [:edit, :update, :show, :index]
 # before_filter :correct_user, :only => [:edit, :update, :show, :index]
 
-  # GET /clients
-  # GET /clients.xml
   def index
     @clients = Client.all
     @title = "Clients"
@@ -14,8 +12,6 @@ before_filter :authenticate, :only => [:edit, :update, :show, :index]
     @clients = Client.paginate(:page => params[:page])
   end
 
-  # GET /clients/1
-  # GET /clients/1.xml
   def show
     @client = Client.find(params[:id])
 
@@ -25,8 +21,6 @@ before_filter :authenticate, :only => [:edit, :update, :show, :index]
     end
   end
 
-  # GET /clients/new
-  # GET /clients/new.xml
   def new
     @client = Client.new
 
@@ -36,13 +30,11 @@ before_filter :authenticate, :only => [:edit, :update, :show, :index]
     end
   end
 
-  # GET /clients/1/edit
+
   def edit
     @client = Client.find(params[:id])
   end
 
-  # POST /clients
-  # POST /clients.xml
   def create
     @client = Client.new(params[:client])
 
@@ -57,8 +49,6 @@ before_filter :authenticate, :only => [:edit, :update, :show, :index]
     end
   end
 
-  # PUT /clients/1
-  # PUT /clients/1.xml
   def update
     @client = Client.find(params[:id])
 
@@ -73,8 +63,6 @@ before_filter :authenticate, :only => [:edit, :update, :show, :index]
     end
   end
 
-  # DELETE /clients/1
-  # DELETE /clients/1.xml
   def destroy
     @client = Client.find(params[:id])
     @client.destroy

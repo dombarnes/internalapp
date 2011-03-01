@@ -18,7 +18,6 @@ before_filter :authenticate, :only => [:edit, :update, :show, :index]
   # GET /adhoc_supports/1.xml
   def show
     @adhoc_support = AdhocSupport.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @adhoc_support }

@@ -10,11 +10,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110217120146) do
+ActiveRecord::Schema.define(:version => 20110224121133) do
 
   create_table "adhoc_supports", :force => true do |t|
     t.date     "date"
-    t.string   "type"
+    t.string   "job_type"
     t.integer  "technicians"
     t.integer  "client_id"
     t.text     "notes"
@@ -22,21 +22,34 @@ ActiveRecord::Schema.define(:version => 20110217120146) do
     t.datetime "updated_at"
   end
 
+  add_index "adhoc_supports", ["client_id"], :name => "index_adhoc_supports_on_client_id"
+
   create_table "clients", :force => true do |t|
     t.string   "client_name"
     t.string   "title"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "position"
+    t.integer  "telephone_number"
+    t.integer  "mobile_number"
+    t.string   "source"
+    t.string   "email_address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "company_id"
+  end
+
+  add_index "clients", ["company_id"], :name => "index_clients_on_company_id"
+
+  create_table "companies", :force => true do |t|
+    t.string   "company_name"
     t.string   "address_1"
     t.string   "address_2"
     t.string   "city"
     t.string   "county"
     t.string   "postcode"
-    t.string   "position"
-    t.integer  "telephon_number"
-    t.integer  "mobile_number"
-    t.string   "source"
-    t.string   "email_address"
+    t.string   "telephone_number"
+    t.string   "website"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

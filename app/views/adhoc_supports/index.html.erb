@@ -1,3 +1,16 @@
+<% content_for :sidebar do %>
+  <h3>Ad Hoc Sidebar</h3>
+	<p>There will be some content here. Probably a list of last edited content.
+<table>
+  <% @adhoc_supports.each do |adhoc_support| %>
+    <tr>
+    <td><%= adhoc_support.date %> - <%= adhoc_support.client_id %></td>
+    </tr>
+    <% end %>
+    </table>
+<% end %>
+
+
 <h1>Ad Hoc Support</h1>
 <p>Below is a list of ad-hoc support days provided.
 <p>
@@ -16,7 +29,7 @@
 <% @adhoc_supports.each do |adhoc_support| %>
   <tr>
     <td><%= adhoc_support.date %></td>
-    <td><%= adhoc_support.type %></td>
+    <td><%= adhoc_support.job_type %></td>
     <td><%= adhoc_support.technicians %></td>
     <td><%= adhoc_support.client_id %></td>
     <td><%= link_to 'Show', adhoc_support %></td>

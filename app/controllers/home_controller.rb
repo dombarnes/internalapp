@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @title = "Internal Client Management"
+    @title = "Home"
   end
   def help
     @title = "Help"

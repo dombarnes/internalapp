@@ -5,7 +5,7 @@
 #
 #  id          :integer         not null, primary key
 #  date        :date
-#  type        :string(255)
+#  job_type        :string(255)
 #  technicians :integer
 #  client_id   :integer
 #  notes       :text
@@ -14,7 +14,14 @@
 #
 
 class AdhocSupport < ActiveRecord::Base
+  attr_accessible :date, :job_type, :technicians, :notes
+  
   belongs_to :clients
-  cattr_reader :per_page
-  @@per_page = 15
+  
+  validates :date, :presence => true
+  validates :technicians, :presence => true
+  validates :client_id, :presence => true
+  validates :job_type, :presence => true
+  
+  default_scope :order => 'adhoc_supports.date DESC'
 end

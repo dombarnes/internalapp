@@ -1,9 +1,25 @@
-    <h1>Internal App</h1>
-    <p>
-      This is the home page for the
-      <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
-      sample application.
-    </p>
-<%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
-</body>
-</html>
+<% content_for :sidebar do %>
+  <h3>Latest Tweets</h3>
+<div id="twitter">
+<ul id="twitter_update_list"></ul>
+<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/macbyteuk.json
+?callback=twitterCallback2&count=4"></script>
+</div>
+<% end %>
+
+<% if signed_in? %>
+<p>Welcome user_name_to_set.
+    	<% else %>
+		<header class="subnav new">
+		    <h2><Strong>Internal App</Strong></h2>
+		</header>
+		<div class="joininfo">
+		  <p>
+		    This is the home page for the
+		    <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
+		    sample application.
+		  </p>
+		</div>
+		<%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+		<% end %>

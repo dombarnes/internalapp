@@ -6,20 +6,19 @@
     <th>Title</th>
     <th>Last name</th>
     <th>First name</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
+  <% content_for :sidebar do %>
+    <h3>Clients Sidebar</h3>
+  	<p>There will be some content here. Perhaps a list of recently changed items?
+	<% end %>
 
 <% @clients.each do |client| %>
   <tr>
-    <td><%= client.client_name %></td>
+    <td><%= link_to client.client_name, client %></td>
     <td><%= client.title %></td>
     <td><%= client.last_name %></td>
     <td><%= client.first_name %></td>
-    <td><%= link_to 'Show', client %></td>
     <td><%= link_to 'Edit', edit_client_path(client) %></td>
-    <td><%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

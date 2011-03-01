@@ -6,6 +6,11 @@
 </p>
 
 <p>
+  <b>Client company_id:</b>
+  <%= @client.company_id %>
+</p>
+
+<p>
   <b>Title:</b>
   <%= @client.title %>
 </p>
@@ -21,38 +26,13 @@
 </p>
 
 <p>
-  <b>Address 1:</b>
-  <%= @client.address_1 %>
-</p>
-
-<p>
-  <b>Address 2:</b>
-  <%= @client.address_2 %>
-</p>
-
-<p>
-  <b>City:</b>
-  <%= @client.city %>
-</p>
-
-<p>
-  <b>County:</b>
-  <%= @client.county %>
-</p>
-
-<p>
-  <b>Postcode:</b>
-  <%= @client.postcode %>
-</p>
-
-<p>
   <b>Position:</b>
   <%= @client.position %>
 </p>
 
 <p>
-  <b>Telephon number:</b>
-  <%= @client.telephon_number %>
+  <b>Telephone number:</b>
+  <%= @client.telephone_number %>
 </p>
 
 <p>
@@ -72,4 +52,5 @@
 
 
 <%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+<%= link_to 'Back', clients_path %> |
+<%= link_to 'Delete', :confirm => 'Are you sure you want to delete this person?', :method => :delete %>

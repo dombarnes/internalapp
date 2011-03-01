@@ -14,7 +14,7 @@
 #  county          :string(255)
 #  postcode        :string(255)
 #  position        :string(255)
-#  telephon_number :integer
+#  telephone_number :integer
 #  mobile_number   :integer
 #  source          :string(255)
 #  email_address   :string(255)
@@ -23,7 +23,8 @@
 #
 
 class Client < ActiveRecord::Base
+  attr_accessible :client_name, :title, :first_name, :last_name, :address_1, :address_2, :city, :county, :postcode, :position, :telephone_number, :mobile_number, :source, :email_address
   has_many :adhoc_supports
-  cattr_reader :per_page
-  @@per_page = 15
+  belongs_to :companies
+  default_scope :order => 'clients.client_name ASC'
 end

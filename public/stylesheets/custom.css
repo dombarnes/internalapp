@@ -1,83 +1,166 @@
-.container {
-  width: 710px;
-}
-
+/* Overall Views*/
 body {
-  background: #ccc;
+	background: #eeeeef;
+	color: #838383;
+	font: Helvetica, Georgia;
+	display: block;
+	border: 0px;
+	vertical-align: baseline;
+
+}
+#wrapper {
+	margin: 0 auto;
+	background: #f3f3f3;
+	display: block;
+}
+#content {
+	width: 950px;
+	display: table;
+	margin: 0px auto;
+	padding: 30px 0px;
+	position: relative;
+	font: Helvetica, Georgia;
+}
+#wrapper h1 {
+	font-size: 200%;
+}
+#main {
+	display: block;
+	float: left;
+	margin-left: -5px;
+	width: 610px;
+	background: white;
+	padding: 10px;
+}
+#main h1 {
+	line-height: normal ;
+}
+/* Header */
+#header {
+	padding-top: 5px;
+	position: relative;	
+	height: 60px;
+	background: white;
+}
+#header div {
+	width: 960px;
+	margin: 0px auto;
+	padding-left: 10px ;
+}
+#header a {
+	font-weight: bold;
+	text-decoration: none;
+}
+#header #nav {
+	float: left;
+	height: 50px;
+	line-height: 50px;
+	border-right: 1px solid #F3F3F3;
+}
+#header #nav li {
+	float:left;
+	border-left: 1px solid #F3F3F3;
+	line-height: 50px;
+}
+#header #nav li a {
+	float: left;
+	padding: 0px 20px ;
+	color: #838383 ;
+}
+#header .header_logo {
+	padding: 5px;
+	background: #fff;
+	float: left;
+	width: 124px ;
+	list-style-type: none;
+}
+/* Footer */
+#footer {
+  	padding: 20px 0px;
+	height: 60px;
+	background: white;
+	color: #838383;
+}
+#footer div {
+	width: 960px;
+	margin: 0px auto;
+	padding-right: 10px;
+}
+#footer a {
+	font-weight:normal;
+	text-decoration:none;
+}
+#footer #nav {
+	float: none;
+	display:inline-block;
+	height: 40px;
+	line-height: 40px;
+	border-right:1px solid #F3F3F3;
+}
+#footer #nav li {
+	float: left;
+	border-left: 1px solid #F3F3F3;
+	line-height: 40px;	
+}
+#footer #nav li a {
+	padding: 15px 10px;
+	font-weight: normal;
+	float:left;
+}
+#footer a {
+	color: #838383;
 }
 
-header {
-  padding-top: 20px;
+/* */
+ul {
+	list-style-type: none;
 }
-
-header img {
-  padding: 1em;
-  background: #ccc;
-}
-
-section {
-  margin-top: 1em;
-  font-size: 120%;
-  padding: 20px;
-  background: #fff;
-}
-
-section h1 {
-  font-size: 200%;
+ol, ul {
+	list-style: none;
 }
 
 /* Links */
-
 a {
-  color: #09c;
-  text-decoration: none;
+	color: #838383;
+	text-decoration: none;
+	font-weight: bold;
 }
-
 a:hover {
-  color: #069;
-  text-decoration: underline;
+	color: #069;
+	text-decoration: underline;
 }
-
 a:visited {
-  color: #069;
+	color: #069;
 }
+
 /* Navigation */
-
-nav {
-  float: right;
+#nav {
+	float: left;
+	height: 50px;
+	line-height: 50px;
+  	border-right: 1px solid #F3F3F3;
 }
-
-nav {
-  background-color: white;
-  padding: 0 0.7em;
-  white-space: nowrap;
+#nav ul {
+  	list-style-type: none;
+  	height: 50px;
 }
-
-nav ul {
-  margin: 0;
-  padding: 0;
+#nav ul li {
+	list-style-type: none;
+	display: inline-block;
+	border-left: 1px solid #F3F3F3;
+	height: 50px;
 }
-
-nav ul li {
-  list-style-type: none;
-  display: inline-block;
-  padding: 0.2em 0;
+#nav ul li a {
+	padding: 0 10px;
 }
-
-nav ul li a {
-  padding: 0 5px;
-  font-weight: bold;
+#nav ul li a:visited {
+	color: #09c;
 }
-
-nav ul li a:visited {
-  color: #09c;
-}
-
-nav ul li a:hover {
+#nav ul li a:hover {
   text-decoration: underline;
 }
-/* Sign up button */
 
+/* Sign up button */
 a.signup_button {
   margin-left: auto;
   margin-right: auto;
@@ -90,23 +173,12 @@ a.signup_button {
   font-weight: bold;
   padding: 20px;
 }
+
 /* Round corners */
-
 .round {
-  -moz-border-radius:    10px;
-  -webkit-border-radius: 10px;
-  border-radius:         10px;
-}
-footer {
-  text-align: center;
-  margin-top: 10px;
-  width: 710px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-footer nav {
-  float: none;
+  -moz-border-radius:    5px;
+  -webkit-border-radius: 5px;
+  border-radius:         5px;
 }
 
 /* User show page */
@@ -114,16 +186,17 @@ table.profile {
 	width: 100%;
 	margin-bottom: 0;
 }
-td.main {
+td#main {
 	width:70%;
 	padding:1em;
 }
-td.sidebar {
+td#sidebar {
 	width: 30%;
 	padding: 1em;
 	vertical-align: top;
 	background: #ffc;
 }
+
 /* Signup Errors */
 .field_with_errors {
   margin-top: 10px;
@@ -131,20 +204,17 @@ td.sidebar {
   background-color: red;
   display: table;
 }
-
 .field_with_errors label {
   color: #fff;
 }
-
 #error_explanation {
-  width: 400px;
+  width: 300px;
   border: 2px solid red;
   padding: 7px;
   padding-bottom: 12px;
   margin-bottom: 20px;
   background-color: #f0f0f0;
 }
-
 #error_explanation h2 {
   text-align: left;
   font-weight: bold;
@@ -154,22 +224,55 @@ td.sidebar {
   background-color: #c00;
   color: #fff;
 }
-
 #error_explanation p {
   color: #333;
   margin-bottom: 0;
   padding: 5px;
 }
-
 #error_explanation ul li {
   font-size: 12px;
   list-style: square;
 }
-
 ul.users {
-  margin-top: 1em;
+	float: left;
+	margin-top: 1em;
+	display: block;
 }
-
 .users li {
-  list-style: none;
+	list-style: none;
+}
+.users {
+	width: 630px;
+}
+/* Sidebar */
+#sidebar {
+	float: right;
+	margin-right: -5px;
+	position: relative;
+	width: 310px;
+	background: white;
+	padding: 5px;
+}
+#sidebar h3 {
+	font-size:1.6em;
+	color: #666999;
+	padding: 5px;
+}
+div.pagination {
+	padding: 10px;
+	background: white;
+}
+/* Home Twitter Sidebar */
+#twitter {
+	font-size: 1em;
+	line-height:120%;
+}
+#twitter ul {
+	line-height:1.6em;
+	display:block;
+	font-size: 1.1em;
+}
+#twitter a {
+	color:#666999;
+	font-size: 0.8em;
 }

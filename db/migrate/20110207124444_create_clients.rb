@@ -11,7 +11,7 @@ class CreateClients < ActiveRecord::Migration
       t.string :county
       t.string :postcode
       t.string :position
-      t.integer :telephon_number
+      t.integer :telephone_number
       t.integer :mobile_number
       t.string :source
       t.string :email_address
