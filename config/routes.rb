@@ -1,25 +1,37 @@
-Internalapp::Application.routes.draw do
+Internalapp_authlogic::Application.routes.draw do
+
+  get "user_sessions/new"
 
   resources :adhoc_supports
   resources :clients
   resources :users
+  resource :user, :as => 'account'
   resources :companies
-  resources :sessions, :only => [:new, :create, :destroy]
-
+#  resources :sessions, :only => [:new, :create, :destroy]
+  resources :support_quotes
+  resources :install_quotes
+  resources :ios_values
+  resources :ios_quotes
+  resources :user_sessions
+  
   get "home/index"
-  match '/signup', :to => 'users#new'
-  match '/signin', :to => 'sessions#new'
-  match '/signout', :to => 'sessions#destroy'
-  match '/help', :to =>'home#help'
-  match '/clients', :to => 'clients#index'
-  match '/adhocsupport', :to => 'adhoc_supports#index'
-  match '/companies', :to => 'companies#index'
-  match '/dashboard', :to => 'home#dashboard'
+  match 'signup' => 'users#new', :as => :signup
+  match 'login' => 'user_sessions#new', :as => :login
+  match 'logout' => 'user_sessions#destroy', :as => :logout
+  match 'activate(/:activation_code)' => 'users#activate', :as => :activate_account
+  match 'send_activation(/:user_id)' => 'users#send_activation', :as => :send_activation
+
   match '/', :to => 'home#index'
-
-
+  match '/dashboard', :to => 'home#dashboard'
+  match '/adhocsupport', :to => 'adhoc_supports#index'
+  match '/clients', :to => 'clients#index'
+  match '/companies', :to => 'companies#index'
+  match '/quotes', :to => 'home#quotes'
+  match '/admin', :to => 'home#admin'
+  match '/settings', :to => 'home#settings'
+  match '/help', :to =>'home#help'
+  
   root :to => "home#index"
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

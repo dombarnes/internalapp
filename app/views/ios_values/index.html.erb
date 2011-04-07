@@ -1,0 +1,22 @@
+<%= link_to 'Add New Values', new_ios_value_path %>
+<br />
+<table>
+  <tr>
+    <th>Date</td>
+	<th>Day Rate</th>
+	<th></th>
+  </tr>
+<% @ios_value.each do |ios_value| %>
+	<tr>
+		<td><%= ios_value.created_at.strftime("%d/%m/%Y") %>
+		<td><%= ios_value.daily_rate %></td>
+		<td><%= link_to 'View', ios_quote %></td>
+	</tr>
+<% end %>
+</table>
+<br />
+
+<% content_for :sidebar do %>
+    <h3>iOS Values</h3>
+<p>I doubt there will be anything of worth here
+<% end %>

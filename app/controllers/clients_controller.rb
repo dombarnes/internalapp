@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
-before_filter :authenticate, :only => [:edit, :update, :show, :index]
+# before_filter :authenticate, :only => [:edit, :update, :show, :index]
+before_filter :require_user
 # before_filter :correct_user, :only => [:edit, :update, :show, :index]
 
   def index

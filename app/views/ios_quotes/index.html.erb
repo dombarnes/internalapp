@@ -1,0 +1,29 @@
+<%= link_to 'New Quote', new_ios_quote_path %>
+<br />
+<table>
+  <tr>
+    <th>Date</td>
+	<th>Customer</th>
+	<th>Quantity</th>
+    <th>Install Cost</th>
+	<th>Support Cost</th>
+	<th></th>
+  </tr>
+<% @ios_quote.each do |ios_quote| %>
+	<tr>
+		<td><%= ios_quote.created_at.strftime("%d/%m/%Y") %>
+		<td><%= ios_quote.customer %></td>
+		<td><%= ios_quote.device_quantity %></td>
+		<td><%= number_to_currency(ios_quote.install_cost, :unit => "&pound;") %></td>
+		<td><%= number_to_currency(ios_quote.support_cost, :unit => "&pound;") %></td>
+		<td><%= link_to 'View', ios_quote %></td>
+	</tr>
+<% end %>
+</table>
+<br />
+
+<% content_for :sidebar do %>
+    <h3>iOS Quotes</h3>
+	<%= link_to 'Install Quote', install_quotes_path %><br>
+	<%= link_to 'Support Quote', support_quotes_path %><br>
+<% end %>

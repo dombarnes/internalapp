@@ -28,6 +28,10 @@ module SessionsHelper
       user == current_user
     end
     
+    def authenticate
+      deny_access unless signed_in?
+    end
+    
     def deny_access
       store_location
       redirect_to signin_path, :notice => "Please sign in to access this page"
@@ -46,7 +50,11 @@ module SessionsHelper
    def edit
      @title = "Edit User"
    end
-     
+  
+   def admin_user
+    
+   end
+   
    private
       def user_from_remember_token
         User.authenticate_with_salt(*remember_token)

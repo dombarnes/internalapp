@@ -7,11 +7,7 @@
     <th>Last name</th>
     <th>First name</th>
   </tr>
-  <% content_for :sidebar do %>
-    <h3>Clients Sidebar</h3>
-  	<p>There will be some content here. Perhaps a list of recently changed items?
-	<% end %>
-
+  
 <% @clients.each do |client| %>
   <tr>
     <td><%= link_to client.client_name, client %></td>
@@ -24,3 +20,10 @@
 </table>
 
 <br />
+
+
+
+<% content_for :sidebar do %>
+    <h3>Clients Sidebar</h3>
+  	<p>There will be some content here. Perhaps a list of recently changed items?
+	<% end %>

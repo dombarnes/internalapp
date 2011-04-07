@@ -1,0 +1,34 @@
+<%= form_for(@ios_value) do |f| %>
+  <% if @ios_value.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ios_value.errors.count, "error") %> prohibited this client from being saved:</h2>
+
+      <ul>
+      <% @ios_value.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :daily_rate %><br />
+    <%= f.text_field :daily_rate %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :iosdevice_install_time %><br />
+    <%= f.text_field :iosdevice_install_time %>
+  </div>
+  <div class="field">
+    <%= f.label :iosdevice_support_time %><br />
+    <%= f.text_field :iosdevice_support_time %>
+  </div>
+  <div class="field">
+    <%= f.label :iosdevice_install_setup %><br />
+    <%= f.text_field :iosdevice_install_setup %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

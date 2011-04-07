@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Internalapp::Application.load_tasks
+Internalapp_authlogic::Application.load_tasks

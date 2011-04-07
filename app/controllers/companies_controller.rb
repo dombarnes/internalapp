@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
-before_filter :authenticate, :only => [:edit, :update, :show, :index]
+# before_filter :authenticate, :only => [:edit, :update, :show, :index]
 # before_filter :correct_user, :only => [:edit, :update, :show, :index]
-
+before_filter :require_user
   def index
     @companies = Company.all
     @title = "Companies"
@@ -36,7 +36,7 @@ before_filter :authenticate, :only => [:edit, :update, :show, :index]
   end
 
   def create
-    @company = Company.new(params[:client])
+    @company = Company.new(params[:company])
 
     respond_to do |format|
       if @company.save

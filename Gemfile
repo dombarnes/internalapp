@@ -5,6 +5,8 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'will_paginate', '3.0.pre2'
 gem 'bundler'
 gem 'calendar_date_select'
+gem 'authlogic'
+gem 'rails3-generators'
 	
 group :development, :test do
 	gem 'rspec-rails', '2.5.0'

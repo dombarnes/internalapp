@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+
   def index
     @title = "Home"
   end
@@ -14,5 +15,16 @@ class HomeController < ApplicationController
   def root
     @title = "Home"
   end
-  
+  def supportquote
+    @title = "Support Quotes"
+  end
+  def installquote
+    @title = "Install Quotes"
+  end
+  def dashboard
+    @title = "Dashboard"
+  end
+  def quotes
+    @title = "Quote Dashboard"
+  end
 end

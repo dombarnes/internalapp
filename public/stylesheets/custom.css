@@ -64,7 +64,7 @@ body {
 }
 #header #nav li a {
 	float: left;
-	padding: 0px 20px ;
+	padding: 0px 15px ;
 	color: #838383 ;
 }
 #header .header_logo {
@@ -185,6 +185,10 @@ a.signup_button {
 table.profile {
 	width: 100%;
 	margin-bottom: 0;
+}
+th {
+	background: #998888;
+	color : #000;
 }
 td#main {
 	width:70%;

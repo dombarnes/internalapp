@@ -1,9 +1,8 @@
 class AdhocSupportsController < ApplicationController
-before_filter :authenticate, :only => [:edit, :update, :show, :index]
+# before_filter :authenticate, :only => [:edit, :update, :show, :index]
 # before_filter :correct_user, :only => [:edit, :update, :show, :index]
+before_filter :require_user
 
-  # GET /adhoc_supports
-  # GET /adhoc_supports.xml
   def index
     @adhoc_supports = AdhocSupport.all
     @title = "Ad Hoc Support Contracts"
@@ -14,8 +13,6 @@ before_filter :authenticate, :only => [:edit, :update, :show, :index]
     @adhoc_supports= AdhocSupport.paginate(:page => params[:page])
   end
 
-  # GET /adhoc_supports/1
-  # GET /adhoc_supports/1.xml
   def show
     @adhoc_support = AdhocSupport.find(params[:id])
     respond_to do |format|
@@ -24,8 +21,6 @@ before_filter :authenticate, :only => [:edit, :update, :show, :index]
     end
   end
 
-  # GET /adhoc_supports/new
-  # GET /adhoc_supports/new.xml
   def new
     @adhoc_support = AdhocSupport.new
 
@@ -35,13 +30,10 @@ before_filter :authenticate, :only => [:edit, :update, :show, :index]
     end
   end
 
-  # GET /adhoc_supports/1/edit
   def edit
     @adhoc_support = AdhocSupport.find(params[:id])
   end
 
-  # POST /adhoc_supports
-  # POST /adhoc_supports.xml
   def create
     @adhoc_support = AdhocSupport.new(params[:adhoc_support])
 
@@ -56,8 +48,6 @@ before_filter :authenticate, :only => [:edit, :update, :show, :index]
     end
   end
 
-  # PUT /adhoc_supports/1
-  # PUT /adhoc_supports/1.xml
   def update
     @adhoc_support = AdhocSupport.find(params[:id])
 
@@ -72,8 +62,6 @@ before_filter :authenticate, :only => [:edit, :update, :show, :index]
     end
   end
 
-  # DELETE /adhoc_supports/1
-  # DELETE /adhoc_supports/1.xml
   def destroy
     @adhoc_support = AdhocSupport.find(params[:id])
     @adhoc_support.destroy
@@ -85,12 +73,13 @@ before_filter :authenticate, :only => [:edit, :update, :show, :index]
   end
   
   private
-  def authenticate
-    deny_access unless signed_in?
-  end
-  def correct_user
-    @user = User.find(params[:id])
-    redirect_to(root_path) unless current_user?(@user)
-  end
+    def authenticate
+      deny_access unless signed_in?
+    end
+  
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless current_user?(@user)
+    end
 
 end

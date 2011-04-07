@@ -1,66 +1,36 @@
-# == Schema Information
-# Schema version: 20100822233125
-#
-# Table name: users
-#
-#  id                 :integer         not null, primary key
-#  name               :string(255)
-#  email              :string(255)
-#  created_at         :datetime
-#  updated_at         :datetime
-#  encrypted_password :string(255)
-#  salt               :string(255)
-#
-
 class User < ActiveRecord::Base
-  attr_accessor   :password
-  attr_accessible :name, :email, :password, :password_confirmation
-  default_scope :order => 'users.name ASC'
-  email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  acts_as_authentic
   
-  validates :name,  :presence => true,
-                    :length   => { :maximum => 50 }
-  validates :email, :presence   => true,
-                    :format     => { :with => email_regex },
-                    :uniqueness => { :case_sensitive => false }
-  validates :password, :presence => true,
-                       :confirmation => true,
-                       :length => { :within => 6..40 }
-
-  before_save :encrypt_password
-  
-  def has_password?(submitted_password)
-    encrypted_password == encrypt(submitted_password)
+  def deliver_password_reset_instructions!  
+  reset_perishable_token!  
+  Notifier.deliver_password_reset_instructions(self)  
+  end
+    
+  def active?
+    active
   end
 
-  class << self
-    def authenticate(email, submitted_password)
-      user = find_by_email(email)
-      (user && user.has_password?(submitted_password)) ? user : nil
-    end
-    
-    def authenticate_with_salt(id, cookie_salt)
-      user = find_by_id(id)
-      (user && user.salt == cookie_salt) ? user : nil
-    end
+  def activate!
+    self.active = true
+    save
   end
-  
-  private
-  
-    def encrypt_password
-      self.salt = make_salt if new_record?
-      self.encrypted_password = encrypt(password)
-    end
-  
-    def encrypt(string)
-      secure_hash("#{salt}--#{string}")
-    end
-    
-    def make_salt
-      secure_hash("#{Time.now.utc}--#{password}")
-    end
-    
-    def secure_hash(string)
-      Digest::SHA2.hexdigest(string)
-    end
+
+  def deactivate!
+    self.active = false
+    save
+  end
+
+  def send_activation_instructions!
+    reset_perishable_token!
+    Notifier.activation_instructions(self).deliver
+  end
+
+  def send_activation_confirmation!
+    reset_perishable_token!
+    Notifier.activation_confirmation(self).deliver
+  end
+
+  def email_address_with_name
+    "#{self.login} <#{self.email}>"
+  end
 end

@@ -1,0 +1,50 @@
+<%= form_for(@ios_quote) do |f| %>
+  <% if @ios_quote.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ios_quote.errors.count, "error") %> prohibited this quote from being saved:</h2>
+
+      <ul>
+      <% @ios_quote.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+<select id="ios_quotes_customer_id" name="ios_quotes[customer]">
+	<% if @ios_quote.customer == 0 or  @ios_quote.customer == nil %>
+    <option value="" selected="selected" >Please Selected An Item</option>
+	<% end -%>
+    <% @item = Company.find(:all, :order => "company_name")
+	@item.each do |item| %>
+  <option value="<%= item.company_name %>"
+   <% if @ios_quote.customer == item.id -%> selected="selected"<% end %> >
+ <%= item.company_name %>
+ </option>
+ <% end %>
+</select>
+  
+  <div class="field">
+    <%= f.label :customer %><br />
+    <%= f.text_field :customer %>
+  </div>
+  <div class="field">
+    <%= f.label :device_quantity %><br />
+    <%= f.text_field :device_quantity %>
+  </div>
+  <div class="field">
+    <%= f.label :install_required %><br />
+    <%= f.check_box :install_required %>
+  </div>
+  <div class="field">
+    <%= f.label :support_required %><br />
+    <%= f.check_box :support_required %>
+  </div>
+  <div class="field">
+    <%= f.label :mobile_config %><br />
+    <%= f.check_box :mobile_config %>
+  </div><br />
+  <div class="actions">
+	<input id="ios_submit" name="commit" type="submit" value="Submit" />
+  </div>
+<% end %>

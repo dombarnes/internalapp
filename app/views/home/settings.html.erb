@@ -1,0 +1,11 @@
+<h2>Settings</h2>
+
+This is for the admin settings, such as changing quote costs, time lengths, etc
+<br><br>
+<%= link_to 'Edit Values', ios_values_path %>
+
+
+<% content_for :sidebar do %>
+<h3>Settings</h3>
+Here you can make changes to the backend values in databases, such as day rates, length of time for installs, etc. Please do not amend existing values. Instead, add a new entry. Editing old values will cause issues with existing quotes.
+<% end %>
