@@ -3,5 +3,5 @@ class InstallQuote < ActiveRecord::Base
   
   belongs_to :user
   validates :customer_name, :presence => true
-  default_scope :order => 'install_quotes.created_at DESC'
+  scope :all, order('install_quotes.created_at DESC')
 end

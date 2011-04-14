@@ -1,20 +1,27 @@
 class CompaniesController < ApplicationController
 # before_filter :authenticate, :only => [:edit, :update, :show, :index]
 # before_filter :correct_user, :only => [:edit, :update, :show, :index]
-before_filter :require_user
+# for 
+
+load_and_authorize_resource # For declarative authorization
+filter_resource_access
+
+before_filter :require_user, :only => [:edit, :update, :index, :destroy]
+before_filter :admin_user, :only => :destroy
+helper_method :sort_column, :sort_direction
+
   def index
-    @companies = Company.all
+    @companies = Company.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:page => params[:page])
     @title = "Companies"
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @company }
+      format.xml  { render :xml => @companies }
     end
-    @companies = Company.paginate(:page => params[:page])
   end
 
   def show
-    @company = Company.find(params[:id])
-
+#    @company = Company.find(params[:id])
+    @title = @company.company_name
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @company }
@@ -31,12 +38,12 @@ before_filter :require_user
   end
 
   def edit
-    @company = Company.find(params[:id])
+ #   @company = Company.find(params[:id])
     @title = "Edit Company"
   end
 
   def create
-    @company = Company.new(params[:company])
+  #  @company = Company.new(params[:company])
 
     respond_to do |format|
       if @company.save
@@ -50,7 +57,7 @@ before_filter :require_user
   end
 
   def update
-    @company = Company.find(params[:id])
+ #   @company = Company.find(params[:id])
 
     respond_to do |format|
       if @company.update_attributes(params[:company])
@@ -64,13 +71,9 @@ before_filter :require_user
   end
 
   def destroy
-    @company = Company.find(params[:id])
-    @company.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(companies_url) }
-      format.xml  { head :ok }
-    end
+    Company.find(params[:id]).destroy
+    flash[:notice] = "#{company.company_name} has been deleted"
+    redirect_to companies_path
   end
   
   private
@@ -81,6 +84,14 @@ before_filter :require_user
   def correct_user
     @user = User.find(params[:id])
     redirect_to(root_path) unless current_user?(@user)
+  end  
+
+  def sort_column
+    Company.column_names.include?(params[:sort]) ? params[:sort] : "company_name"
   end
-  
+
+  def sort_direction
+        %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
 end

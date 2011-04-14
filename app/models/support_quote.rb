@@ -5,5 +5,5 @@ class SupportQuote < ActiveRecord::Base
   validates :customer_name, :presence => true
   validates :user_id, :presence => true
   
-  default_scope :order => 'support_quotes.created_at DESC'
+  scope :order("support_quotes.created_at DESC")
 end

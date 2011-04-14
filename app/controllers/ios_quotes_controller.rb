@@ -1,7 +1,7 @@
 class IosQuotesController < ApplicationController
 #  before_filter :authenticate, :only => [:update, :create, :show, :index, :destroy]
 #  before_filter :correct_user,  :only => [:edit, :update, :show, :destroy]
-before_filter :require_user
+before_filter :require_user, :only => [:update, :create, :show, :index, :destroy]
 
   def create
     @title = "New Quote"
@@ -23,7 +23,8 @@ before_filter :require_user
   end
   
   def index
-     @ios_quote = IosQuote.find(params[:user_id])
+     @ios_quotes = IosQuote.all.paginate(:per_page => 5, :page => params[:id])
+     #find(params[:user_id])
       @title = "iOS Quotes"
       respond_to do |format|
         format.html # index.html.erb

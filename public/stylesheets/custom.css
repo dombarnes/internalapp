@@ -159,6 +159,11 @@ a:visited {
 #nav ul li a:hover {
   text-decoration: underline;
 }
+.navigation_link {
+	float: left ;
+	display : block ;
+	font-size : 15px ;
+}
 
 /* Sign up button */
 a.signup_button {
@@ -187,7 +192,7 @@ table.profile {
 	margin-bottom: 0;
 }
 th {
-	background: #998888;
+	background: #fff;
 	color : #000;
 }
 td#main {
@@ -199,6 +204,10 @@ td#sidebar {
 	padding: 1em;
 	vertical-align: top;
 	background: #ffc;
+}
+tr td{
+	background-color: #fff;
+	
 }
 
 /* Signup Errors */
@@ -266,6 +275,70 @@ div.pagination {
 	padding: 10px;
 	background: white;
 }
+/* Form Styling */
+legend {
+	margin-left : 1em;
+	padding : 0 ;
+	color : #000 ;
+	font-weight : bold ;
+}
+label {
+	width : 10em ;
+	float : left ;
+	text-align : right ;
+	margin-right : 1em ;
+}
+fieldset li {
+	float: left;      
+	clear: both;      
+	width: 100%;      
+	margin: 0 0 1.5em 0;      
+	padding: 0;      
+	border: 1px solid #BFBAB0;      
+	background-color: #F2EFE9;
+}
+
+fieldset {
+	float : left ;
+	clear : left ;
+	width : 100% ;
+	margin : 0 0 1.5em 0;
+	padding : 0 ;
+}
+.clear {
+	overflow : hidden ;
+	width : 100% ;
+}
+a.button {
+	background: transparent url('../images/bg_button_a.gif') no-repeat scroll top right;
+	color: #444;
+	display: block;
+	float: left;
+	font: normal 12px arial, sans-serif;
+	height: 24px;
+	margin-right: 6px;
+	padding-right: 18px; /* sliding doors padding */
+	text-decoration: none;
+}
+a.button span {
+    background: transparent url('../images/bg_button_span.gif') no-repeat;
+    display: block;
+    line-height: 14px;
+    padding: 5px 0 5px 18px;
+}
+a.button:active {
+    background-position: bottom right;
+    color: #000;
+    outline: none; /* hide dotted outline in Firefox */
+}
+
+a.button:active span {
+    background-position: bottom left;
+    padding: 6px 0 4px 18px; /* push text down 1px */
+}
+
+
+
 /* Home Twitter Sidebar */
 #twitter {
 	font-size: 1em;
@@ -279,4 +352,29 @@ div.pagination {
 #twitter a {
 	color:#666999;
 	font-size: 0.8em;
+}
+/* application.css */
+.pretty th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.pretty th .asc {
+  background-image: url(/images/up_arrow.gif);
+}
+
+.pretty th .desc {
+  background-image: url(/images/down_arrow.gif);
+}
+
+/* Settings Page */
+.settings_links {
+	color : #666999;
+	font-size : 14px;
+	font-color : #555999;
+
+}
+.settings_lins a.hover {
+	font-style : underline ;
 }

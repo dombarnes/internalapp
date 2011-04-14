@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110324135202) do
+ActiveRecord::Schema.define(:version => 20110412123721) do
 
   create_table "adhoc_supports", :force => true do |t|
     t.date     "date"
@@ -87,6 +87,46 @@ ActiveRecord::Schema.define(:version => 20110324135202) do
     t.boolean  "iosdevice_install_time"
     t.boolean  "iosdevice_support_cost"
     t.decimal  "iosdevice_install_setup"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "mac_values", :force => true do |t|
+    t.decimal  "mac_install_time"
+    t.decimal  "server_install_time"
+    t.decimal  "new_user_setup_time"
+    t.decimal  "ad_integration_time"
+    t.decimal  "deploy_studio_setup_time"
+    t.decimal  "airport_setup_time"
+    t.decimal  "print_server_time"
+    t.decimal  "iwork_time"
+    t.decimal  "office_time"
+    t.decimal  "fce_time"
+    t.decimal  "fcp_time"
+    t.decimal  "ard_time"
+    t.decimal  "logicx_time"
+    t.decimal  "logicp_time"
+    t.decimal  "cs5_time"
+    t.decimal  "aperture_time"
+    t.decimal  "consulting_time"
+    t.decimal  "documentation_time"
+    t.decimal  "halfday_price"
+    t.decimal  "day_rate"
+    t.decimal  "mac_support_cost"
+    t.decimal  "server_support_cost"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles_users", :id => false, :force => true do |t|
+    t.integer  "role_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

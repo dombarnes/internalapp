@@ -1,38 +1,22 @@
 <p id="notice"><%= notice %></p>
 <p>
-  <b>Company name:</b>
-  <%= @company.company_name %>
+  <h3><%= @company.company_name %></h3>
 </p>
-
 <p>
-  <b>Title:</b>
-  <%= @company.company_name %>
-</p>
-
+<b>Address Line 1:</b>
+<%= @company.address_1 %>
 <p>
-  <b>Address Line 1:</b>
-  <%= @company.address_1 %>
-</p>
-
+<b>Address Line 2:</b>
+<%= @company.address_2 %>
 <p>
-  <b>Address Line 2:</b>
-  <%= @company.address_2 %>
-</p>
-
+<b>City:</b>
+<%= @company.city %>
 <p>
-  <b>City:</b>
-  <%= @company.city %>
-</p>
-
+<b>County:</b>
+<%= @company.county %>
 <p>
-  <b>County:</b>
-  <%= @company.county %>
-</p>
-
-<p>
-  <b>Post Code:</b>
-  <%= @company.postcode %>
-</p>
+<b>Post Code:</b>
+<%= @company.postcode %>
 
 <p>
   <b>Telephone Number:</b>
@@ -41,7 +25,7 @@
 
 <p>
   <b>Website:</b>
-  <%= @company.website %>
+  <%= link_to @company.website, @company.website, :target => "_blank" %>
 </p>
 
 

@@ -32,5 +32,6 @@
   <b>Current login ip:</b>
   <%=h @user.current_login_ip %>
 </p>
-
-<%= link_to 'Edit', edit_account_path %>
+<p>
+  <b>Role:</b>
+	<%= @user.role %>

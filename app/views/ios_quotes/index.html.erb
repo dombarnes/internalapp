@@ -9,7 +9,7 @@
 	<th>Support Cost</th>
 	<th></th>
   </tr>
-<% @ios_quote.each do |ios_quote| %>
+<% for ios_quotes in @ios_quotes %>
 	<tr>
 		<td><%= ios_quote.created_at.strftime("%d/%m/%Y") %>
 		<td><%= ios_quote.customer %></td>
@@ -21,6 +21,8 @@
 <% end %>
 </table>
 <br />
+<%= will_paginate @ios_quotes %>
+
 
 <% content_for :sidebar do %>
     <h3>iOS Quotes</h3>

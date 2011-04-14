@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:show, :edit, :update]
   
+  def index
+    @users = User.all
+  end
+  
   def new
     @user = User.new
   end
@@ -36,10 +40,12 @@ class UsersController < ApplicationController
   
   def show
     @user = current_user
+    @role = current_user.role
   end
 
   def edit
     @user = current_user
+    @role = current_user.role
   end
 
   def update
@@ -52,4 +58,26 @@ class UsersController < ApplicationController
     end
   end
   
+  def add_role
+    role = Role.find_by_name params[:role]
+    @user.roles.push role if role
+    redisplay_roles
+  end
+  
+  def delete_role
+    @user.roles.delete(Role.find params[:role])
+    redisplay_roles
+  end
+  
+  private
+  def load_user
+    @user = User.find params[:id]
+  end
+  
+  def redisplay_roles
+    respond_to do |format|
+      format.html { redirect_to [:admin, @user]}
+      format.js { render :redisplay_roles }
+    end
+  end
 end

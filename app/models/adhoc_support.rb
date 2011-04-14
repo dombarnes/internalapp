@@ -23,5 +23,5 @@ class AdhocSupport < ActiveRecord::Base
   validates :client_id, :presence => true
   validates :job_type, :presence => true
   
-  default_scope :order => 'adhoc_supports.date DESC'
+  scope :all, order('adhoc_supports.date DESC')
 end

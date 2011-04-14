@@ -7,7 +7,7 @@ module SessionsHelper
     self.current_user = user
   end
   
-  def current_user=(user)
+    def current_user=(user)
       @current_user = user
     end
 
@@ -52,7 +52,7 @@ module SessionsHelper
    end
   
    def admin_user
-    
+      redirect_back_or(companies_path) unless current_user(:role =>"admin")
    end
    
    private

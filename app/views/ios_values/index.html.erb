@@ -3,13 +3,13 @@
 <table>
   <tr>
     <th>Date</td>
-	<th>Day Rate</th>
+	<th>Day Rate</td>
 	<th></th>
   </tr>
-<% @ios_value.each do |ios_value| %>
+<% @ios_values.each do |ios_values| %>
 	<tr>
-		<td><%= ios_value.created_at.strftime("%d/%m/%Y") %>
-		<td><%= ios_value.daily_rate %></td>
+		<td><%= ios_values.created_at.strftime("%d/%m/%Y") %>
+		<td><%= ios_values.day_rate %></td>
 		<td><%= link_to 'View', ios_quote %></td>
 	</tr>
 <% end %>

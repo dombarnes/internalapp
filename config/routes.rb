@@ -1,4 +1,4 @@
-Internalapp_authlogic::Application.routes.draw do
+Internalapp::Application.routes.draw do
 
   get "user_sessions/new"
 
@@ -13,6 +13,17 @@ Internalapp_authlogic::Application.routes.draw do
   resources :ios_values
   resources :ios_quotes
   resources :user_sessions
+  resources :mac_values
+
+  namespace :admin do
+    resources :users do
+      member do
+        post :add_role
+        delete :delete_role
+      end
+    end
+    resources :roles, :only=>[:index, :create, :destroy]
+  end
   
   get "home/index"
   match 'signup' => 'users#new', :as => :signup
@@ -20,14 +31,13 @@ Internalapp_authlogic::Application.routes.draw do
   match 'logout' => 'user_sessions#destroy', :as => :logout
   match 'activate(/:activation_code)' => 'users#activate', :as => :activate_account
   match 'send_activation(/:user_id)' => 'users#send_activation', :as => :send_activation
-
+  match '/admin', :to => 'admin#index'
   match '/', :to => 'home#index'
   match '/dashboard', :to => 'home#dashboard'
   match '/adhocsupport', :to => 'adhoc_supports#index'
   match '/clients', :to => 'clients#index'
   match '/companies', :to => 'companies#index'
   match '/quotes', :to => 'home#quotes'
-  match '/admin', :to => 'home#admin'
   match '/settings', :to => 'home#settings'
   match '/help', :to =>'home#help'
   

@@ -1,0 +1,7 @@
+<h1>RoleList</h1>
+<h2>There <%= pluralize(role.length, 'role') %></h2>
+<% @roles.each do |role| %>
+	<ul>
+	<% role.name, role %>
+	<%= link_to 'X', role , :method => :delete, :confirm => 'Are You sure?' %></ul>
+<% end %>

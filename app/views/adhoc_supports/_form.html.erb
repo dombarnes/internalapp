@@ -13,18 +13,25 @@
 
   <div class="field">
     <%= f.label :date %><br />
-    <%= f.text_field :date %><br />
-
+	<%= f.text_field :date %>
   </div>
+
   <div class="field">
     <%= f.label :job_type %><br />
-    <%= f.text_field :job_type %>
+	<select id="adhoc_supports_job_type" name="adhoc_support[job_type]">
+		<option value="" selected="selected"></option>
+    	<option value="Full Day" selected="selected" >Full Day</option>
+		<option value="Half Day" selected="selected" >Half Day</option>
+	</select>
   </div>
+
   <div class="field">
     <%= f.label :technicians %><br />
-    <%= f.text_field :technicians %>
+	<%= f.text_field :technicians %>
   </div>
-#### - Client_id is integer - may need changing
+<div>
+	<%= f.label "Client" %>
+	#### - Client_id is integer - may need changing
 <select id="adhoc_supports_client_id" name="adhoc_support[client_id]">
 	<% if @adhoc_support.client_id == 0 or @adhoc_support.client_id == nil %>
     <option value="" selected="selected" ></option>
@@ -37,7 +44,7 @@
  </option>
  <% end %>
 </select>
-
+</div>
   <div class="field">
     <%= f.label :notes %><br />
     <%= f.text_area :notes %>
