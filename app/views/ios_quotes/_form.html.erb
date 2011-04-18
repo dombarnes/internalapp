@@ -10,38 +10,36 @@
       </ul>
     </div>
   <% end %>
-  
+
+  <div class="field">
+    <%= f.label :customer %><br />
 <select id="ios_quotes_customer_id" name="ios_quotes[customer]">
 	<% if @ios_quote.customer == 0 or  @ios_quote.customer == nil %>
     <option value="" selected="selected" >Please Selected An Item</option>
-	<% end -%>
+	<% end %>
     <% @item = Company.find(:all, :order => "company_name")
 	@item.each do |item| %>
   <option value="<%= item.company_name %>"
    <% if @ios_quote.customer == item.id -%> selected="selected"<% end %> >
  <%= item.company_name %>
- </option>
- <% end %>
+  </option>
+  <% end %>
 </select>
   
   <div class="field">
-    <%= f.label :customer %><br />
-    <%= f.text_field :customer %>
+    <%= f.label :device_quantity %>
+    <%= f.text_field :device_quantity, :size => 5 %>
   </div>
   <div class="field">
-    <%= f.label :device_quantity %><br />
-    <%= f.text_field :device_quantity %>
-  </div>
-  <div class="field">
-    <%= f.label :install_required %><br />
+    <%= f.label :install_required %>
     <%= f.check_box :install_required %>
   </div>
   <div class="field">
-    <%= f.label :support_required %><br />
+    <%= f.label :support_required %>
     <%= f.check_box :support_required %>
   </div>
   <div class="field">
-    <%= f.label :mobile_config %><br />
+    <%= f.label :mobile_config %>
     <%= f.check_box :mobile_config %>
   </div><br />
   <div class="actions">

@@ -6,10 +6,10 @@
 	<th>Day Rate</td>
 	<th></th>
   </tr>
-<% @ios_values.each do |ios_values| %>
+<% @ios_values.each do |ios_value| %>
 	<tr>
-		<td><%= ios_values.created_at.strftime("%d/%m/%Y") %>
-		<td><%= ios_values.day_rate %></td>
+		<td><%= ios_value.created_at.strftime("%d/%m/%Y") %>
+		<td><%= ios_value.day_rate %></td>
 		<td><%= link_to 'View', ios_quote %></td>
 	</tr>
 <% end %>

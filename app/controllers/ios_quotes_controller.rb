@@ -1,7 +1,12 @@
 class IosQuotesController < ApplicationController
 #  before_filter :authenticate, :only => [:update, :create, :show, :index, :destroy]
 #  before_filter :correct_user,  :only => [:edit, :update, :show, :destroy]
-before_filter :require_user, :only => [:update, :create, :show, :index, :destroy]
+load_and_authorize_resource # For declarative authorization
+filter_resource_access
+
+before_filter :require_user, :only => [:edit, :update, :index, :destroy]
+before_filter :admin_user, :only => :destroy
+helper_method :sort_column, :sort_direction
 
   def create
     @title = "New Quote"
@@ -9,7 +14,7 @@ before_filter :require_user, :only => [:update, :create, :show, :index, :destroy
     @quote_values = IosValues.last
 	@ios_quote.ios_values_id = IosValues.last
     if install_required = "1"
-      @ios_quote.install_cost = ((@quote_values.iosdevice_install_setup + (@quote_values.iosdevice_install_setup * @ios_quote.device_quantity)/7)).ceil  * @quote_values.daily_rate
+      @ios_quote.install_cost = ((@quote_values.iosdevice_install_setup + (@quote_values.iosdevice_install_setup * @ios_quote.device_quantity)/7)).ceil * @quote_values.daily_rate
     end
     if support_required = "1"
       @ios_quote.support_cost = (@quote_values.iosdevice_support_cost * @ios_quote.device_quantity).ceil

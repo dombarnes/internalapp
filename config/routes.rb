@@ -7,13 +7,13 @@ Internalapp::Application.routes.draw do
   resources :users
   resource :user, :as => 'account'
   resources :companies
-#  resources :sessions, :only => [:new, :create, :destroy]
   resources :support_quotes
   resources :install_quotes
   resources :ios_values
   resources :ios_quotes
   resources :user_sessions
   resources :mac_values
+  
 
   namespace :admin do
     resources :users do
@@ -25,7 +25,7 @@ Internalapp::Application.routes.draw do
     resources :roles, :only=>[:index, :create, :destroy]
   end
   
-  get "home/index"
+  get "home/index"  
   match 'signup' => 'users#new', :as => :signup
   match 'login' => 'user_sessions#new', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout

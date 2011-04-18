@@ -1,11 +1,14 @@
 class IosValuesController < ApplicationController
-before_filter :require_user
+  load_and_authorize_resource # For declarative authorization
+  filter_resource_access
 
-
+  before_filter :require_user, :only => [:edit, :update, :index, :destroy]
+  before_filter :admin_user, :only => :destroy
+  helper_method :sort_column, :sort_direction
 
   def index
-    @title = "iOS Calculation Values"
     @ios_values = IosValue.all
+    @title = "iOS Calculation Values"
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @ios_values }
@@ -46,6 +49,16 @@ before_filter :require_user
   def show
     @title = "Values"
     @ios_value = IosValue.find(params[:id])
+  end
+  
+  private
+  def authenticate
+    deny_access unless signed_in?
+  end
+  
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_path) unless current_user?(@user)
   end
   
   

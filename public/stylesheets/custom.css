@@ -285,7 +285,7 @@ legend {
 label {
 	width : 10em ;
 	float : left ;
-	text-align : right ;
+	text-align : left ;
 	margin-right : 1em ;
 }
 fieldset li {
@@ -297,11 +297,9 @@ fieldset li {
 	border: 1px solid #BFBAB0;      
 	background-color: #F2EFE9;
 }
-
 fieldset {
 	float : left ;
 	clear : left ;
-	width : 100% ;
 	margin : 0 0 1.5em 0;
 	padding : 0 ;
 }

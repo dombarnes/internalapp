@@ -31,7 +31,6 @@
   </div>
 <div>
 	<%= f.label "Client" %>
-	#### - Client_id is integer - may need changing
 <select id="adhoc_supports_client_id" name="adhoc_support[client_id]">
 	<% if @adhoc_support.client_id == 0 or @adhoc_support.client_id == nil %>
     <option value="" selected="selected" ></option>
@@ -49,7 +48,7 @@
     <%= f.label :notes %><br />
     <%= f.text_area :notes %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div>
+  <a class="button" href="#" onclick="$('#user_form).submit(); return false;"><span>Submit</span></a>
   </div>
 <% end %>

@@ -7,5 +7,5 @@ class IosQuote < ActiveRecord::Base
 
   validate :customer, :presence => true
   validate :device_quantity, :presence => true
-  scope :recent, order('created_at ASC')
+  scope :recent, order('created_at DESC')
 end

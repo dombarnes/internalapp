@@ -1,10 +1,14 @@
 class User < ActiveRecord::Base
+  
   acts_as_authentic
   has_many :ios_quotes
-  has_many :mac_quotes 
-has_and_belongs_to_many :roles
-before_create :setup_role
-attr_accessible :email, :login, :role_ids
+  has_many :mac_quotes
+  has_many :roles_users
+  has_many :roles, :through => :roles_users
+  before_create :setup_role
+  attr_accessible :email, :login, :role_ids
+
+  
   def deliver_password_reset_instructions!  
   reset_perishable_token!  
   Notifier.deliver_password_reset_instructions(self)  
@@ -54,7 +58,7 @@ attr_accessible :email, :login, :role_ids
   end
 
   def role?(role)
-    roles.include? role.to_s    
+    roles.include? role.to_s
   end
 
 private
