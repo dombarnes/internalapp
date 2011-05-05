@@ -25,7 +25,7 @@ before_filter :load_user_using_perishable_token, :only => [:edit, :update]
   
   def update  
     @user.password = params[:user][:password]  
-    @user.password_confirmation = params[:user][: password_confirmation]  
+    @user.password_confirmation = params[:user][:password_confirmation]  
     if @user.save  
       flash[:notice] = "Password successfully updated"  
       redirect_to account_url  

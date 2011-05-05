@@ -40,3 +40,5 @@ module Internalapp
     config.filter_parameters += [:password]
       end
     end
+    # Custom directories with classes and modules you want to be
+    config.autoload_paths += %W(#{config.root}/lib) 

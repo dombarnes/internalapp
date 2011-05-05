@@ -14,7 +14,6 @@ Internalapp::Application.routes.draw do
   resources :user_sessions
   resources :mac_values
   
-
   namespace :admin do
     resources :users do
       member do
@@ -38,8 +37,8 @@ Internalapp::Application.routes.draw do
   match '/clients', :to => 'clients#index'
   match '/companies', :to => 'companies#index'
   match '/quotes', :to => 'home#quotes'
-  match '/settings', :to => 'home#settings'
   match '/help', :to =>'home#help'
+  match '/admin/roles', :to => 'admin#roles#index'
   
   root :to => "home#index"
   # The priority is based upon order of creation:

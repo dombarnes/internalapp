@@ -1,8 +1,9 @@
 <% if signed_in? %>
 <h1>Welcome</h1>
-<p>Please use the navigation at the top to move around.</p>
-<%= render 'shared/support_quotes'%>
-<%= render 'shared/install_quotes'%>
+<p>Please use the navigation at the top to move around, or select from the items below.</p>
+<%= render 'dashboard' %>
+<%= render 'shared/support_quotes' %>
+<%= render 'shared/install_quotes' %>
     	<% else %>
 		<header class="subnav new">
 		    <h2><Strong>Internal App</Strong></h2>

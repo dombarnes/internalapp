@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
 # before_filter :authenticate, :only => [:edit, :update, :show, :index]
-load_and_authorize_resource # For declarative authorization
+# load_and_authorize_resource # For declarative authorization
 filter_resource_access
 # belongs_to :company
 before_filter :require_user, :only => [:edit, :update, :index, :destroy]

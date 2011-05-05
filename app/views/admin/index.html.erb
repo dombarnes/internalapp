@@ -1,3 +1,14 @@
 <h1>Admin Console</h1>
 
-<li><%= link_to "Edit Calculation Values", ios_values_path %></li>
+This is for the admin settings, such as changing quote costs, time lengths, etc
+<br><br>
+<div class="settings_links">
+<%= link_to 'View iOS Support and Install Values', ios_values_path %><br>
+<%= link_to 'View Mac Support and Install Values', mac_values_path %><br>
+<%= link_to "Manage Users", users_path %><br>
+<%= link_to 'Edit System Roles', admin_roles_path %><br>
+
+<% content_for :sidebar do %>
+<h3>Settings</h3>
+Here you can make changes to the backend values in databases, such as day rates, length of time for installs, etc. Please do not amend existing values. Instead, add a new entry. Editing old values will cause issues with existing quotes.
+<% end %>

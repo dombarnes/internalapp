@@ -35,6 +35,7 @@
 <p>
   <b>Role:</b>
 	<%= @user.role %>
+<br>	
 <% if signed_in? %>
-  <% link_to 'Edit', edit_user_path(@user) %>
+  <%= link_to 'Edit', edit_user_path(@user) %>
 <% end %>

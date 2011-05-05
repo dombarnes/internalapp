@@ -11,7 +11,7 @@ class Admin::RolesController < ApplicationController
   
   def destroy
     Role.find(params[:id]).destroy
-    redisplay_roles    
+    redirect_to admin_roles_path
   end
   
   private

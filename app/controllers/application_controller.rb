@@ -3,9 +3,13 @@ class ApplicationController < ActionController::Base
   helper :all
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   helper_method :current_user_session, :current_user
+
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to dashboard_path, :alert => exception.message
+    flash[:error] = exception.message
+      redirect_back_or_default(root_path)
+    # redirect_to root_path , :alert => exception.message
   end
+  
   before_filter { |c| Authorization.current_user = c.current_user }
   filter_parameter_logging :password, :password_confirmation 
 
