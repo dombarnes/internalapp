@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
   has_many :roles_users
   has_many :roles, :through => :roles_users
   before_create :setup_role
-  attr_accessible :email, :login, :role_ids
-
+  attr_accessible :email, :login, :first_name, :last_name, :role_id, :password, :password_confirmation, :active
+  
   
   def deliver_password_reset_instructions!  
   reset_perishable_token!  

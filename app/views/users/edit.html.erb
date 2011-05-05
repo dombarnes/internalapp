@@ -6,3 +6,16 @@
 <% end %>
 
 <br /><%= link_to "My Profile", account_path %>
+
+<% if admin_user? %>
+<p>
+	<%= form.label "Role" %><br />
+	<%= collection_select(:user, :role, Role.all, :id, :name, :prompt => true) %>
+</p>	
+<% for role in Role.find(:all) %>
+      <div>
+        <%=check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
+        <%=role.name%>
+      </div>
+<% end %>
+<% end %>

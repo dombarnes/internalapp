@@ -2,7 +2,7 @@ class ClientsController < ApplicationController
 # before_filter :authenticate, :only => [:edit, :update, :show, :index]
 load_and_authorize_resource # For declarative authorization
 filter_resource_access
-belongs_to :company
+# belongs_to :company
 before_filter :require_user, :only => [:edit, :update, :index, :destroy]
 before_filter :admin_user, :only => :destroy
 helper_method :sort_column, :sort_direction
