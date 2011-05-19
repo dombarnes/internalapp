@@ -48,8 +48,9 @@ class User < ActiveRecord::Base
     end
   end
     
-  def has_role?(role)
-    self.roles.count(:conditions => ['name = ?', role]) > 0
+  def has_role?(role_sym)
+#    self.roles.count(:conditions => ['name = ?', role]) > 0
+    roles.any? { |r| r.name.underscore.to_sym ==role_sym}
   end
   
   def add_role

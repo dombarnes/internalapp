@@ -38,7 +38,7 @@ module Internalapp
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
-      end
-    end
-    # Custom directories with classes and modules you want to be
     config.autoload_paths += %W(#{config.root}/lib) 
+  end
+end
+    # Custom directories with classes and modules you want to be

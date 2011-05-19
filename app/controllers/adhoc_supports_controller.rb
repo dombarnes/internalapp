@@ -19,7 +19,7 @@ helper_method :sort_column, :sort_direction
   end
 
   def show
-    @adhoc_support = AdhocSupport.find(params[:id])
+#    @adhoc_support = AdhocSupport.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @adhoc_support }
@@ -27,7 +27,7 @@ helper_method :sort_column, :sort_direction
   end
 
   def new
-    @adhoc_support = AdhocSupport.new
+#    @adhoc_support = AdhocSupport.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,11 +36,11 @@ helper_method :sort_column, :sort_direction
   end
 
   def edit
-    @adhoc_support = AdhocSupport.find(params[:id])
+#    @adhoc_support = AdhocSupport.find(params[:id])
   end
 
   def create
-    @adhoc_support = AdhocSupport.new(params[:adhoc_support])
+#    @adhoc_support = AdhocSupport.new(params[:adhoc_support])
 
     respond_to do |format|
       if @adhoc_support.save
@@ -54,7 +54,7 @@ helper_method :sort_column, :sort_direction
   end
 
   def update
-    @adhoc_support = AdhocSupport.find(params[:id])
+#    @adhoc_support = AdhocSupport.find(params[:id])
 
     respond_to do |format|
       if @adhoc_support.update_attributes(params[:adhoc_support])
@@ -68,7 +68,7 @@ helper_method :sort_column, :sort_direction
   end
 
   def destroy
-    @adhoc_support = AdhocSupport.find(params[:id])
+#    @adhoc_support = AdhocSupport.find(params[:id])
     @adhoc_support.destroy
 
     respond_to do |format|

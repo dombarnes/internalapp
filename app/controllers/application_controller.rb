@@ -1,9 +1,8 @@
 class ApplicationController < ActionController::Base
-
   helper :all
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-  helper_method :current_user_session, :current_user
-
+  helper_method :current_user_session, :current_user  
+  
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = exception.message
       redirect_back_or_default(root_path)

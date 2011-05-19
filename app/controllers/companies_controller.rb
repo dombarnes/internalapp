@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-# load_and_authorize_resource # For declarative authorization
+load_and_authorize_resource # For declarative authorization
 filter_resource_access
 
 before_filter :require_user, :only => [:create, :new, :edit, :update, :index, :destroy]

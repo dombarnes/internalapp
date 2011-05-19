@@ -1,12 +1,14 @@
 class ClientsController < ApplicationController
 # before_filter :authenticate, :only => [:edit, :update, :show, :index]
-# load_and_authorize_resource # For declarative authorization
+
+load_and_authorize_resource # For declarative authorization
 filter_resource_access
+
 # belongs_to :company
-before_filter :require_user, :only => [:edit, :update, :index, :destroy]
-before_filter :admin_user, :only => :destroy
+# before_filter :require_user, :only => [:edit, :update, :index, :destroy]
+# before_filter :admin_user, :only => :destroy
 helper_method :sort_column, :sort_direction
-# before_filter :correct_user, :only => [:edit, :update, :show, :index]
+before_filter :correct_user, :only => [:edit, :update, :show, :index]
 
   def index
     @clients = Client.all
@@ -19,8 +21,7 @@ helper_method :sort_column, :sort_direction
   end
 
   def show
-    @client = Client.find(params[:id])
-
+#    @client = Client.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @client }
@@ -28,8 +29,7 @@ helper_method :sort_column, :sort_direction
   end
 
   def new
-    @client = Client.new
-
+#    @client = Client.new
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @client }
@@ -38,11 +38,11 @@ helper_method :sort_column, :sort_direction
 
 
   def edit
-    @client = Client.find(params[:id])
+#    @client = Client.find(params[:id])
   end
 
   def create
-    @client = Client.new(params[:client])
+ #   @client = Client.new(params[:client])
 
     respond_to do |format|
       if @client.save
@@ -56,7 +56,7 @@ helper_method :sort_column, :sort_direction
   end
 
   def update
-    @client = Client.find(params[:id])
+#    @client = Client.find(params[:id])
 
     respond_to do |format|
       if @client.update_attributes(params[:client])
@@ -70,9 +70,8 @@ helper_method :sort_column, :sort_direction
   end
 
   def destroy
-    @client = Client.find(params[:id])
+#    @client = Client.find(params[:id])
     @client.destroy
-
     respond_to do |format|
       format.html { redirect_to(clients_url) }
       format.xml  { head :ok }

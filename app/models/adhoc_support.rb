@@ -15,7 +15,6 @@
 
 class AdhocSupport < ActiveRecord::Base
   attr_accessible :date, :job_type, :technicians, :notes
-  
   belongs_to :clients
   
   validates :date, :presence => true

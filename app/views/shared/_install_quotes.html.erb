@@ -1,2 +1,23 @@
 <br>
 <h3>Latest Install Quotes</h3>
+
+<table>
+  <tr>
+    <th>Date</td>
+	<th>Customer</th>
+	<th>Quantity</th>
+    <th>Install Cost</th>
+	<th>Support Cost</th>
+	<th></th>
+  </tr>
+<% support_quotes.each do |support_quote| %>
+	<tr>
+		<td><%= support_quote.created_at.strftime("%d/%m/%Y") %>
+		<td><%= support_quote.customer %></td>
+		<td><%= support_quote.device_quantity %></td>
+		<td><%= number_to_currency(support_quote.install_cost, :unit => "&pound;") %></td>
+		<td><%= number_to_currency(support_quote.support_cost, :unit => "&pound;") %></td>
+		<td><%= link_to 'View', support_quote %></td>
+	</tr>
+<% end %>
+</table>

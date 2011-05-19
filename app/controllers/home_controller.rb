@@ -1,7 +1,10 @@
 class HomeController < ApplicationController
-
+  
   def index
     @title = "Home"
+    @support_quotes = SupportQuote.all
+    @ios_quotes = IosQuote.all
+#    @mac_quotes = MacQuote.all 
   end
   def help
     @title = "Help"

@@ -1,7 +1,7 @@
 class IosQuotesController < ApplicationController
 #  before_filter :authenticate, :only => [:update, :create, :show, :index, :destroy]
 #  before_filter :correct_user,  :only => [:edit, :update, :show, :destroy]
-# load_and_authorize_resource # For declarative authorization
+load_and_authorize_resource # For declarative authorization
 filter_resource_access
 
 before_filter :require_user, :only => [:edit, :update, :index, :destroy]
@@ -74,7 +74,7 @@ helper_method :sort_column, :sort_direction
   
   def destroy
     @ios_quote = IosQuote.find(params[:id]).destroy
-    flash[:success] = "Quote delted"
+    flash[:success] = "Quote deleted"
     redirect_to quotes_path
   end
 
