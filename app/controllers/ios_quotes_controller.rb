@@ -13,10 +13,10 @@ helper_method :sort_column, :sort_direction
     @ios_quote = current_user.ios_quotes.build(params[:ios_quote])
     @quote_values = IosValues.last
 	@ios_quote.ios_values_id = IosValues.last
-    if install_required = "1"
+    if install_required == "1"
       @ios_quote.install_cost = ((@quote_values.iosdevice_install_setup + (@quote_values.iosdevice_install_setup * @ios_quote.device_quantity)/7)).ceil * @quote_values.daily_rate
     end
-    if support_required = "1"
+    if support_required == "1"
       @ios_quote.support_cost = (@quote_values.iosdevice_support_cost * @ios_quote.device_quantity).ceil
     end
     if @ios_quote.save
@@ -50,10 +50,10 @@ helper_method :sort_column, :sort_direction
   def update
 	@ios_quote = IosQuote.find(params[:id])
 	@quote_values = @ios_quote.ios_values_id
-    if install_required = "1"
+    if install_required == "1"
       @ios_quote.install_cost = ((@quote_values.iosdevice_install_setup + (@quote_values.iosdevice_install_setup * @ios_quote.device_quantity)/7)).ceil  * @quote_values.daily_rate
     end
-    if support_required = "1"
+    if support_required == "1"
       @ios_quote.support_cost = (@quote_values.iosdevice_support_cost * @ios_quote.device_quantity).ceil
     end
     respond_to do |format|
