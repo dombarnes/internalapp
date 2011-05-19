@@ -14,8 +14,9 @@
 #
 
 class AdhocSupport < ActiveRecord::Base
-  attr_accessible :date, :job_type, :technicians, :notes
+  attr_accessible :date, :job_type, :technicians, :notes, :comany_id
   belongs_to :clients
+  belongs_to :company
   
   validates :date, :presence => true
   validates :technicians, :presence => true

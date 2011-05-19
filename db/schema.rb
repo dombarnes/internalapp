@@ -16,13 +16,13 @@ ActiveRecord::Schema.define(:version => 20110412123721) do
     t.date     "date"
     t.string   "job_type"
     t.integer  "technicians"
-    t.integer  "client_id"
+    t.integer  "company_id"
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "adhoc_supports", ["client_id"], :name => "index_adhoc_supports_on_client_id"
+  add_index "adhoc_supports", ["company_id"], :name => "index_adhoc_supports_on_company_id"
 
   create_table "clients", :force => true do |t|
     t.string   "client_name"
@@ -32,11 +32,10 @@ ActiveRecord::Schema.define(:version => 20110412123721) do
     t.string   "position"
     t.integer  "telephone_number"
     t.integer  "mobile_number"
-    t.string   "source"
     t.string   "email_address"
+    t.string   "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "company_id"
   end
 
   add_index "clients", ["company_id"], :name => "index_clients_on_company_id"
@@ -50,18 +49,10 @@ ActiveRecord::Schema.define(:version => 20110412123721) do
     t.string   "postcode"
     t.string   "telephone_number"
     t.string   "website"
+    t.string   "source"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "install_quotes", :force => true do |t|
-    t.string   "customer_name"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "install_quotes", ["user_id"], :name => "index_install_quotes_on_user_id"
 
   create_table "ios_quotes", :force => true do |t|
     t.string   "customer"
@@ -79,7 +70,6 @@ ActiveRecord::Schema.define(:version => 20110412123721) do
   end
 
   add_index "ios_quotes", ["ios_values_id"], :name => "index_ios_quotes_on_ios_values_id"
-  add_index "ios_quotes", ["ios_values_id"], :name => "index_ios_quotes_on_values_id"
   add_index "ios_quotes", ["user_id"], :name => "index_ios_quotes_on_user_id"
 
   create_table "ios_values", :force => true do |t|
@@ -90,6 +80,35 @@ ActiveRecord::Schema.define(:version => 20110412123721) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "mac_quotes", :force => true do |t|
+    t.string   "customer_name"
+    t.integer  "client_quantity"
+    t.integer  "server_quantity"
+    t.integer  "new_user_setup"
+    t.boolean  "ad_integration"
+    t.boolean  "deploy_studio_setup"
+    t.decimal  "airport_setup"
+    t.decimal  "print_server"
+    t.boolean  "iwork"
+    t.boolean  "office"
+    t.boolean  "fce"
+    t.boolean  "fcp"
+    t.boolean  "ard"
+    t.boolean  "logicx"
+    t.boolean  "logicp"
+    t.boolean  "cs5"
+    t.boolean  "aperture"
+    t.decimal  "install_cost"
+    t.decimal  "support_cost"
+    t.integer  "mac_values_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "mac_quotes", ["mac_values_id"], :name => "index_mac_quotes_on_mac_values_id"
+  add_index "mac_quotes", ["user_id"], :name => "index_mac_quotes_on_user_id"
 
   create_table "mac_values", :force => true do |t|
     t.decimal  "mac_install_time"
@@ -140,15 +159,6 @@ ActiveRecord::Schema.define(:version => 20110412123721) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
-
-  create_table "support_quotes", :force => true do |t|
-    t.string   "customer_name"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "support_quotes", ["user_id"], :name => "index_support_quotes_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "login",                                       :null => false

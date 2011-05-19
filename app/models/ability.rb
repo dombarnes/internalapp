@@ -3,25 +3,24 @@ class Ability
 
   def initialize(user)
     user ||= User.new # guest user
-    can :read, [IosQuote, SupportQuote, InstallQuote]
-    can :create, [IosQuote, SupportQuote, InstallQuote]
-    can :update, IosQuote do |ios_quote|
+    if user.role? :reseller
+      can :read, [IosQuote, MacQuote]
+      can :create, [IosQuote, MacQuote]
+      can :update, IosQuote do |ios_quote|
+      end
       ios_quote.try(:user) == user
     end
-    can :update, SupportQuote do |support_quote|
-      support_quote.try(:user) == user
-    end
-    can :update, InstallQuote do |install_quote|
-      support_quote.try(:user) == user
+    can :update, MacQuote do |mac_quote|
+      mac_quote.try(:user) == user
     end
     if user.role? :admin
       can :manage, :all
     end
-    
+  
     if user.role? :staff
-      can :update, [IosQuote, SupportQuote, InstallQuote, Company, Client, AdhocSupport]
-      can :destroy, [IosQuote, SupportQuote, InstallQuote, Company, Client, AdhocSupport]
-      can :create, [IosQuote, SupportQuote, InstallQuote, Company, Client, AdhocSupport]
+      can :update, [IosQuote, MacQuote, Company, Client, AdhocSupport]
+      can :destroy, [IosQuote, MacQuote, Company, Client, AdhocSupport]
+      can :create, [IosQuote, MacQuote, Company, Client, AdhocSupport]
       can :read, [Company, Client, AdhocSupport]
     end
   end   

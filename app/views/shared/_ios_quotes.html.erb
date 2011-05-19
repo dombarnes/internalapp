@@ -1,0 +1,23 @@
+<br>
+<h3>Latest iOS Deployment Quotes</h3>
+
+<table>
+  <tr>
+    <th>Date</td>
+    <th>Customer</th>
+    <th>Quantity</th>
+    <th>Install Cost</th>
+    <th>Support Cost</th>
+	  <th></th>
+  </tr>
+<% @ios_quotes.each do |ios_quote| %>
+	<tr>
+		<td><%= ios_quote.created_at.strftime("%d/%m/%Y") %>
+		<td><%= ios_quote.customer %></td>
+		<td><%= ios_quote.device_quantity %></td>
+		<td><%= number_to_currency(ios_quote.install_cost, :unit => "&pound;") %></td>
+		<td><%= number_to_currency(ios_quote.support_cost, :unit => "&pound;") %></td>
+		<td><%= link_to 'View', support_quote %></td>
+	</tr>
+<% end %>
+</table>

@@ -18,12 +18,8 @@
 <% @companies.each do |company| %>
   <tr>
     <td><%= link_to company.company_name, company %></td>
-    <%= if can? :update, @company %>
-		<td><%= link_to 'Show', company %></td>
-	<% end%>
-    <%= if can? :destroy, @company %>
+		  <td><%= link_to 'Show', company %></td>
 		<td><%= link_to 'Delete', company, :method => :delete, :confirm => 'Are you sure?', :title => "Delete #{company.company_name}" %></td>
-	<% end %>
   </tr>
 <% end %>
 </table>

@@ -2,9 +2,8 @@ class HomeController < ApplicationController
   
   def index
     @title = "Home"
-    @support_quotes = SupportQuote.all
+    @mac_quotes = MacQuote.all
     @ios_quotes = IosQuote.all
-#    @mac_quotes = MacQuote.all 
   end
   def help
     @title = "Help"
@@ -18,11 +17,8 @@ class HomeController < ApplicationController
   def root
     @title = "Home"
   end
-  def supportquote
-    @title = "Support Quotes"
-  end
-  def installquote
-    @title = "Install Quotes"
+  def macquote
+    @title = "Mac Install & Support Quotes"
   end
   def dashboard
     @title = "Dashboard"

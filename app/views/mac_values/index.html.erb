@@ -1,0 +1,22 @@
+<%= link_to 'Add New Values', new_mac_value_path %>
+<br />
+<table>
+  <tr>
+    <th>Date</td>
+	<th>Day Rate</td>
+	<th></th>
+  </tr>
+<% @mac_values.each do |mac_value| %>
+	<tr>
+		<td><%= mac_value.created_at.strftime("%d/%m/%Y") %>
+		<td><%= mac_value.day_rate %></td>
+		<td><%= link_to 'View', mac_quote %></td>
+	</tr>
+<% end %>
+</table>
+<br />
+
+<% content_for :sidebar do %>
+    <h3>Mac Values</h3>
+<p>I doubt there will be anything of worth here
+<% end %>

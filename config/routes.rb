@@ -7,12 +7,12 @@ Internalapp::Application.routes.draw do
   resources :users
   resource :user, :as => 'account'
   resources :companies
-  resources :support_quotes
-  resources :install_quotes
-  resources :ios_values
-  resources :ios_quotes
-  resources :user_sessions
+  resources :mac_quotes
   resources :mac_values
+  resources :ios_quotes
+  resources :ios_values
+  resources :user_sessions
+
   
   namespace :admin do
     resources :users do
@@ -39,6 +39,7 @@ Internalapp::Application.routes.draw do
   match '/quotes', :to => 'home#quotes'
   match '/help', :to =>'home#help'
   match '/admin/roles', :to => 'admin#roles#index'
+  match '/profile', :to => 'users#show'
   
   root :to => "home#index"
   # The priority is based upon order of creation:

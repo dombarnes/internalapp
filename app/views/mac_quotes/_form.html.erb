@@ -1,0 +1,84 @@
+<%= form_for(@mac_quote) do |f| %>
+  <% if @mac_quote.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mac_quote.errors.count, "error") %> prohibited this quote from being saved:</h2>
+
+      <ul>
+      <% @mac_quote.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :customer_name %><br />
+    <%= f.text_field :customer_name %>
+  </div>
+    
+  <div class="field">
+    <%= f.label :client_quantity %>
+    <%= f.text_field :client_quantity, :size => 5 %>
+  </div>
+  <div class="field">
+    <%= f.label :server_quantity %>
+    <%= f.text_field :server_quantity, :size => 5 %>
+  </div>
+  <div class="field">
+    <%= f.label :new_user_setup %>
+    <%= f.text_field :new_user_setup, :size => 5 %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :ad_integration %>
+    <%= f.check_box :ad_integration %>
+  </div>
+  <div class="field">
+    <%= f.label :airport_setup %>
+    <%= f.text_field :airport_setup, :size => 5 %>
+  </div>
+  <div class="field">
+    <%= f.label :print_server %>
+    <%= f.text_field :print_server, :size => 5 %>
+  </div>
+  <div class="field">
+    <%= f.label :iwork  %>
+    <%= f.check_box :iwork  %>
+  </div>
+  <div class="field">
+    <%= f.label :office  %>
+    <%= f.check_box :office  %>
+  </div>
+  <div class="field">
+    <%= f.label :fce  %>
+    <%= f.check_box :fce  %>
+  </div>
+  <div class="field">
+    <%= f.label :fcp  %>
+    <%= f.check_box :fcp  %>
+  </div>
+  <div class="field">
+    <%= f.label :logicx  %>
+    <%= f.check_box :logicx  %>
+  </div>
+  <div class="field">
+    <%= f.label :logicp  %>
+    <%= f.check_box :logicp  %>
+  </div>
+  <div class="field">
+    <%= f.label :cs5  %>
+    <%= f.check_box :cs5  %>
+  </div>
+  <div class="field">
+    <%= f.label :aperture  %>
+    <%= f.check_box :aperture  %>
+  </div>
+  <div class="field">
+    <%= f.label :ard  %>
+    <%= f.check_box :ard  %>
+  </div>
+
+  <div class="actions">
+	<input id="ios_submit" name="commit" type="submit" value="Submit" />
+  </div>
+<% end %>

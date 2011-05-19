@@ -1,0 +1,41 @@
+<%= collection_select(:book, :author_id, Author.all, :id, :name,
+{ :include_blank => true }) %>
+
+<%= collection_select(:adhoc_support, :company_id, Company.all, :id, :company_name, 
+{ :include_blank => true }) %>
+
+
+  <%= f.label "Company" %>
+<select id="adhoc_supports_company_id" name="adhoc_support[company_id]">
+  <% if @adhoc_support.company_id == 0 or @adhoc_support.company_id == nil %>
+  <option value="Please select a company" selected="selected" ></option>
+  <% end %>
+  <% @item = Company.find(:all, :order => "company_name")	@item.each do |item| %>
+    <option value="<%= item.company_name %>"
+    <% if @adhoc_support.company_id == item.id -%> selected="selected" <% end %>
+    <%= item.company_name %>
+  </option>
+ <% end %>
+
+</select>
+  <%= f.label "Company" %>
+  <select id="adhoc_supports_company_id" name="adhoc_support[company_id]">
+  <% if @adhoc_support.company_id == 0 or @adhoc_support.company_id == nil %>
+    <option value="Please select a company" selected="selected" ></option>
+  <% end %>
+  <% @item = Company.find(:all, :order => "company_name")	@item.each do |item| %>
+    <option value="<%= item.company_name %>">
+    <% if @adhoc_support.company_id == item.id -%> selected="selected" <% end %>
+    <%= item.company_name %>
+  </option>
+ <% end %>
+</select>
+
+
+    <!-- <%= if can? :update, @company %> -->
+		  <td><%= link_to 'Show', company %></td>
+	  <!-- <% end%>-->
+
+    <%= if can? :destroy, @company %>
+		<td><%= link_to 'Delete', company, :method => :delete, :confirm => 'Are you sure?', :title => "Delete #{company.company_name}" %></td>
+	<% end %>

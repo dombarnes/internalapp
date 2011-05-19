@@ -1,9 +1,9 @@
-<%= form_for(@ios_value) do |f| %>
-  <% if @ios_value.errors.any? %>
+<%= form_for(@mac_value) do |f| %>
+  <% if @mac_value.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@ios_value.errors.count, "error") %> prohibited this client from being saved:</h2>
+      <h2><%= pluralize(@mac_value.errors.count, "error") %> prohibited this client from being saved:</h2>
       <ul>
-      <% @ios_value.errors.full_messages.each do |msg| %>
+      <% @mac_value.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>

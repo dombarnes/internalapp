@@ -1,8 +1,8 @@
 class CompaniesController < ApplicationController
-load_and_authorize_resource # For declarative authorization
-filter_resource_access
+# load_and_authorize_resource # For declarative authorization
+# filter_resource_access
 
-before_filter :require_user, :only => [:create, :new, :edit, :update, :index, :destroy]
+before_filter :require_user, :only => [:create, :new, :edit, :update, :index]
 before_filter :admin_user, :only => :destroy
 helper_method :sort_column, :sort_direction
 
@@ -16,7 +16,7 @@ helper_method :sort_column, :sort_direction
   end
 
   def show
-#    @company = Company.find(params[:id])
+    @company = Company.find(params[:id])
     @title = @company.company_name
     respond_to do |format|
       format.html # show.html.erb
@@ -34,12 +34,12 @@ helper_method :sort_column, :sort_direction
   end
 
   def edit
- #   @company = Company.find(params[:id])
+    @company = Company.find(params[:id])
     @title = "Edit Company"
   end
 
   def create
-  #  @company = Company.new(params[:company])
+    @company = Company.new(params[:company])
 
     respond_to do |format|
       if @company.save
@@ -53,7 +53,7 @@ helper_method :sort_column, :sort_direction
   end
 
   def update
- #   @company = Company.find(params[:id])
+    @company = Company.find(params[:id])
 
     respond_to do |format|
       if @company.update_attributes(params[:company])

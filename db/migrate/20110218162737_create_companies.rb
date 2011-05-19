@@ -9,18 +9,12 @@ class CreateCompanies < ActiveRecord::Migration
       t.string :postcode
       t.string :telephone_number
       t.string :website
+      t.string :source
 
       t.timestamps
     end
-    change_table :clients do|t|
-      t.remove :address_1
-      t.remove :address_2
-      t.remove :city
-      t.remove :county
-      t.remove :postcode
-      t.integer :company_id
-    end
     add_index :clients, :company_id
+    add_index :adhoc_supports, :company_id
   end
 
   def self.down

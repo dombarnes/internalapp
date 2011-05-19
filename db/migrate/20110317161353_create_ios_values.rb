@@ -8,9 +8,6 @@ class CreateIosValues < ActiveRecord::Migration
       
       t.timestamps
     end      
-
-    rename_column  :ios_quotes, :values_id, :ios_values_id
-    add_index :ios_quotes, :ios_values_id
   end
 
   def self.down

@@ -9,12 +9,12 @@ class CreateIosQuotes < ActiveRecord::Migration
       t.boolean :mobile_config
       t.decimal :install_cost, :decimal, {:scale => 2}
       t.decimal :support_cost, :decimal, {:scale => 2}
-      t.integer :values_id
+      t.integer :ios_values_id
       
       t.timestamps
     end
     add_index :ios_quotes, :user_id
-    add_index :ios_quotes, :values_id
+    add_index :ios_quotes, :ios_values_id
   end
 
   def self.down
