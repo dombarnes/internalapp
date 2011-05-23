@@ -45,4 +45,3 @@ before_filter :load_user_using_perishable_token, :only => [:edit, :update]
       redirect_to root_url  
     end  
   end
-end
