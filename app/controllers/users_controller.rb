@@ -1,8 +1,5 @@
-class UsersController < ApplicationController
-  
-  before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_user, :only => [:edit, :update, :show]
-  helper_method :sort_column, :sort_direction
+class UsersController < ApplicationController  
+helper_method :sort_column, :sort_direction
   
   def index
     @users = User.all
@@ -20,11 +17,10 @@ class UsersController < ApplicationController
     # the User has not yet been activated
     if @user.save_without_session_maintenance
       @user.send_activation_instructions!      # new method in the User model
-      flash[:notice] = "Your account has been created. Please check your e-mail for your account activation instructions!"
+      flash[:notice] = "Registration successful."
       redirect_to root_url
     else
-      flash[:notice] = "There was a problem creating the user"
-      render :action => :new
+      render :action => 'new'
     end
   end
   
@@ -53,7 +49,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user # makes our views "cleaner" and more consistent
     if @user.update_attributes(params[:user])
-      flash[:notice] = "Account updated!"
+      flash[:notice] = "Profile updated!"
       redirect_to account_url
     else
       render :action => :edit

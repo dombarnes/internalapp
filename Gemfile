@@ -4,12 +4,10 @@ gem 'rails', '3.0.7'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'will_paginate', '3.0.pre2'
 gem 'bundler'
-gem 'authlogic'
 gem 'rails3-generators'
 gem 'jquery-rails'
+gem 'authlogic'
 gem 'cancan'
-gem 'declarative_authorization'
-gem 'acl9'
 	
 group :development do
 	gem 'rspec-rails', '2.5.0'

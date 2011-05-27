@@ -1,9 +1,26 @@
+<h2>My Profile</h2>
 <p>
   <b>Email:</b>
   <%=h @user.email %>
 </p>
 
 <p>
+  <b>Name:</b>
+  <%=h @user.first_name %> <%=h @user.last_name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @user.email %>
+</p>
+
+<% if has_role?(:admin) %>
+  <p>
+    <b>Role:</b>
+  	<%= @user.role %>
+  <br>	
+
+  <p>
   <b>Login count:</b>
   <%=h @user.login_count %>
 </p>
@@ -32,10 +49,8 @@
   <b>Current login ip:</b>
   <%=h @user.current_login_ip %>
 </p>
+<% end %>
 <p>
-  <b>Role:</b>
-	<%= @user.role %>
-<br>	
 <% if signed_in? %>
-  <%= link_to 'Edit', edit_user_path(@user) %>
+  <%= link_to 'Edit my details', edit_user_path(@user) %>
 <% end %>

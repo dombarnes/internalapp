@@ -1,0 +1,32 @@
+roles:
+  - admin_user
+  - super_user
+  - staff_user
+  - normal_user
+
+public_permissions: &public
+  # public permissions goes here
+
+permissions:
+  normal_user: &normal_user
+    read: all
+    create: User
+    reset_password: User
+    destroy: User
+    <<: *public
+  staff_user: &staff_user
+    update: IosQuote MacQuote
+    destroy: IosQuote MacQuote
+    create: IosQuote MacQuote
+    read: IosQuote MacQuote
+    update: Company Client AdHocSupport
+    destroy: IosQuote MacQuote Company Client AdHocSupport
+    create: Company Client AdHocSupport
+    read: Company Client AdHocSupport
+    <<: *normal_user
+  admin_user: &admin_user
+    edit: User
+    <<: *staff_user
+  super_user:
+    manage: all
+    <<: *admin_user

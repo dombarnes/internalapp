@@ -1,6 +1,9 @@
-class User < ActiveRecord::Base
-  
+class User < ActiveRecord::Base  
   acts_as_authentic
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me
+
+  # relationships
   has_many :ios_quotes
   has_many :mac_quotes
   has_many :roles_users
@@ -8,10 +11,9 @@ class User < ActiveRecord::Base
   before_create :setup_role
   attr_accessible :email, :login, :first_name, :last_name, :role_id, :password, :password_confirmation, :active
   
-  
   def deliver_password_reset_instructions!  
-  reset_perishable_token!  
-  Notifier.deliver_password_reset_instructions(self)  
+    reset_perishable_token!
+    Notifier.deliver_password_reset_instructions(self)
   end
     
   def active?
@@ -48,10 +50,10 @@ class User < ActiveRecord::Base
     end
   end
     
-  def has_role?(role_sym)
+#  def has_role?(role_sym)
 #    self.roles.count(:conditions => ['name = ?', role]) > 0
-    roles.any? { |r| r.name.underscore.to_sym ==role_sym}
-  end
+##    roles.any? { |r| r.name.underscore.to_sym ==role_sym}
+#  end
   
   def add_role
     return if self.has_role?(role)
@@ -59,13 +61,38 @@ class User < ActiveRecord::Base
   end
 
   def role?(role)
-    roles.include? role.to_s
+   return !!self.roles.find_by_name(role.to_s)
   end
+   
+#  def role?(role)
+#    roles.include? role.to_s
+#  end
+
+  def self.find_by_login_or_email(login)
+    find_by_login(login) || find_by_email(login)
+  end
+
+# for assignment of roles
+#  def role_ids=(ids)
+#    self.roles.clear
+#  ids.delete_if{|i| i.empty?}.each do |id|
+#    self.roles << Role.get(id)
+#    end
+#  end
+#
+#  def has_role?(role_sym)
+#    roles.any? { |r| r.name.underscore.to_sym == role_sym }
+#  end
+#
+#  def role?(role)
+#    return !!self.roles.first(:name => role.to_s.camelize)
+#  end
+###
 
 private
     def setup_role
       if self.role_ids.empty?
-        self.role_ids = [3]
+        self.role_ids = [4]
     end
   end
 end

@@ -3,11 +3,11 @@
 <table>
   <tr>
     <th>Date</td>
-	<th>Customer</th>
-	<th>Quantity</th>
+    <th>Customer</th>
+    <th>Quantity</th>
     <th>Install Cost</th>
-	<th>Support Cost</th>
-	<th></th>
+    <th>Support Cost</th>
+    <th></th>
   </tr>
 <% for ios_quotes in @ios_quotes %>
 	<tr>
@@ -26,6 +26,5 @@
 
 <% content_for :sidebar do %>
     <h3>iOS Quotes</h3>
-	<%= link_to 'Install Quote', install_quotes_path %><br>
-	<%= link_to 'Support Quote', support_quotes_path %><br>
+	<%= link_to 'Install Quote', mac_quotes_path %><br>
 <% end %>

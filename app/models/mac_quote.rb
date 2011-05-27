@@ -1,5 +1,5 @@
 class MacQuote < ActiveRecord::Base
-  attr_accessible :customer_name
+  attr_accessible :all
   
   belongs_to :user
   validates :customer_name, :presence => true

@@ -214,7 +214,7 @@ tr td{
 .field_with_errors {
   margin-top: 10px;
   padding: 2px;
-  background-color: red;
+  background-color: #C11B17 ;
   display: table;
 }
 .field_with_errors label {
@@ -226,7 +226,7 @@ tr td{
   padding: 7px;
   padding-bottom: 12px;
   margin-bottom: 20px;
-  background-color: #f0f0f0;
+  background-color: #C11B17;
 }
 #error_explanation h2 {
   text-align: left;
@@ -234,7 +234,7 @@ tr td{
   padding: 5px 5px 5px 15px;
   font-size: 12px;
   margin: -7px;
-  background-color: #c00;
+  background-color: ##C11B17;
   color: #fff;
 }
 #error_explanation p {

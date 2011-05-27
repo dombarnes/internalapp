@@ -1,8 +1,4 @@
 class IosValuesController < ApplicationController
-#  load_and_authorize_resource # For declarative authorization
-#  filter_resource_access
-
-before_filter :admin_user, :only => [:create, :new, :edit, :update, :show, :destroy, :index]
 helper_method :sort_column, :sort_direction
 
   def index

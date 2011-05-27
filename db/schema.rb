@@ -139,6 +139,7 @@ ActiveRecord::Schema.define(:version => 20110412123721) do
 
   create_table "roles", :force => true do |t|
     t.string   "name"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -150,27 +151,29 @@ ActiveRecord::Schema.define(:version => 20110412123721) do
     t.datetime "updated_at"
   end
 
-  create_table "sessions", :force => true do |t|
+  create_table "user_sessions", :force => true do |t|
     t.string   "session_id", :null => false
     t.text     "data"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
-  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+  add_index "user_sessions", ["session_id"], :name => "index_user_sessions_on_session_id"
+  add_index "user_sessions", ["updated_at"], :name => "index_user_sessions_on_updated_at"
 
   create_table "users", :force => true do |t|
-    t.string   "login",                                       :null => false
-    t.string   "email",                                       :null => false
-    t.string   "first_name",                                  :null => false
-    t.string   "last_name",                                   :null => false
-    t.string   "crypted_password",                            :null => false
-    t.string   "password_salt",                               :null => false
-    t.string   "persistence_token",                           :null => false
-    t.string   "single_access_token",                         :null => false
-    t.integer  "login_count",         :default => 0,          :null => false
-    t.integer  "failed_login_count",  :default => 0,          :null => false
+    t.string   "login",                                  :null => false
+    t.string   "email",                                  :null => false
+    t.string   "first_name",                             :null => false
+    t.string   "last_name",                              :null => false
+    t.string   "company_name",                           :null => false
+    t.string   "job_title",                              :null => false
+    t.string   "crypted_password",                       :null => false
+    t.string   "password_salt",                          :null => false
+    t.string   "persistence_token",                      :null => false
+    t.string   "single_access_token",                    :null => false
+    t.integer  "login_count",         :default => 0,     :null => false
+    t.integer  "failed_login_count",  :default => 0,     :null => false
     t.datetime "last_request_at"
     t.datetime "current_login_at"
     t.datetime "last_login_at"
@@ -179,8 +182,8 @@ ActiveRecord::Schema.define(:version => 20110412123721) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "active",              :default => false
-    t.string   "role",                :default => "reseller"
-    t.string   "perishable_token",    :default => "",         :null => false
+    t.string   "perishable_token",    :default => "",    :null => false
+    t.string   "role"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

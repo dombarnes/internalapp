@@ -1,4 +1,4 @@
 class RolesUser < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :role
+  has_many :users
+  has_many :roles
 end

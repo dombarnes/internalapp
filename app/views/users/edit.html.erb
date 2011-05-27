@@ -5,17 +5,5 @@
   <%= f.submit "Update" %>
 <% end %>
 
-<br /><%= link_to "My Profile", account_path %>
+<br /><%= link_to "Back to My Profile", profile_path %>
 
-<% if admin_user? %>
-<p>
-	<%= form.label "Role" %><br />
-	<%= collection_select(:user, :role, Role.all, :id, :name, :prompt => true) %>
-</p>	
-<% for role in Role.find(:all) %>
-      <div>
-        <%=check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
-        <%=role.name%>
-      </div>
-<% end %>
-<% end %>

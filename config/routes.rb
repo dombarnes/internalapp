@@ -1,5 +1,4 @@
 Internalapp::Application.routes.draw do
-
   get "user_sessions/new"
 
   resources :adhoc_supports
@@ -11,9 +10,9 @@ Internalapp::Application.routes.draw do
   resources :mac_values
   resources :ios_quotes
   resources :ios_values
-  resources :user_sessions
-
-  
+  resources :users, :user_sessions
+  resources :password_resets
+    
   namespace :admin do
     resources :users do
       member do
@@ -24,14 +23,14 @@ Internalapp::Application.routes.draw do
     resources :roles, :only=>[:index, :create, :destroy]
   end
   
-  get "home/index"  
+  get "home/index"
+  match '/', :to => 'home#index'
   match 'signup' => 'users#new', :as => :signup
   match 'login' => 'user_sessions#new', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout
   match 'activate(/:activation_code)' => 'users#activate', :as => :activate_account
   match 'send_activation(/:user_id)' => 'users#send_activation', :as => :send_activation
   match '/admin', :to => 'admin#index'
-  match '/', :to => 'home#index'
   match '/dashboard', :to => 'home#dashboard'
   match '/adhocsupport', :to => 'adhoc_supports#index'
   match '/clients', :to => 'clients#index'
@@ -40,8 +39,10 @@ Internalapp::Application.routes.draw do
   match '/help', :to =>'home#help'
   match '/admin/roles', :to => 'admin#roles#index'
   match '/profile', :to => 'users#show'
+  match '/admin/permissions', :to => 'admin#permissions'
   
   root :to => "home#index"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

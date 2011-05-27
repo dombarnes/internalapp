@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base  
-default_url_options[:host] = "authlogic_example.binarylogic.com"  
+default_url_options[:host] = "localhost"
   
   def password_reset_instructions(user)  
     subject       "Password Reset Instructions"  
@@ -13,7 +13,6 @@ default_url_options[:host] = "authlogic_example.binarylogic.com"
       from          "Binary Logic Notifier <noreply@example.com>"
 
       @account_activation_url = activate_account_url(user.perishable_token)
-
       mail(:to => user.email_address_with_name,
            :subject => "Activation Instructions",
            :from => from,
@@ -25,7 +24,6 @@ default_url_options[:host] = "authlogic_example.binarylogic.com"
 
     def activation_confirmation(user)
       from          "Binary Logic Notifier <noreply@example.com>"
-
       mail(:to => user.email_address_with_name,
            :subject => "Activation Complete",
            :from => from,

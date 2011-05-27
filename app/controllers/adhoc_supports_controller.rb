@@ -1,9 +1,7 @@
 class AdhocSupportsController < ApplicationController
 # before_filter :authenticate, :only => [:edit, :update, :show, :index]
 # before_filter :correct_user, :only => [:edit, :update, :show, :index]
-# load_and_authorize_resource # For declarative authorization
-# filter_resource_access
-
+before_filter :authenticate_user!
 before_filter :require_user, :only => [:edit, :update, :index, :destroy]
 before_filter :admin_user, :only => :destroy
 helper_method :sort_column, :sort_direction

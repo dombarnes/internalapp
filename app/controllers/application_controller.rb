@@ -1,16 +1,18 @@
 class ApplicationController < ActionController::Base
+  # See ActionController::RequestForgeryProtection for details
+  protect_from_forgery
+
   helper :all
-  protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  
   helper_method :current_user_session, :current_user  
+  
+  # filter_parameter_logging :password, :password_confirmation # Depricated
   
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = exception.message
       redirect_back_or_default(root_path)
     # redirect_to root_path , :alert => exception.message
   end
-  
-  before_filter { |c| Authorization.current_user = c.current_user }
-  filter_parameter_logging :password, :password_confirmation 
 
   protected
     def current_user_session
@@ -32,10 +34,6 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    def admin_user
-      redirect_to(companies_path) unless current_user.role? :admin
-    end
-
     def require_no_user
       if current_user
         store_location
@@ -53,7 +51,11 @@ class ApplicationController < ActionController::Base
       redirect_to(session[:return_to] || default)
       session[:return_to] = nil
     end
-   
+       
+    def admin_user
+      redirect_to(root_path) unless current_user.role? :admin
+    end
+ 
    def permission_denied
      flash[:error] = "Sorry, you are not allowed to access that page"
      redirect_back_or_default(root_path)
