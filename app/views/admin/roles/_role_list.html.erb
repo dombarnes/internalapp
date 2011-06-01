@@ -1,8 +1,10 @@
+<div class="RoleList">
 <h1>Roles</h1>
 <h3>There are <%= pluralize(@roles.length, 'role') %></h3>
 <ul>
 <% @roles.each do |role| %>
   <%= role.name %>
-  <%= link_to "X", @role, :method => :delete, :confirm => 'Are you sure you want to delete the role?' %>
+  <%= link_to "X", @role, :method => :delete, :remote => true, :confirm => 'Are you sure you want to delete the role?' %>
   <br />
 <% end %>
+</div>

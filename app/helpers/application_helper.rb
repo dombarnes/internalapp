@@ -15,4 +15,9 @@ module ApplicationHelper
     link_to title, params.merge(:sort => column, :direction => direction, :page => nil), {:class => css_class}
   end
 
+  def is_pluralize(count, noun)
+    verb = (count == 1) ? "is" : "are"
+      "#{verb} #{pluralize(count, noun)}"
+  end
+
 end

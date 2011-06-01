@@ -6,7 +6,7 @@ class CreateRoles < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_column :users, :role, :string, { :default => Role.find_by_name(:user)}
+    add_column :users, :role, :string # , { :default => Role.find_by_name(:user)}
   end
 
   def self.down

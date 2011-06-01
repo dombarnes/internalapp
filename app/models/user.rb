@@ -6,8 +6,9 @@ class User < ActiveRecord::Base
   # relationships
   has_many :ios_quotes
   has_many :mac_quotes
-  has_many :roles_users
-  has_many :roles, :through => :roles_users
+  
+  has_and_belongs_to_many :roles, :uniq => :true
+  
   before_create :setup_role
   attr_accessible :email, :login, :first_name, :last_name, :role_id, :password, :password_confirmation, :active
   
@@ -50,11 +51,14 @@ class User < ActiveRecord::Base
     end
   end
     
-#  def has_role?(role_sym)
-#    self.roles.count(:conditions => ['name = ?', role]) > 0
-##    roles.any? { |r| r.name.underscore.to_sym ==role_sym}
-#  end
-  
+  def has_role?(*role_names)
+      self.roles.index {|role| includes_role role_names, role}
+  end
+
+  def includes_role(role_list, role)
+      role_list.index {|r| r.to_s == role.name}
+  end
+    
   def add_role
     return if self.has_role?(role)
     self.roles << Role.find_by_name(role)
@@ -64,30 +68,22 @@ class User < ActiveRecord::Base
    return !!self.roles.find_by_name(role.to_s)
   end
    
-#  def role?(role)
-#    roles.include? role.to_s
-#  end
 
   def self.find_by_login_or_email(login)
     find_by_login(login) || find_by_email(login)
   end
-
-# for assignment of roles
-#  def role_ids=(ids)
-#    self.roles.clear
-#  ids.delete_if{|i| i.empty?}.each do |id|
-#    self.roles << Role.get(id)
-#    end
-#  end
-#
-#  def has_role?(role_sym)
-#    roles.any? { |r| r.name.underscore.to_sym == role_sym }
-#  end
-#
-#  def role?(role)
-#    return !!self.roles.first(:name => role.to_s.camelize)
-#  end
-###
+  
+  def ensure_role(*role_names)
+    if signed_in?
+      role_names.push 'admin'
+      unless current_user.has_role? *role_names
+        flash[:error] = 'You do not have permission to view this page'
+        redirect_to actions_index_path
+      end
+    else
+      ensure_signed_in
+    end    
+  end
 
 private
     def setup_role

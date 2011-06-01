@@ -1,15 +1,22 @@
 <h1>Admin Console</h1>
+
+Here you can make changes to the backend values in databases, such as day rates, length of time for installs, etc. Please do not amend existing values. Instead, add a new entry. Editing old values will cause issues with existing quotes.
+
 <h3><%= pluralize User.logged_in.count, "user" %> currently logged in<br /> <!-- This based on last_request_at, if they were active < 10 minutes they are logged in --></h3>
+
+<%= render 'role_list' %>
+<br />
+<% form_for(@new_role) do |f| %>
+  <div class="field">
+    <%= f.label "Name of New Role" %><br />
+    <%= f.text_field :name %>
+  </div>
+  <a class="button" href="#" onclick="$('#user_form).submit(); return false;"><span>Submit</span></a>
 
 This is for the admin settings, such as changing quote costs, time lengths, etc
 <br><br>
 <div class="settings_links">
 <%= link_to 'View iOS Support and Install Values', ios_values_path %><br>
 <%= link_to 'View Mac Support and Install Values', mac_values_path %><br>
-<%= link_to "Manage Users", users_path %><br>
+<%= link_to 'Manage Users', users_path %><br>
 <%= link_to 'Edit System Roles', admin_roles_path %><br>
-
-<% content_for :sidebar do %>
-<h3>Settings</h3>
-Here you can make changes to the backend values in databases, such as day rates, length of time for installs, etc. Please do not amend existing values. Instead, add a new entry. Editing old values will cause issues with existing quotes.
-<% end %>

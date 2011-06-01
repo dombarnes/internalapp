@@ -12,7 +12,7 @@ Internalapp::Application.routes.draw do
   resources :ios_values
   resources :users, :user_sessions
   resources :password_resets
-    
+  
   namespace :admin do
     resources :users do
       member do
@@ -20,7 +20,7 @@ Internalapp::Application.routes.draw do
         delete :delete_role
       end
     end
-    resources :roles, :only=>[:index, :create, :destroy]
+    resources :roles, :only => [:index, :create, :destroy]
   end
   
   get "home/index"

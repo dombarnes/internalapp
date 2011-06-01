@@ -1,4 +1,5 @@
 class Admin::RolesController < ApplicationController
+before_filter {ensure_role 'admin'}
   def index
     @roles = Role.all
     @new_role = Role.new
@@ -11,11 +12,17 @@ class Admin::RolesController < ApplicationController
   
   def destroy
     Role.find(params[:id]).destroy
-    redirect_to admin_roles_path
+    redisplay_roles
   end
   
   private
+  
   def redisplay_roles
-    redirect_to admin_roles_path    
+    respond_to do |format|
+      format.html { redirect_to admin_roles_path }
+      format.js {
+        @roles = Role.all
+        render :redisplay_roles
+      }
   end
 end

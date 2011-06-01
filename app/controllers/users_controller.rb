@@ -1,6 +1,7 @@
 class UsersController < ApplicationController  
 helper_method :sort_column, :sort_direction
-  
+before_filter :load_user, :except => [:index]  
+
   def index
     @users = User.all
   end
@@ -37,8 +38,8 @@ helper_method :sort_column, :sort_direction
   end
   
   def show
-    @user = current_user
-    @role = current_user.role
+    @user = User.find(params[:id])
+	  @title = @user.first_name + " " + @user.last_name = " - User Profile"
   end
 
   def edit
@@ -68,6 +69,7 @@ helper_method :sort_column, :sort_direction
   end
   
   private
+  
   def load_user
     @user = User.find params[:id]
   end
