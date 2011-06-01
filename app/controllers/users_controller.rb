@@ -1,6 +1,7 @@
 class UsersController < ApplicationController  
-helper_method :sort_column, :sort_direction
-before_filter :load_user, :except => [:index]  
+  before_filter :require_no_user, :only => [:new, :create]
+  before_filter :require_user, :only => [:show, :edit, :update  
+  helper_method :sort_column, :sort_direction
 
   def index
     @users = User.all
@@ -13,16 +14,16 @@ before_filter :load_user, :except => [:index]
   def create
     @user = User.new(params[:user])
 
-    # Saving without session maintenance to skip
-    # auto-login which can't happen here because
-    # the User has not yet been activated
-    if @user.save_without_session_maintenance
-      @user.send_activation_instructions!      # new method in the User model
-      flash[:notice] = "Registration successful."
-      redirect_to root_url
-    else
-      render :action => 'new'
-    end
+        # Saving without session maintenance to skip
+        # auto-login which can't happen here because
+        # the User has not yet been activated
+        if @user.save
+          flash[:notice] = "Your account has been created."
+          redirect_to signup_url
+        else
+          flash[:notice] = "There was a problem creating you."
+          render :action => :new
+        end
   end
   
   def activate
@@ -38,41 +39,38 @@ before_filter :load_user, :except => [:index]
   end
   
   def show
-    @user = User.find(params[:id])
-	  @title = @user.first_name + " " + @user.last_name = " - User Profile"
+    @user = current_user
   end
 
   def edit
     @user = current_user
-    @role = current_user.role
   end
 
   def update
-    @user = current_user # makes our views "cleaner" and more consistent
     if @user.update_attributes(params[:user])
-      flash[:notice] = "Profile updated!"
+      flash[:notice] = "Account updated!"
       redirect_to account_url
     else
       render :action => :edit
     end
   end
   
-  def add_role
-    role = Role.find_by_name params[:role]
-    @user.roles.push role if role
-    redisplay_roles
+  def destroy
+    @user = User.find(params[:id]).destroy
+   flash[:success] = "User deleted"
+    redirect_to users_path
+    
   end
   
-  def delete_role
-    @user.roles.delete(Role.find params[:role])
-    redisplay_roles
+  def self.search(search)
+    if search
+      where('name LIKE ?', "%#{search}%")
+    else
+      scoped
+    end
   end
   
   private
-  
-  def load_user
-    @user = User.find params[:id]
-  end
   
   def redisplay_roles
     respond_to do |format|

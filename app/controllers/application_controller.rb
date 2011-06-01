@@ -1,20 +1,16 @@
 class ApplicationController < ActionController::Base
-  # See ActionController::RequestForgeryProtection for details
   protect_from_forgery
-
   helper :all
-  
-  helper_method :current_user_session, :current_user  
-  
-  # filter_parameter_logging :password, :password_confirmation # Depricated
-  
+  filter_parameter_logging :password, :password_confirmation # there are underscores :-|
+  helper_method :current_user_session, :current_user
+
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = exception.message
       redirect_back_or_default(root_path)
     # redirect_to root_path , :alert => exception.message
   end
 
-  protected
+  private
     def current_user_session
       return @current_user_session if defined?(@current_user_session)
       @current_user_session = UserSession.find
@@ -29,7 +25,7 @@ class ApplicationController < ActionController::Base
       unless current_user
         store_location
         flash[:notice] = "You must be logged in to access this page"
-        redirect_to new_user_session_url
+        redirect_to login_url
         return false
       end
     end
@@ -38,13 +34,13 @@ class ApplicationController < ActionController::Base
       if current_user
         store_location
         flash[:notice] = "You must be logged out to access this page"
-        redirect_to account_url
+        redirect_to users_url
         return false
       end
     end
 
     def store_location
-      session[:return_to] = request.request_uri
+      session[:return_to] = request.fullpath
     end
 
     def redirect_back_or_default(default)
@@ -52,9 +48,9 @@ class ApplicationController < ActionController::Base
       session[:return_to] = nil
     end
        
-    def admin_user
-      redirect_to(root_path) unless current_user.role? :admin
-    end
+#    def admin_user
+#      redirect_to(root_path) unless current_user.role? :admin
+#    end
  
    def permission_denied
      flash[:error] = "Sorry, you are not allowed to access that page"

@@ -20,5 +20,5 @@ group :test do
 	gem 'factory_girl_rails', '1.0'
 	gem 'rspec', '2.5.0'
 	gem 'webrat', '0.7.1'
-	gem 'spork', '0.9.0.rc7'
+	gem 'spork', '0.9.0.rc8'
 end

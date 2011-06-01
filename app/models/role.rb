@@ -1,6 +1,8 @@
 class Role < ActiveRecord::Base
-
-  def to_s
-    self.name    
-  end
+  has_many :roles_users
+  has_many :users, :through => :roles_users
+  
+#  def to_s
+#    self.name    
+#  end
 end

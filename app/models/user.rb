@@ -1,16 +1,18 @@
-class User < ActiveRecord::Base  
-  acts_as_authentic
+class User < ActiveRecord::Base
+  acts_as_authentic do |c|
+    c.login_field = :email          # email is the login field
+    c. validate_login_field = false # There is no login field, so don't validate it
+  end
+
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+#  attr_accessible :email, :password, :password_confirmation, :remember_me
 
   # relationships
   has_many :ios_quotes
   has_many :mac_quotes
   
-  has_and_belongs_to_many :roles, :uniq => :true
-  
-  before_create :setup_role
-  attr_accessible :email, :login, :first_name, :last_name, :role_id, :password, :password_confirmation, :active
+#  before_create :setup_role
+#  attr_accessible :email, :login, :first_name, :last_name, :role_id, :password, :password_confirmation, :active
   
   def deliver_password_reset_instructions!  
     reset_perishable_token!
@@ -64,9 +66,9 @@ class User < ActiveRecord::Base
     self.roles << Role.find_by_name(role)
   end
 
-  def role?(role)
-   return !!self.roles.find_by_name(role.to_s)
-  end
+#  def role?(role)
+#   return !!self.roles.find_by_name(role.to_s)
+#  end
    
 
   def self.find_by_login_or_email(login)
@@ -84,6 +86,22 @@ class User < ActiveRecord::Base
       ensure_signed_in
     end    
   end
+  
+  ### AuthLogic/CanCan Code
+  ROLES = %w[admin moderator author]
+  
+  def roles=(roles)
+    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
+  end
+  
+  def roles
+    ROLES.reject { |r| ((roles_mask || 0) & 2**ROLES.index(r)).zero? }
+  end
+  
+  def role?(role)
+    roles.include? role.to_s
+  end
+  
 
 private
     def setup_role

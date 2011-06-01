@@ -12,34 +12,24 @@ Internalapp::Application.routes.draw do
   resources :ios_values
   resources :users, :user_sessions
   resources :password_resets
-  
-  namespace :admin do
-    resources :users do
-      member do
-        post :add_role
-        delete :delete_role
-      end
-    end
-    resources :roles, :only => [:index, :create, :destroy]
-  end
+
   
   get "home/index"
   match '/', :to => 'home#index'
-  match 'signup' => 'users#new', :as => :signup
-  match 'login' => 'user_sessions#new', :as => :login
-  match 'logout' => 'user_sessions#destroy', :as => :logout
-  match 'activate(/:activation_code)' => 'users#activate', :as => :activate_account
-  match 'send_activation(/:user_id)' => 'users#send_activation', :as => :send_activation
-  match '/admin', :to => 'admin#index'
+  match 'signup' => 'users#new',              :as => :signup
+  match 'login' => 'user_sessions#new',       :as => :login
+  match 'logout' => 'user_sessions#destroy',  :as => :logout
+#  match 'activate(/:activation_code)' => 'users#activate', :as => :activate_account
+#  match 'send_activation(/:user_id)' => 'users#send_activation', :as => :send_activation
+#  match '/admin', :to => 'admin#index'
   match '/dashboard', :to => 'home#dashboard'
   match '/adhocsupport', :to => 'adhoc_supports#index'
   match '/clients', :to => 'clients#index'
   match '/companies', :to => 'companies#index'
   match '/quotes', :to => 'home#quotes'
   match '/help', :to =>'home#help'
-  match '/admin/roles', :to => 'admin#roles#index'
+#  match '/admin/roles', :to => 'admin#roles#index'
   match '/profile', :to => 'users#show'
-  match '/admin/permissions', :to => 'admin#permissions'
   
   root :to => "home#index"
   
