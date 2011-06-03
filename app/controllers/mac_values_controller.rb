@@ -32,7 +32,7 @@ class MacValuesController < ApplicationController
       
       respond_to do |format|
         if @mac_value.save
-          format.html { redirect_to(@mac_value, :notice => 'Adhoc support was successfully created.') }
+          format.html { redirect_to( :back, :notice => 'Quotation Values Saved.') }
           format.xml  { render :xml => @mac_value, :status => :created, :location => @mac_value }
         else
           format.html { render :action => "new" }

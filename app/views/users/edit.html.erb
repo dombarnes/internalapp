@@ -1,9 +1,22 @@
 <h1>Edit My Account</h1>
 
 <% form_for @user, :url => account_path do |f| %>
-  <%= render :partial => "form", :object => f, :locals => { :user => @user } %>
+  <%= render :partial => "form", :object => f, :locals => { :user => @user } %><br>
+<h4>Company Information</h4>
+<div class="field">
+  <%= f.label :company_name %>
+  <%= f.text_field :company_name %>
+</div>
+<div class="field">
+  <%= f.label :job_title %>
+  <%= f.text_field :job_title %>
+</div>
+<div class="field">
+  	<%= f.label :role %><br />
+  	<%= collection_select(:user, :role, Role.all, :id, :name, :prompt => true) %>
+  </div>
   <%= f.submit "Update" %>
 <% end %>
 
-<br /><%= link_to "Back to My Profile", profile_path %>
+<br /><%= link_to "Back to Profile", @user %>
 

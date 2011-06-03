@@ -1,9 +1,5 @@
 class AdhocSupportsController < ApplicationController
-# before_filter :authenticate, :only => [:edit, :update, :show, :index]
-# before_filter :correct_user, :only => [:edit, :update, :show, :index]
-before_filter :authenticate_user!
-before_filter :require_user, :only => [:edit, :update, :index, :destroy]
-before_filter :admin_user, :only => :destroy
+before_filter :require_user
 helper_method :sort_column, :sort_direction
 
   def index

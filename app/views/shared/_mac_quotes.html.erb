@@ -9,10 +9,10 @@
     <th>Install Cost</th>
     <th>Support Cost</th>
   </tr>
-<% @mac_quotes.each do |mac_quote| %>
+<% MacQuote.most_recentfive.each do |mac_quote| %>
 	<tr>
 		<td><%= mac_quote.created_at.strftime("%d/%m/%Y") %>
-		<td><%= mac_quote.customer_name %></td>
+		<td><%= link_to mac_quote.customer_name, mac_quote %></td>
 		<td><%= mac_quote.client_quantity %></td>
 		<td><%= number_to_currency(mac_quote.install_cost, :unit => "&pound;") %></td>
 		<td><%= number_to_currency(mac_quote.support_cost, :unit => "&pound;") %></td>

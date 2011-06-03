@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110412123721) do
+ActiveRecord::Schema.define(:version => 20110602161941) do
 
   create_table "adhoc_supports", :force => true do |t|
     t.date     "date"
@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(:version => 20110412123721) do
 
   create_table "ios_values", :force => true do |t|
     t.decimal  "daily_rate"
-    t.boolean  "iosdevice_install_time"
-    t.boolean  "iosdevice_support_cost"
+    t.decimal  "iosdevice_install_time"
+    t.decimal  "iosdevice_support_cost"
     t.decimal  "iosdevice_install_setup"
     t.datetime "created_at"
     t.datetime "updated_at"

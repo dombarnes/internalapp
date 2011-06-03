@@ -1,7 +1,7 @@
 class UsersController < ApplicationController  
   before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_user, :only => [:show, :edit, :update  
-  helper_method :sort_column, :sort_direction
+  before_filter :require_user, :only => [:show, :edit, :update]
+#  helper_method :sort_column, :sort_direction
 
   def index
     @users = User.all
@@ -14,16 +14,17 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
-        # Saving without session maintenance to skip
-        # auto-login which can't happen here because
-        # the User has not yet been activated
-        if @user.save
-          flash[:notice] = "Your account has been created."
-          redirect_to signup_url
-        else
-          flash[:notice] = "There was a problem creating you."
-          render :action => :new
-        end
+    # Saving without session maintenance to skip
+    # auto-login which can't happen here because
+    # the User has not yet been activated
+    if @user.save_without_session_maintenance
+      @user.send_activation_instructions!
+      flash[:notice] = "Your account has been created. Please check your email for activation instructions."
+      redirect_to signup_url
+    else
+      flash[:notice] = "There was a problem creating your account."
+      render :action => :new
+    end
   end
   
   def activate
@@ -39,14 +40,16 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
+    
     if @user.update_attributes(params[:user])
       flash[:notice] = "Account updated!"
       redirect_to account_url

@@ -3,13 +3,20 @@
   <b>Email: </b>
   <%=h @user.email %>
 </p>
-
 <p>
   <b>Name:</b>
   <%=h @user.first_name %> <%=h @user.last_name %>
 </p>
-
-<% if has_role?(:admin) %>
+<p>
+  <b>Company Name:</b>
+  <%=h @user.company_name %>
+</p>
+<p>
+  <b>Job Title:</b>
+  <%=h @user.job_title %>
+</p>
+</ br>
+<h4> Admin Info </h4>
   <p>
     <b>Role:</b>
   	<%= @user.role %>
@@ -44,19 +51,15 @@
   <b>Current login ip:</b>
   <%=h @user.current_login_ip %>
 </p>
-<% end %>
+
 <p>
-<% if signed_in? %>
-  <%= link_to 'Edit my details', edit_user_path(@user) %>
-<% end %>
-
-<h3>Roles</h3>
-<% render :partial, role_list %>
-
-<%= form_tag(:add_role, :admin, @user)  do %>
-	<%= f.label :role, "Add role:" %>
-	<%= f.text_field :role %>
-	<%= f.submit %>
-<% end %>
-
-<%= link_to 'Back to User list', users_path %>
+<div id="bottom_nav">
+  <div id="back_button">
+  <% if current_user.role == "admin" %>
+    <%= link_to '← Back to User list', users_path %>
+  <% end %>
+  </div>
+  <div id="edit_button">
+    <%= link_to 'Edit Details', edit_user_path(@user) %>
+  </div>
+</div>

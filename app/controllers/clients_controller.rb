@@ -1,9 +1,8 @@
 class ClientsController < ApplicationController
 
-# before_filter :require_user, :only => [:edit, :update, :index, :destroy]
-# before_filter :admin_user, :only => :destroy
+before_filter :require_user, :only => [:create, :edit, :update, :index, :destroy]
 helper_method :sort_column, :sort_direction
-before_filter :correct_user, :only => [:edit, :update, :show, :index]
+
 
   def index
     @clients = Client.all

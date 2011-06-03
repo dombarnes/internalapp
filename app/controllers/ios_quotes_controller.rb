@@ -4,17 +4,17 @@ helper_method :sort_column, :sort_direction
   def create
     @title = "New Quote"
     @ios_quote = current_user.ios_quotes.build(params[:ios_quote])
-    @quote_values = IosValues.last
-	@ios_quote.ios_values_id = IosValues.last
-    if install_required == "1"
-      @ios_quote.install_cost = ((@quote_values.iosdevice_install_setup + (@quote_values.iosdevice_install_setup * @ios_quote.device_quantity)/7)).ceil * @quote_values.daily_rate
+    @quote_value = IosValue.last
+	@ios_quote.ios_values_id = IosValue.last
+    if install_required = "1"
+      @ios_quote.install_cost = ((@quote_value.iosdevice_install_setup + (@quote_value.iosdevice_install_setup * @ios_quote.device_quantity)/7)).ceil * @quote_value.daily_rate
     end
-    if support_required == "1"
-      @ios_quote.support_cost = (@quote_values.iosdevice_support_cost * @ios_quote.device_quantity).ceil
+    if support_required = "1"
+      @ios_quote.support_cost = (@quote_value.iosdevice_support_cost * @ios_quote.device_quantity).ceil
     end
     if @ios_quote.save
       flash[:success] = "Quote saved!"
-      redirect_to ios_quotes_path
+      redirect_to @ios_quote
     else
       render 'home/ios_quotes'
     end
@@ -42,11 +42,11 @@ helper_method :sort_column, :sort_direction
   
   def update
 	@ios_quote = IosQuote.find(params[:id])
-	@quote_values = @ios_quote.ios_values_id
-    if install_required == "1"
-      @ios_quote.install_cost = ((@quote_values.iosdevice_install_setup + (@quote_values.iosdevice_install_setup * @ios_quote.device_quantity)/7)).ceil  * @quote_values.daily_rate
+	@quote_value = 
+    if install_required = "1"
+      @ios_quote.install_cost = ((@quote_value.iosdevice_install_setup + (@quote_value.iosdevice_install_setup * @ios_quote.device_quantity)/7)).ceil  * @quote_value.daily_rate
     end
-    if support_required == "1"
+    if support_required = "1"
       @ios_quote.support_cost = (@quote_values.iosdevice_support_cost * @ios_quote.device_quantity).ceil
     end
     respond_to do |format|

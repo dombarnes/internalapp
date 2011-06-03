@@ -43,9 +43,10 @@ body {
 	background: white;
 }
 #header div {
-	width: 960px;
-	margin: 0px auto;
-	padding-left: 10px ;
+	width : auto ;
+	float : left ;
+	margin: 0px auto ;
+	padding-left: 150px ;
 }
 #header a {
 	font-weight: bold;
@@ -64,16 +65,22 @@ body {
 }
 #header #nav li a {
 	float: left;
-	padding: 0px 15px ;
+	padding: 0px 10px ;
 	color: #838383 ;
+	font-size : 0.92em;
 }
 #header .header_logo {
-	padding: 5px;
+	padding: 2px;
 	background: #fff;
 	float: left;
 	width: 124px ;
 	list-style-type: none;
 }
+
+#user_status {
+	padding : 0 5px 0 5px;
+}
+
 /* Footer */
 #footer {
   	padding: 20px 0px;
@@ -121,12 +128,12 @@ ol, ul {
 
 /* Links */
 a {
-	color: #838383;
+	color: #ccc	;
 	text-decoration: none;
 	font-weight: bold;
 }
 a:hover {
-	color: #069;
+	color: #ccc ;
 	text-decoration: underline;
 }
 a:visited {
@@ -275,7 +282,20 @@ div.pagination {
 	padding: 10px;
 	background: white;
 }
+
+/* Bottom Navigation */
+#back_button {
+	float: left;
+	padding : 2px 5px;
+}
+
+#edit_button { 
+	float: right ;
+	padding : 2px 5px;
+}
+
 /* Form Styling */
+
 legend {
 	margin-left : 1em;
 	padding : 0 ;
@@ -283,10 +303,23 @@ legend {
 	font-weight : bold ;
 }
 label {
-	width : 10em ;
+	width : 25% ;
+	padding : 2px 5px 0 0 ;
 	float : left ;
 	text-align : left ;
 	margin-right : 1em ;
+}
+p#helper {
+	font-size : 0.82em ;
+	background : ;
+	width : 60% ;
+	float : right ;
+	display : block ;
+	padding : 2px 2px ;
+	
+}
+.field { 
+	min-height : 50px;
 }
 fieldset li {
 	float: left;      
@@ -301,7 +334,8 @@ fieldset {
 	float : left ;
 	clear : left ;
 	margin : 0 0 1.5em 0;
-	padding : 0 ;
+	padding : 1em ;	
+	min-height : 30px;
 }
 .clear {
 	overflow : hidden ;
@@ -334,8 +368,6 @@ a.button:active span {
     background-position: bottom left;
     padding: 6px 0 4px 18px; /* push text down 1px */
 }
-
-
 
 /* Home Twitter Sidebar */
 #twitter {
@@ -375,4 +407,11 @@ a.button:active span {
 }
 .settings_lins a.hover {
 	font-style : underline ;
+}
+
+/* Table Formatting */
+th	 { 
+	font-size : 0.86em ;
+	background : #cccfaa ;
+
 }

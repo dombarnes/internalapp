@@ -2,8 +2,8 @@ class HomeController < ApplicationController
   
   def index
     @title = "Home"
-    @mac_quotes = MacQuote.all
-    @ios_quotes = IosQuote.all
+    @mac_quotes = MacQuote.find_by_id(params[:user])
+    @ios_quotes = IosQuote.find_by_id(params[:user])
   end
   def help
     @title = "Help"

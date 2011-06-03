@@ -9,15 +9,19 @@
 			<li><%= link_to "Quotes", quotes_path %></li>
 			<li><%= link_to "Profile", current_user %></li>
 		<% end %>
-		<% if signed_in? %>
+		<%if signed_in? %>
+<% if current_user.role == "admin" %>
 			<li><%= link_to "Admin", admin_path %></li>
 		<% end %>
+		<% end %>
 	<li><%= link_to "Help", help_path %></li>
-	<% if signed_in? %>
-		<li><%= link_to "Sign Out", logout_path, :method => :delete %></li>
-    	<% else %>
-		<li><%= link_to "Sign In", login_path %></li>
-		<li><%= link_to "Signup", signup_path, :class => "signup_button_round" %></li>
-		<% end %>		
+	<div id="user_status">
+      <% if current_user %>
+        Welcome <%=h current_user.first_name %>! Not you? <%= link_to "Log out", logout_path %>
+      <% else %>
+        <%= link_to "Sign up", signup_path %> or
+        <%= link_to "log in", login_path %>.
+      <% end %>
+    </div>
 	</ul>
 </div>

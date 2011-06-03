@@ -11,13 +11,94 @@
   <% end %>
 
   <div class="field">
+    <%= f.label "Mac Install Time" %>
+    <%= f.text_field :mac_install_time %>
   </div>
   <div class="field">
+    <%= f.label "Server Install Time" %>
+    <%= f.text_field :server_install_time %>
   </div>
   <div class="field">
+    <%= f.label :new_user_setup_time %>
+    <%= f.text_field :new_user_setup_time %>
   </div>
   <div class="field">
+    <%= f.label :ad_integration_time %>
+    <%= f.text_field :ad_integration_time %>
   </div>
+  <div class="field">
+    <%= f.label :deploy_studio_setup_time %>
+    <%= f.text_field :deploy_studio_setup_time %>
+  </div>
+  <div class="field">
+    <%= f.label :airport_setup_time %>
+    <%= f.text_field :airport_setup_time %>
+  </div>
+  <div class="field">
+    <%= f.label :print_server_time %>
+    <%= f.text_field :print_server_time %>
+  </div>
+  <div class="field">
+    <%= f.label "iWork Install Time" %>
+    <%= f.text_field :iwork_time %>
+  </div>
+  <div class="field">
+    <%= f.label "Office Install Time" %>
+    <%= f.text_field :office_time %>
+  </div>
+  <div class="field">
+    <%= f.label "Final Cut Express Install Time" %>
+    <%= f.text_field :fce_time %>
+  </div>
+  <div class="field">
+    <%= f.label "Final Cut Pro Install Time" %>
+    <%= f.text_field :fcp_time %>
+  </div>
+  <div class="field">
+    <%= f.label "ARD Install Time" %>
+    <%= f.text_field :ard_time %>
+  </div>
+  <div class="field">
+    <%= f.label "Logic Express Install Time" %>
+    <%= f.text_field :logicx_time %>
+  </div>
+  <div class="field">
+    <%= f.label "Logic Pro Install Time" %>
+    <%= f.text_field :logicp_time %>
+  </div>
+  <div class="field">
+    <%= f.label "Adobe CS5 Install Time" %>
+    <%= f.text_field :cs5_time %>
+  </div>
+  <div class="field">
+    <%= f.label "Aperture Install Time" %>
+    <%= f.text_field :aperture_time %>
+  </div>
+  <div class="field">
+    <%= f.label "Consultation Time" %>
+    <%= f.text_field :consulting_time %>
+  </div>
+  <div class="field">
+    <%= f.label "Documentation Time" %>
+    <%= f.text_field :documentation_time %>
+  </div>
+  <div class="field">
+    <%= f.label "Half Day Price" %>
+    <%= f.text_field :halfday_price %>
+  </div>
+  <div class="field">
+    <%= f.label "Daily Rate" %>
+    <%= f.text_field :day_rate %>
+  </div>
+  <div class="field">
+    <%= f.label "Mac Support Cost (Annually)" %>
+    <%= f.text_field :mac_support_cost %>
+  </div>
+  <div class="field">
+    <%= f.label "Server Support Cost (Annually)" %>
+    <%= f.text_field :server_support_cost %>
+  </div>
+  <%= f.submit %>
   <div class="button"><span>Submit</span>
   </div>
 <% end %>

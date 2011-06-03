@@ -1,0 +1,21 @@
+<div class="field">
+<b>Date</b>
+  <%= @ios_value.created_at.strftime("%d/%m/%Y") %>
+</p>
+<p>
+  <b>Daily Rate (£)</b>
+  <%= @ios_value.daily_rate %>
+<p>
+  <b>Installation Time</b>
+  <%= @ios_value.iosdevice_install_time %>
+</p>
+<p>
+  <b>Annual Support Cost</b>
+  <%= @ios_value.iosdevice_support_cost %>
+</p>
+<p>
+  <b>Initial Setup Time</b>
+  <%= @ios_value.iosdevice_install_setup %>
+</p>
+
+<%= link_to '← Back', ios_values_path %>

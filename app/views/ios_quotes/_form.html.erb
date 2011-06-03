@@ -12,20 +12,9 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :customer %><br />
-<select id="ios_quotes_customer_id" name="ios_quotes[customer]">
-	<% if @ios_quote.customer == 0 or  @ios_quote.customer == nil %>
-    <option value="" selected="selected" >Please Selected An Item</option>
-	<% end %>
-    <% @item = Company.find(:all, :order => "company_name")
-	@item.each do |item| %>
-  <option value="<%= item.company_name %>"
-   <% if @ios_quote.customer == item.id -%> selected="selected"<% end %> >
- <%= item.company_name %>
-  </option>
-  <% end %>
-</select>
-  
+    <%= f.label :customer %>
+    <%= f.text_field :customer, :size => 50 %>
+  </div>
   <div class="field">
     <%= f.label :device_quantity %>
     <%= f.text_field :device_quantity, :size => 5 %>

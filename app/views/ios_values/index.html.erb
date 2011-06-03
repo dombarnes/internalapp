@@ -1,22 +1,23 @@
-<%= link_to 'Add New Values', new_ios_value_path %>
-<br />
+<h1>Quotation Values - iOS</h1>
+<%= link_to '← Back to Admin', admin_path %>
+<br>
 <table>
   <tr>
     <th>Date</td>
-	  <th>Day Rate</td>
-	  <th></th>
+	  <th>Daily Rate</td>
+	  <th>Install Cost</td>
+	  <th>Annual Cost</td>
+	  <th>Install Time</td>
   </tr>
 <% @ios_values.each do |ios_value| %>
 	<tr>
-		<td><%= ios_value.created_at.strftime("%d/%m/%Y") %>
-		<td><%= ios_value.day_rate %></td>
-		<td><%= link_to 'View', ios_quote %></td>
+		<td><%= link_to ios_value.created_at.strftime("%d/%m/%Y %H:%M"), ios_value %></td>
+		<td><%= ios_value.daily_rate %></td>
+		<td><%= ios_value.iosdevice_install_setup %></td>
+		<td><%= ios_value.iosdevice_support_cost %></td>
+		<td><%= ios_value.iosdevice_install_time %></td>
 	</tr>
 <% end %>
 </table>
 <br />
-
-<% content_for :sidebar do %>
-    <h3>iOS Values</h3>
-<p>I doubt there will be anything of worth here
-<% end %>
+<%= link_to 'Add New Values', new_ios_value_path %>

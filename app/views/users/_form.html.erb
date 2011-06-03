@@ -1,33 +1,26 @@
 <%= render "shared/error_messages", :target => @user %>
 
-<p>
-  <%= form.label :login %><br />
+<div class="field">
+  <%= form.label :login %>
   <%= form.text_field :login %>
-</p>
-<p>
-  <%= form.label :first_name %><br />
+</div>
+<div class="field">
+  <%= form.label :first_name %>
   <%= form.text_field :first_name %>
-</p>
-<p>
-  <%= form.label :last_name %><br />
+</div>
+<div class="field">
+  <%= form.label :last_name %>
   <%= form.text_field :last_name %>
-</p>
-<p>
-  <%= form.label :email %><br />
+</div>
+<div class="field">
+  <%= form.label :email %>
   <%= form.text_field :email %>
-</p>
-<p>
-  <%= form.label :password, form.object.new_record? ? nil : "Change password" %><br />
+</div>
+<div class="field">
+  <%= form.label :password, form.object.new_record? ? nil : "Change password" %>  
   <%= form.password_field :password %>
-</p>
-<p>
-  <%= form.label :password_confirmation %><br />
+</div>
+<div class="field">
+  <%= form.label :password_confirmation %>
   <%= form.password_field :password_confirmation %>
-</p>
-
-<% if has_role?(:admin) %>
-  <p>
-  	<%= form.label :role %><br />
-  	<%= collection_select(:user, :role, Role.all, :id, :name, :prompt => true) %>
-  </p>	
-<% end %>
+</div>
