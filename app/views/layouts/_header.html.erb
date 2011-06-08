@@ -9,11 +9,8 @@
 			<li><%= link_to "Quotes", quotes_path %></li>
 			<li><%= link_to "Profile", current_user %></li>
 		<% end %>
-		<%if signed_in? %>
-<% if current_user.role == "admin" %>
-			<li><%= link_to "Admin", admin_path %></li>
-		<% end %>
-		<% end %>
+	  <li><%= link_to "Admin", admin_path %></li>
+
 	<li><%= link_to "Help", help_path %></li>
 	<div id="user_status">
       <% if current_user %>

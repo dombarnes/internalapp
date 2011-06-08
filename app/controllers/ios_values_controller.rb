@@ -1,8 +1,8 @@
 class IosValuesController < ApplicationController
-  before_filter :require_user, :only => [:show, :edit, :update, :new, :create]
-
+  before_filter :require_user
   helper_method :sort_column, :sort_direction
-
+  filter_access_resource
+  
   def index
     @title = "iOS Calculation Values"
     @ios_values = IosValue.all

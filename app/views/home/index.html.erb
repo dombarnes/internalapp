@@ -1,23 +1,22 @@
 <% if current_user %>
-<h1>Welcome</h1>
-<p>Please use the navigation at the top to move around, or select from the items below.</p>
-<%= render 'dashboard' %>
-<%= render :partial => 'shared/mac_quotes', :mac_quotes => @mac_quote %>
-<%= render :partial => 'shared/ios_quotes', :install_quotes => @ios_quote %>
-
-    	<% else %>
-		<header class="subnav new">
-		    <h2><Strong>Internal App</Strong></h2>
-		</header>
-		<div class="joininfo">
-		  <p>
-		    This is the home page for the
-		    <a href="http://internalapp.dev/">Internal Client Management</a>
-		    sample application.
-		  </p>
-		</div>
-		<%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
-		<% end %>
+  <h1>Welcome</h1>
+  <p>Please use the navigation at the top to move around, or select from the items below.</p>
+  <%= render 'dashboard' %>
+  <%= render :partial => 'shared/mac_quotes', :mac_quotes => { :user_id => current_user.id } %>
+  <%= render :partial => 'shared/ios_quotes', :ios_quotes => { :user_id => current_user.id } %>    
+<% else %>
+	<header class="subnav new">
+  <h2><Strong>Internal App</Strong></h2>
+	</header>
+	<div class="joininfo">
+	  <p>
+	    This is the home page for the
+	    <a href="http://internalapp.dev/">Internal Client Management</a>
+	    sample application.
+	  </p>
+	</div>
+  <%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+<% end %>
 
 <% content_for :sidebar do %>
 <h3>Latest Tweets</h3>

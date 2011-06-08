@@ -7,7 +7,7 @@ gem 'bundler'
 gem 'rails3-generators'
 gem 'jquery-rails'
 gem 'authlogic'
-gem 'cancan'
+gem 'declarative_authorization'
 	
 group :development do
 	gem 'rspec-rails', '2.5.0'

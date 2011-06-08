@@ -1,5 +1,7 @@
 class IosQuotesController < ApplicationController
-helper_method :sort_column, :sort_direction
+  before_filter :require_user
+  helper_method :sort_column, :sort_direction
+  filter_access_to :all
 
   def create
     @title = "New Quote"
@@ -21,8 +23,7 @@ helper_method :sort_column, :sort_direction
   end
   
   def index
-     @ios_quotes = IosQuote.all.paginate(:per_page => 5, :page => params[:id])
-     #find(params[:user_id])
+     @ios_quotes = IosQuote.paginate(:per_page => 5, :page => params[:id])
       @title = "iOS Quotes"
       respond_to do |format|
         format.html # index.html.erb

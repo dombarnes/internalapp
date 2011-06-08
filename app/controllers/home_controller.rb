@@ -1,9 +1,10 @@
 class HomeController < ApplicationController
+  filter_access_to :all
   
   def index
     @title = "Home"
-    @mac_quotes = MacQuote.find_by_id(params[:user])
-    @ios_quotes = IosQuote.find_by_id(params[:user])
+    @mac_quotes = MacQuote.find_by_id(params[:user_id])
+    @ios_quotes = IosQuote.find_by_id(params[:user_id])
   end
   def help
     @title = "Help"

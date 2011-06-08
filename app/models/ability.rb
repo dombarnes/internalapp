@@ -1,7 +1,7 @@
 class Ability
   include CanCan::Ability
   
-  def initialize(user)
+  def initialise(user)
     user ||=User.new # guest user
     
     if user.role? :admin
@@ -11,6 +11,15 @@ class Ability
       can :create, MacQuote
       can :update, IosQuote do |ios_quote|
         ios_quote.try(:user) == user || user.role?(:staff)
+      end
+      can :read, IosQuote do |ios_quote|
+        ios_quote.try(:user) == user || user.role?(:staff)
+      end
+      can :update, MacQuote do |mac_quote|
+        mac_quote.try(:user) == user || user.role?(:staff)
+      end
+      can :read, MacQuote do |mac_quote|
+        mac_quote.try(:user) == user || user.role?(:staff)
       end
       if user.role?(:staff)
         can :manage, Client

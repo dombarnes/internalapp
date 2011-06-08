@@ -1,8 +1,8 @@
 class CompaniesController < ApplicationController
-before_filter :require_user, :only => [:create, :new, :edit, :update, :index]
-before_filter :admin_user, :only => :destroy
-helper_method :sort_column, :sort_direction
-
+  before_filter :require_user
+  helper_method :sort_column, :sort_direction
+  filter_resource_access
+  
   def index
     @companies = Company.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:page => params[:page])
     @title = "Companies"

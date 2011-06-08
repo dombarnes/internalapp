@@ -55,7 +55,7 @@
 <p>
 <div id="bottom_nav">
   <div id="back_button">
-  <% if current_user.role == "admin" %>
+  <% if permitted_to? :index, User.all %>
     <%= link_to '← Back to User list', users_path %>
   <% end %>
   </div>

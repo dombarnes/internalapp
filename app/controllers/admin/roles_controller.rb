@@ -1,5 +1,6 @@
 class Admin::RolesController < ApplicationController
 before_filter {ensure_role 'admin'}
+
   def index
     @roles = Role.all
     @new_role = Role.new

@@ -1,7 +1,8 @@
 class AdhocSupportsController < ApplicationController
-before_filter :require_user
-helper_method :sort_column, :sort_direction
-
+  before_filter :require_user
+  helper_method :sort_column, :sort_direction
+  filter_resouce_access
+  
   def index
     @adhoc_supports = AdhocSupport.all
     @title = "Ad Hoc Support Contracts"

@@ -7,8 +7,9 @@ class User < ActiveRecord::Base
   # relationships
   has_many :ios_quotes
   has_many :mac_quotes
-  
-#  before_create :setup_role
+  has_many :roles_users
+  has_many :roles, :through => :roles_users
+
   attr_accessible :email, :login, :first_name, :last_name, :company_name, :job_title, :role_id, :password, :password_confirmation, :active, :remember_me
       
   def active?
@@ -40,21 +41,26 @@ class User < ActiveRecord::Base
     Notifier.activation_confirmation(self).deliver
   end
 
-### AuthLogic/CanCan Code
-  ROLES = %w[admin moderator author]
+  ### AuthLogic/CanCan Code
+#  ROLES = %w[admin staff standard]
+#
+#  def roles=(roles)
+#    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
+#  end
 
-  def roles=(roles)
-    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
+#  def roles
+#    ROLES.reject { |r| ((roles_mask || 0) & 2**ROLES.index(r)).zero? }
+#  end
+
+#  def role?(role)
+#    roles.include? role.to_s
+#  end
+  
+  def role_symbols
+    roles.map do |role|
+      role.name.underscore.to_sym
+    end
   end
-
-  def roles
-    ROLES.reject { |r| ((roles_mask || 0) & 2**ROLES.index(r)).zero? }
-  end
-
-  def role?(role)
-    roles.include? role.to_s
-  end
-
 
   def email_address_with_name
     "#{self.login} <#{self.email}>"

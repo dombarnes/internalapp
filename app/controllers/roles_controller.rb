@@ -1,5 +1,6 @@
 class RolesController < ApplicationController
 
+  
 private
   def find_user
     @user_id = params[:user_id]

@@ -1,9 +1,8 @@
 class ClientsController < ApplicationController
-
-before_filter :require_user, :only => [:create, :edit, :update, :index, :destroy]
-helper_method :sort_column, :sort_direction
-
-
+  before_filter :require_user
+  helper_method :sort_column, :sort_direction
+  filter_resource_access
+  
   def index
     @clients = Client.all
     @title = "Clients"
