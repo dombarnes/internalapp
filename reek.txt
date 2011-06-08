@@ -1,0 +1,340 @@
+./app/controllers/activations_controller.rb -- 4 warnings:
+  ActivationslController has no descriptive comment (IrresponsibleModule)
+  ActivationslController#create calls raise(Exception) twice (Duplication)
+  ActivationslController#create has approx 7 statements (LongMethod)
+  ActivationslController#new calls raise(Exception) twice (Duplication)
+./app/controllers/adhoc_supports_controller.rb -- 12 warnings:
+  AdhocSupportsController has no descriptive comment (IrresponsibleModule)
+  AdhocSupportsController#create calls format.html twice (Duplication)
+  AdhocSupportsController#create calls format.xml twice (Duplication)
+  AdhocSupportsController#create contains iterators nested 2 deep (NestedIterators)
+  AdhocSupportsController#destroy contains iterators nested 2 deep (NestedIterators)
+  AdhocSupportsController#index contains iterators nested 2 deep (NestedIterators)
+  AdhocSupportsController#index has approx 6 statements (LongMethod)
+  AdhocSupportsController#new contains iterators nested 2 deep (NestedIterators)
+  AdhocSupportsController#show contains iterators nested 2 deep (NestedIterators)
+  AdhocSupportsController#update calls format.html twice (Duplication)
+  AdhocSupportsController#update calls format.xml twice (Duplication)
+  AdhocSupportsController#update contains iterators nested 2 deep (NestedIterators)
+./app/controllers/admin/roles_controller.rb -- 0 warnings
+./app/controllers/admin_controller.rb -- 1 warning:
+  AdminController has no descriptive comment (IrresponsibleModule)
+./app/controllers/application_controller.rb -- 5 warnings:
+  ApplicationController has no descriptive comment (IrresponsibleModule)
+  ApplicationController has the variable name 'c' (UncommunicativeName)
+  ApplicationController#admin_user calls current_user twice (Duplication)
+  ApplicationController#current_user calls current_user_session twice (Duplication)
+  ApplicationController#redirect_back_or_default calls session twice (Duplication)
+./app/controllers/clients_controller.rb -- 13 warnings:
+  ClientsController has no descriptive comment (IrresponsibleModule)
+  ClientsController#create calls format.html twice (Duplication)
+  ClientsController#create calls format.xml twice (Duplication)
+  ClientsController#create contains iterators nested 2 deep (NestedIterators)
+  ClientsController#destroy contains iterators nested 2 deep (NestedIterators)
+  ClientsController#index contains iterators nested 2 deep (NestedIterators)
+  ClientsController#index has approx 6 statements (LongMethod)
+  ClientsController#new contains iterators nested 2 deep (NestedIterators)
+  ClientsController#show contains iterators nested 2 deep (NestedIterators)
+  ClientsController#update calls format.html twice (Duplication)
+  ClientsController#update calls format.xml twice (Duplication)
+  ClientsController#update calls params twice (Duplication)
+  ClientsController#update contains iterators nested 2 deep (NestedIterators)
+./app/controllers/companies_controller.rb -- 16 warnings:
+  CompaniesController has no descriptive comment (IrresponsibleModule)
+  CompaniesController#create calls format.html twice (Duplication)
+  CompaniesController#create calls format.xml twice (Duplication)
+  CompaniesController#create contains iterators nested 2 deep (NestedIterators)
+  CompaniesController#index calls params twice (Duplication)
+  CompaniesController#index contains iterators nested 2 deep (NestedIterators)
+  CompaniesController#new contains iterators nested 2 deep (NestedIterators)
+  CompaniesController#show contains iterators nested 2 deep (NestedIterators)
+  CompaniesController#sort_column calls params twice (Duplication)
+  CompaniesController#sort_column calls params[:sort] twice (Duplication)
+  CompaniesController#sort_direction calls params twice (Duplication)
+  CompaniesController#sort_direction calls params[:direction] twice (Duplication)
+  CompaniesController#update calls format.html twice (Duplication)
+  CompaniesController#update calls format.xml twice (Duplication)
+  CompaniesController#update calls params twice (Duplication)
+  CompaniesController#update contains iterators nested 2 deep (NestedIterators)
+./app/controllers/home_controller.rb -- 3 warnings:
+  HomeController has no descriptive comment (IrresponsibleModule)
+  HomeController#index calls params twice (Duplication)
+  HomeController#index calls params[:user_id] twice (Duplication)
+./app/controllers/ios_quotes_controller.rb -- 16 warnings:
+  IosQuotesController has no descriptive comment (IrresponsibleModule)
+  IosQuotesController#create calls @ios_quote.device_quantity twice (Duplication)
+  IosQuotesController#create calls @quote_value.iosdevice_install_setup twice (Duplication)
+  IosQuotesController#create calls IosValue.last twice (Duplication)
+  IosQuotesController#create has approx 9 statements (LongMethod)
+  IosQuotesController#index calls params twice (Duplication)
+  IosQuotesController#index contains iterators nested 2 deep (NestedIterators)
+  IosQuotesController#index has approx 6 statements (LongMethod)
+  IosQuotesController#show contains iterators nested 2 deep (NestedIterators)
+  IosQuotesController#update calls @ios_quote.device_quantity twice (Duplication)
+  IosQuotesController#update calls @quote_value.iosdevice_install_setup twice (Duplication)
+  IosQuotesController#update calls format.html twice (Duplication)
+  IosQuotesController#update calls format.xml twice (Duplication)
+  IosQuotesController#update calls params twice (Duplication)
+  IosQuotesController#update contains iterators nested 2 deep (NestedIterators)
+  IosQuotesController#update has approx 7 statements (LongMethod)
+./app/controllers/ios_values_controller.rb -- 7 warnings:
+  IosValuesController has no descriptive comment (IrresponsibleModule)
+  IosValuesController#create calls format.html twice (Duplication)
+  IosValuesController#create calls format.xml twice (Duplication)
+  IosValuesController#create contains iterators nested 2 deep (NestedIterators)
+  IosValuesController#index contains iterators nested 2 deep (NestedIterators)
+  IosValuesController#index has approx 6 statements (LongMethod)
+  IosValuesController#new contains iterators nested 2 deep (NestedIterators)
+./app/controllers/mac_quotes_controller.rb -- 8 warnings:
+  MacQuotesController has no descriptive comment (IrresponsibleModule)
+  MacQuotesController#create has approx 6 statements (LongMethod)
+  MacQuotesController#index calls params twice (Duplication)
+  MacQuotesController#update calls format.html twice (Duplication)
+  MacQuotesController#update calls format.xml twice (Duplication)
+  MacQuotesController#update calls params twice (Duplication)
+  MacQuotesController#update contains iterators nested 2 deep (NestedIterators)
+  MacQuotesController#update has approx 6 statements (LongMethod)
+./app/controllers/mac_values_controller.rb -- 8 warnings:
+  MacValuesController has no descriptive comment (IrresponsibleModule)
+  MacValuesController#create calls format.html twice (Duplication)
+  MacValuesController#create calls format.xml twice (Duplication)
+  MacValuesController#create contains iterators nested 2 deep (NestedIterators)
+  MacValuesController#create has approx 6 statements (LongMethod)
+  MacValuesController#index contains iterators nested 2 deep (NestedIterators)
+  MacValuesController#index has approx 6 statements (LongMethod)
+  MacValuesController#new contains iterators nested 2 deep (NestedIterators)
+./app/controllers/password_resets_controller.rb -- 5 warnings:
+  PasswordResetsController has no descriptive comment (IrresponsibleModule)
+  PasswordResetsController#create calls flash twice (Duplication)
+  PasswordResetsController#create has approx 6 statements (LongMethod)
+  PasswordResetsController#update calls params twice (Duplication)
+  PasswordResetsController#update calls params[:user] twice (Duplication)
+./app/controllers/roles_controller.rb -- 1 warning:
+  RolesController has no descriptive comment (IrresponsibleModule)
+./app/controllers/user_sessions_controller.rb -- 2 warnings:
+  UserSessionsController has no descriptive comment (IrresponsibleModule)
+  UserSessionsController#new contains iterators nested 2 deep (NestedIterators)
+./app/controllers/users_controller.rb -- 8 warnings:
+  UsersController has no descriptive comment (IrresponsibleModule)
+  UsersController#activate calls raise(Exception) twice (Duplication)
+  UsersController#activate has approx 6 statements (LongMethod)
+  UsersController#create calls flash twice (Duplication)
+  UsersController#create has approx 6 statements (LongMethod)
+  UsersController#redisplay_roles contains iterators nested 2 deep (NestedIterators)
+  UsersController#self.search is controlled by argument search (ControlCouple)
+  UsersController#update calls params twice (Duplication)
+./app/helpers/adhoc_supports_helper.rb -- 0 warnings
+./app/helpers/admin/roles_helper.rb -- 0 warnings
+./app/helpers/application_helper.rb -- 4 warnings:
+  ApplicationHelper#sortable calls (column == sort_column) twice (Duplication)
+  ApplicationHelper#sortable calls sort_column twice (Duplication)
+  ApplicationHelper#sortable calls sort_direction twice (Duplication)
+  ApplicationHelper#sortable has approx 6 statements (LongMethod)
+./app/helpers/clients_helper.rb -- 0 warnings
+./app/helpers/companies_helper.rb -- 0 warnings
+./app/helpers/home_helper.rb -- 0 warnings
+./app/helpers/ios_values_helper.rb -- 0 warnings
+./app/helpers/layout_helper.rb -- 1 warning:
+  LayoutHelper#title has boolean parameter 'show_title' (ControlCouple)
+./app/helpers/password_resets_helper.rb -- 0 warnings
+./app/helpers/sessions_helper.rb -- 0 warnings
+./app/helpers/user_sessions_helper.rb -- 0 warnings
+./app/helpers/users_helper.rb -- 0 warnings
+./app/mailers/notifier.rb -- 3 warnings:
+  Notifier has no descriptive comment (IrresponsibleModule)
+  Notifier#activation_confirmation calls from twice (Duplication)
+  Notifier#activation_instructions calls from twice (Duplication)
+./app/models/ability.rb -- 7 warnings:
+  Ability has no descriptive comment (IrresponsibleModule)
+  Ability#initialise calls (ios_quote.try(:user) == user) twice (Duplication)
+  Ability#initialise calls (mac_quote.try(:user) == user) twice (Duplication)
+  Ability#initialise calls ios_quote.try(:user) twice (Duplication)
+  Ability#initialise calls mac_quote.try(:user) twice (Duplication)
+  Ability#initialise calls user.role?(:staff) 5 times (Duplication)
+  Ability#initialise has approx 15 statements (LongMethod)
+./app/models/adhoc_support.rb -- 0 warnings
+./app/models/client.rb -- 1 warning:
+  Client has no descriptive comment (IrresponsibleModule)
+./app/models/company.rb -- 2 warnings:
+  Company has no descriptive comment (IrresponsibleModule)
+  Company#self.search is controlled by argument search (ControlCouple)
+./app/models/ios_quote.rb -- 1 warning:
+  IosQuote has no descriptive comment (IrresponsibleModule)
+./app/models/ios_value.rb -- 1 warning:
+  IosValue has no descriptive comment (IrresponsibleModule)
+./app/models/mac_quote.rb -- 1 warning:
+  MacQuote has no descriptive comment (IrresponsibleModule)
+./app/models/mac_value.rb -- 1 warning:
+  MacValue has no descriptive comment (IrresponsibleModule)
+./app/models/notifier.rb -- 3 warnings:
+  Notifier has no descriptive comment (IrresponsibleModule)
+  Notifier#activation_confirmation calls from twice (Duplication)
+  Notifier#activation_instructions calls from twice (Duplication)
+./app/models/role.rb -- 1 warning:
+  Role has no descriptive comment (IrresponsibleModule)
+./app/models/roles_user.rb -- 1 warning:
+  RolesUser has no descriptive comment (IrresponsibleModule)
+./app/models/user.rb -- 2 warnings:
+  User has no descriptive comment (IrresponsibleModule)
+  User has the variable name 'c' (UncommunicativeName)
+./app/models/user_session.rb -- 1 warning:
+  UserSession has no descriptive comment (IrresponsibleModule)
+./autotest/discover.rb -- 0 warnings
+./config/application.rb -- 1 warning:
+  Internalapp::Application has no descriptive comment (IrresponsibleModule)
+./config/authorization_rules.rb -- 0 warnings
+./config/boot.rb -- 0 warnings
+./config/environment.rb -- 0 warnings
+./config/environments/development.rb -- 0 warnings
+./config/environments/production.rb -- 0 warnings
+./config/environments/test.rb -- 0 warnings
+./config/initializers/backtrace_silencers.rb -- 0 warnings
+./config/initializers/inflections.rb -- 0 warnings
+./config/initializers/mail.rb -- 0 warnings
+./config/initializers/mime_types.rb -- 0 warnings
+./config/initializers/secret_token.rb -- 0 warnings
+./config/initializers/session_store.rb -- 0 warnings
+./config/routes.rb -- 0 warnings
+./db/migrate/20110207124444_create_clients.rb -- 3 warnings:
+  CreateClients has no descriptive comment (IrresponsibleModule)
+  CreateClients#self.up has approx 11 statements (LongMethod)
+  CreateClients#self.up has the variable name 't' (UncommunicativeName)
+./db/migrate/20110207130220_create_adhoc_supports.rb -- 3 warnings:
+  CreateAdhocSupports has no descriptive comment (IrresponsibleModule)
+  CreateAdhocSupports#self.up has approx 7 statements (LongMethod)
+  CreateAdhocSupports#self.up has the variable name 't' (UncommunicativeName)
+./db/migrate/20110218162737_create_companies.rb -- 3 warnings:
+  CreateCompanies has no descriptive comment (IrresponsibleModule)
+  CreateCompanies#self.up has approx 13 statements (LongMethod)
+  CreateCompanies#self.up has the variable name 't' (UncommunicativeName)
+./db/migrate/20110301173644_create_mac_quotes.rb -- 3 warnings:
+  CreateMacQuotes has no descriptive comment (IrresponsibleModule)
+  CreateMacQuotes#self.up has approx 25 statements (LongMethod)
+  CreateMacQuotes#self.up has the variable name 't' (UncommunicativeName)
+./db/migrate/20110302132101_create_ios_quotes.rb -- 3 warnings:
+  CreateIosQuotes has no descriptive comment (IrresponsibleModule)
+  CreateIosQuotes#self.up has approx 13 statements (LongMethod)
+  CreateIosQuotes#self.up has the variable name 't' (UncommunicativeName)
+./db/migrate/20110317161353_create_ios_values.rb -- 3 warnings:
+  CreateIosValues has no descriptive comment (IrresponsibleModule)
+  CreateIosValues#self.up has approx 6 statements (LongMethod)
+  CreateIosValues#self.up has the variable name 't' (UncommunicativeName)
+./db/migrate/20110322152924_create_users.rb -- 3 warnings:
+  CreateUsers has no descriptive comment (IrresponsibleModule)
+  CreateUsers#self.up has approx 22 statements (LongMethod)
+  CreateUsers#self.up has the variable name 't' (UncommunicativeName)
+./db/migrate/20110322165446_create_user_sessions.rb -- 3 warnings:
+  CreateUserSessions has no descriptive comment (IrresponsibleModule)
+  CreateUserSessions#self.up has approx 6 statements (LongMethod)
+  CreateUserSessions#self.up has the variable name 't' (UncommunicativeName)
+./db/migrate/20110324125527_add_active_to_users.rb -- 1 warning:
+  AddActiveToUsers has no descriptive comment (IrresponsibleModule)
+./db/migrate/20110324135202_add_users_password_reset_fields.rb -- 1 warning:
+  AddUsersPasswordResetFields has no descriptive comment (IrresponsibleModule)
+./db/migrate/20110411150028_create_mac_values.rb -- 3 warnings:
+  CreateMacValues has no descriptive comment (IrresponsibleModule)
+  CreateMacValues#self.up has approx 24 statements (LongMethod)
+  CreateMacValues#self.up has the variable name 't' (UncommunicativeName)
+./db/migrate/20110412123649_create_roles.rb -- 2 warnings:
+  CreateRoles has no descriptive comment (IrresponsibleModule)
+  CreateRoles#self.up has the variable name 't' (UncommunicativeName)
+./db/migrate/20110412123721_create_roles_users.rb -- 2 warnings:
+  CreateRolesUsers has no descriptive comment (IrresponsibleModule)
+  CreateRolesUsers#self.up has the variable name 't' (UncommunicativeName)
+./db/migrate/20110602161941_change_ios_values_data_types.rb -- 1 warning:
+  ChangeIosValuesDataTypes has no descriptive comment (IrresponsibleModule)
+./db/schema.rb -- 0 warnings
+./db/seeds.rb -- 0 warnings
+./spec/controllers/adhoc_supports_controller_spec.rb -- 0 warnings
+./spec/controllers/admin/roles_controller_spec.rb -- 0 warnings
+./spec/controllers/clients_controller_spec.rb -- 0 warnings
+./spec/controllers/home_controller_spec.rb -- 0 warnings
+./spec/controllers/sessions_controller_spec.rb -- 0 warnings
+./spec/controllers/user_sessions_controller_spec.rb -- 0 warnings
+./spec/controllers/users_controller_spec.rb -- 0 warnings
+./spec/factories.rb -- 0 warnings
+./spec/helpers/admin/roles_helper_spec.rb -- 0 warnings
+./spec/helpers/user_sessions_helper_spec.rb -- 0 warnings
+./spec/helpers/users_helper_spec.rb -- 0 warnings
+./spec/mailers/notifier_spec.rb -- 0 warnings
+./spec/models/company_spec.rb -- 0 warnings
+./spec/models/install_quote_spec.rb -- 0 warnings
+./spec/models/ios_quote_spec.rb -- 0 warnings
+./spec/models/role_spec.rb -- 0 warnings
+./spec/models/roles_spec.rb -- 0 warnings
+./spec/models/roles_user_spec.rb -- 0 warnings
+./spec/models/support_quote_spec.rb -- 0 warnings
+./spec/models/user_session_spec.rb -- 0 warnings
+./spec/models/user_spec.rb -- 0 warnings
+./spec/models/values_spec.rb -- 0 warnings
+./spec/requests/friendly_forwardings_spec.rb -- 0 warnings
+./spec/requests/layout_links_spec.rb -- 0 warnings
+./spec/requests/users_spec.rb -- 0 warnings
+./spec/spec_helper.rb -- 0 warnings
+./spec/views/admin/roles/index.html.erb_spec.rb -- 0 warnings
+./spec/views/user_sessions/new.html.erb_spec.rb -- 0 warnings
+./test/functional/adhoc_supports_controller_test.rb -- 1 warning:
+  AdhocSupportsControllerTest has no descriptive comment (IrresponsibleModule)
+./test/functional/clients_controller_test.rb -- 1 warning:
+  ClientsControllerTest has no descriptive comment (IrresponsibleModule)
+./test/functional/home_controller_test.rb -- 1 warning:
+  HomeControllerTest has no descriptive comment (IrresponsibleModule)
+./test/performance/browsing_test.rb -- 0 warnings
+./test/test_helper.rb -- 1 warning:
+  ActiveSupport::TestCase has no descriptive comment (IrresponsibleModule)
+./test/unit/adhoc_support_test.rb -- 1 warning:
+  AdhocSupportTest has no descriptive comment (IrresponsibleModule)
+./test/unit/client_test.rb -- 1 warning:
+  ClientTest has no descriptive comment (IrresponsibleModule)
+./test/unit/helpers/adhoc_supports_helper_test.rb -- 1 warning:
+  AdhocSupportsHelperTest has no descriptive comment (IrresponsibleModule)
+./test/unit/helpers/clients_helper_test.rb -- 1 warning:
+  ClientsHelperTest has no descriptive comment (IrresponsibleModule)
+./test/unit/helpers/home_helper_test.rb -- 1 warning:
+  HomeHelperTest has no descriptive comment (IrresponsibleModule)
+./vendor/plugins/dynamic_form/init.rb -- 0 warnings
+./vendor/plugins/dynamic_form/lib/action_view/helpers/dynamic_form.rb -- 16 warnings:
+  ActionView::Helpers::DynamicForm takes parameters [options, record_name] to 3 methods (DataClump)
+  ActionView::Helpers::DynamicForm#default_input_block calls column.name twice (Duplication)
+  ActionView::Helpers::DynamicForm#default_input_block refers to column more than self (LowCohesion)
+  ActionView::Helpers::DynamicForm#error_message_on has approx 11 statements (LongMethod)
+  ActionView::Helpers::DynamicForm#error_message_on refers to options more than self (LowCohesion)
+  ActionView::Helpers::DynamicForm#error_messages_for calls object.class twice (Duplication)
+  ActionView::Helpers::DynamicForm#error_messages_for calls object.errors twice (Duplication)
+  ActionView::Helpers::DynamicForm#error_messages_for contains iterators nested 3 deep (NestedIterators)
+  ActionView::Helpers::DynamicForm#error_messages_for has approx 25 statements (LongMethod)
+  ActionView::Helpers::DynamicForm#error_messages_for refers to options more than self (LowCohesion)
+  ActionView::Helpers::DynamicForm#form calls options[:action] twice (Duplication)
+  ActionView::Helpers::DynamicForm#form calls record.persisted? twice (Duplication)
+  ActionView::Helpers::DynamicForm#form has approx 14 statements (LongMethod)
+  ActionView::Helpers::DynamicForm::InstanceTagMethods#to_tag has approx 9 statements (LongMethod)
+  ActionView::Helpers::FormBuilder has no descriptive comment (IrresponsibleModule)
+  ActionView::Helpers::InstanceTag has no descriptive comment (IrresponsibleModule)
+./vendor/plugins/dynamic_form/lib/dynamic_form.rb -- 1 warning:
+  ActionView::Base has no descriptive comment (IrresponsibleModule)
+./vendor/plugins/dynamic_form/test/dynamic_form_i18n_test.rb -- 3 warnings:
+  DynamicFormI18nTest has no descriptive comment (IrresponsibleModule)
+  DynamicFormI18nTest#setup calls I18n.stubs(:t) twice (Duplication)
+  DynamicFormI18nTest#setup has approx 8 statements (LongMethod)
+./vendor/plugins/dynamic_form/test/dynamic_form_test.rb -- 20 warnings:
+  DynamicFormTest has at least 43 methods (LargeClass)
+  DynamicFormTest has no descriptive comment (IrresponsibleModule)
+  DynamicFormTest#setup_post has approx 11 statements (LongMethod)
+  DynamicFormTest#setup_post#@post.errors#[] refers to field more than self (LowCohesion)
+  DynamicFormTest#setup_user has approx 7 statements (LongMethod)
+  DynamicFormTest#setup_user#@user.errors#[] refers to field more than self (LowCohesion)
+  DynamicFormTest#test_default_form_builder_no_instance_variable has approx 7 statements (LongMethod)
+  DynamicFormTest#test_default_form_builder_no_instance_variable has the variable name 'f' (UncommunicativeName)
+  DynamicFormTest#test_default_form_builder_with_dynamic_form_helpers has the variable name 'f' (UncommunicativeName)
+  DynamicFormTest#test_error_messages_for_many_objects has approx 10 statements (LongMethod)
+  DynamicFormTest#test_error_messages_for_non_instance_variable has approx 7 statements (LongMethod)
+  DynamicFormTest#test_form_with_string calls form("post") twice (Duplication)
+  DynamicFormTest#test_form_with_string has approx 6 statements (LongMethod)
+  DynamicFormTest#url_for doesn't depend on instance state (LowCohesion)
+  DynamicFormTest#url_for refers to options more than self (LowCohesion)
+  DynamicFormTest::Column has no descriptive comment (IrresponsibleModule)
+  DynamicFormTest::DirtyPost has no descriptive comment (IrresponsibleModule)
+  DynamicFormTest::DirtyPost::Errors has no descriptive comment (IrresponsibleModule)
+  DynamicFormTest::Post has no descriptive comment (IrresponsibleModule)
+  DynamicFormTest::User has no descriptive comment (IrresponsibleModule)
+./vendor/plugins/dynamic_form/test/test_helper.rb -- 0 warnings
