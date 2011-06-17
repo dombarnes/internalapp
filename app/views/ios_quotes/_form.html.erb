@@ -31,7 +31,8 @@
     <%= f.label :mobile_config %>
     <%= f.check_box :mobile_config %>
   </div><br />
-  <div class="actions">
-	<input id="ios_submit" name="commit" type="submit" value="Submit" />
+  <div class="button">
+  <%= f.submit "Submit Quote" %>
+  <a class="button" id="ios_quote_submit" name="commit" type="submit" href="#" onclick="submit()"><span>Submit Quote</span></a>
   </div>
 <% end %>

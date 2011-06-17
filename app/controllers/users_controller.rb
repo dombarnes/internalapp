@@ -1,15 +1,16 @@
 class UsersController < ApplicationController  
-
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:show, :edit, :update]
   helper_method :sort_column, :sort_direction
-
+  filter_resource_access
+  
   def index
     @users = User.all
   end
   
   def new
     @user = User.new
+    
   end
 
   def create
@@ -50,10 +51,9 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    
     if @user.update_attributes(params[:user])
       flash[:notice] = "Account updated!"
-      redirect_to account_url
+      redirect_to user_path
     else
       render :action => :edit
     end

@@ -9,7 +9,7 @@
     <th>Install Cost</th>
     <th>Support Cost</th>
   </tr>
-<% IosQuote.most_recentfive.each do |ios_quote| %>
+<% IosQuote.where(:user_id => current_user.id).limit(5).all.each do |ios_quote| %>
 	<tr>
 		<td><%= ios_quote.created_at.strftime("%d/%m/%Y") %></td>
 		<td><%= link_to ios_quote.customer, ios_quote %></td>

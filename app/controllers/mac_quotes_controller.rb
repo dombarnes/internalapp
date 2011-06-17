@@ -1,7 +1,8 @@
 class MacQuotesController < ApplicationController
-  helper_method :sort_column, :sort_direction
   before_filter :require_user
-filter_access_to :all  
+  helper_method :sort_column, :sort_direction
+#  filter_access_to :all  
+  
   def create
     @mac_quote = current_user.mac_quotes.build(params[:mac_quote])
     @quote_values = MacValues.last

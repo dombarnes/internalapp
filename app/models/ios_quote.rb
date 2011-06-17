@@ -1,6 +1,6 @@
 class IosQuote < ActiveRecord::Base
   attr_accessible :all
-  filter_resource_access # Declarative Authorization
+#  filter_resource_access # Declarative Authorization
   
   belongs_to :user
   has_many :ios_values

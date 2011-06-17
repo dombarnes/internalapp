@@ -3,6 +3,7 @@ class Ability
   
   def initialise(user)
     user ||=User.new # guest user
+    can :read, Home
     
     if user.role? :admin
       can :manage, :all

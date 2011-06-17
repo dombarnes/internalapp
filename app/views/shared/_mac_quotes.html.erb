@@ -1,7 +1,7 @@
 <br>
 <h3>Latest Mac Quotes</h3>
 
-<table>
+<table id="home-mac-quote">
   <tr>
     <th>Date</td>
     <th>Customer</th>
@@ -9,7 +9,7 @@
     <th>Install Cost</th>
     <th>Support Cost</th>
   </tr>
-<% MacQuote.most_recentfive.each do |mac_quote| %>
+<% MacQuote.where(:user_id => current_user.id).limit(5).all.each do |mac_quote| %>
 	<tr>
 		<td><%= mac_quote.created_at.strftime("%d/%m/%Y") %>
 		<td><%= link_to mac_quote.customer_name, mac_quote %></td>

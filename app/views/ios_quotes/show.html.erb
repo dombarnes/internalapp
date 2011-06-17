@@ -36,9 +36,9 @@
 </p>
 
 <%= link_to '← Back', ios_quotes_path %> 
-<% if can? :update, @ios_quote %>
+<% if permitted_to? :update, @ios_quote %>
   <%= link_to 'Edit', edit_ios_quote_path(@ios_quote) %>
 <% end %>
-<% if can? :update, @mac_quote %>
+<% if permitted_to? :update, @mac_quote %>
 <%= link_to 'Delete', :confirm => 'Are you sure you want to delete this quote?', :method => :destroy %>
 <% end %>

@@ -128,7 +128,7 @@ ol, ul {
 
 /* Links */
 a {
-	color: #ccc	;
+	color: #069	;
 	text-decoration: none;
 	font-weight: bold;
 }
@@ -414,4 +414,73 @@ th	 {
 	font-size : 0.86em ;
 	background : #cccfaa ;
 
+}
+
+.awesome{
+font-family: Arial, Helvetica;
+background: #222 url(/images/alert-overlay.png) repeat-x;
+display: inline-block;
+padding: 5px 10px 6px;
+color: #fff;
+text-decoration: none;
+font-weight: bold;
+line-height: 1;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+-moz-box-shadow: 0 1px 3px #999;
+-webkit-box-shadow: 0 1px 3px #999;
+text-shadow: 0 -1px 1px #222;
+border-bottom: 1px solid #222;
+position: relative;
+cursor: pointer;
+}
+
+/* Sizes ---------- */
+.small.awesome {
+font-size: 11px;
+}
+.medium.awesome {
+font-size: 13px;
+}
+.large.awesome {
+font-size: 14px;
+padding: 8px 14px 9px;
+}
+ 
+/* Colors ---------- */
+.blue.awesome {
+background-color: #2daebf;
+}
+.red.awesome {
+background-color: #e33100;
+}
+.magenta.awesome {
+background-color: #a9014b;
+}
+.orange.awesome {
+background-color: #ff5c00;
+}
+.yellow.awesome {
+background-color: #ffb515;
+}
+
+button.awesome, .button.awesome {
+	background: #222 url(/images/alert-overlay.png) repeat-x;
+	display: inline-block;
+	padding: 5px 10px 6px;
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+	line-height: 1;
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+   	text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+	border-bottom: 1px solid rgba(0,0,0,0.25);
+	position: relative;
+	cursor: pointer;
 }

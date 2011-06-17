@@ -1,7 +1,7 @@
 class MacValuesController < ApplicationController
   helper_method :sort_column, :sort_direction
   before_filter :require_user
-  filter_access_resource
+  filter_resource_access
     
   def index
     @title = "Mac Install and Support Values"

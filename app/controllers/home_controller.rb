@@ -3,8 +3,6 @@ class HomeController < ApplicationController
   
   def index
     @title = "Home"
-    @mac_quotes = MacQuote.find_by_id(params[:user_id])
-    @ios_quotes = IosQuote.find_by_id(params[:user_id])
   end
   def help
     @title = "Help"

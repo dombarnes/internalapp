@@ -43,7 +43,5 @@
     <%= f.label :email_address %><br />
     <%= f.text_field :email_address %>
   </div>
-  <div id="submit">
-    <a style class="button" href="#" onclick="$('#client_form').submit(); return false;"><span>Submit<span></a>
-  </div>
+  <%= f.submit :class => "medium awesome blue" %>
 <% end %>

@@ -13,19 +13,19 @@
 
   <div class="field">
     <%= f.label :date %><br />
-	  <%= f.text_field :date %>
+    <%= f.text_field :date %>
   </div>
 
   <div class="field">
     <%= f.label :job_type %><br />
 	<select id="adhoc_supports_job_type" name="adhoc_support[job_type]">
-		<option value="" selected="selected"></option>
     	<option value="Full Day" selected="selected" >Full Day</option>
 		<option value="Half Day" selected="selected" >Half Day</option>
 	</select>
   </div>
 
   <div class="field">
+  <%= f.label :company_name %>
   <option value="" selected="selected"></option>
   <%= f.collection_select(:company_id, Company.all, :id, :company_name ) %>
   </div>
@@ -40,6 +40,8 @@
     <%= f.text_area :notes %>
   </div>
   <div>
-  <a class="button" href="#" onclick="$('#user_form).submit(); return false;"><span>Submit</span></a>
+    <%= f.submit "Submit", :class => 'medium awesome magenta' %>
   </div>
+  <br>
+  <a class="button" href="#" onclick="$('#adhoc_supports_form).submit(); return false;"><span>Submit</span></a>
 <% end %>

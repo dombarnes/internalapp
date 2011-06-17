@@ -54,14 +54,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def admin_user
-    if current_user.nil?
-      redirect_to(signin_path)
-    elseif !current_user.admin?
-      redirect_to(root_path)
-    end
-  end
-
   def store_location
     session[:return_to] = request.fullpath
   end

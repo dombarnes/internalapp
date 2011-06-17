@@ -1,11 +1,13 @@
 authorization do
   role :guest do
-
+    has_permission_on :users, :to => [:new]
+    has_permission_on :home, :to => [:read]
   end
 
   role :standard do
-    includes :guest
-    has_permission_on :users, :to => [:show, :update]
+    has_permission_on :users, :to => [:show, :update] do
+      if_attribute :user => is { current_user }
+    end
     has_permission_on [:ios_quotes, :mac_quotes], :to => [:create]
     has_permission_on [:ios_quotes, :mac_quotes], :to => [:read, :update] do
       if_attribute :user => is { user }
@@ -19,7 +21,8 @@ authorization do
   
   role :admin do
     has_omnipotence
-    has_permission_on :authorization_rules, :to => :read
+#    has_permission_on :all, :to => :manage
+    has_permission_on :authorization_rules, :to => :manage
   end
 end
 

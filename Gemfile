@@ -8,6 +8,7 @@ gem 'rails3-generators'
 gem 'jquery-rails'
 gem 'authlogic'
 gem 'declarative_authorization'
+gem 'ruby_parser'
 	
 group :development do
 	gem 'rspec-rails', '2.5.0'
