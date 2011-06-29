@@ -7,4 +7,5 @@ private
         return(redirect_to(users_url)) unless @user_id
         @user = User.find(@user_id)
     end
+  end
 end
