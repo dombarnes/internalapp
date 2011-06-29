@@ -4,12 +4,10 @@
   <b>Client name:</b>
   <%= @client.client_name %>
 </p>
-
 <p>
-  <b>Client company_id:</b>
-  <%= @client.company_id %>
+  <b>Company:</b>
+  <%= Company.find(@client.company_id).company_name %>
 </p>
-
 <p>
   <b>Title:</b>
   <%= @client.title %>
@@ -38,11 +36,6 @@
 <p>
   <b>Mobile number:</b>
   <%= @client.mobile_number %>
-</p>
-
-<p>
-  <b>Source:</b>
-  <%= @client.source %>
 </p>
 
 <p>

@@ -26,17 +26,26 @@ class IosValuesController < ApplicationController
   end
   
   def create
-      @ios_value = IosValue.new(params[:ios_value])
+      @ios_value = IosValue.create!(params[:ios_value])
       
       respond_to do |format|
         if @ios_value.save
-          format.html { redirect_to( :back, :notice => 'New values were saved. These will affect all future quotes.') }
+          format.html { redirect_to( ios_values_path, :notice => 'New values were saved. These will affect all future quotes.') }
           format.xml  { render :xml => @ios_value, :status => :created, :location => @ios_value }
         else
           format.html { render :action => "new" }
           format.xml  { render :xml => @ios_value.errors, :status => :unprocessable_entity }
         end
       end
+  end
+  
+  def destroy
+    @ios_value = IosValue.find(params[:id]).destroy
+    respond_to do |format|
+      format.html {flash[:success] = "Quote Values deleted."
+                  redirect_to ios_values_path }
+      format.js
+    end
   end
   
   def show

@@ -1,13 +1,6 @@
 <% content_for :sidebar do %>
   <h3>Ad Hoc Sidebar</h3>
 	<p>There will be some content here. Probably a list of last edited content.
-<table>
-  <% @adhoc_supports.each do |adhoc_support| %>
-    <tr>
-    <td><%= adhoc_support.date %> - <%= adhoc_support.client_id %></td>
-    </tr>
-    <% end %>
-    </table>
 <% end %>
 
 
@@ -15,26 +8,22 @@
 <p>Below is a list of ad-hoc support days provided.
 <p>
 <%= link_to 'New Adhoc support', new_adhoc_support_path %>
-<table>
+<table class="pretty">
   <tr>
-    <th>Date</th>
-    <th>Type</th>
+    <th><%= sortable "date" %></th>
+    <th><%= sortable "job_type", "Type" %></th>
     <th>Technicians</th>
-    <th>Client</th>
-    <th></th>
-    <th></th>
+    <th>Company Name</th>
     <th></th>
   </tr>
 
 <% @adhoc_supports.each do |adhoc_support| %>
   <tr>
-    <td><%= adhoc_support.date %></td>
+    <td><%= link_to adhoc_support.date.strftime("%d/%m/%Y"), adhoc_support %></td>
     <td><%= adhoc_support.job_type %></td>
     <td><%= adhoc_support.technicians %></td>
-    <td><%= adhoc_support.client_id %></td>
-    <td><%= link_to 'Show', adhoc_support %></td>
-    <td><%= link_to 'Edit', edit_adhoc_support_path(adhoc_support) %></td>
-    <td><%= link_to 'Destroy', adhoc_support, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to Company.find(adhoc_support.company_id).company_name, Company.find(adhoc_support.company_id) %></td>
+    <td><%= link_to 'Delete', adhoc_support, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

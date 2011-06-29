@@ -1,7 +1,7 @@
 <h1>Recent iOS Quotes</h1>
 <%= link_to ' Back', root_path %><br>
 <br>
-<% if can? :create, @ios_quote %>
+<% if permitted_to? :create, @ios_quote %>
 <%= link_to 'New Quote', new_ios_quote_path %><br>
 <% end %>
 <br>
@@ -12,14 +12,19 @@
     <th>Quantity</th>
     <th>Install Cost</th>
     <th>Support Cost</th>
+    <th>Quote Won?</th>
   </tr>
 <% @ios_quotes.each do |ios_quote| %>
 	<tr>
-		<td><%= link_to ios_quote.created_at.strftime("%d/%m/%Y"), ios_quote %></td>
+		<td><%= 
+    link_to_if((permitted_to? :update), ios_quote.created_at.strftime("%d/%m/%Y"), { :controller => "ios_quotes", :action => "update", :id => ios_quote}) do
+      link_to(@ios_quote, ios_quote.created_at.strftime("%d/%m/%Y"), { :controller => "ios_quote", :action => "show", :id => ios_quote})
+    end %></td>
 		<td><%= ios_quote.customer %></td>
 		<td><%= ios_quote.device_quantity %></td>
 		<td><%= number_to_currency(ios_quote.install_cost, :unit => "&pound;") %></td>
 		<td><%= number_to_currency(ios_quote.support_cost, :unit => "&pound;") %></td>
+		<td><%= ios_quote.won %></td>
 	</tr>
 <% end %>
 </table>

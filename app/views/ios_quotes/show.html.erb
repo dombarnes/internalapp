@@ -35,10 +35,16 @@
   <%= @ios_quote.install_required %>
 </p>
 
-<%= link_to '← Back', ios_quotes_path %> 
-<% if permitted_to? :update, @ios_quote %>
-  <%= link_to 'Edit', edit_ios_quote_path(@ios_quote) %>
-<% end %>
-<% if permitted_to? :update, @mac_quote %>
-<%= link_to 'Delete', :confirm => 'Are you sure you want to delete this quote?', :method => :destroy %>
-<% end %>
+<div id="bottom_nav">
+  <div id="back_button">
+  <% if permitted_to? :index, IosQuote.all %>
+    <%= link_to '← Back to list', ios_quotes_path %>
+  <% end %>
+  </div>
+  <div id="edit_button">
+    <% if permitted_to? :delete %>
+      <%= link_to 'Destroy', @ios_quote, :confirm => 'Are you sure?', :method => :delete %>
+    <% end %>
+  </div>
+  <%= link_to 'Case Won', ios_quote_path(@ios_quote, {:won => "1"}), :confirm => "Are you sure you want to mark this as won?", :method => :put, :remote => true %>
+</div>

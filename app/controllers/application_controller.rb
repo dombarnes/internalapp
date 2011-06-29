@@ -62,4 +62,13 @@ class ApplicationController < ActionController::Base
     redirect_to(session[:return_to] || default)
     session[:return_to] = nil
   end
+
+  def sort_column
+    Self.column_names.include?(params[:sort]) ? params[:sort] : self.column_names
+  end
+
+  def sort_direction
+        %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+  
 end

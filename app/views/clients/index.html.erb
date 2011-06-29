@@ -2,18 +2,19 @@
 <%= link_to 'New Client', new_client_path %>
 <table>
   <tr>
-    <th>Client name</th>
     <th>Title</th>
     <th>Last name</th>
     <th>First name</th>
+    <th>Company</th>
+    <th></th>
   </tr>
   
 <% @clients.each do |client| %>
   <tr>
-    <td><%= link_to client.client_name, client %></td>
     <td><%= client.title %></td>
     <td><%= client.last_name %></td>
     <td><%= client.first_name %></td>
+<td><%= link_to Company.find(client.company_id).company_name, Company.find(client.company_id) %></td>
     <td><%= link_to 'Edit', edit_client_path(client) %></td>
   </tr>
 <% end %>

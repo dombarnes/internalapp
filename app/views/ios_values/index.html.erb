@@ -3,21 +3,47 @@
 <br>
 <table>
   <tr>
-    <th>Date</td>
-	  <th>Daily Rate</td>
-	  <th>Install Cost</td>
-	  <th>Annual Cost</td>
-	  <th>Install Time</td>
+    <th>Date</th>
+	  <th>Daily Rate</th>
+	  <th>Install Cost</th>
+	  <th>Annual Cost</th>
+	  <th>Install Time</th>
+	  <th>Delete?</th>
   </tr>
 <% @ios_values.each do |ios_value| %>
 	<tr>
-		<td><%= link_to ios_value.created_at.strftime("%d/%m/%Y %H:%M"), ios_value %></td>
+		<td><%= sortable link_to ios_value.created_at.strftime("%d/%m/%Y %H:%M"), ios_value %></td>
 		<td><%= ios_value.daily_rate %></td>
 		<td><%= ios_value.iosdevice_install_setup %></td>
 		<td><%= ios_value.iosdevice_support_cost %></td>
 		<td><%= ios_value.iosdevice_install_time %></td>
-	</tr>
+		<td><button id="delete-ios-value">Delete</button></td>
+		<td><a class="dialog" id="dialog-confirm" name="delete" type="delete" href="#" onclick="()" >Delete</a></td>
+		</tr>
 <% end %>
 </table>
+
 <br />
-<%= link_to 'Add New Values', new_ios_value_path %>
+
+<div id="dialog" title="Delete Record">
+  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;display:none;">Are You Sure?</span></p>
+</div>
+
+
+<div id="dialog-form" title="Create new values" style="display:none;">
+	<p class="validateTips">All form fields are required.</p>
+	<form>
+	<fieldset>
+		<label for="daily_rate">Daily Rate</label>
+		<input type="text" name="daily_rate" id="daily_rate" class="text ui-widget-content ui-corner-all" />
+		<label for="install_setup">Device Setup Time</label>
+		<input type="text" name="iodevice_install_setup" id="iosdevice_install_setup" value="" class="text ui-widget-content ui-corner-all" />
+		<label for="iosdevice_support_cost">Annual Support Cost</label>
+		<input type="text" name="iosdevice_support_cost" id="iosdevice_support_cost" value="" class="text ui-widget-content ui-corner-all" />
+		<label for="iosdevice_install_time">Device Install Time</label>
+		<input type="text" name="iosdevice_install_time" id="iosdevice_install_time" value="" class="text ui-widget-content ui-corner-all" />
+	</fieldset>
+	</form>
+</div>
+
+<button id="create-ios-value">Add new values</button>	

@@ -1,5 +1,5 @@
 class IosQuote < ActiveRecord::Base
-  attr_accessible :all
+  attr_accessible :customer, :user_id, :device_quantity, :mobile_config, :install_required, :support_required, :install_cost, :decimal, :support_cost, :ios_values_id
 #  filter_resource_access # Declarative Authorization
   
   belongs_to :user

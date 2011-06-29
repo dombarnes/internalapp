@@ -11,8 +11,9 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :company_id %><br />
-    <%= f.text_field :company_id %>
+  <%= f.label :company_name %>
+  <option value="" selected="selected"></option>
+  <%= f.collection_select(:company_id, Company.all, :id, :company_name ) %>
   </div>
   
   <div class="field">

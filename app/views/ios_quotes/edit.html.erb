@@ -1,3 +1,43 @@
 <h1>Editing iOS Quotes</h1>
+
+<% end %>
+<% if permitted_to? :update %>
 <%= render 'form' %>
+<% else %> 
+<p>
+  <b>Customer:</b>
+  <%= @ios_quote.customer %>
+</p>
+
+<p>
+  <b>Device Quantity:</b>
+  <%= @ios_quote.device_quantity %>
+</p>
+
+<p>
+  <b>Installation Required?</b>
+  <%= @ios_quote.install_required %>
+</p>
+
+<p>
+  <b>Support Required?</b>
+  <%= @ios_quote.support_required %>
+</p>
+
+<p>
+  <b>Support Cost:</b>
+  <%= number_to_currency(@ios_quote.support_cost, :unit => "&pound;") %>
+</p>
+
+<p>
+  <b>Install Cost:</b>
+  <%= number_to_currency(@ios_quote.install_cost, :unit => "&pound;") %>
+</p>
+
+<p>
+  <b>Installation Required?</b>
+  <%= @ios_quote.install_required %>
+</p>
+<% end %>
 <%= link_to 'Back', ios_quote_path %>
+<%= link_to 'Case Won', @ios_quote, :confirm => "Are you sure you want to mark this as won?", :method => :mark_as_won %>

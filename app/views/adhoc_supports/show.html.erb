@@ -4,6 +4,10 @@
   <b>Date:</b>
   <%= @adhoc_support.date %>
 </p>
+<p>
+  <b>Company ID:</b>
+  <%= Company.find(@adhoc_support.company_id).company_name %>
+</p>
 
 <p>
   <b>Type:</b>
@@ -13,11 +17,6 @@
 <p>
   <b>Technicians:</b>
   <%= @adhoc_support.technicians %>
-</p>
-
-<p>
-  <b>Client:</b>
-  <%= @adhoc_support.client_id %>
 </p>
 
 <p>

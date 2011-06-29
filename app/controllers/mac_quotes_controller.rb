@@ -6,7 +6,7 @@ class MacQuotesController < ApplicationController
   def create
     @mac_quote = current_user.mac_quotes.build(params[:mac_quote])
     @quote_values = MacValues.last
-    @mac_quote.mac_values_id = @quote_values.id
+    @mac_quote.mac_values_id = @mac_values.id
     if @mac_quote.save
       flash[:success] = "Quote saved!"
       redirect_to mac_quotes_path
@@ -26,7 +26,7 @@ class MacQuotesController < ApplicationController
   
   def update
     @mac_quote = MacQuote.find(params[:id])
-  	@mac_values = @mac_quote.mac_values_id
+  	@mac_value = @mac_quote.mac_values_id
       if install_required == "1"
 #        @mac_quote.install_cost = 
       end

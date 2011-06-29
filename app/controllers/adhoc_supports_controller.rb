@@ -4,7 +4,7 @@ class AdhocSupportsController < ApplicationController
   filter_resource_access
   
   def index
-    @adhoc_supports = AdhocSupport.all
+    @adhoc_supports = AdhocSupport.order(sort_column + " " + sort_direction)
     @title = "Ad Hoc Support Contracts"
     respond_to do |format|
       format.html # index.html.erb
@@ -80,5 +80,12 @@ class AdhocSupportsController < ApplicationController
       @user = User.find(params[:id])
       redirect_to(root_path) unless current_user?(@user)
     end
+    
+    def sort_column
+      AdhocSupport.column_names.include?(params[:sort]) ? params[:sort] : "date"
+    end
 
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
+    end
 end

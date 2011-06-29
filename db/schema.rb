@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110602161941) do
+ActiveRecord::Schema.define(:version => 20110629162159) do
 
   create_table "adhoc_supports", :force => true do |t|
     t.date     "date"
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(:version => 20110602161941) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "position"
-    t.integer  "telephone_number"
-    t.integer  "mobile_number"
+    t.string   "telephone_number"
+    t.string   "mobile_number"
     t.string   "email_address"
     t.string   "company_id"
     t.datetime "created_at"
@@ -62,15 +62,12 @@ ActiveRecord::Schema.define(:version => 20110602161941) do
     t.boolean  "support_required"
     t.boolean  "mobile_config"
     t.decimal  "install_cost"
-    t.decimal  "decimal"
     t.decimal  "support_cost"
     t.integer  "ios_values_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "won"
   end
-
-  add_index "ios_quotes", ["ios_values_id"], :name => "index_ios_quotes_on_ios_values_id"
-  add_index "ios_quotes", ["user_id"], :name => "index_ios_quotes_on_user_id"
 
   create_table "ios_values", :force => true do |t|
     t.decimal  "daily_rate"
@@ -105,6 +102,7 @@ ActiveRecord::Schema.define(:version => 20110602161941) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "won"
   end
 
   add_index "mac_quotes", ["mac_values_id"], :name => "index_mac_quotes_on_mac_values_id"

@@ -19,3 +19,10 @@
 </p>
 
 <%= link_to '← Back', ios_values_path %>
+<% if permitted_to? :delete %>
+  <%= link_to "Delete", @ios_value, :confirm => "Are you sure you wish to delete this entry? Doing so will render any associated quotes unable to update.", :method => :delete, :remote => true, :title => "Delete iOS Quote Values" %>
+  <% end %>
+  
+<div id="jquery_confirm"
+  $()
+</div>
