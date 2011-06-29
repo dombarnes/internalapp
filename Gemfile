@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'authlogic'
 gem 'declarative_authorization'
 gem 'ruby_parser'
+gem 'thin'
 	
 group :development do
 	gem 'rspec-rails', '2.5.0'

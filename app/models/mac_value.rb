@@ -1,5 +1,5 @@
 class MacValue < ActiveRecord::Base
-  attr_accessible :
+  attr_accessible
     :mac_install_time, 
     :server_install_time, 
     :new_user_setup_time,
