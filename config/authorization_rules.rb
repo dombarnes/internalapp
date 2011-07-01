@@ -1,3 +1,11 @@
+privileges do
+  privilege :manage, :includes => [:create, :read, :update, :destroy]
+  privilege :read, :includes => [:index, :show]
+  privilege :create, :includes => :new
+  privilege :update, :includes => :edit
+  privilege :delete, :includes => :destroy
+end
+
 authorization do
   role :guest do
     has_permission_on :users, :to => [:new]
@@ -5,11 +13,13 @@ authorization do
   end
 
   role :standard do
-    has_permission_on :users, :to => [:show, :update] do
+    includes :guest
+    has_permission_on :home, :to => [:read]
+    has_permission_on :users, :to => [:show, :update, :index] do
       if_attribute :user => is { current_user }
     end
-    has_permission_on [:ios_quotes, :mac_quotes], :to => [:create]
-    has_permission_on [:ios_quotes, :mac_quotes], :to => [:read, :update] do
+    has_permission_on [:ios_quotes, :mac_quotes], :to => [:index, :create]
+    has_permission_on [:ios_quotes, :mac_quotes], :to => [:index, :read, :update] do
       if_attribute :user => is { user }
     end
   end
@@ -26,10 +36,3 @@ authorization do
   end
 end
 
-privileges do
-  privilege :manage, :includes => [:create, :read, :update, :destroy]
-  privilege :read, :includes => [:index, :show]
-  privilege :create, :includes => :new
-  privilege :update, :includes => :edit
-  privilege :delete, :includes => :destroy
-end

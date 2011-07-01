@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110629162159) do
+ActiveRecord::Schema.define(:version => 20110630134635) do
 
   create_table "adhoc_supports", :force => true do |t|
     t.date     "date"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(:version => 20110629162159) do
     t.integer  "ios_values_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "won"
+    t.string   "quote_status"
   end
 
   create_table "ios_values", :force => true do |t|
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(:version => 20110629162159) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "won"
+    t.string   "quote_status"
   end
 
   add_index "mac_quotes", ["mac_values_id"], :name => "index_mac_quotes_on_mac_values_id"

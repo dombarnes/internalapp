@@ -23,7 +23,7 @@
     <td><%= adhoc_support.job_type %></td>
     <td><%= adhoc_support.technicians %></td>
     <td><%= link_to Company.find(adhoc_support.company_id).company_name, Company.find(adhoc_support.company_id) %></td>
-    <td><%= link_to 'Delete', adhoc_support, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Delete', adhoc_support, :confirm => 'Are you sure?', :method => :delete, :remote => :true %></td>
   </tr>
 <% end %>
 </table>

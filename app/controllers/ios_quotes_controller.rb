@@ -1,7 +1,7 @@
 class IosQuotesController < ApplicationController
   before_filter :require_user
   helper_method :sort_column, :sort_direction
-#  filter_access_to :all
+  filter_access_to :all
 
   def create
     @title = "New Quote"
@@ -14,6 +14,7 @@ class IosQuotesController < ApplicationController
     if @ios_quote.support_required = "1"
       @ios_quote.support_cost = (@ios_value.iosdevice_support_cost * @ios_quote.device_quantity)
     end
+    @ios_quote.quote_status = "Pending"
     if @ios_quote.save
       flash[:success] = "Quote saved!"
       redirect_to @ios_quote
@@ -23,6 +24,13 @@ class IosQuotesController < ApplicationController
   end
   
   def index
+    @filters = Item::FILTERS
+      if params[:show] && @filters.collect{|f| f[:scope]}.include?(params[:show])
+        @items = Item.send(params[:show])
+      else
+        @items = Item.all
+      end
+      
      @ios_quotes = IosQuote.paginate(:per_page => 10, :page => params[:id])
       @title = "iOS Quotes"
       respond_to do |format|

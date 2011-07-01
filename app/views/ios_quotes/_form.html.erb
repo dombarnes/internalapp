@@ -31,6 +31,16 @@
     <%= f.label :mobile_config %>
     <%= f.check_box :mobile_config %>
   </div><br />
+  <% if not @ios_quote.new_record? %>
+  <div class="field">
+      <%= f.label :quote_status %><br />
+  	<select id="ios_quotes_quote_status" name="ios_quote[quote_status]">
+    	<option value="Won" selected="" >Won</option>
+    	<option value="Pending" selected="" >Pending</option>
+  		<option value="Lost" selected="" >Lost</option>
+  	</select>
+  </div>
+  <% end %>
   <div class="button">
   <a class="button" id="ios_quote_submit" name="commit" type="submit" href="#" onclick="submit()"><span>Submit Quote</span></a>
   </div>

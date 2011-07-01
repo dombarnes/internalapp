@@ -5,6 +5,7 @@
 <%= link_to 'New Quote', new_ios_quote_path %><br>
 <% end %>
 <br>
+<%= filter_table %>
 <table>
   <tr>
     <th>Date</td>
@@ -12,10 +13,11 @@
     <th>Quantity</th>
     <th>Install Cost</th>
     <th>Support Cost</th>
-    <th>Quote Won?</th>
+    <th>Quote Status</th>
   </tr>
-<% @ios_quotes.each do |ios_quote| %>
-	<tr>
+  
+<% @ios_quotes.each => {:user_id => current_user.id} do |ios_quote|,  %>
+	<tr class="filterable">
 		<td><%= 
     link_to_if((permitted_to? :update), ios_quote.created_at.strftime("%d/%m/%Y"), { :controller => "ios_quotes", :action => "update", :id => ios_quote}) do
       link_to(@ios_quote, ios_quote.created_at.strftime("%d/%m/%Y"), { :controller => "ios_quote", :action => "show", :id => ios_quote})
@@ -24,7 +26,7 @@
 		<td><%= ios_quote.device_quantity %></td>
 		<td><%= number_to_currency(ios_quote.install_cost, :unit => "&pound;") %></td>
 		<td><%= number_to_currency(ios_quote.support_cost, :unit => "&pound;") %></td>
-		<td><%= ios_quote.won %></td>
+		<td><%= ios_quote.quote_status %></td>
 	</tr>
 <% end %>
 </table>

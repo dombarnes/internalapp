@@ -34,6 +34,11 @@
   <b>Installation Required?</b>
   <%= @ios_quote.install_required %>
 </p>
+<p>
+  <b>Quote Status</b>
+  <%= @ios_quote.quote_status %>
+</p>
+
 
 <div id="bottom_nav">
   <div id="back_button">
@@ -42,9 +47,11 @@
   <% end %>
   </div>
   <div id="edit_button">
+  <% if permitted_to? :update %>
+    <%= link_to 'Edit', edit_ios_quote_path(@ios_quote) %>
+  <% end %>    
     <% if permitted_to? :delete %>
-      <%= link_to 'Destroy', @ios_quote, :confirm => 'Are you sure?', :method => :delete %>
+      <%= link_to 'Delete Quote', @ios_quote, :confirm => 'Are you sure? This deletion will be permanent.', :method => :delete, :remote => :true %>
     <% end %>
   </div>
-  <%= link_to 'Case Won', ios_quote_path(@ios_quote, {:won => "1"}), :confirm => "Are you sure you want to mark this as won?", :method => :put, :remote => true %>
 </div>
