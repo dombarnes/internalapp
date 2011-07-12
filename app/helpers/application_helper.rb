@@ -1,5 +1,5 @@
 module ApplicationHelper
-include FilterableTable::Helper
+  #include FilterableTable::Helper
 
   def logo
     image_tag("logo.jpg", :alt => "Internalapp")

@@ -13,10 +13,10 @@
 ActiveRecord::Schema.define(:version => 20110630134635) do
 
   create_table "adhoc_supports", :force => true do |t|
-    t.date     "date"
-    t.string   "job_type"
-    t.integer  "technicians"
-    t.integer  "company_id"
+    t.date     "date",        :null => false
+    t.string   "job_type",    :null => false
+    t.integer  "technicians", :null => false
+    t.integer  "company_id",  :null => false
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -68,6 +68,9 @@ ActiveRecord::Schema.define(:version => 20110630134635) do
     t.datetime "updated_at"
     t.string   "quote_status"
   end
+
+  add_index "ios_quotes", ["ios_values_id"], :name => "index_ios_quotes_on_ios_values_id"
+  add_index "ios_quotes", ["user_id"], :name => "index_ios_quotes_on_user_id"
 
   create_table "ios_values", :force => true do |t|
     t.decimal  "daily_rate"
@@ -160,7 +163,7 @@ ActiveRecord::Schema.define(:version => 20110630134635) do
   add_index "user_sessions", ["updated_at"], :name => "index_user_sessions_on_updated_at"
 
   create_table "users", :force => true do |t|
-    t.string   "login",                                  :null => false
+    t.string   "login"
     t.string   "email",                                  :null => false
     t.string   "first_name",                             :null => false
     t.string   "last_name",                              :null => false

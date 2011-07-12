@@ -172,6 +172,11 @@ a:visited {
 	font-size : 15px ;
 }
 
+#more_link {
+	margin:2px 3px;
+	float:right;
+}
+
 /* Sign up button */
 a.signup_button {
   margin-left: auto;
@@ -294,7 +299,7 @@ div.pagination {
 	padding : 2px 5px;
 }
 
-/* Form Styling */
+/* Generic Form Styling */
 
 legend {
 	margin-left : 1em;
@@ -302,13 +307,54 @@ legend {
 	color : #000 ;
 	font-weight : bold ;
 }
+
 label {
+	min-width : 20% ;
+	padding : 2px 5px 0 0 ;
+	float : left ;
+	text-align : left ;
+	margin : 0 1em 0 0 ;
+}
+input[type="text"], input[type="password"] {
+	padding: 2px 2px;
+	margin: 0 0 0 5px;
+	font-size:1.1em;
+	vertical-align:middle;
+	
+}
+
+/* iOS Quote Styling */
+#iosquote label {
 	width : 25% ;
 	padding : 2px 5px 0 0 ;
 	float : left ;
 	text-align : left ;
 	margin-right : 1em ;
 }
+#iosquote input[type="text"], input[type="password"] {
+	padding: 5px;
+	margin-bottom: 5px;
+	font-size:1.4em;
+	vertical-align:middle;
+	
+}
+
+/* Mac Quote Styling */
+#macquote label {
+	width : 25% ;
+	padding : 2px 5px 0 0 ;
+	float : left ;
+	text-align : left ;
+	margin-right : 1em ;
+}
+#macquote input[type="text"], input[type="password"] {
+	padding: 5px;
+	margin-bottom: 5px;
+	font-size:1.4em;
+	vertical-align:middle;
+	
+}
+
 p#helper {
 	font-size : 0.82em ;
 	background : ;
@@ -320,7 +366,28 @@ p#helper {
 }
 .field { 
 	min-height : 50px;
+	margin:2px;
+	font-size:1.2em;
+	text-align:;
 }
+
+/* Login Form Styling */
+#loginform label {
+	font-size:1.4em;
+	font-family:Helvetica, arial, san-serif;
+	font-color:black;
+	padding:5px;
+	vertical-align:middle;
+}
+
+#loginform input[type="text"], input[type="password"] {
+	padding: 5px;
+	margin-bottom: 5px;
+	font-size:1.4em;
+	vertical-align:middle;
+	
+}
+
 fieldset li {
 	float: left;      
 	clear: both;      
@@ -341,6 +408,8 @@ fieldset {
 	overflow : hidden ;
 	width : 100% ;
 }
+
+/* a href styling */
 a.button {
 	background: transparent url('../images/bg_button_a.gif') no-repeat scroll top right;
 	color: #444;
@@ -414,6 +483,10 @@ th	 {
 	font-size : 0.86em ;
 	background : #cccfaa ;
 
+}
+.tabletitle {
+	background:;
+	padding: 4px 3px;
 }
 
 .awesome{

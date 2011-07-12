@@ -9,7 +9,6 @@ gem 'jquery-rails'
 gem 'authlogic'
 gem 'declarative_authorization'
 gem 'ruby_parser'
-gem 'filterable_table'
 	
 group :development do
 	gem 'rspec-rails', '2.5.0'

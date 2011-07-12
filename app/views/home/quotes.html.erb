@@ -1,5 +1,5 @@
 <h2>Quotes Dashboard</h2>
 
-<%= link_to "Create a new Mac Install or Support Quote", new_mac_quote_path %><br />
-<%= link_to "Create a new iOS Deployment and Support Quote", new_ios_quote_path %><br />
-
+<%= render 'dashboard' %>
+<%= render :partial => 'shared/mac_quotes', @user_mac_quotes => { :user_id => current_user.id } %>
+<%= render :partial => 'shared/ios_quotes', @user_ios_quotes => { :user_id => current_user.id } %>

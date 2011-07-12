@@ -1,16 +1,10 @@
-class ApplicationController < ActionController::Base
+class ApplicationController < ActionController::Base  
   protect_from_forgery
   helper :all
   helper_method :current_user_session, :current_user
-#  filter_access_to :all
-  
-  #For CanCan
-  #rescue_from CanCan::AccessDenied do |exception|
-  #  flash[:error] = exception.message
-  #  redirect_back_or_default(root_path)
-  #end
+  #filter_access_to :all
 
-  ## For Declarative Authorization
+  #For Declarative Authorization
   before_filter :set_current_user
   
   protected

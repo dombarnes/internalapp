@@ -1,6 +1,7 @@
+<h3 class="tabletitle">Mac</h3>
+<%= link_to "Create a new Installation Quote", mac_quotes_path %>
 <br>
-<h3>Latest Mac Quotes</h3>
-
+<h3 class="tabletitle">Latest Mac Quotes</h3>
 <table id="home-mac-quote">
   <tr>
     <th>Date</td>
@@ -11,7 +12,7 @@
   </tr>
 <% MacQuote.where(:user_id => current_user.id).limit(5).all.each do |mac_quote| %>
 	<tr>
-		<td><%= mac_quote.created_at.strftime("%d/%m/%Y") %>
+		<td><%= mac_quote.created_at.strftime("%d/%m/%Y") %></td>
 		<td><%= link_to mac_quote.customer_name, mac_quote %></td>
 		<td><%= mac_quote.client_quantity %></td>
 		<td><%= number_to_currency(mac_quote.install_cost, :unit => "&pound;") %></td>
@@ -19,3 +20,7 @@
 	</tr>
 <% end %>
 </table>
+<div id="more_link">
+<%= link_to "More...", mac_quotes_path %>
+</div>
+

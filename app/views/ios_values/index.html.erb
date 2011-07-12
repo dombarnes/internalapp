@@ -12,7 +12,7 @@
   </tr>
 <% @ios_values.each do |ios_value| %>
 	<tr>
-		<td><%= sortable link_to ios_value.created_at.strftime("%d/%m/%Y %H:%M"), ios_value %></td>
+		<td><%= link_to ios_value.created_at.strftime("%d/%m/%Y %H:%M"), ios_value %></td>
 		<td><%= ios_value.daily_rate %></td>
 		<td><%= ios_value.iosdevice_install_setup %></td>
 		<td><%= ios_value.iosdevice_support_cost %></td>

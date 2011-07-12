@@ -1,5 +1,6 @@
 class Notifier < ActionMailer::Base  
 default_url_options[:host] = "example.com"
+default :from => "noreply@example.com"
   
   def password_reset_instructions(user)  
     subject       "Password Reset Instructions"  
@@ -33,4 +34,23 @@ default_url_options[:host] = "example.com"
       end
     end
 
+    def new_user_notification(user)
+      @user = user
+        from      "Binary Logic Notifier <noreply@domain.com>"
+        mail( :to => "dom@macbyte.co.uk",
+              :subject => "New User Registration",
+              :from => from,
+              :fail_to => from
+            ) do |format|
+          format.text
+        end
+    end
+
+    def send_reseller_quote
+      from    "info@example.com"
+      attachments[]
+      mail( :to => user.email,
+            :subject => "iOS Quote for <%= @ios_quote.company_name %>"   
+      )
+    end
 end

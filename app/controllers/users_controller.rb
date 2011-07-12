@@ -1,8 +1,10 @@
 class UsersController < ApplicationController  
-  before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_user, :only => [:show, :edit, :update]
+  filter_access_to :all
+#  filter_access_to :edit, :attribute_check => true
+#  filter_access_to :update, :attribute_check => true
+#  filter_access_to :destroy, :attribute_check => true
+
   helper_method :sort_column, :sort_direction
-  filter_resource_access
   
   def index
     @users = User.all
@@ -10,19 +12,19 @@ class UsersController < ApplicationController
   
   def new
     @user = User.new
-    
   end
 
   def create
     @user = User.new(params[:user])
-
     # Saving without session maintenance to skip
     # auto-login which can't happen here because
     # the User has not yet been activated
     if @user.save_without_session_maintenance
+      @user.send_new_user_notification!
       @user.send_activation_instructions!
       flash[:notice] = "Your account has been created. Please check your email for activation instructions."
-      redirect_to signup_url
+      redirect_to root_url
+      
     else
       flash[:notice] = "There was a problem creating your account."
       render :action => :new

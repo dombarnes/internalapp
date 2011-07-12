@@ -27,9 +27,11 @@
 
 	<div id="wrapper">
     	<div id="content">
+    	<% if content_for?(:sidebar) %>
       		<div id="sidebar">
-        		<%= content_for?(:sidebar) ? yield(:sidebar) : render(:partial => 'layouts/sidebar') %>
+        		 <% yield(:sidebar) %>
       		</div><!-- end sidebar -->
+      		<% end %>
       		<div id="main" class="round">
         		<% flash.each do |key, value| %>
           		<div class="flash <%= key %>"><%= value %></div>

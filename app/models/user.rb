@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   acts_as_authentic do |c|
+    c.validate_login_field = false # There is no login field, so don't validate it
     c.login_field = :email          # email is the login field
-    c. validate_login_field = false # There is no login field, so don't validate it
   end
 
   # relationships
@@ -40,22 +40,11 @@ class User < ActiveRecord::Base
     reset_perishable_token!
     Notifier.activation_confirmation(self).deliver
   end
-
-  ### AuthLogic/CanCan Code
-#  ROLES = %w[admin staff standard]
-#
-#  def roles=(roles)
-#    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
-#  end
-
-#  def roles
-#    ROLES.reject { |r| ((roles_mask || 0) & 2**ROLES.index(r)).zero? }
-#  end
-
-#  def role?(role)
-#    roles.include? role.to_s
-#  end
   
+  def send_new_user_notification!
+    Notifier.new_user_notification(self).deliver
+  end
+
   def role_symbols
     roles.map do |role|
       role.name.underscore.to_sym

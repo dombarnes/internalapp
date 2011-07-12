@@ -1,5 +1,10 @@
-<%= link_to 'New Quote', new_mac_quote_path %>
-<br />
+<h1>Recent Mac Quotes</h1>
+<%= link_to ' Back', root_path %><br>
+<br>
+<% if permitted_to? :create, @mac_quote %>
+<%= link_to 'New Quote', new_mac_quote_path %><br>
+<% end %>
+<br>
 <table>
   <tr>
     <th>Date</td>
