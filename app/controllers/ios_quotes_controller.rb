@@ -70,10 +70,11 @@ class IosQuotesController < ApplicationController
   end
   
   def mark_as_won
-  @ios_quote.won = "1"
-  if @ios_quote.update_attributes(params[:id])
-    redirect_to(ios_quotes_path, :notice => "Quote has been marked as won!")
-  end
+  	@ios_quote = IosQuote.find(params[:id])
+    @ios_quote.quote_status == "Won"
+    if @ios_quote.update_attributes(params[:ios_quote])
+      redirect_to(ios_quotes_path, :notice => "Quote has been marked as won!")
+    end
   end
   
   def new

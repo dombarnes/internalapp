@@ -41,12 +41,15 @@
     <%= link_to '← Back to list', ios_quotes_path %>
   <% end %>
   </div>
+  <div id="won_button">
+    <%= link_to 'Mark as Won',{:controller => :ios_quotes, :method => :mark_as_won}, :remote => true %>
+  </div>
   <div id="edit_button">
   <% if permitted_to? :update %>
     <%= link_to 'Edit', edit_ios_quote_path(@ios_quote) %>
   <% end %>    
     <% if permitted_to? :delete %>
-      <%= link_to 'Delete Quote', @ios_quote, :confirm => 'Are you sure? This deletion will be permanent.', :method => :delete, :remote => :true %>
+      <%= link_to 'Delete Quote', ios_quote_path(@ios_quote), :confirm => 'Are you sure? This deletion will be permanent.', :method => :delete, :remote => :true %>
     <% end %>
   </div>
 </div>
