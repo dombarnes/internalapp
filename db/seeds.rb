@@ -39,11 +39,11 @@
                        
   # create roles
   admin_role = Role.create( :name => 'admin', 
-                            :description => 'Admin user')
+                            :description => 'Admin user', :created_at => Time.now)
   staff_role = Role.create( :name => 'staff', 
-                            :description => 'Internal Staff user')
+                            :description => 'Internal Staff user', :created_at => Time.now))
   user_role  = Role.create( :name => 'user', 
-                            :description => 'Reseller user')
+                            :description => 'Reseller user', :created_at => Time.now))
   
   # create dummy quote data
   ios_quote_data = IosValue.create( :daily_rate => "100", 

@@ -14,7 +14,7 @@ gem 'thin'
 group :development do
 #	gem 'rspec-rails', '2.5.0'
 #	gem 'annotate-models', '1.0.4'
-#	gem 'faker', '0.3.1'
+	gem 'faker', '0.3.1'
 	gem 'nokogiri', '1.5.0.beta.4'
 end
 
