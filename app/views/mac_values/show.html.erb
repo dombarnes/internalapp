@@ -1,0 +1,28 @@
+<div class="field">
+<b>Date</b>
+  <%= @mac_value.created_at.strftime("%d/%m/%Y") %>
+</p>
+<p>
+  <b>Daily Rate (£)</b>
+  <%= @mac_value.day_rate %>
+<p>
+  <b>User Creation Time</b>
+  <%= @mac_value.new_user_setup_time %>
+</p>
+<p>
+  <b>AD Integration</b>
+  <%= @mac_value.ad_integration_time %>
+</p>
+<p>
+  <b>DeployStudio Setup Time</b>
+  <%= @mac_value.deploy_studio_setup_time %>
+</p>
+
+<%= link_to '← Back', mac_values_path %>
+<% if permitted_to? :delete %>
+  <%= link_to "Delete", @mac_value, :confirm => "Are you sure you wish to delete this entry? Doing so will render any associated quotes unable to update.", :method => :delete, :remote => true, :title => "Delete Mac Quote Values" %>
+  <% end %>
+  
+<div id="jquery_confirm"
+  $()
+</div>

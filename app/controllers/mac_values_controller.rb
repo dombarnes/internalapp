@@ -1,6 +1,6 @@
 class MacValuesController < ApplicationController
-  helper_method :sort_column, :sort_direction
   before_filter :require_user
+  helper_method :sort_column, :sort_direction
   filter_resource_access
     
   def index
@@ -22,19 +22,13 @@ class MacValuesController < ApplicationController
         format.xml  { render :xml => @mac_value }
       end
   end
-  
-  def edit
-      @title = "Edit Mac Calculation Values"
-      @mac_value = MacValue.find(params[:id])
-  end
-  
+    
   def create
-      @title = "New Mac Calculation Values"
-      @mac_value = MacValue.new(params[:mac_value])
-      
+      @mac_value = MacValue.create!(params[:mac_value])
+
       respond_to do |format|
         if @mac_value.save
-          format.html { redirect_to( :back, :notice => 'Quotation Values Saved.') }
+          format.html { redirect_to( mac_values_path, :notice => 'Quotation Values Saved.') }
           format.xml  { render :xml => @mac_value, :status => :created, :location => @mac_value }
         else
           format.html { render :action => "new" }
@@ -43,10 +37,17 @@ class MacValuesController < ApplicationController
       end
   end
   
+  def destroy
+    @mac_value = MacValue.find(params[:id]).destroy
+    respond_to do |format|
+      format.html {flash[:success] = "Mac Quote Values deleted."
+                  redirect_to mac_values_path }
+      format.js
+    end
+  end
+  
   def show
     @title = "Values"
     @mac_value = MacValue.find(params[:id])
   end
-  
-  
 end

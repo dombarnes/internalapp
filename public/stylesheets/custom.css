@@ -338,6 +338,23 @@ input[type="text"], input[type="password"] {
 	vertical-align:middle;
 	
 }
+/* iOS Value Styling */
+.iosvalues label {
+	width : 25% ;
+	padding : 2px 5px 0 0 ;
+	float : left ;
+	text-align : left ;
+	margin-right : 1em ;
+}
+.iosvalues input[type="text"] {
+	width:100px;
+	padding: 5px;
+	margin-left:100px;
+	margin-bottom: 5px;
+	font-size:1.4em;
+	vertical-align:middle;
+	text-align:right;	
+}
 
 /* Mac Quote Styling */
 #macquote label {
@@ -353,6 +370,26 @@ input[type="text"], input[type="password"] {
 	font-size:1.4em;
 	vertical-align:middle;
 	
+}
+
+/* Mac Value Styling */
+.macvalues label {
+	width : 25% ;
+	font-size:1em;
+	color:#000;
+	padding : 2px 5px 0 0 ;
+	float : left ;
+	text-align : left ;
+	margin-right : 1em ;
+}
+.macvalues input[type="text"] {
+	width:100px;
+	padding: 5px;
+	margin-left:100px;
+	margin-bottom: 5px;
+	font-size:1.4em;
+	vertical-align:middle;
+	text-align:right;	
 }
 
 p#helper {

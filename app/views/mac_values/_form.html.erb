@@ -9,7 +9,7 @@
       </ul>
     </div>
   <% end %>
-
+<div class="macvalues">
   <div class="field">
     <%= f.label "Mac Install Time" %>
     <%= f.text_field :mac_install_time %>
@@ -98,7 +98,9 @@
     <%= f.label "Server Support Cost (Annually)" %>
     <%= f.text_field :server_support_cost %>
   </div>
-  <%= f.submit %>
-  <div class="button"><span>Submit</span>
+  <div class="actions">
+    <%= f.submit :class => "medium red awesome"%>
   </div>
+  </div>
+</div>
 <% end %>

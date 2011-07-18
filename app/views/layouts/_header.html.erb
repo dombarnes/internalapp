@@ -2,10 +2,10 @@
 	<li class="header_logo"><%= link_to logo , root_path %></li>
 	<ul id="nav">
 			<li><%= link_to "Home", root_path %></li>
-		<% if permitted_to? :show, :clients %>
-			<li><%= link_to "Clients", clients_path %></li>
-			<li><%= link_to "Ad Hoc Support", adhoc_supports_path %></li>
+		<% if permitted_to? :show, :people %>
 			<li><%= link_to "Companies", companies_path %></li>
+			<li><%= link_to "People", people_path %></li>
+			<li><%= link_to "Ad Hoc Support", adhoc_supports_path %></li>
 		<% end %>
 		<% if permitted_to? :new, :ios_quotes %>
 		  <li><%= link_to "Quotes", quotes_path %></li>

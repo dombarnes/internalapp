@@ -20,8 +20,10 @@ class CreateMacQuotes < ActiveRecord::Migration
       t.boolean   :aperture
       t.decimal   :install_cost
       t.decimal   :support_cost
+      t.string    :status
+      t.integer   :user_id
       t.integer   :mac_values_id
-      t.integer :user_id
+      
       t.timestamps
     end
     add_index :mac_quotes, :user_id

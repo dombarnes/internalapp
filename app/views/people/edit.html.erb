@@ -1,0 +1,9 @@
+<h1>Editing <%= @people.first_name + " " + @people.last_name %></h1>
+
+<%= render 'form' %>
+</ br>
+<div id="bottom_nav">
+  <div id="back_button">
+    <%= link_to 'Back', people_path, :class => "navigation_link" %>
+  </div>
+</div>

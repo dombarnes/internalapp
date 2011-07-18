@@ -2,14 +2,15 @@ class CreateIosQuotes < ActiveRecord::Migration
   def self.up
     create_table :ios_quotes do |t|
       t.string :customer
-      t.integer :user_id
       t.integer :device_quantity
       t.boolean :install_required
       t.boolean :support_required
       t.boolean :mobile_config
       t.decimal :install_cost, {:scale => 2}
       t.decimal :support_cost, {:scale => 2}
+      t.integer :user_id
       t.integer :ios_values_id
+      t.string  :status
       
       t.timestamps
     end

@@ -6,12 +6,10 @@ class IosValuesController < ApplicationController
   def index
     @title = "iOS Calculation Values"
     @ios_values = IosValue.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @ios_values }
-    end
-    
+    end  
     @ios_values = IosValue.paginate(:page => params[:page])
   end
 
@@ -52,15 +50,4 @@ class IosValuesController < ApplicationController
     @title = "Values"
     @ios_value = IosValue.find(params[:id])
   end
-  
-private
-  def authenticate
-    deny_access unless signed_in?
-  end
-  
-  def correct_user
-    @user = User.find(params[:id])
-    redirect_to(root_path) unless current_user?(@user)
-  end  
-
 end

@@ -2,7 +2,7 @@ Internalapp::Application.routes.draw do
   get "user_sessions/new"
 
   resources :adhoc_supports
-  resources :clients
+  resources :person
   resources :users
   resource :user, :as => 'account'
   resources :companies
@@ -12,7 +12,6 @@ Internalapp::Application.routes.draw do
   resources :ios_values
   resources :users, :user_sessions
   resources :password_resets
-
   
   get "home/index"
   match '/', :to => 'home#index'
@@ -24,7 +23,7 @@ Internalapp::Application.routes.draw do
   match '/admin', :to => 'admin#index'
   match '/dashboard', :to => 'home#dashboard'
   match '/adhocsupport', :to => 'adhoc_supports#index'
-  match '/clients', :to => 'clients#index'
+  match '/people', :to => 'people#index'
   match '/companies', :to => 'companies#index'
   match '/quotes', :to => 'home#quotes'
   match '/help', :to =>'home#help'

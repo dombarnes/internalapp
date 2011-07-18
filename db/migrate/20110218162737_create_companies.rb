@@ -13,7 +13,7 @@ class CreateCompanies < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :clients, :company_id
+    add_index :person, :company_id
     add_index :adhoc_supports, :company_id
   end
 

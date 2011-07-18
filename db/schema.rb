@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110630134635) do
+ActiveRecord::Schema.define(:version => 20110412123721) do
 
   create_table "adhoc_supports", :force => true do |t|
     t.date     "date",        :null => false
@@ -23,22 +23,6 @@ ActiveRecord::Schema.define(:version => 20110630134635) do
   end
 
   add_index "adhoc_supports", ["company_id"], :name => "index_adhoc_supports_on_company_id"
-
-  create_table "clients", :force => true do |t|
-    t.string   "client_name"
-    t.string   "title"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "position"
-    t.string   "telephone_number"
-    t.string   "mobile_number"
-    t.string   "email_address"
-    t.string   "company_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "clients", ["company_id"], :name => "index_clients_on_company_id"
 
   create_table "companies", :force => true do |t|
     t.string   "company_name"
@@ -56,17 +40,17 @@ ActiveRecord::Schema.define(:version => 20110630134635) do
 
   create_table "ios_quotes", :force => true do |t|
     t.string   "customer"
-    t.integer  "user_id"
     t.integer  "device_quantity"
     t.boolean  "install_required"
     t.boolean  "support_required"
     t.boolean  "mobile_config"
     t.decimal  "install_cost"
     t.decimal  "support_cost"
+    t.integer  "user_id"
     t.integer  "ios_values_id"
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "quote_status"
   end
 
   add_index "ios_quotes", ["ios_values_id"], :name => "index_ios_quotes_on_ios_values_id"
@@ -101,11 +85,11 @@ ActiveRecord::Schema.define(:version => 20110630134635) do
     t.boolean  "aperture"
     t.decimal  "install_cost"
     t.decimal  "support_cost"
-    t.integer  "mac_values_id"
+    t.string   "status"
     t.integer  "user_id"
+    t.integer  "mac_values_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "quote_status"
   end
 
   add_index "mac_quotes", ["mac_values_id"], :name => "index_mac_quotes_on_mac_values_id"
@@ -137,6 +121,28 @@ ActiveRecord::Schema.define(:version => 20110630134635) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "person", :force => true do |t|
+    t.string   "title"
+    t.string   "company_name"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "position"
+    t.string   "telephone_number"
+    t.string   "mobile_number"
+    t.string   "email_address"
+    t.string   "website"
+    t.text     "address"
+    t.string   "city"
+    t.string   "county"
+    t.string   "postcode"
+    t.string   "company_id"
+    t.text     "info"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "person", ["company_id"], :name => "index_person_on_company_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"

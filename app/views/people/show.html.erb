@@ -2,48 +2,48 @@
 
 <p>
   <b>Client name:</b>
-  <%= @client.client_name %>
+  <%= @people.client_name %>
 </p>
 <p>
   <b>Company:</b>
-  <%= Company.find(@client.company_id).company_name %>
+  <%= Company.find(@people.company_id).company_name %>
 </p>
 <p>
   <b>Title:</b>
-  <%= @client.title %>
+  <%= @people.title %>
 </p>
 
 <p>
   <b>First name:</b>
-  <%= @client.first_name %>
+  <%= @people.first_name %>
 </p>
 
 <p>
   <b>Last name:</b>
-  <%= @client.last_name %>
+  <%= @people.last_name %>
 </p>
 
 <p>
   <b>Position:</b>
-  <%= @client.position %>
+  <%= @people.position %>
 </p>
 
 <p>
   <b>Telephone number:</b>
-  <%= @client.telephone_number %>
+  <%= @people.telephone_number %>
 </p>
 
 <p>
   <b>Mobile number:</b>
-  <%= @client.mobile_number %>
+  <%= @people.mobile_number %>
 </p>
 
 <p>
   <b>Email address:</b>
-  <%= @client.email_address %>
+  <%= @people.email_address %>
 </p>
 
 
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %> |
+<%= link_to 'Edit', edit_people_path(@people) %> |
+<%= link_to 'Back', people_path %> |
 <%= link_to 'Delete', :confirm => 'Are you sure you want to delete this person?', :method => :delete %>
