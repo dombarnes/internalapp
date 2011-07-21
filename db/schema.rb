@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(:version => 20110412123721) do
 
   add_index "adhoc_supports", ["company_id"], :name => "index_adhoc_supports_on_company_id"
 
+  create_table "assignments", :id => false, :force => true do |t|
+    t.integer  "role_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "companies", :force => true do |t|
     t.string   "company_name"
     t.string   "address_1"
@@ -151,13 +158,6 @@ ActiveRecord::Schema.define(:version => 20110412123721) do
     t.datetime "updated_at"
   end
 
-  create_table "roles_users", :id => false, :force => true do |t|
-    t.integer  "role_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "user_sessions", :force => true do |t|
     t.string   "session_id", :null => false
     t.text     "data"
@@ -190,7 +190,6 @@ ActiveRecord::Schema.define(:version => 20110412123721) do
     t.datetime "updated_at"
     t.boolean  "active",              :default => false
     t.string   "perishable_token",    :default => "",    :null => false
-    t.string   "role"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

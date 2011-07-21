@@ -1,9 +1,5 @@
 class UsersController < ApplicationController  
   filter_access_to :all
-#  filter_access_to :edit, :attribute_check => true
-#  filter_access_to :update, :attribute_check => true
-#  filter_access_to :destroy, :attribute_check => true
-
   helper_method :sort_column, :sort_direction
   
   def index
@@ -16,6 +12,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    @assignment = Assignment.create(:role_id => "3", :user_id => @user.id)
     # Saving without session maintenance to skip
     # auto-login which can't happen here because
     # the User has not yet been activated
@@ -23,8 +20,7 @@ class UsersController < ApplicationController
       @user.send_new_user_notification!
       @user.send_activation_instructions!
       flash[:notice] = "Your account has been created. Please check your email for activation instructions."
-      redirect_to root_url
-      
+      redirect_to root_url      
     else
       flash[:notice] = "There was a problem creating your account."
       render :action => :new
@@ -37,7 +33,7 @@ class UsersController < ApplicationController
     if @user.activate!
       UserSession.create(@user, false)
       @user.send_activation_confirmation!
-      redirect_to account_url
+      redirect_to root_path
     else
       render :action => :new
     end
@@ -53,6 +49,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+
     if @user.update_attributes(params[:user])
       flash[:notice] = "Account updated!"
       redirect_to user_path
@@ -61,12 +58,17 @@ class UsersController < ApplicationController
     end
   end
   
+
   def destroy
-    @user = User.find(params[:id]).destroy
-   flash[:success] = "User deleted"
-    redirect_to users_path
-    
-  end
+      @user = User.find(params[:id])
+      @user.destroy
+      flash[:success] = "User deleted"
+      respond_to do |format|
+        format.html { redirect_to(users_url) }
+        format.xml  { head :ok }
+        format.js
+      end
+    end  
   
   def self.search(search)
     if search
@@ -84,4 +86,5 @@ class UsersController < ApplicationController
       format.js { render :redisplay_roles }
     end
   end
+
 end

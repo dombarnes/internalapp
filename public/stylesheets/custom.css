@@ -6,8 +6,12 @@ body {
 	display: block;
 	border: 0px;
 	vertical-align: baseline;
+}
+
+h1, h2, h3, h4 {
 
 }
+
 #wrapper {
 	margin: 0 auto;
 	background: #f3f3f3;
@@ -310,10 +314,10 @@ legend {
 
 label {
 	min-width : 20% ;
-	padding : 2px 5px 0 0 ;
-	float : left ;
-	text-align : left ;
-	margin : 0 1em 0 0 ;
+	padding : 2px 5px 0 0;
+	float : left;
+	text-align : left;
+	margin : 0 1em 0 0;
 }
 input[type="text"], input[type="password"] {
 	padding: 2px 2px;
@@ -321,6 +325,27 @@ input[type="text"], input[type="password"] {
 	font-size:1.1em;
 	vertical-align:middle;
 	
+}
+
+/* User Form Styling */
+.roles label {
+	min-width:0px;
+	margin: 0px;
+	padding: 0px;
+	float:none;
+}
+.roles p {
+	margin:0px;
+}
+.roles input[type="checkbox"] {
+	padding:0px;
+	margin:6px 0.5ex;
+	-webkit-appearance: checkbox;
+	-webkit-box-sizing: border-box;
+	-webkit-rtl-ordering:logical;
+	-webkit-user-select: text;
+	cursor:auto;
+	padding: 1px;
 }
 
 /* iOS Quote Styling */

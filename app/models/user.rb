@@ -7,10 +7,12 @@ class User < ActiveRecord::Base
   # relationships
   has_many :ios_quotes
   has_many :mac_quotes
-  has_many :roles_users
-  has_many :roles, :through => :roles_users
+  has_many :assignments
+  has_many :roles, :through => :assignments
 
   attr_accessible :email, :login, :first_name, :last_name, :company_name, :job_title, :role_id, :password, :password_confirmation, :active, :remember_me
+
+  after_create :assign_role_after_signup
       
   def active?
     active
@@ -69,6 +71,11 @@ class User < ActiveRecord::Base
     else
       ensure_signed_in
     end    
+  end
+
+protected
+  def assign_role_after_signup
+    Assignment.create(:role_id => Role.find_by_name("reseller").id, :user_id => id)
   end
 
 end

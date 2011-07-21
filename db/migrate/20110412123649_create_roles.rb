@@ -6,10 +6,10 @@ class CreateRoles < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_column :users, :role, :string # , { :default => Role.find_by_name(:user)}
   end
 
   def self.down
     drop_table :roles
   end
+
 end

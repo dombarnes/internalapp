@@ -25,5 +25,6 @@ before_filter {ensure_role 'admin'}
         @roles = Role.all
         render :redisplay_roles
       }
+    end
   end
 end

@@ -11,10 +11,21 @@
   <%= form.text_field :email %>
 </div>
 <div class="field">
-  <%= form.label :password, form.object.new_record? ? nil : "Change password" %>  
+  <%= form.label :password, form.object.new_record? ? nil : "New password" %>  
   <%= form.password_field :password %>
 </div>
 <div class="field">
   <%= form.label :password_confirmation %>
   <%= form.password_field :password_confirmation %>
 </div>
+<div class="roles">
+<% if permitted_to? :update, :users %>
+<p>
+ <%= form.label :roles %> <br />
+  <% for role in Role.all %>
+      <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
+    <label for="user_role_ids_"><%= role.name %></label> 
+  <% end %>
+</p>
+</div>
+<% end %>

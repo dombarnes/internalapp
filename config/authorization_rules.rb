@@ -1,11 +1,11 @@
 authorization do
 
   role :guest do
-    has_permission_on :users, :to => [:create, :new, :activate]
+    has_permission_on :users, :to => [:create, :new, :activate, :index, :show]
 #    has_permission_on :home, :to => [:read]
   end
 
-  role :standard do
+  role :reseller do
     includes :guest
     has_permission_on :users, :to => [:show, :update, :index] do
       if_attribute :user => is { current_user }
@@ -23,7 +23,7 @@ authorization do
   
   role :admin do
     has_omnipotence
-    has_permission_on :authorization_rules, :to => :manage
+    has_permission_on :authorization_rules, :to => :read
   end
 end
 

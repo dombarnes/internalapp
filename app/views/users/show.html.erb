@@ -8,32 +8,41 @@
   <%=h @user.first_name %> <%=h @user.last_name %>
 </p>
 <p>
-  <b>Company Name:</b>
+  <b>Company Name: </b>
   <%=h @user.company_name %>
 </p>
 <p>
-  <b>Job Title:</b>
+  <b>Job Title: </b>
   <%=h @user.job_title %>
 </p>
 </ br>
 <h4> Admin Info </h4>
   <p>
-    <b>Role:</b>
-  	<%= @user.role %>
-  <br>	
+    <b>Role: </b>
+    <p><%= pluralize(@user.roles.size, 'Role') %></p>
+    <ul>
+    	<% @user.roles.each do |role| %>
+    		<li><%= role.name %></li>
+    	<% end %>
+    </ul>
+</p>
+<p>
+  <b>Active: </b>
+  <%=h @user.active %>
+</p>
 
-  <p>
-  <b>Login count:</b>
+<p>
+  <b>Login count: </b>
   <%=h @user.login_count %>
 </p>
 
 <p>
-  <b>Last request at:</b>
+  <b>Last request at: </b>
   <%=h @user.last_request_at %>
 </p>
 
 <p>
-  <b>Last login at:</b>
+  <b>Last login at: </b>
   <%=h @user.last_login_at %>
 </p>
 
@@ -54,13 +63,10 @@
 <div id="bottom_nav">
   <div id="back_button">
   <% if permitted_to? :index, User.all %>
-    <%= link_to '← Back to User list', users_path %>
+    <%= link_to ' ← Back to User list', users_path %>
   <% end %>
   </div>
   <div id="edit_button">
-    <%= link_to 'Edit Details', edit_user_path(@user) %> | 
-    <% if permitted_to? :delete %>
-      <%= link_to 'Destroy', @user, :confirm => 'Are you sure?', :method => :delete %>
-    <% end %>
+    <%= link_to 'Edit Details', edit_user_path(@user) %>
   </div>
 </div>

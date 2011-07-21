@@ -7,8 +7,6 @@
     <th>Email</th>
     <th>Comany</th>
     <th>Job Title</th>
-    <th>Role</th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
@@ -19,10 +17,8 @@
     <td><%= user.email %></td>
     <td><%= user.company_name %></td>
     <td><%= user.job_title %></td>
-    <td><%= user.role %></td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', @user, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

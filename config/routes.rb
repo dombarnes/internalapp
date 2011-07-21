@@ -4,6 +4,7 @@ Internalapp::Application.routes.draw do
   resources :adhoc_supports
   resources :person
   resources :users
+  resources :roles
   resource :user, :as => 'account'
   resources :companies
   resources :mac_quotes

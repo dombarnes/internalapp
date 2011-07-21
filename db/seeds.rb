@@ -6,6 +6,11 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
+# create roles
+admin_role = Role.create( :name => "admin", :description => "Admin user", :created_at => Time.now)
+staff_role = Role.create( :name => "staff",:description => "Internal Staff User", :created_at => Time.now)
+user_role  = Role.create( :name => "user", :description => "Reseller user", :created_at => Time.now)
+
   admin_user = User.create(:login => 'admin_user',
                            :email => 'admin@example.com',
                            :first_name => 'Admin',
@@ -36,22 +41,17 @@
                            :password_confirmation => 'password',
                            :active => true,                     
                            :created_at => Time.now)             
-                       
-  # create roles
-  admin_role = Role.create( :name => 'admin', 
-                            :description => 'Admin user', :created_at => Time.now)
-  staff_role = Role.create( :name => 'staff', 
-                            :description => 'Internal Staff user', :created_at => Time.now))
-  user_role  = Role.create( :name => 'user', 
-                            :description => 'Reseller user', :created_at => Time.now))
-  
+
+  # create initial roles
+  admin_user_role = Assignment.create(:role_id => "1", :user_id => "1")
+  staff_user_role = Assignment.create(:role_id => "2", :user_id => "2")
+
   # create dummy quote data
   ios_quote_data = IosValue.create( :daily_rate => "100", 
                                     :iosdevice_install_time => "1", 
                                     :iosdevice_support_cost => "1",
                                     :iosdevice_install_setup => "1",
-                                    :created_at => Time.now
-                                  )
+                                    :created_at => Time.now)
                                   
   mac_quote_data = MacValue.create(:mac_install_time => "0.4",
                                    :server_install_time => "5",
@@ -75,5 +75,4 @@
                                    :day_rate => "550",
                                    :mac_support_cost => "55",
                                    :server_support_cost => "300",
-                                   :created_at => Time.now
-                                  )
+                                   :created_at => Time.now)
