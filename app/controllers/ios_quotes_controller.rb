@@ -1,8 +1,10 @@
 class IosQuotesController < ApplicationController
-#  before_filter :require_user
+  before_filter :require_user
   helper_method :sort_column, :sort_direction
   filter_access_to :all
 
+  prawnto :prawn => { :top_margin => 75 }
+  
   def create
     @title = "New Quote"
     @ios_quote = current_user.ios_quotes.build(params[:ios_quote])
@@ -14,7 +16,7 @@ class IosQuotesController < ApplicationController
     if @ios_quote.support_required = true
       @ios_quote.support_cost = (@ios_value.iosdevice_support_cost * @ios_quote.device_quantity)
     end
-    @ios_quote.quote_status = "Pending"
+    @ios_quote.status = "Pending"
     if @ios_quote.save
       flash[:success] = "Quote saved!"
       redirect_to @ios_quote
@@ -46,6 +48,7 @@ class IosQuotesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @ios_quote }
+      format.pdf { render :layout => false }
     end
   end
   

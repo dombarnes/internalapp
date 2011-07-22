@@ -19,7 +19,7 @@
   <%= form.password_field :password_confirmation %>
 </div>
 <div class="roles">
-<% if permitted_to? :update, :users %>
+<% if has_role? :admin %>
 <p>
  <%= form.label :roles %> <br />
   <% for role in Role.all %>

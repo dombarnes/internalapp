@@ -2,7 +2,7 @@ Internalapp::Application.routes.draw do
   get "user_sessions/new"
 
   resources :adhoc_supports
-  resources :person
+  resources :people
   resources :users
   resources :roles
   resource :user, :as => 'account'

@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
     c.validate_login_field = false # There is no login field, so don't validate it
     c.login_field = :email          # email is the login field
   end
-
+  
   # relationships
   has_many :ios_quotes
   has_many :mac_quotes
@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :login, :first_name, :last_name, :company_name, :job_title, :role_id, :password, :password_confirmation, :active, :remember_me
 
-  after_create :assign_role_after_signup
+  after_create :assign_role_after_signup # adds default role assignment as specified
       
   def active?
     active

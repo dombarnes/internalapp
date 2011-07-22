@@ -31,10 +31,16 @@
 </p>
 <p>
   <b>Quote Status</b>
-  <%= @ios_quote.quote_status %>
+  <%= @ios_quote.status %>
 </p>
 
-
+<div class="button">
+  <h3>Download PDFs</h3>
+<a class="button" href="#"><span>Reseller Quote</span></a>
+<p><%= link_to "Printable Quote (PDF)", ios_quote_path(@ios_quote, :format => 'pdf') %></p>
+<a class="button" href="#"><span>Client Quote</span></a>
+<a class="button" href="#"><span>Terms</span></a>
+</div>
 <div id="bottom_nav">
   <div id="back_button">
   <% if permitted_to? :index, IosQuote.all %>

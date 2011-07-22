@@ -1,6 +1,6 @@
-class UsersController < ApplicationController  
-  filter_access_to :all
+class UsersController < ApplicationController    
   helper_method :sort_column, :sort_direction
+  before_filter :correct_user, :only => [:edit, :update, :show]
   
   def index
     @users = User.all
@@ -41,6 +41,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @title = "My Profile"
   end
 
   def edit
@@ -55,6 +56,7 @@ class UsersController < ApplicationController
       redirect_to user_path
     else
       render :action => :edit
+      @title = "Edit User"
     end
   end
   
@@ -85,6 +87,11 @@ class UsersController < ApplicationController
       format.html { redirect_to [:admin, @user]}
       format.js { render :redisplay_roles }
     end
+  end
+
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_path) unless current_user
   end
 
 end

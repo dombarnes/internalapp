@@ -7,17 +7,17 @@ authorization do
 
   role :reseller do
     includes :guest
-    has_permission_on :users, :to => [:show, :update, :index] do
+    has_permission_on :users, :to => [:show, :update] do
       if_attribute :user => is { current_user }
     end
-    has_permission_on [:ios_quotes, :mac_quotes], :to => [:index, :create]
-    has_permission_on [:ios_quotes, :mac_quotes], :to => [:index, :read, :update] do
+    has_permission_on [:ios_quotes, :mac_quotes], :to => [:create, :read]
+    has_permission_on [:ios_quotes, :mac_quotes], :to => [:create, :read, :update] do
       if_attribute :user => is { user }
     end
   end
   
   role :staff do
-    includes :standard
+    includes :reseller
     has_permission_on [:companies, :adhoc_supports, :clients, :ios_values, :mac_values, :install_quotes], :to => :manage
   end
   

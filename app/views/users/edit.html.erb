@@ -13,20 +13,25 @@
   <%= f.label :job_title %>
   <%= f.text_field :job_title %>
 </div>
+<% if has_role? :admin %>
 <div>
   <%= f.label :active %>
   <%= f.check_box :active %>
 </div>
+<% end %>
 </div>
+
 <br>
 <div id="bottom_nav">
 <%= link_to "Back to Profile", @user %>
-<div id="button">
-  <a class="button" id="ios_quote_submit" name="commit" type="submit" href="#" onclick="submit()"><span>Update Profile</span></a>
-</div>
+  <div id="button">
+    <a class="button" id="ios_quote_submit" name="commit" type="submit" href="#" onclick="submit()"><span>Update Profile</span></a>
+  </div>
 <% end %>
-<a class="button" id="user_destroy" name="commit" type="delete" href="" onclick="submit()"><span>Delete User</span></a>
-<br>
-<%= link_to 'Destroy', :user, :confirm => 'Are you sure?', :method => :delete %>
+<% if has_role? :admin %>
+  <a class="button" id="user_destroy" name="commit" type="delete" href="" onclick="submit()"><span>Delete User</span></a>
+  <br>
+  <%= link_to 'Destroy', :user, :confirm => 'Are you sure?', :method => :delete %>
+<% end %>
 <br>
 </div>

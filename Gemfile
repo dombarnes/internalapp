@@ -6,10 +6,11 @@ gem 'will_paginate', '3.0.pre2'
 gem 'bundler'
 gem 'rails3-generators'
 gem 'jquery-rails'
-gem 'authlogic'
-gem 'declarative_authorization'
+gem 'authlogic' # User Authentication
+gem 'declarative_authorization' # User Authorization
 gem 'ruby_parser'
-gem 'thin'
+gem 'thin' # Web server
+gem 'prawn' # PDF generator
 	
 group :development do
 #	gem 'rspec-rails', '2.5.0'

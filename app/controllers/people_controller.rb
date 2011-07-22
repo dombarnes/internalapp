@@ -4,13 +4,13 @@ class PeopleController < ApplicationController
   filter_resource_access
   
   def index
-    @person = Person.all
+    @people = Person.all
     @title = "People"
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @person }
     end
-    @person = Person.paginate(:page => params[:page])
+    @people = Person.paginate(:page => params[:page])
   end
 
   def show
