@@ -8,9 +8,9 @@ class PeopleController < ApplicationController
     @title = "People"
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @person }
+      format.xml  { render :xml => @people }
     end
-    @people = Person.paginate(:page => params[:page])
+    @people = People.paginate(:page => params[:page])
   end
 
   def show
@@ -22,48 +22,48 @@ class PeopleController < ApplicationController
   end
 
   def new
-    @people = Person.new
+    @person = Person.new
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @people }
+      format.xml  { render :xml => @person }
     end
   end
 
   def edit
-    @people = Person.find(params[:id])
+    @person = Person.find(params[:id])
   end
 
   def create
-   @people = Person.new(params[:people])
+   @person = Person.new(params[:person])
 
     respond_to do |format|
-      if @people.save
-        format.html { redirect_to(@people, :notice => 'The person was successfully created.') }
-        format.xml  { render :xml => @people, :status => :created, :location => @people }
+      if @person.save
+        format.html { redirect_to(@person, :notice => 'The person was successfully created.') }
+        format.xml  { render :xml => @person, :status => :created, :location => @person }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @people.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @person.errors, :status => :unprocessable_entity }
       end
     end
   end
 
   def update
-    @people = Person.find(params[:id])
+    @person = Person.find(params[:id])
 
     respond_to do |format|
-      if @people.update_attributes(params[:people])
-        format.html { redirect_to(@people, :notice => 'The person was successfully updated.') }
+      if @person.update_attributes(params[:person])
+        format.html { redirect_to(@person, :notice => 'The person was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @people.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @person.errors, :status => :unprocessable_entity }
       end
     end
   end
 
   def destroy
-    @people = Person.find(params[:id])
-    @people.destroy
+    @person = Person.find(params[:id])
+    @person.destroy
     respond_to do |format|
       format.html { redirect_to(peoples_url) }
       format.xml  { head :ok }

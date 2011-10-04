@@ -17,18 +17,19 @@
 <%= stylesheet_link_tag "application" %>
 <%= javascript_include_tag "application" %>
 
-
 <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
 
-<%= javascript_include_tag 'application' %>
   </head>
-	<body>
+<body>
 	<div id="header" class>
   	  <%= render 'layouts/header' %>
-	</div><!-- end header -->
-
+	</div>
+	<!-- end header -->
+	
 	<div id="wrapper">
-    	<div id="content">
+    
+		<div id="content">
+
       		<div id="main" class="round">
         		<% flash.each do |key, value| %>
           		<div class="flash <%= key %>"><%= value %></div>
@@ -36,13 +37,18 @@
         		<%= yield %>
       		</div>
       		<!-- end main -->
+
     	</div>
     	<!-- end content -->
+
 	</div>
 	<!-- end wrapper -->	
+
   <div id="footer" class>
      <%= render 'layouts/footer' %>
   </div>
+
    <%= debug(params) if Rails.env.development? %>
-	</body>
+
+</body>
 </html>

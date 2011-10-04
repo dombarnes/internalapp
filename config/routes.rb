@@ -1,11 +1,14 @@
 Internalapp::Application.routes.draw do
   get "user_sessions/new"
 
-  resources :adhoc_supports
+  root :to => "home#index"
+  
   resources :people
+  resource :user, :as => 'account'
+  
+  resources :adhoc_supports
   resources :users
   resources :roles
-  resource :user, :as => 'account'
   resources :companies
   resources :mac_quotes
   resources :mac_values
@@ -30,8 +33,6 @@ Internalapp::Application.routes.draw do
   match '/help', :to =>'home#help'
 #  match '/admin/roles', :to => 'admin#roles#index'
   match '/profile', :to => 'users#show'
-  
-  root :to => "home#index"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

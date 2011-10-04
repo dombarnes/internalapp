@@ -1,6 +1,6 @@
 <h1>Login</h1>
 <div id="loginform">
-<% form_for @user_session, :as => :user_session, :url => { :action => "create" } do |f| %>
+<%= form_for @user_session, :as => :user_session, :url => { :action => "create" } do |f| %>
   <%= render "shared/error_messages", :target => @user_session %>
   <%= f.label :email %> <%= f.text_field :email %><br />
   <br />

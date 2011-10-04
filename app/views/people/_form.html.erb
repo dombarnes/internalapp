@@ -1,9 +1,9 @@
-<%= form_for(@people) do |f| %>
-  <% if @client.errors.any? %>
+<%= form_for(@person) do |f| %>
+  <% if @person.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@people.errors.count, "error") %> prohibited this client from being saved:</h2>
+      <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
       <ul>
-      <% @people.errors.full_messages.each do |msg| %>
+      <% @person.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -12,7 +12,6 @@
 
   <div class="field">
   <%= f.label :company_name %>
-  <option value="" selected="selected"></option>
   <%= f.collection_select(:company_id, Company.all, :id, :company_name ) %>
   </div>
   
@@ -20,29 +19,36 @@
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
+
   <div class="field">
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name %>
   </div>
+
   <div class="field">
     <%= f.label :last_name %><br />
     <%= f.text_field :last_name %>
   </div>
+
   <div class="field">
     <%= f.label :position %><br />
     <%= f.text_field :position %>
   </div>
+
   <div class="field">
     <%= f.label :telephone_number %><br />
     <%= f.text_field :telephone_number %>
   </div>
+
   <div class="field">
     <%= f.label :mobile_number %><br />
     <%= f.text_field :mobile_number %>
   </div>
+
   <div class="field">
     <%= f.label :email_address %><br />
     <%= f.text_field :email_address %>
   </div>
+
   <%= f.submit :class => "medium awesome blue" %>
 <% end %>
