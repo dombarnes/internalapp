@@ -11,6 +11,8 @@ gem 'ruby_parser'
 gem 'thin' # Web server
 gem 'prawn' # PDF generator
 
+gem 'web-app-theme'
+
 group :assets do
   gem 'sass-rails', "~> 3.1.0"
   gem 'coffee-rails', "~> 3.1.0"

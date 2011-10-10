@@ -1,34 +1,48 @@
-<h1>Recent Mac Quotes</h1>
-<%= link_to ' Back', root_path %><br>
-<br>
-<% if permitted_to? :create, :mac_quote %>
-<%= link_to 'New Quote', new_mac_quote_path %><br>
-<% end %>
-<br>
-<table>
-  <tr>
-    <th>Date</td>
-	  <th>Customer</th>
-	  <th>Quantity</th>
-    <th>Install Cost</th>
-	  <th>Support Cost</th>
-	  <th></th>
-  </tr>
-<% @mac_quotes.each do |mac_quote| %>
-	<tr>
-		<td><%= mac_quote.created_at.strftime("%d/%m/%Y") %>
-		<td><%= mac_quote.customer %></td>
-		<td><%= mac_quote.device_quantity %></td>
-		<td><%= number_to_currency(mac_quote.install_cost, :unit => "&pound;") %></td>
-		<td><%= number_to_currency(mac_quote.support_cost, :unit => "&pound;") %></td>
-		<td><%= link_to 'View', mac_quote %></td>
-	</tr>
-<% end %>
-</table>
-<br />
-<%= will_paginate @mac_quotes %>
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first active"><%= link_to "#{t("web-app-theme.list", :default => "List")}", mac_quotes_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_mac_quote_path %></li>
+    </ul>
+  </div>          
+  <div class="content">          
+    <h2 class="title"><%= t("web-app-theme.all", :default => "All")  %> MacQuotes</h2>
+    <div class="inner">
+      <table class="table">
+        <tr>             
+          <th class="first">ID</th>
+                    <th>
+            <%= t("activerecord.attributes.mac_quote.customer_name", :default => t("activerecord.labels.customer_name", :default => "Customer_name")) %>
+          </th>
+                    <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+          <th class="last">&nbsp;</th>
+        </tr>
+        <% @mac_quotes.each do |mac_quote| -%>
+        <tr class="<%= cycle("odd", "even") %>">
+          <td>
+            <%= mac_quote.id %>
+          </td>
+                    <td>
+            <%= link_to mac_quote.customer_name, mac_quote_path(mac_quote) %>
+          </td>
+                    <td>
+            <%= mac_quote.created_at %>
+          </td>
+          <td class="last">
+            <%= link_to "#{t("web-app-theme.show", :default => "Show")}", mac_quote_path(mac_quote) %> |
+            <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_mac_quote_path(mac_quote) %> |
+            <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", mac_quote_path(mac_quote), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+          </td>
+        </tr>          
+        <% end -%>
+      </table>
+      <div class="actions-bar wat-cf">
+        <div class="actions">
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
 
-
-<% content_for :sidebar do %>
-    <h3>Mac Quotes</h3>
-<% end %>
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

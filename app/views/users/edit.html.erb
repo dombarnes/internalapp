@@ -1,37 +1,19 @@
-<h1>Edit My Account</h1>
-<%= render 'shared/error_messages', :target => @user %>
-<%= form_for(@user, :remote => true) do |f| %>
-  <%= render :partial => "form", :object => f %>
-<br>
-<div>
-<h4>Company Information</h4>
-<div class="field">
-  <%= f.label :company_name %>
-  <%= f.text_field :company_name %>
-</div>
-<div class="field">
-  <%= f.label :job_title %>
-  <%= f.text_field :job_title %>
-</div>
-<% if has_role? :admin %>
-<div>
-  <%= f.label :active %>
-  <%= f.check_box :active %>
-</div>
-<% end %>
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", users_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_user_path %></li>
+      <li class="active"><%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_user_path %></li>
+    </ul>
+  </div>          
+  <div class="content">            
+    <h2 class="title"><%= t("web-app-theme.edit", :default => "Edit") %> User</h2>
+    <div class="inner">
+      <%= form_for @user, :url => user_path(@user), :html => { :class => :form } do |f| -%>
+        <%= render :partial => "form", :locals => {:f => f} %>
+      <% end -%>
+    </div>
+  </div>
 </div>
 
-<br>
-<div id="bottom_nav">
-<%= link_to "Back to Profile", @user %>
-  <div id="button">
-    <a class="button" id="ios_quote_submit" name="commit" type="submit" href="#" onclick="submit()"><span>Update Profile</span></a>
-  </div>
-<% end %>
-<% if has_role? :admin %>
-  <a class="button" id="user_destroy" name="commit" type="delete" href="" onclick="submit()"><span>Delete User</span></a>
-  <br>
-  <%= link_to 'Destroy', :user, :confirm => 'Are you sure?', :method => :delete %>
-<% end %>
-<br>
-</div>
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

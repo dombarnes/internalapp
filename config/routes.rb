@@ -32,7 +32,7 @@ Internalapp::Application.routes.draw do
   match '/quotes', :to => 'home#quotes'
   match '/help', :to =>'home#help'
 #  match '/admin/roles', :to => 'admin#roles#index'
-  match '/profile', :to => 'users#show'
+  match '/profile', :to => 'users#show',      :as => :profile
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,29 +1,48 @@
-<h1>Listing companies</h1>
-<%= form_tag companies_path, :method => 'get', :remote => true, :id => "companies_search" do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :company_name => nil %>
-  </p>
-<div id="companies"><% render 'companies' %>
-<% end %>
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first active"><%= link_to "#{t("web-app-theme.list", :default => "List")}", companies_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_company_path %></li>
+    </ul>
+  </div>          
+  <div class="content">          
+    <h2 class="title"><%= t("web-app-theme.all", :default => "All")  %> Companies</h2>
+    <div class="inner">
+      <table class="table">
+        <tr>             
+          <th class="first">ID</th>
+                    <th>
+            <%= t("activerecord.attributes.company.company_name", :default => t("activerecord.labels.company_name", :default => "Company_name")) %>
+          </th>
+                    <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+          <th class="last">&nbsp;</th>
+        </tr>
+        <% @companies.each do |company| -%>
+        <tr class="<%= cycle("odd", "even") %>">
+          <td>
+            <%= company.id %>
+          </td>
+                    <td>
+            <%= link_to company.company_name, company_path(company) %>
+          </td>
+                    <td>
+            <%= company.created_at %>
+          </td>
+          <td class="last">
+            <%= link_to "#{t("web-app-theme.show", :default => "Show")}", company_path(company) %> |
+            <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_company_path(company) %> |
+            <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", company_path(company), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+          </td>
+        </tr>          
+        <% end -%>
+      </table>
+      <div class="actions-bar wat-cf">
+        <div class="actions">
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'New Company', new_company_path %>
-<table class="pretty">
-  <tr>
-    <th><%= sortable "company_name" %></th>
-    <th></th>
-    <th></th>
-  </tr>
-  
-<% @companies.each do |company| %>
-  <tr>
-    <td><%= link_to company.company_name, company %></td>
-	  <td><%= link_to 'Show', company %></td>
-		<td><%= link_to 'Delete', company, :method => :delete, :confirm => 'Are you sure?', :title => "Delete #{company.company_name}" %></td>
-  </tr>
-<% end %>
-</table>
-
-<% content_for :sidebar do %>
-    <h3>Companies Sidebar Content</h3>
-<% end %>
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

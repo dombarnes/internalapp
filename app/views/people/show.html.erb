@@ -1,45 +1,94 @@
-<p id="notice"><%= notice %></p>
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", people_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_person_path %></li>
+      <li class="active"><%= link_to "#{t("web-app-theme.show", :default => "Show")}", person_path %></li>
+    </ul>
+  </div>          
+  <div class="content">
+    <div class="inner">
+      
+        <p>
+          <b><%= t("activerecord.attributes.person.title", :default => t("activerecord.labels.title", :default => "Title")) %>:</b>
+          <%= @person.title %>
+        </p>
 
-<p>
-  <b>Company:</b>
-  <%= Company.find(@person.company_id).company_name %>
-</p>
-<p>
-  <b>Title:</b>
-  <%= @person.title %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.person.company_name", :default => t("activerecord.labels.company_name", :default => "Company name")) %>:</b>
+          <%= @person.company_name %>
+        </p>
 
-<p>
-  <b>First name:</b>
-  <%= @person.first_name %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.person.first_name", :default => t("activerecord.labels.first_name", :default => "First name")) %>:</b>
+          <%= @person.first_name %>
+        </p>
 
-<p>
-  <b>Last name:</b>
-  <%= @person.last_name %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.person.last_name", :default => t("activerecord.labels.last_name", :default => "Last name")) %>:</b>
+          <%= @person.last_name %>
+        </p>
 
-<p>
-  <b>Position:</b>
-  <%= @person.position %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.person.position", :default => t("activerecord.labels.position", :default => "Position")) %>:</b>
+          <%= @person.position %>
+        </p>
 
-<p>
-  <b>Telephone number:</b>
-  <%= @person.telephone_number %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.person.telephone_number", :default => t("activerecord.labels.telephone_number", :default => "Telephone number")) %>:</b>
+          <%= @person.telephone_number %>
+        </p>
 
-<p>
-  <b>Mobile number:</b>
-  <%= @person.mobile_number %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.person.mobile_number", :default => t("activerecord.labels.mobile_number", :default => "Mobile number")) %>:</b>
+          <%= @person.mobile_number %>
+        </p>
 
-<p>
-  <b>Email address:</b>
-  <%= @person.email_address %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.person.email_address", :default => t("activerecord.labels.email_address", :default => "Email address")) %>:</b>
+          <%= @person.email_address %>
+        </p>
 
+        <p>
+          <b><%= t("activerecord.attributes.person.website", :default => t("activerecord.labels.website", :default => "Website")) %>:</b>
+          <%= @person.website %>
+        </p>
 
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', person_path %> |
-<%= link_to 'Delete', :confirm => 'Are you sure you want to delete this person?', :method => :delete %>
+        <p>
+          <b><%= t("activerecord.attributes.person.address", :default => t("activerecord.labels.address", :default => "Address")) %>:</b>
+          <%= @person.address %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.person.city", :default => t("activerecord.labels.city", :default => "City")) %>:</b>
+          <%= @person.city %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.person.county", :default => t("activerecord.labels.county", :default => "County")) %>:</b>
+          <%= @person.county %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.person.postcode", :default => t("activerecord.labels.postcode", :default => "Postcode")) %>:</b>
+          <%= @person.postcode %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.person.company_id", :default => t("activerecord.labels.company_id", :default => "Company")) %>:</b>
+          <%= @person.company_id %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.person.info", :default => t("activerecord.labels.info", :default => "Info")) %>:</b>
+          <%= @person.info %>
+        </p>
+      <div class="wat-cf">
+        <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_person_path(@person), :class => "button" %> 
+        <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), person_path(@person), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+      </div>      
+    </div>
+  </div>
+</div>
+
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

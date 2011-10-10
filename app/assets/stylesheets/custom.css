@@ -2,14 +2,13 @@
 body {
 	background: #eeeeef;
 	color: #838383;
-	font: Helvetica, Georgia;
+	font-family: Helvetica, Georgia;
 	display: block;
 	border: 0px;
 	vertical-align: baseline;
 }
 
 h1, h2, h3, h4 {
-
 }
 
 #wrapper {
@@ -24,7 +23,6 @@ h1, h2, h3, h4 {
 	padding: 30px 30px;
 	position: relative;
 	font: Helvetica, Georgia;
-	background:lightgrey;
 }
 #wrapper h1 {
 	font-size: 200%;
@@ -36,8 +34,6 @@ h1, h2, h3, h4 {
 	width: 800px;
 	background: white;
 	padding: 10px;
-	-webkit-box-shadow:0 0 5px 5px #888;
-	-webkit-user-drag :element;
 }
 #main h1 {
 	line-height: normal ;
@@ -52,13 +48,13 @@ input[type=checkbox] {
 	position: relative;	
 	height: 60px;
 	background: white;
-	min-width:700px;
+	min-width:768px;
 }
 #header div {
-	width : auto ;
+	width : 800px ;
 	float : left ;
-	margin: 0px auto ;
-	padding-left: 150px ;
+	margin: 0 0 0 0;
+	padding-left: 100px ;
 }
 #header a {
 	font-weight: bold;
@@ -68,6 +64,7 @@ input[type=checkbox] {
 	float: left;
 	height: 50px;
 	line-height: 50px;
+	margin: 0 0 0 0;
 	border-right: 1px solid #F3F3F3;
 }
 #header #nav li {
@@ -89,7 +86,9 @@ input[type=checkbox] {
 	list-style-type: none;
 }
 
-#user_status {
+#header #nav #user_status {
+	float:right;
+	width: auto;
 	padding : 0 5px 0 5px;
 }
 
@@ -147,6 +146,7 @@ a {
 a:hover {
 	color: #ccc ;
 	text-decoration: underline;
+	background:none;
 }
 a:visited {
 	color: #069;
@@ -560,12 +560,29 @@ a.button:active span {
 	font-style : underline ;
 }
 
-/* Table Formatting */
-th	 { 
+/* Generic Table Formatting */
+th	{ 
 	font-size : 0.86em ;
-	background : #cccfaa ;
+}
+
+/* Home Page Table Layout */
+#home-table table {
 
 }
+#home-table th {
+	color:red;
+	background:white;
+	padding: 0 10px;
+	width: auto;
+}
+#home-table tr {
+
+}
+
+#home-table tbody {
+
+}
+
 .tabletitle {
 	background:;
 	padding: 4px 3px;

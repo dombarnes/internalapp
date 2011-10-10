@@ -1,44 +1,129 @@
-<p id="notice"><%= notice %></p>
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", mac_quotes_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_mac_quote_path %></li>
+      <li class="active"><%= link_to "#{t("web-app-theme.show", :default => "Show")}", mac_quote_path %></li>
+    </ul>
+  </div>          
+  <div class="content">
+    <div class="inner">
+      
+        <p>
+          <b><%= t("activerecord.attributes.mac_quote.customer_name", :default => t("activerecord.labels.customer_name", :default => "Customer name")) %>:</b>
+          <%= @mac_quote.customer_name %>
+        </p>
 
-<p>
-  <b>Customer:</b>
-  <%= @ios_quote.customer %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.mac_quote.client_quantity", :default => t("activerecord.labels.client_quantity", :default => "Client quantity")) %>:</b>
+          <%= @mac_quote.client_quantity %>
+        </p>
 
-<p>
-  <b>Device Quantity:</b>
-  <%= @ios_quote.device_quantity %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.mac_quote.server_quantity", :default => t("activerecord.labels.server_quantity", :default => "Server quantity")) %>:</b>
+          <%= @mac_quote.server_quantity %>
+        </p>
 
-<p>
-  <b>Installation Required?</b>
-  <%= @ios_quote.install_required %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.mac_quote.new_user_setup", :default => t("activerecord.labels.new_user_setup", :default => "New user setup")) %>:</b>
+          <%= @mac_quote.new_user_setup %>
+        </p>
 
-<p>
-  <b>Support Required?</b>
-  <%= @ios_quote.support_required %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.mac_quote.ad_integration", :default => t("activerecord.labels.ad_integration", :default => "Ad integration")) %>:</b>
+          <%= @mac_quote.ad_integration %>
+        </p>
 
-<p>
-  <b>Support Cost:</b>
-  <%= number_to_currency(@ios_quote.support_cost, :unit => "&pound;") %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.mac_quote.deploy_studio_setup", :default => t("activerecord.labels.deploy_studio_setup", :default => "Deploy studio setup")) %>:</b>
+          <%= @mac_quote.deploy_studio_setup %>
+        </p>
 
-<p>
-  <b>Install Cost:</b>
-  <%= number_to_currency(@ios_quote.install_cost, :unit => "&pound;") %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.mac_quote.airport_setup", :default => t("activerecord.labels.airport_setup", :default => "Airport setup")) %>:</b>
+          <%= @mac_quote.airport_setup %>
+        </p>
 
-<p>
-  <b>Installation Required?</b>
-  <%= @ios_quote.install_required %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.mac_quote.print_server", :default => t("activerecord.labels.print_server", :default => "Print server")) %>:</b>
+          <%= @mac_quote.print_server %>
+        </p>
 
-<%= link_to '← Back', ios_quotes_path %> |
-<% if can? :update, @mac_quote %>
-  <%= link_to 'Edit', edit_ios_quote_path(@ios_quote) %> |
-<% end %>
-<% if can? :destroy, @mac_quote %>
-  <%= link_to 'Delete', :confirm => 'Are you sure you want to delete this quote?', :method => :destroy %>
-  <% end %>
+        <p>
+          <b><%= t("activerecord.attributes.mac_quote.iwork", :default => t("activerecord.labels.iwork", :default => "Iwork")) %>:</b>
+          <%= @mac_quote.iwork %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.mac_quote.office", :default => t("activerecord.labels.office", :default => "Office")) %>:</b>
+          <%= @mac_quote.office %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.mac_quote.fce", :default => t("activerecord.labels.fce", :default => "Fce")) %>:</b>
+          <%= @mac_quote.fce %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.mac_quote.fcp", :default => t("activerecord.labels.fcp", :default => "Fcp")) %>:</b>
+          <%= @mac_quote.fcp %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.mac_quote.ard", :default => t("activerecord.labels.ard", :default => "Ard")) %>:</b>
+          <%= @mac_quote.ard %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.mac_quote.logicx", :default => t("activerecord.labels.logicx", :default => "Logicx")) %>:</b>
+          <%= @mac_quote.logicx %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.mac_quote.logicp", :default => t("activerecord.labels.logicp", :default => "Logicp")) %>:</b>
+          <%= @mac_quote.logicp %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.mac_quote.cs5", :default => t("activerecord.labels.cs5", :default => "Cs5")) %>:</b>
+          <%= @mac_quote.cs5 %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.mac_quote.aperture", :default => t("activerecord.labels.aperture", :default => "Aperture")) %>:</b>
+          <%= @mac_quote.aperture %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.mac_quote.install_cost", :default => t("activerecord.labels.install_cost", :default => "Install cost")) %>:</b>
+          <%= @mac_quote.install_cost %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.mac_quote.support_cost", :default => t("activerecord.labels.support_cost", :default => "Support cost")) %>:</b>
+          <%= @mac_quote.support_cost %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.mac_quote.status", :default => t("activerecord.labels.status", :default => "Status")) %>:</b>
+          <%= @mac_quote.status %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.mac_quote.user_id", :default => t("activerecord.labels.user_id", :default => "User")) %>:</b>
+          <%= @mac_quote.user_id %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.mac_quote.mac_values_id", :default => t("activerecord.labels.mac_values_id", :default => "Mac values")) %>:</b>
+          <%= @mac_quote.mac_values_id %>
+        </p>
+      <div class="wat-cf">
+        <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_mac_quote_path(@mac_quote), :class => "button" %> 
+        <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), mac_quote_path(@mac_quote), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+      </div>      
+    </div>
+  </div>
+</div>
+
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

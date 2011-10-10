@@ -1,33 +1,64 @@
-<p id="notice"><%= notice %></p>
-<p>
-  <h3><%= @company.company_name %></h3>
-</p>
-<p>
-<b>Address Line 1:</b>
-<%= @company.address_1 %>
-<p>
-<b>Address Line 2:</b>
-<%= @company.address_2 %>
-<p>
-<b>City:</b>
-<%= @company.city %>
-<p>
-<b>County:</b>
-<%= @company.county %>
-<p>
-<b>Post Code:</b>
-<%= @company.postcode %>
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", companies_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_company_path %></li>
+      <li class="active"><%= link_to "#{t("web-app-theme.show", :default => "Show")}", company_path %></li>
+    </ul>
+  </div>          
+  <div class="content">
+    <div class="inner">
+      
+        <p>
+          <b><%= t("activerecord.attributes.company.company_name", :default => t("activerecord.labels.company_name", :default => "Company name")) %>:</b>
+          <%= @company.company_name %>
+        </p>
 
-<p>
-  <b>Telephone Number:</b>
-  <%= @company.telephone_number %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.company.address_1", :default => t("activerecord.labels.address_1", :default => "Address 1")) %>:</b>
+          <%= @company.address_1 %>
+        </p>
 
-<p>
-  <b>Website:</b>
-  <%= link_to @company.website, @company.website, :target => "_blank" %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.company.address_2", :default => t("activerecord.labels.address_2", :default => "Address 2")) %>:</b>
+          <%= @company.address_2 %>
+        </p>
 
+        <p>
+          <b><%= t("activerecord.attributes.company.city", :default => t("activerecord.labels.city", :default => "City")) %>:</b>
+          <%= @company.city %>
+        </p>
 
-<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %>
+        <p>
+          <b><%= t("activerecord.attributes.company.county", :default => t("activerecord.labels.county", :default => "County")) %>:</b>
+          <%= @company.county %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.company.postcode", :default => t("activerecord.labels.postcode", :default => "Postcode")) %>:</b>
+          <%= @company.postcode %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.company.telephone_number", :default => t("activerecord.labels.telephone_number", :default => "Telephone number")) %>:</b>
+          <%= @company.telephone_number %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.company.website", :default => t("activerecord.labels.website", :default => "Website")) %>:</b>
+          <%= @company.website %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.company.source", :default => t("activerecord.labels.source", :default => "Source")) %>:</b>
+          <%= @company.source %>
+        </p>
+      <div class="wat-cf">
+        <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_company_path(@company), :class => "button" %> 
+        <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), company_path(@company), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+      </div>      
+    </div>
+  </div>
+</div>
+
+<% content_for :sidebar, render(:partial => 'sidebar') -%>
