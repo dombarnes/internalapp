@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <p>
-  <h3><%= @company.company_name %></h3>
+  <h3><%= @company.company_name %></h3> | <%= link_to 'Edit', edit_company_path(@company) %>
 </p>
 <p>
 <b>Address Line 1:</b>
@@ -28,6 +28,22 @@
   <%= link_to @company.website, @company.website, :target => "_blank" %>
 </p>
 
+<h2>Employees</h2>
+<div id="people">
+	<%= link_to 'Add a new person', new_person_path %>
 
-<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %>
+	<% unless @company.people.empty? %>
+	<table id="index">
+		<%= render :partial => 'companies/people' %>
+	<% end %>
+	</table>
+</div>
+
+<h2>Recent Activity</h2>
+<div id="adhoc_supports">
+	<% unless @company.adhoc_supports.empty? %>
+	<table id="index">
+		<%= render :partial => 'companies/adhoc_supports' %>
+	<% end %>
+	</table>
+</div>

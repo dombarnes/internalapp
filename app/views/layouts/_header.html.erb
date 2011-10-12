@@ -1,31 +1,12 @@
-<div>
-  <ul>
-	<li class="header_logo"><%= link_to logo , root_path %></li>
-	</ul>
-	<ul id="nav">
-			<li><%= link_to "Home", root_path %></li>
-		<% if permitted_to? :manage, :companies %>
-			<li><%= link_to "Companies", companies_path %></li>
-			<li><%= link_to "People", people_path %></li>
-			<li><%= link_to "Ad Hoc Support", adhoc_supports_path %></li>
-		<% end %>
-		<% if permitted_to? :create, :ios_quotes %>
-		  <li><%= link_to "Quotes", quotes_path %></li>
-		<% end %>
-		<% if signed_in? %>
-		  <li><%= link_to "Profile", current_user %></li>
-    <% end %>
-		<% if permitted_to? :manage, :users %>
-	  <li><%= link_to "Admin", admin_path %></li>
-    <% end %>
-	<li><%= link_to "Help", help_path %></li>
+<div id"header">
+	<%= link_to logo , root_path, :class => :headerimg %>
 	<div id="user_status">
       <% if current_user %>
-        Welcome <%=h current_user.first_name %>! Not you? <%= link_to "Log out", logout_path %>
+        <%= link_to "Sign out", logout_path %>
+        <%= link_to "Profile", current_user %>
       <% else %>
         <%= link_to "Sign up", signup_path %> or
         <%= link_to "log in", login_path %>.
       <% end %>
     </div>
-	</ul>
 </div>

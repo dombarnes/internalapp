@@ -15,10 +15,13 @@ class CompaniesController < ApplicationController
   def show
     @company = Company.find(params[:id])
     @title = @company.company_name
+    @people = Person.where(:company_id => @company.id)
+    @adhoc_supports = AdhocSupport.where(:company_id => @company.id)
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @company }
     end
+    
   end
 
   def new

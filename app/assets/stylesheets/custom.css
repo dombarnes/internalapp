@@ -1,30 +1,60 @@
+/*
+CSS for Internalapp Rails application
+Made by Dom Barnes
+http://dombarnes.com
+Inspiration from http://www.colourlovers.com/palette/482416/Wasabi_Suicide
+*/
+
 /* Overall Views*/
+* {
+	margin:0;
+	padding:0;
+}
 body {
-	background: #eeeeef;
-	color: #838383;
-	font: Helvetica, Georgia;
-	display: block;
-	border: 0px;
-	vertical-align: baseline;
+	background-color: #F0F2EB;
+	margin:0;
+	padding:0;
+	border:0; /* This removes the border around the viewport in old versions of IE */
+	width:100%;
+	text-align: left;
+	font-family: "Lucida Grande", "Lucida Sans Unicode", helvetica, arial, verdana, sans-serif;
+}
+a:link, a:visited { 
+  color: rgb(0,71,179); /*hsl(216, 100%, 35%)*/
 }
 
-h1, h2, h3, h4 {
+a img { border: none; }
 
-}
+p { margin: 1.0em 0; line-height: 1.4em; font-size: 13px; }
+
+h1 { font-size: 22px; }
+h3 { font-size: 16px; }
+h4 { font-size: 13px; margin-bottom: 10px; }
+h5 { font-size: 12px; margin-bottom: 5px; }
+h6 { font-size: 10px; font-weight: normal; margin-bottom: 0; }
+
+
+ul { list-style: none; }
+li { font-size: 12px; }
 
 #wrapper {
 	margin: 0 auto;
-	background: #f3f3f3;
+	background: #F0F2EB;
 	display: block;
+	max-width: 1200px;
+	min-width: 800px;
 }
 #content {
-	width: 950px;
-	display: table;
-	margin: 0px auto;
+	width: 900px;
+	display:table;
+	margin: 20px 0 50px 0;
 	padding: 30px 30px;
 	position: relative;
-	font: Helvetica, Georgia;
-	background:lightgrey;
+	background:white;
+	border:2px solid lightgrey;
+	-moz-border-radius:5px;
+  	-webkit-border-radius:5px;
+  	border-radius:5px;	
 }
 #wrapper h1 {
 	font-size: 200%;
@@ -35,9 +65,6 @@ h1, h2, h3, h4 {
 	margin-left: -5px;
 	width: 800px;
 	background: white;
-	padding: 10px;
-	-webkit-box-shadow:0 0 5px 5px #888;
-	-webkit-user-drag :element;
 }
 #main h1 {
 	line-height: normal ;
@@ -48,78 +75,116 @@ input[type=checkbox] {
 
 /* Header */
 #header {
-	padding-top: 5px;
-	position: relative;	
-	height: 60px;
-	background: white;
-	min-width:700px;
-}
-#header div {
-	width : auto ;
-	float : left ;
-	margin: 0px auto ;
-	padding-left: 150px ;
-}
-#header a {
-	font-weight: bold;
-	text-decoration: none;
-}
-#header #nav {
-	float: left;
-	height: 50px;
-	line-height: 50px;
-	border-right: 1px solid #F3F3F3;
-}
-#header #nav li {
+	padding-top:5px;
+	position:relative;	
+	height:50px;
+	width:700px;
+	padding:2px;
+	background:#ffffff;
 	float:left;
-	border-left: 1px solid #F3F3F3;
-	line-height: 50px;
+	margin:0 0 0 0;
 }
-#header #nav li a {
-	float: left;
-	padding: 0px 10px ;
-	color: #838383 ;
-	font-size : 0.92em;
-}
-#header .header_logo {
-	padding: 2px;
-	background: #fff;
-	float: left;
-	width: 124px ;
-	list-style-type: none;
+.headerimg {
+
+	margin-left:30px;
+	margin-top:20px;
 }
 
 #user_status {
 	padding : 0 5px 0 5px;
+	width:300px;
+}
+#user_status a {
+	text-decoration:underline;
+	font-size:0.92em;
+}
+
+/* Navigation */
+#global_sidebar {
+	width: 215px; /* LC width */
+	right: 215px; /* LC width */
+}
+
+#global_nav {
+	float: left;
+	line-height:30px;
+  	width:200px;
+  	background:#F0F2EB;
+	margin-top: 12px;
+	margin-left: -6px;
+}
+
+#global_nav a {
+	display:block;
+	overflow:hidden;
+	padding: 0 6px 0 40px;
+	text-decoration:none;
+	line-height:28px;
+	font-size:13px;
+}
+
+#global_nav ul {
+	font-family:Lucida Grande, Arial;
+  	list-style-type: none;
+  	margin-left:20px;
+  	margin-top:20px;
+  	background:#F0F2EB;
+}
+
+#global_nav ul li {
+	list-style-type: none;
+	display: inline-block;
+	height: 40px;
+	width:150px;
+}
+
+#global_nav a:visited {
+	color: #09c;
+}
+
+#global_nav a:hover {
+  text-decoration: underline;
+}
+
+.navigation_link {
+	float: left ;
+	display : block ;
+	font-size : 15px ;
+}
+
+#more_link {
+	margin:2px 3px;
+	float:right;
 }
 
 /* Footer */
 #footer {
   	padding: 20px 0px;
 	height: 30px;
-	background: white;
+	background: #f3f3f3;
 	color: #838383;
-}
-#footer div {
 	width: 960px;
 	margin: 0px auto;
 	padding-right: 10px;
 }
+
 #footer a {
 	font-weight:normal;
 	text-decoration:none;
 }
-#footer #nav {
+#footer .bottom-nav {
 	float: none;
 	display:inline-block;
 	height: 20px;
 	line-height: 40px;
 	border-right:1px solid #F3F3F3;
 }
+
 #footer #nav li {
 	float: left;
 	border-left: 1px solid #F3F3F3;
 	line-height: 10px;	
+	width:auto;
 }
 #footer #nav li a {
 	padding: 15px 10px;
@@ -140,53 +205,17 @@ ol, ul {
 
 /* Links */
 a {
-	color: #069	;
 	text-decoration: none;
-	font-weight: bold;
+	
 }
 a:hover {
 	color: #ccc ;
 	text-decoration: underline;
+	background-color:white;
 }
+
 a:visited {
 	color: #069;
-}
-
-/* Navigation */
-#nav {
-	float: left;
-	height: 50px;
-	line-height: 50px;
-  	border-right: 1px solid #F3F3F3;
-}
-#nav ul {
-  	list-style-type: none;
-  	height: 50px;
-}
-#nav ul li {
-	list-style-type: none;
-	display: inline-block;
-	border-left: 1px solid #F3F3F3;
-	height: 50px;
-}
-#nav ul li a {
-	padding: 0 10px;
-}
-#nav ul li a:visited {
-	color: #09c;
-}
-#nav ul li a:hover {
-  text-decoration: underline;
-}
-.navigation_link {
-	float: left ;
-	display : block ;
-	font-size : 15px ;
-}
-
-#more_link {
-	margin:2px 3px;
-	float:right;
 }
 
 /* Sign up button */
@@ -209,6 +238,71 @@ a.signup_button {
   -webkit-border-radius: 5px;
   border-radius:         5px;
 }
+
+/* */
+.data-view {
+	background:white;
+}
+
+.data-list {
+	border-top: 2px solid lightgrey;
+	padding:5px;
+}
+
+.data-nav {
+	background:#E1EDB9;
+	font-color:#FF4242;
+}
+
+/* Table Formatting */
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+td, th { text-align: left; }
+
+th	 { 
+	font-size : 0.86em ;
+	background : white ;
+}
+
+tr {
+	
+}
+
+td {
+	
+}
+
+.tabletitle {
+	background:;
+	padding: 6px 3px 4px 3px;
+
+}
+
+/* Table Classes */
+.tablename {
+	font-size:1.3em;
+	padding: 10px 2px;
+}
+
+/* Show Page Styles */
+.nameheader {
+	font-size:14pt;
+}
+
+#row_person {
+	
+}
+
+#row_company { }
+#row_task { }
+#row_adhoc { }
+#row_user { }
+#row_macquotes { }
+#row_macvalues { }
+#row_iosquotes { }
+#row_iosvalues { }
 
 /* User show page */
 table.profile {
@@ -312,7 +406,6 @@ div.pagination {
 }
 
 /* Generic Form Styling */
-
 legend {
 	margin-left : 1em;
 	padding : 0 ;
@@ -342,9 +435,11 @@ input[type="text"], input[type="password"] {
 	padding: 0px;
 	float:none;
 }
+
 .roles p {
 	margin:0px;
 }
+
 .roles input[type="checkbox"] {
 	padding:0px;
 	margin:6px 0.5ex;
@@ -456,7 +551,7 @@ p#helper {
 /* Login Form Styling */
 #loginform label {
 	font-size:1.4em;
-	font-family:Helvetica, arial, san-serif;
+	font-family:Lucida Grande, arial, san-serif;
 	font-color:black;
 	padding:5px;
 	vertical-align:middle;
@@ -560,19 +655,8 @@ a.button:active span {
 	font-style : underline ;
 }
 
-/* Table Formatting */
-th	 { 
-	font-size : 0.86em ;
-	background : #cccfaa ;
-
-}
-.tabletitle {
-	background:;
-	padding: 4px 3px;
-}
-
 .awesome{
-font-family: Arial, Helvetica;
+font-family: Lucida Grande, Arial, Helvetica;
 background: #222 url(/images/alert-overlay.png) repeat-x;
 display: inline-block;
 padding: 5px 10px 6px;
@@ -638,4 +722,18 @@ button.awesome, .button.awesome {
 	border-bottom: 1px solid rgba(0,0,0,0.25);
 	position: relative;
 	cursor: pointer;
+}
+
+code, pre  {
+  font-family: monospace;
+  background: inherit;
+  color: #333;
+  font-size: 12px;
+}
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+#notice {
+  color: green;
 }

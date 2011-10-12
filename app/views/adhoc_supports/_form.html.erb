@@ -13,7 +13,7 @@
 
   <div id="#datepicker">
     <%= f.label :date %><br />
-    <%= f.text_field :date %>
+    <%= date_select('adhoc_support', 'date', :order =>[:day, :month, :year]) %>
   </div>
 
   <div class="field">

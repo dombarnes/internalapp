@@ -5,8 +5,8 @@
   <%= @adhoc_support.date %>
 </p>
 <p>
-  <b>Company ID:</b>
-  <%= Company.find(@adhoc_support.company_id).company_name %>
+  <b>Company:</b>
+  <%= link_to Company.find(@adhoc_support.company_id).company_name, Company.find(@adhoc_support.company_id) %>
 </p>
 
 <p>

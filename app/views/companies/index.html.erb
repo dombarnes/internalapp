@@ -1,29 +1,31 @@
-<h1>Listing companies</h1>
+<h1>All companies</h1>
+  
+<div class="data-view">
+  <div class="data-nav">
+    <%= link_to 'New Company', new_company_path %>
+  </div>
+
+<div class="data-list">
+<table class="pretty">
+<% @companies.each do |company| %>
+	<tr>
+		<td>
+  		</td>
+	</tr>
+	<tr>
+    <td class="tablename"><%= link_to company.company_name, company %></td>
+  </tr>
+<% end %>
+</table>
+</div>
+
+
+<% content_for :sidebar do %>
+<h2>Search</h2>
 <%= form_tag companies_path, :method => 'get', :remote => true, :id => "companies_search" do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :company_name => nil %>
   </p>
-<div id="companies"><% render 'companies' %>
 <% end %>
-
-<%= link_to 'New Company', new_company_path %>
-<table class="pretty">
-  <tr>
-    <th><%= sortable "company_name" %></th>
-    <th></th>
-    <th></th>
-  </tr>
-  
-<% @companies.each do |company| %>
-  <tr>
-    <td><%= link_to company.company_name, company %></td>
-	  <td><%= link_to 'Show', company %></td>
-		<td><%= link_to 'Delete', company, :method => :delete, :confirm => 'Are you sure?', :title => "Delete #{company.company_name}" %></td>
-  </tr>
-<% end %>
-</table>
-
-<% content_for :sidebar do %>
-    <h3>Companies Sidebar Content</h3>
 <% end %>

@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>MacByte Ltd - <%= content_for?(:title) ? yield(:title) : "Internal Client Management Tool" %></title>
+    <title>ClientBase: <%= @title %></title>
     <meta name="description" content="" />
     <meta name="author" content="" />
     <meta name="keywords" content="" />
     <meta name="copyright" content="" />
-    <meta name="viewport" content="width=960" />
     
     <link rel="icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     
-
 <%= csrf_meta_tag %>
 
 <%= stylesheet_link_tag "application" %>
@@ -20,35 +18,54 @@
 <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
 
   </head>
-<body>
-	<div id="header" class>
-  	  <%= render 'layouts/header' %>
+  <body>
+    <%= render 'layouts/header' %>
+  	<!-- End Header -->
+	<div id="global_sidebar">
+  	<div id="global_nav">
+      <ul>
+        <li><%= link_to "Home", root_path %></li>
+      <% if permitted_to? :manage, :companies %>
+        <li><%= link_to "Companies", companies_path %></li>
+        <li><%= link_to "People", people_path %></li>
+        <li><%= link_to "Ad Hoc Support", adhoc_supports_path %></li>
+		<li><%= link_to "Tasks", tasks_path %></li>
+      <% end %>
+      <% if permitted_to? :create, :ios_quotes %>
+        <li><%= link_to "Quotes", quotes_path %></li>
+      <% end %>
+      <% if permitted_to? :manage, :users %>
+      <li><%= link_to "Admin", admin_path %></li>
+      <% end %>
+    <li><%= link_to "Help", help_path %></li>
+    </ul>
+    </div>
+    <!-- End Navigation -->
 	</div>
-	<!-- end header -->
-	
-	<div id="wrapper">
-    
-		<div id="content">
+    <!-- End Global Sidebar -->
+  	<div id="wrapper">
 
-      		<div id="main" class="round">
-        		<% flash.each do |key, value| %>
-          		<div class="flash <%= key %>"><%= value %></div>
-        		<% end %>
-        		<%= yield %>
-      		</div>
-      		<!-- end main -->
+  		<div id="content">
 
-    	</div>
-    	<!-- end content -->
+        		<div id="main" class="round">
+          		<% flash.each do |key, value| %>
+            		<div class="flash <%= key %>"><%= value %></div>
+          		<% end %>
+          		<%= yield %>
+        		</div>
+        		<!-- End Main -->
 
-	</div>
-	<!-- end wrapper -->	
+      	</div>
+      	<!-- End Content -->
 
-  <div id="footer" class>
-     <%= render 'layouts/footer' %>
-  </div>
+  	</div>
+  	<!-- End Wrapper -->	
 
-   <%= debug(params) if Rails.env.development? %>
+    <div id="footer">
+       <%= render 'layouts/footer' %>
+    </div>
 
-</body>
+     <%= debug(params) if Rails.env.development? %>
+
+  </body>
 </html>

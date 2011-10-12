@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110412123721) do
+ActiveRecord::Schema.define(:version => 20111012100014) do
 
   create_table "adhoc_supports", :force => true do |t|
     t.date     "date",        :null => false
@@ -24,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20110412123721) do
 
   add_index "adhoc_supports", ["company_id"], :name => "index_adhoc_supports_on_company_id"
 
-  create_table "assignments", :id => false, :force => true do |t|
+  create_table "assignments", :force => true do |t|
     t.integer  "role_id"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -129,7 +130,7 @@ ActiveRecord::Schema.define(:version => 20110412123721) do
     t.datetime "updated_at"
   end
 
-  create_table "person", :force => true do |t|
+  create_table "people", :force => true do |t|
     t.string   "title"
     t.string   "company_name"
     t.string   "first_name"
@@ -143,19 +144,30 @@ ActiveRecord::Schema.define(:version => 20110412123721) do
     t.string   "city"
     t.string   "county"
     t.string   "postcode"
-    t.string   "company_id"
+    t.integer  "company_id",       :limit => 255
     t.text     "info"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "person", ["company_id"], :name => "index_person_on_company_id"
+  add_index "people", ["company_id"], :name => "index_person_on_company_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "tasks", :force => true do |t|
+    t.integer  "person_id"
+    t.string   "task"
+    t.date     "due_date"
+    t.string   "category"
+    t.boolean  "private"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "completed"
   end
 
   create_table "user_sessions", :force => true do |t|

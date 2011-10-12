@@ -1,4 +1,6 @@
 Internalapp::Application.routes.draw do
+  resources :tasks
+
   get "user_sessions/new"
 
   root :to => "home#index"

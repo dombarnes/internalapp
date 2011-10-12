@@ -10,11 +10,12 @@ class PeopleController < ApplicationController
       format.html # index.html.erb
       format.xml  { render :xml => @people }
     end
-    @people = People.paginate(:page => params[:page])
   end
 
   def show
+        @title = "People"
     @person = Person.find(params[:id])
+    @company = Person.find(params[:id]).company
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @person }
@@ -22,6 +23,7 @@ class PeopleController < ApplicationController
   end
 
   def new
+    @title = "People"
     @person = Person.new
     respond_to do |format|
       format.html # new.html.erb
@@ -30,11 +32,13 @@ class PeopleController < ApplicationController
   end
 
   def edit
+    @title = "People"
     @person = Person.find(params[:id])
   end
 
   def create
-   @person = Person.new(params[:person])
+    @title = "People"
+    @person = Person.new(params[:person])
 
     respond_to do |format|
       if @person.save
@@ -48,8 +52,9 @@ class PeopleController < ApplicationController
   end
 
   def update
+    @title = "People"
     @person = Person.find(params[:id])
-
+    
     respond_to do |format|
       if @person.update_attributes(params[:person])
         format.html { redirect_to(@person, :notice => 'The person was successfully updated.') }
@@ -62,6 +67,7 @@ class PeopleController < ApplicationController
   end
 
   def destroy
+    @title = "People"
     @person = Person.find(params[:id])
     @person.destroy
     respond_to do |format|
