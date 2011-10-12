@@ -291,10 +291,15 @@ td {
 	font-size:14pt;
 }
 
-#row_person {
-	
+tr#row_person {
+	width:100%;
+	height:50px;
+	padding-top:8px;
+	padding-left:2px;
+	border-top:1px solid #F0F2EB;
+	border-bottom:1px solid #F0F2EB;
 }
-
+	
 #row_company { }
 #row_task { }
 #row_adhoc { }
@@ -414,7 +419,6 @@ legend {
 }
 
 label {
-	min-width : 20% ;
 	padding : 2px 5px 0 0;
 	float : left;
 	text-align : left;
@@ -449,6 +453,24 @@ input[type="text"], input[type="password"] {
 	-webkit-user-select: text;
 	cursor:auto;
 	padding: 1px;
+}
+
+/* Tasks Styling */
+#overdue {
+	font-size:16px;
+	padding-top:20px;
+
+	}
+#due_this_week { 
+	font-size:16px;
+	padding-top:20px;
+
+	}
+#due_older {
+	font-size:16px;
+	padding-top:20px;
+	}
+.tasklist {	
 }
 
 /* iOS Quote Styling */
@@ -553,17 +575,36 @@ p#helper {
 	font-size:1.4em;
 	font-family:Lucida Grande, arial, san-serif;
 	font-color:black;
-	padding:5px;
+	padding:5px 5px;
 	vertical-align:middle;
+	display:block;
+	margin:0 0 2px;
+	float:left;
+	width:275px;
+}
+
+#loginform {
+	width:401px;
+	padding: 28px;
+}
+
+body.login input#user_session_email, body.login input#user_session_password {
+	width:275px;
+	padding:3px;
+	font-size:14px;
 }
 
 #loginform input[type="text"], input[type="password"] {
-	padding: 5px;
+	padding: 5px 5px;
 	margin-bottom: 5px;
+	margin-top:5px;
 	font-size:1.4em;
 	vertical-align:middle;
 	
 }
+
+#login_submit { }
+
 
 fieldset li {
 	float: left;      

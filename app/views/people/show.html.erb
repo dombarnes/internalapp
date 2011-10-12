@@ -24,9 +24,31 @@
 
 <p>
   <b>Email address:</b>
-  <%= @person.email_address %>
+  <%= link_to @person.email_address,  "mailto:" + @person.email_address %>
 </p>
 
+<p>
+  <b>IM:</b>
+  <%= @person.im %>
+</p>
+<p>
+  <b>LinkedIn:</b>
+  <%= link_to "http://www.linkedin.com/in/" +@person.linkedin, "http://www.linkedin.com/in/" + @person.linkedin, :target => :blank %>
+</p>
+<p>
+  <b>Twitter:</b>
+  <%= link_to "@" +  @person.twitter, "http://twitter.com/" +  @person.twitter, :target => :blank %>
+</p>
+<% unless @person.address_1.empty? %>
+<p>
+  <b>Address:</b>
+  <%= @person.address_1 %>
+  <%= @person.address_2 %>
+  <%= @person.city %>
+  <%= @person.county %>
+  <%= @person.postcode %>
+</p>
+<% end %>
 
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Delete', :confirm => 'Are you sure you want to delete this person?', :method => :delete %>

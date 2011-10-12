@@ -1,4 +1,6 @@
 Internalapp::Application.routes.draw do
+  resources :contracts
+
   resources :tasks
 
   get "user_sessions/new"

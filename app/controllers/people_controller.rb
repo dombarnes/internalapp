@@ -54,7 +54,6 @@ class PeopleController < ApplicationController
   def update
     @title = "People"
     @person = Person.find(params[:id])
-    
     respond_to do |format|
       if @person.update_attributes(params[:person])
         format.html { redirect_to(@person, :notice => 'The person was successfully updated.') }

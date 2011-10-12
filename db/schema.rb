@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111012100014) do
+ActiveRecord::Schema.define(:version => 20111012144720) do
 
   create_table "adhoc_supports", :force => true do |t|
     t.date     "date",        :null => false
@@ -42,6 +42,17 @@ ActiveRecord::Schema.define(:version => 20111012100014) do
     t.string   "telephone_number"
     t.string   "website"
     t.string   "source"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "company_type"
+  end
+
+  create_table "contracts", :force => true do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "contract_type"
+    t.decimal  "cost"
+    t.string   "contract_state"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -140,14 +151,18 @@ ActiveRecord::Schema.define(:version => 20111012100014) do
     t.string   "mobile_number"
     t.string   "email_address"
     t.string   "website"
-    t.text     "address"
     t.string   "city"
     t.string   "county"
     t.string   "postcode"
     t.integer  "company_id",       :limit => 255
-    t.text     "info"
+    t.text     "bio"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "im"
+    t.string   "linkedin"
+    t.string   "twitter"
   end
 
   add_index "people", ["company_id"], :name => "index_person_on_company_id"

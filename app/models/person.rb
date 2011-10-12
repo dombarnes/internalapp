@@ -1,6 +1,8 @@
 class Person < ActiveRecord::Base
-  attr_accessible :title, :first_name, :last_name, :position, :telephone_number, :mobile_number, :email_address
+  attr_accessible :company_id, :title, :first_name, :last_name, :position, :telephone_number, :mobile_number, :email_address, :address_1, :address_2, :city, :county, :postcode, :im, :linkedin, :twitter
   belongs_to :company
-#  scope :all, order('person.last_name ASC')
+  has_many :tasks
+  
+  scope :all, order('people.last_name ASC')
 
 end

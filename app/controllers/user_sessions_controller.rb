@@ -1,6 +1,7 @@
 class UserSessionsController < ApplicationController
 
     def new
+     @title = "Log In"
      @user_session = UserSession.new(params[:user_session])
       respond_to do |format|
         format.html # new.html.erb
