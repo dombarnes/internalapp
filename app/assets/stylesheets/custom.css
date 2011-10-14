@@ -470,8 +470,13 @@ input[type="text"], input[type="password"] {
 	font-size:16px;
 	padding-top:20px;
 	}
-.tasklist {	
+.tasklist {
+	width:100%;
 }
+td.taskitem {width:270px;}
+td.checkbox {width:29px;}
+td.taskcategory {width:200px;}
+td.taskdate {width:113px;}
 
 /* iOS Quote Styling */
 #iosquote label {

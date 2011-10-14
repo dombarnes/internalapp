@@ -11,7 +11,7 @@
   </tr>
 <% @mac_values.each do |mac_value| %>
 	<tr>
-		<td><%= link_to mac_value.created_at.strftime("%d/%m/%Y"), mac_value %>
+		<td><%= link_to mac_value.created_at.strftime("%d/%m/%Y %H:%M"), mac_value %></td>
 		<td><%= mac_value.day_rate %></td>
 		<td><%= mac_value.mac_support_cost %></td>
 		<td><%= mac_value.server_support_cost %></td>

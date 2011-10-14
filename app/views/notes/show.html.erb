@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Company:</b>
+  <%= @note.company_id %>
+</p>
+
+<p>
+  <b>People:</b>
+  <%= @note.people_id %>
+</p>
+
+<p>
+  <b>Contract:</b>
+  <%= @note.contract_id %>
+</p>
+
+<p>
+  <b>Adhoc supports:</b>
+  <%= @note.adhoc_supports_id %>
+</p>
+
+<p>
+  <b>Notes:</b>
+  <%= @note.notes %>
+</p>
+
+
+<%= link_to 'Edit', edit_note_path(@note) %> |
+<%= link_to 'Back', notes_path %>

@@ -1,0 +1,43 @@
+<h1>Listing invoices</h1>
+
+<table>
+  <tr>
+    <th>Invoice date</th>
+    <th>Purchase order</th>
+    <th>Date sent</th>
+    <th>Paid</th>
+    <th>Date paid</th>
+    <th>Sub total</th>
+    <th>Vat rate</th>
+    <th>Vat total</th>
+    <th>Discount total</th>
+    <th>Total</th>
+    <th>Company</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @invoices.each do |invoice| %>
+  <tr>
+    <td><%= invoice.invoice_date %></td>
+    <td><%= invoice.purchase_order %></td>
+    <td><%= invoice.date_sent %></td>
+    <td><%= invoice.paid %></td>
+    <td><%= invoice.date_paid %></td>
+    <td><%= invoice.sub_total %></td>
+    <td><%= invoice.vat_rate %></td>
+    <td><%= invoice.vat_total %></td>
+    <td><%= invoice.discount_total %></td>
+    <td><%= invoice.total %></td>
+    <td><%= invoice.company_id %></td>
+    <td><%= link_to 'Show', invoice %></td>
+    <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
+    <td><%= link_to 'Destroy', invoice, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Invoice', new_invoice_path %>

@@ -1,0 +1,14 @@
+<h2 class="tabletitle">Notes</h2>
+
+<table id="notes_index">
+  <tr>
+    <th>Date</td>
+    <th>Note</th>
+  </tr>
+<% Notes.where(@model_name.id => notes.id).limit(10).all.each do |note| %>
+	<tr>
+		<td><%= note.created_at.strftime("%d/%m/%Y") %></td>
+		<td><%= note.note %></td>
+	</tr>
+<% end %>
+</table>

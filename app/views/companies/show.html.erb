@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <p>
-  <h3><%= @company.company_name %></h3> | <%= link_to 'Edit', edit_company_path(@company) %>
+  <h1><%= @company.company_name %></h2> | <%= link_to 'Edit', edit_company_path(@company) %>
 </p>
 <p>
 <b>Address Line 1:</b>
@@ -23,7 +23,8 @@
   <%= @company.telephone_number %>
 </p>
 <p>
-	<%= @company.type %>
+	<b>Company type</b>
+	<%= CompanyType.find(@company.company_type_id).company_type %>
 
 
 <p>

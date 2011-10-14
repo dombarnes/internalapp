@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111012144720) do
+ActiveRecord::Schema.define(:version => 20111014110519) do
 
   create_table "adhoc_supports", :force => true do |t|
     t.date     "date",        :null => false
@@ -21,9 +21,11 @@ ActiveRecord::Schema.define(:version => 20111012144720) do
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "invoice_id"
   end
 
   add_index "adhoc_supports", ["company_id"], :name => "index_adhoc_supports_on_company_id"
+  add_index "adhoc_supports", ["invoice_id"], :name => "index_adhoc_supports_on_invoice_id"
 
   create_table "assignments", :force => true do |t|
     t.integer  "role_id"
@@ -45,6 +47,12 @@ ActiveRecord::Schema.define(:version => 20111012144720) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "company_type"
+  end
+
+  create_table "company_types", :force => true do |t|
+    t.string   "company_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "contracts", :force => true do |t|

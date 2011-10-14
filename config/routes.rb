@@ -1,4 +1,8 @@
 Internalapp::Application.routes.draw do
+  resources :invoices
+
+  resources :notes
+
   resources :contracts
 
   resources :tasks

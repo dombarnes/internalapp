@@ -1,0 +1,61 @@
+<%= form_for(@invoice) do |f| %>
+  <% if @invoice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
+
+      <ul>
+      <% @invoice.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :invoice_date %><br />
+    <%= f.date_select :invoice_date %>
+  </div>
+  <div class="field">
+    <%= f.label :purchase_order %><br />
+    <%= f.text_field :purchase_order %>
+  </div>
+  <div class="field">
+    <%= f.label :date_sent %><br />
+    <%= f.date_select :date_sent %>
+  </div>
+  <div class="field">
+    <%= f.label :paid %><br />
+    <%= f.check_box :paid %>
+  </div>
+  <div class="field">
+    <%= f.label :date_paid %><br />
+    <%= f.date_select :date_paid %>
+  </div>
+  <div class="field">
+    <%= f.label :sub_total %><br />
+    <%= f.text_field :sub_total %>
+  </div>
+  <div class="field">
+    <%= f.label :vat_rate %><br />
+    <%= f.text_field :vat_rate %>
+  </div>
+  <div class="field">
+    <%= f.label :vat_total %><br />
+    <%= f.text_field :vat_total %>
+  </div>
+  <div class="field">
+    <%= f.label :discount_total %><br />
+    <%= f.text_field :discount_total %>
+  </div>
+  <div class="field">
+    <%= f.label :total %><br />
+    <%= f.text_field :total %>
+  </div>
+  <div class="field">
+    <%= f.label :company_id %><br />
+    <%= f.number_field :company_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

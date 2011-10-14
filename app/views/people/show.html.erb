@@ -33,11 +33,13 @@
 </p>
 <p>
   <b>LinkedIn:</b>
-  <%= link_to "http://www.linkedin.com/in/" +@person.linkedin, "http://www.linkedin.com/in/" + @person.linkedin, :target => :blank %>
+	<%= link_to "http://www.linkedin.com/in/" + @person.linkedin, "http://www.linkedin.com/in/" + @person.linkedin, :target => :blank %>
 </p>
 <p>
   <b>Twitter:</b>
-  <%= link_to "@" +  @person.twitter, "http://twitter.com/" +  @person.twitter, :target => :blank %>
+  <% unless @person.twitter.empty? %>
+		<%= link_to "@" +  @person.twitter, "http://twitter.com/" +  @person.twitter, :target => :blank %>
+	<% end %>
 </p>
 <% unless @person.address_1.empty? %>
 <p>

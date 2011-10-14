@@ -7,13 +7,22 @@
 
 <div class="data-list">
 <table class="pretty">
+	<th>
+		<tr>
+			<td></td>
+			<td>Telephone</td>
+			<td>Town</td>
+		</tr>
+	</th>
 <% @companies.each do |company| %>
 	<tr>
-		<td>
-  		</td>
+		<td></td>
+		<td></td>
 	</tr>
 	<tr>
     <td class="tablename"><%= link_to company.company_name, company %></td>
+    <td class="tablename"><%= company.telephone_number %></td>
+    <td class="tablename"><%= company.city %>, <%= company.county%></td>
   </tr>
 <% end %>
 </table>

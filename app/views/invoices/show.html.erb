@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Invoice date:</b>
+  <%= @invoice.invoice_date %>
+</p>
+
+<p>
+  <b>Purchase order:</b>
+  <%= @invoice.purchase_order %>
+</p>
+
+<p>
+  <b>Date sent:</b>
+  <%= @invoice.date_sent %>
+</p>
+
+<p>
+  <b>Paid:</b>
+  <%= @invoice.paid %>
+</p>
+
+<p>
+  <b>Date paid:</b>
+  <%= @invoice.date_paid %>
+</p>
+
+<p>
+  <b>Sub total:</b>
+  <%= @invoice.sub_total %>
+</p>
+
+<p>
+  <b>Vat rate:</b>
+  <%= @invoice.vat_rate %>
+</p>
+
+<p>
+  <b>Vat total:</b>
+  <%= @invoice.vat_total %>
+</p>
+
+<p>
+  <b>Discount total:</b>
+  <%= @invoice.discount_total %>
+</p>
+
+<p>
+  <b>Total:</b>
+  <%= @invoice.total %>
+</p>
+
+<p>
+  <b>Company:</b>
+  <%= @invoice.company_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
+<%= link_to 'Back', invoices_path %>

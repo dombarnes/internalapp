@@ -12,11 +12,11 @@
 <h2 id="overdue">Overdue</h2>
 <% @tasks.overdue.each do |task| %>
   <tr class="tasklist">
-	<td><%= check_box task.completed, task.completed %></td>
-    <td><%= link_to task.task, task %></td>
-    <td><%= task.due_date.strftime("%d/%m/%Y") %></td>
-    <td><%= task.category %></td>
-    <td><%= check_box_tag task.private %></td>
+	<td class="checkbox"><%= check_box task.completed, task.completed %></td>
+    <td class="taskitem"><%= link_to task.task, task %></td>
+    <td class="taskdate"><%= task.due_date.strftime("%d/%m/%Y") %></td>
+    <td class="taskcategory"><%= task.category %></td>
+    <td class="checkbox"><%= check_box_tag task.private %></td>
   </tr>
 <% end %>
 </table>
@@ -24,11 +24,11 @@
 <h2 id="due_this_week">Due this week</h2>
 <% @tasks.due_this_week.each do |task| %>
   <tr class="tasklist">
-	<td><%= check_box task.completed, task.completed %></td>
-    <td><%= link_to task.task, task %></td>
-    <td><%= task.due_date.strftime("%d/%m/%Y") %></td>
-    <td><%= task.category %></td>
-    <td><%= check_box_tag task.private %></td>
+	<td class="checkbox"><%= check_box task.completed, task.completed %></td>
+    <td class="taskitem"><%= link_to task.task, task %></td>
+    <td class="taskdate"><%= task.due_date.strftime("%d/%m/%Y") %></td>
+    <td class="taskcategory"><%= task.category %></td>
+    <td class="checkbox"><%= check_box_tag task.private %></td>
   </tr>
 <% end %>
 </table>
@@ -36,11 +36,11 @@
 <h2 id="due_older">Due later</h2>
 <% @tasks.due_older.each do |task| %>
   <tr class="tasklist">
-	<td><%= check_box task.completed, task.completed %></td>
-    <td><%= link_to task.task, task %></td>
-    <td><%= task.due_date.strftime("%d/%m/%Y") %></td>
-    <td><%= task.category %></td>
-    <td><%= check_box_tag task.private %></td>
+	<td class="checkbox"><%= check_box task.completed, task.completed %></td>
+    <td class="taskitem"><%= link_to task.task, task %></td>
+    <td class="taskdate"><%= task.due_date.strftime("%d/%m/%Y") %></td>
+    <td class="taskcategory"><%= task.category %></td>
+    <td class="checkbox"><%= check_box_tag task.private %></td>
   </tr>
 <% end %>
 </table>

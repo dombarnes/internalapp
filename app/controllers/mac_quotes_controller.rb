@@ -3,6 +3,12 @@ class MacQuotesController < ApplicationController
   helper_method :sort_column, :sort_direction
   filter_access_to :all  
   
+  def check_for_values
+    if MacValue.nil?
+      flash[:error] = "Unable to create quote at this time. Please contact Support (error code 1MV)"
+    end
+  end
+  
   def create
     @mac_quote = current_user.mac_quotes.build(params[:mac_quote])
     @quote_values = MacValues.last
@@ -16,6 +22,7 @@ class MacQuotesController < ApplicationController
   end
   
   def new
+    check_for_values
     @title = "New Mac Quotation"
     @mac_quote = MacQuote.new
   end
