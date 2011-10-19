@@ -25,14 +25,14 @@
   </div>
 
   <div class="field">
-  <%= f.label :company_name %>
-  <option value="" selected="selected"></option>
-  <%= f.collection_select(:company_id, Company.all, :id, :company_name ) %>
+  	<%= f.label :company_name %>
+  	<option value="" selected="selected"></option>
+  	<%= f.collection_select(:company_id, Company.all, :id, :company_name ) %>
   </div>
   
   <div class="field">
     <%= f.label :technicians %><br />
-	  <%= f.text_field :technicians %>
+	<%= f.check_box :technicians %>
   </div>
   
   <div class="field">

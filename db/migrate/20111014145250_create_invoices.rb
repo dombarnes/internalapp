@@ -1,7 +1,7 @@
 class CreateInvoices < ActiveRecord::Migration
   def change
     create_table :invoices do |t|
-      t.date :invoice_date
+      t.date :invoice_date, :null => false
       t.string :purchase_order
       t.date :date_sent
       t.boolean :paid
@@ -11,7 +11,8 @@ class CreateInvoices < ActiveRecord::Migration
       t.decimal :vat_total
       t.decimal :discount_total
       t.decimal :total
-      t.integer :company_id
+      t.integer :company_id, :null => false
+      t.string :status, :null => false
 
       t.timestamps
     end

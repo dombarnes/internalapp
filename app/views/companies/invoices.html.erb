@@ -1,0 +1,25 @@
+<h1>Invoices for <%= @company.company_name %></h1>
+<p>Below is a list of ad-hoc support days provided.
+<p>
+<table>
+  <tr>
+    <th>Date Sent</th>
+    <th>Total</th>
+    <th>Date Due</th>
+  </tr>
+
+<% @companies.each do |company| %>
+  <tr>
+    <td><%= link_to invoice.date_sent.strftime("%d/%m/%Y"), invoice %></td>
+    <td><%= company.total %></td>
+    <td><%= company.due_date %></td>
+<% end %>
+</table>
+
+<br />
+
+
+<% content_for :sidebar do %>
+  <h3>Ad Hoc Sidebar</h3>
+	<p>There will be some content here. Probably a list of last edited content.
+<% end %>

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <p>
-  <h1><%= @company.company_name %></h2> | <%= link_to 'Edit', edit_company_path(@company) %>
+  <h2><%= @company.company_name %></h2>| <%= link_to 'Edit', edit_company_path(@company) %>
 </p>
 <p>
 <b>Address Line 1:</b>
@@ -24,9 +24,10 @@
 </p>
 <p>
 	<b>Company type</b>
-	<%= CompanyType.find(@company.company_type_id).company_type %>
 
+		<%= CompanyType.find_by_id(@company.company_type_id).company_type %>
 
+</p>
 <p>
   <b>Website:</b>
   <%= link_to @company.website, @company.website, :target => "_blank" %>

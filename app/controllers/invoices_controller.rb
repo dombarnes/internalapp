@@ -1,6 +1,8 @@
 class InvoicesController < ApplicationController
-  # GET /invoices
-  # GET /invoices.json
+  before_filter :require_user
+  filter_resource_access
+
+
   def index
     @invoices = Invoice.all
 
@@ -10,38 +12,33 @@ class InvoicesController < ApplicationController
     end
   end
 
-  # GET /invoices/1
-  # GET /invoices/1.json
   def show
     @invoice = Invoice.find(params[:id])
-
+    @items = InvoiceItem.where(:invoice_id => @invoice.id)
+    
     respond_to do |format|
       format.html # show.html.erb
+      format.pdf { render :layout => false }
       format.json { render json: @invoice }
     end
   end
 
-  # GET /invoices/new
-  # GET /invoices/new.json
   def new
     @invoice = Invoice.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @invoice }
     end
   end
 
-  # GET /invoices/1/edit
   def edit
     @invoice = Invoice.find(params[:id])
   end
 
-  # POST /invoices
-  # POST /invoices.json
   def create
     @invoice = Invoice.new(params[:invoice])
-
+    @invoice.status = "Draft"
     respond_to do |format|
       if @invoice.save
         format.html { redirect_to @invoice, notice: 'Invoice was successfully created.' }
@@ -79,5 +76,22 @@ class InvoicesController < ApplicationController
       format.html { redirect_to invoices_url }
       format.json { head :ok }
     end
+  end
+
+  def download_pdf
+    invoice = Invoice.find(params[:id])
+    send_data generate_pdf(invoice),
+              :filename => "#{invoice.id + "_" + invoice.id}.pdf",
+              :type => "application/pdf"
+  end
+
+private
+
+  def generate_pdf(client)
+    Prawn::Document.new do
+      text client.name, :align => :center
+      text "Address: #{client.address}"
+      text "Email: #{client.email}"
+    end.render
   end
 end

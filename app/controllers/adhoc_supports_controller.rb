@@ -23,11 +23,11 @@ class AdhocSupportsController < ApplicationController
 
   def new
     @adhoc_support = AdhocSupport.new
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @adhoc_support }
     end
-    @technicians = People
   end
 
   def edit

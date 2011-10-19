@@ -1,6 +1,6 @@
 <% @adhoc_supports.each do |adhoc_support| %>
   <tr>
-    <td><h3><%= link_to adhoc_support.date, adhoc_support.date.strftime("%d/%m/%Y") %></h3></td>
+    <td><h3><%= link_to adhoc_support.date.strftime("%d/%m/%Y"), adhoc_support %></h3></td>
     <td><%= adhoc_support.technicians %></td>
   </tr>
 <% end %>

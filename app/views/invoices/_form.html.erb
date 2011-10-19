@@ -11,49 +11,29 @@
     </div>
   <% end %>
 
+	<%= f.label "Invoice ID" %>
+	<br>
   <div class="field">
     <%= f.label :invoice_date %><br />
-    <%= f.date_select :invoice_date %>
+    <%= f.date_select :invoice_date, :order =>[:day, :month, :year] %>
+  </div>
+  <div class="field">
+    <%= f.label "Company" %>
+  	<option value="" selected="selected"></option>
+    <%= f.collection_select(:company_id, Company.all, :id, :company_name ) %>
   </div>
   <div class="field">
     <%= f.label :purchase_order %><br />
     <%= f.text_field :purchase_order %>
   </div>
   <div class="field">
-    <%= f.label :date_sent %><br />
-    <%= f.date_select :date_sent %>
-  </div>
-  <div class="field">
-    <%= f.label :paid %><br />
-    <%= f.check_box :paid %>
-  </div>
-  <div class="field">
-    <%= f.label :date_paid %><br />
-    <%= f.date_select :date_paid %>
-  </div>
-  <div class="field">
-    <%= f.label :sub_total %><br />
-    <%= f.text_field :sub_total %>
-  </div>
-  <div class="field">
     <%= f.label :vat_rate %><br />
-    <%= f.text_field :vat_rate %>
-  </div>
-  <div class="field">
-    <%= f.label :vat_total %><br />
-    <%= f.text_field :vat_total %>
-  </div>
-  <div class="field">
-    <%= f.label :discount_total %><br />
-    <%= f.text_field :discount_total %>
-  </div>
-  <div class="field">
-    <%= f.label :total %><br />
-    <%= f.text_field :total %>
-  </div>
-  <div class="field">
-    <%= f.label :company_id %><br />
-    <%= f.number_field :company_id %>
+	<select id="invoices_vat_rate" name="invoice[vat_rate]">
+    	<option value="0.150" selected="selected" >15.0%</option>
+		<option value="0.175" selected="selected" >17.5%</option>
+		<option value="0.200" selected="selected" >20%</option>
+	</select>
+	
   </div>
   <div class="actions">
     <%= f.submit %>

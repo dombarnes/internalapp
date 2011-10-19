@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111014110519) do
+ActiveRecord::Schema.define(:version => 20111018131439) do
 
   create_table "adhoc_supports", :force => true do |t|
     t.date     "date",        :null => false
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(:version => 20111014110519) do
     t.string   "source"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "company_type"
+    t.integer  "company_type_id"
   end
 
   create_table "company_types", :force => true do |t|
@@ -61,6 +61,34 @@ ActiveRecord::Schema.define(:version => 20111014110519) do
     t.string   "contract_type"
     t.decimal  "cost"
     t.string   "contract_state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "invoice_items", :force => true do |t|
+    t.integer  "quantity",   :null => false
+    t.string   "unit_type",  :null => false
+    t.string   "details"
+    t.decimal  "unit_price", :null => false
+    t.decimal  "tax_rate",   :null => false
+    t.integer  "invoice_id", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "invoices", :force => true do |t|
+    t.date     "invoice_date",   :null => false
+    t.string   "purchase_order"
+    t.date     "date_sent"
+    t.boolean  "paid"
+    t.date     "date_paid"
+    t.decimal  "sub_total"
+    t.decimal  "vat_rate"
+    t.decimal  "vat_total"
+    t.decimal  "discount_total"
+    t.decimal  "total"
+    t.integer  "company_id",     :null => false
+    t.string   "status",         :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -149,9 +177,18 @@ ActiveRecord::Schema.define(:version => 20111014110519) do
     t.datetime "updated_at"
   end
 
+  create_table "notes", :force => true do |t|
+    t.integer  "company_id"
+    t.integer  "people_id"
+    t.integer  "contract_id"
+    t.integer  "adhoc_supports_id"
+    t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "people", :force => true do |t|
     t.string   "title"
-    t.string   "company_name"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "position"
@@ -172,8 +209,6 @@ ActiveRecord::Schema.define(:version => 20111014110519) do
     t.string   "linkedin"
     t.string   "twitter"
   end
-
-  add_index "people", ["company_id"], :name => "index_person_on_company_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"

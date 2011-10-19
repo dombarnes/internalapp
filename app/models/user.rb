@@ -75,7 +75,7 @@ class User < ActiveRecord::Base
 
 protected
   def assign_role_after_signup
-    Assignment.create(:role_id => Role.find_by_name("reseller").id, :user_id => id)
+    Assignment.create(:role_id => Role.find_by_name("reseller").id, :user_id => current_user.id)
   end
 
 end

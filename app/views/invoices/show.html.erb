@@ -55,6 +55,28 @@
   <%= @invoice.company_id %>
 </p>
 
+<%= link_to 'New invoice item', new_invoice_invoice_items_path(@invoice) %>
+
+<table id="invoiceitems">
+	<tr>
+		<th>Qty</th>
+		<th>Price</th>
+		<th>Description</th>
+		<th>VAT Rate</th>
+		<th>Total</th>
+	</tr>
+<% @invoice.items.each do |item| %>
+	 <tr>
+	 	<td><%= item.quantity %></td>
+	    <td><%= item.unit_type %></td>
+	    <td><%= item.unit_price %></td>
+	    <td><%= item.detail %></td>
+	    <td><%= item.vat_rate %></td>
+		<td><%= item.total_cost %></td>
+	</tr>
+<% end %>
+</table>
+
 
 <%= link_to 'Edit', edit_invoice_path(@invoice) %> |
 <%= link_to 'Back', invoices_path %>

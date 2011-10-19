@@ -48,7 +48,7 @@ class IosQuotesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @ios_quote }
-#      format.pdf { render :layout => false }
+      format.pdf { render :layout => false }
     end
   end
   

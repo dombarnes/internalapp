@@ -1,6 +1,7 @@
 class NotesController < ApplicationController
-  # GET /notes
-  # GET /notes.json
+  before_filter :require_user
+  filter_resource_access
+
   def index
     @notes = Note.all
 
@@ -10,8 +11,6 @@ class NotesController < ApplicationController
     end
   end
 
-  # GET /notes/1
-  # GET /notes/1.json
   def show
     @note = Note.find(params[:id])
 
@@ -21,8 +20,6 @@ class NotesController < ApplicationController
     end
   end
 
-  # GET /notes/new
-  # GET /notes/new.json
   def new
     @note = Note.new
 
@@ -32,13 +29,10 @@ class NotesController < ApplicationController
     end
   end
 
-  # GET /notes/1/edit
   def edit
     @note = Note.find(params[:id])
   end
 
-  # POST /notes
-  # POST /notes.json
   def create
     @note = Note.new(params[:note])
 
@@ -53,8 +47,6 @@ class NotesController < ApplicationController
     end
   end
 
-  # PUT /notes/1
-  # PUT /notes/1.json
   def update
     @note = Note.find(params[:id])
 
@@ -69,8 +61,6 @@ class NotesController < ApplicationController
     end
   end
 
-  # DELETE /notes/1
-  # DELETE /notes/1.json
   def destroy
     @note = Note.find(params[:id])
     @note.destroy

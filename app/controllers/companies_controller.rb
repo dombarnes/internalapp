@@ -19,6 +19,7 @@ class CompaniesController < ApplicationController
     @adhoc_supports = AdhocSupport.where(:company_id => @company.id)
     respond_to do |format|
       format.html # show.html.erb
+      format.pdf { render :layout => false }
       format.xml  { render :xml => @company }
     end
     

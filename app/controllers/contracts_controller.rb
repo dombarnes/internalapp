@@ -1,6 +1,7 @@
 class ContractsController < ApplicationController
-  # GET /contracts
-  # GET /contracts.json
+  before_filter :require_user
+  filter_resource_access
+
   def index
     @contracts = Contract.all
 
@@ -10,8 +11,6 @@ class ContractsController < ApplicationController
     end
   end
 
-  # GET /contracts/1
-  # GET /contracts/1.json
   def show
     @contract = Contract.find(params[:id])
 
@@ -21,8 +20,6 @@ class ContractsController < ApplicationController
     end
   end
 
-  # GET /contracts/new
-  # GET /contracts/new.json
   def new
     @contract = Contract.new
 
@@ -32,13 +29,10 @@ class ContractsController < ApplicationController
     end
   end
 
-  # GET /contracts/1/edit
   def edit
     @contract = Contract.find(params[:id])
   end
 
-  # POST /contracts
-  # POST /contracts.json
   def create
     @contract = Contract.new(params[:contract])
 
@@ -53,8 +47,6 @@ class ContractsController < ApplicationController
     end
   end
 
-  # PUT /contracts/1
-  # PUT /contracts/1.json
   def update
     @contract = Contract.find(params[:id])
 
@@ -69,8 +61,6 @@ class ContractsController < ApplicationController
     end
   end
 
-  # DELETE /contracts/1
-  # DELETE /contracts/1.json
   def destroy
     @contract = Contract.find(params[:id])
     @contract.destroy

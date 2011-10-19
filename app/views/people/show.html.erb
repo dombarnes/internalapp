@@ -33,7 +33,9 @@
 </p>
 <p>
   <b>LinkedIn:</b>
+	<% unless @person.linkedin.empty? %>
 	<%= link_to "http://www.linkedin.com/in/" + @person.linkedin, "http://www.linkedin.com/in/" + @person.linkedin, :target => :blank %>
+	<% end %>
 </p>
 <p>
   <b>Twitter:</b>
