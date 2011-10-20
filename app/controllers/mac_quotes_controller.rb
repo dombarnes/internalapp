@@ -11,7 +11,7 @@ class MacQuotesController < ApplicationController
   
   def create
     @mac_quote = current_user.mac_quotes.build(params[:mac_quote])
-    @quote_values = MacValues.last
+    @quote_values = MacValue.last
     @mac_quote.mac_values_id = @mac_values.id
     if @mac_quote.save
       flash[:success] = "Quote saved!"

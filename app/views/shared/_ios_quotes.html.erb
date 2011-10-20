@@ -1,9 +1,6 @@
-<h3 class="tabletitle">iPad, iPhone and iPod Touch</h3>
-<%= link_to "Create a new iOS Install and Support Quote", new_ios_quote_path %>
-<br>
 <h3 class="tabletitle">Latest iOS Deployment Quotes</h3>
 
-<table id="home-ios-quote">
+<table class="quotetable">
   <tr>
     <th>Date</td>
     <th>Customer</th>
@@ -21,6 +18,7 @@
 	</tr>
 <% end %>
 </table>
+<%= link_to "Create a new iOS Install and Support Quote", new_ios_quote_path, :class => "new_item_link" %>
 <div id="more_link">
 <%= link_to "More...", ios_quotes_path %>
 </div>

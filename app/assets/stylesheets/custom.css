@@ -211,7 +211,6 @@ a {
 a:hover {
 	color: #ccc ;
 	text-decoration: underline;
-	background-color:white;
 }
 
 a:visited {
@@ -274,10 +273,13 @@ td {
 	
 }
 
-.tabletitle {
-	background:;
-	padding: 6px 3px 4px 3px;
-
+.tabletitle, h3 {
+	padding: 24px 3px 24px 3px;
+	
+}
+.new_item_link {
+	padding-top:8px;
+	padding-bottom:16px;
 }
 
 /* Table Classes */
@@ -573,6 +575,21 @@ p#helper {
 }
 .quotevalues tr {
 	width:40%;
+}
+
+
+/* Quote Table */
+.quotetable table {
+	margin:10px 0 10px 0;
+}
+.quotetable th {
+	border-bottom:1px solid black;
+}
+
+.quotetable th, td {
+	padding-top:5px;
+	padding-bottom:5px;
+	border-bottom:1px dotted black;
 }
 
 /* Login Form Styling */

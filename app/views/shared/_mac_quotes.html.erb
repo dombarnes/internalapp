@@ -1,8 +1,5 @@
-<h3 class="tabletitle">Mac</h3>
-<%= link_to "Create a new Installation Quote", new_mac_quote_path %>
-<br>
 <h3 class="tabletitle">Latest Mac Quotes</h3>
-<table id="home-mac-quote">
+<table class="quotetable">
   <tr>
     <th>Date</td>
     <th>Customer</th>
@@ -20,6 +17,7 @@
 	</tr>
 <% end %>
 </table>
+<%= link_to "Create a new Installation Quote", new_mac_quote_path, :class => "new_item_link" %>
 <div id="more_link">
 <%= link_to "More...", mac_quotes_path %>
 </div>

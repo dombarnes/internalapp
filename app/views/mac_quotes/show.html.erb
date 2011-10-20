@@ -34,6 +34,7 @@
   <b>Installation Required?</b>
   <%= @ios_quote.install_required %>
 </p>
+<p><%= link_to "Printable Quote (PDF)", ios_quote_path(@ios_quote, :format => 'pdf') %></p>
 
 <%= link_to '← Back', ios_quotes_path %> |
 <% if can? :update, @mac_quote %>
