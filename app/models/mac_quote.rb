@@ -5,7 +5,7 @@ class MacQuote < ActiveRecord::Base
   belongs_to :user
   has_many :mac_values
   
-  validate :customer_name, :presence => true
+  validates :customer_name, :presence => true
 
   scope :recent, order('mac_quotes.created_at DESC')
 

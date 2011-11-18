@@ -1,3 +1,28 @@
 // Place all the styles related to the Invoices controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.invoice-wrapper {width:100%}
+#invoice-show {
+	border:2px solid black;
+	width:300px;
+	float:right;
+	line-height:1.8;
+
+}
+#invoice-show th, td {
+	width:150px;
+	margin-left:2px;
+}
+
+#invoice-show tr {
+	border:1px solid black;
+
+}
+
+#invoice-metadata {
+	display:block;
+	float:none;
+}
+.right { text-align:right}
+.left { text-align:left}

@@ -27,7 +27,7 @@ class CompaniesController < ApplicationController
 
   def new
     @company = Company.new
-
+#    @company.build_person
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @company }
@@ -47,6 +47,7 @@ class CompaniesController < ApplicationController
         format.html { redirect_to(@company, :notice => 'Company was successfully saved.') }
         format.xml  { render :xml => @company, :status => :created, :location => @company }
       else
+        flash[:notice] = "Cannot save this company. Please check all required fields."
         format.html { render :action => "new" }
         format.xml  { render :xml => @company.errors, :status => :unprocessable_entity }
       end
@@ -68,9 +69,13 @@ class CompaniesController < ApplicationController
   end
 
   def destroy
-    Company.find(params[:id]).destroy
+    @company = Company.find(params[:id])
+    @company.destroy
     flash[:notice] = "#{company.company_name} has been deleted"
-    redirect_to companies_path
+    respond_to do |format|
+      format.html { redirect_to companies_path }
+      format.json { head :ok }
+    end
   end
   
   private

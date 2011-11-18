@@ -14,7 +14,7 @@ class AdhocSupportsController < ApplicationController
   end
 
   def show
-#    @adhoc_support = AdhocSupport.find(params[:id])
+    @adhoc_support = AdhocSupport.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @adhoc_support }

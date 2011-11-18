@@ -5,7 +5,6 @@ class InvoicesController < ApplicationController
 
   def index
     @invoices = Invoice.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @invoices }
@@ -14,8 +13,8 @@ class InvoicesController < ApplicationController
 
   def show
     @invoice = Invoice.find(params[:id])
-    @items = InvoiceItem.where(:invoice_id => @invoice.id)
-    
+    @items = InvoiceItem.where(@invoice.id => :invoice_id).collect
+
     respond_to do |format|
       format.html # show.html.erb
       format.pdf { render :layout => false }
@@ -25,7 +24,7 @@ class InvoicesController < ApplicationController
 
   def new
     @invoice = Invoice.new
-    
+    @item = InvoiceItem.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @invoice }
@@ -42,19 +41,20 @@ class InvoicesController < ApplicationController
     respond_to do |format|
       if @invoice.save
         format.html { redirect_to @invoice, notice: 'Invoice was successfully created.' }
-        format.json { render json: @invoice, status: :created, location: @invoice }
+        format.xml { render xml: @invoice, status: :draft, location: @invoice }
+        format.json { render json: @invoice, location: @invoice }
+        format.js
       else
         format.html { render action: "new" }
         format.json { render json: @invoice.errors, status: :unprocessable_entity }
+        format.xml { render xml: @invoice.errors, :status => :unprocessable_entity }
+        format.js
       end
     end
   end
 
-  # PUT /invoices/1
-  # PUT /invoices/1.json
   def update
     @invoice = Invoice.find(params[:id])
-
     respond_to do |format|
       if @invoice.update_attributes(params[:invoice])
         format.html { redirect_to @invoice, notice: 'Invoice was successfully updated.' }
@@ -66,12 +66,9 @@ class InvoicesController < ApplicationController
     end
   end
 
-  # DELETE /invoices/1
-  # DELETE /invoices/1.json
   def destroy
     @invoice = Invoice.find(params[:id])
     @invoice.destroy
-
     respond_to do |format|
       format.html { redirect_to invoices_url }
       format.json { head :ok }

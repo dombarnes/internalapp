@@ -44,6 +44,7 @@ li { font-size: 12px; }
 	max-width: 1200px;
 	min-width: 800px;
 }
+
 #content {
 	width: 900px;
 	display:table;
@@ -74,29 +75,34 @@ input[type=checkbox] {
 }
 
 /* Header */
-#header {
+.header {
 	padding-top:5px;
-	position:relative;	
-	height:50px;
-	width:700px;
-	padding:2px;
+	height:60px;
+	width:100%;
 	background:#ffffff;
+	background-color:#005782;
 	float:left;
 	margin:0 0 0 0;
 }
 .headerimg {
-
-	margin-left:30px;
-	margin-top:20px;
+	padding:20px;
+	margin:-5px;
+	float:left;
+	display:block;
 }
 
 #user_status {
-	padding : 0 5px 0 5px;
+	padding : 20px 50px 0 750px;
 	width:300px;
+	float:left;
+	font-size:100%;
+	height:40px;
 }
 #user_status a {
 	text-decoration:underline;
 	font-size:0.92em;
+	padding-right:10px;
+	padding-left:10px;
 }
 
 /* Navigation */
@@ -205,9 +211,9 @@ ol, ul {
 
 /* Links */
 a {
-	text-decoration: none;
-	
+	text-decoration: none;	
 }
+
 a:hover {
 	color: #ccc ;
 	text-decoration: underline;
@@ -273,7 +279,7 @@ td {
 	
 }
 
-.tabletitle, h3 {
+h3.tabletitle {
 	padding: 24px 3px 24px 3px;
 	
 }
@@ -339,28 +345,29 @@ tr td{
 .field_with_errors {
   margin-top: 10px;
   padding: 2px;
-  background-color: #C11B17 ;
+  background-color:#ffffff;
   display: table;
 }
 .field_with_errors label {
-  color: #fff;
+  color: #000;
+  border:2px solid #c11B17;
 }
 #error_explanation {
   width: 300px;
-  border: 2px solid red;
+  border: 2px solid #C11B17;
   padding: 7px;
   padding-bottom: 12px;
   margin-bottom: 20px;
-  background-color: #C11B17;
+  background-color:#ffffff;
 }
 #error_explanation h2 {
   text-align: left;
   font-weight: bold;
   padding: 5px 5px 5px 15px;
-  font-size: 12px;
+  font-size: 10px;
   margin: -7px;
   background-color: ##C11B17;
-  color: #fff;
+  color: #000;
 }
 #error_explanation p {
   color: #333;
@@ -480,6 +487,10 @@ td.checkbox {width:29px;}
 td.taskcategory {width:200px;}
 td.taskdate {width:113px;}
 
+#people{
+	padding:5px;
+}
+
 /* iOS Quote Styling */
 #iosquote label {
 	width : 25% ;
@@ -579,50 +590,54 @@ p#helper {
 
 
 /* Quote Table */
-.quotetable table {
+table.quotetable {
 	margin:10px 0 10px 0;
 }
-.quotetable th {
+th.quotetable {
 	border-bottom:1px solid black;
 }
 
-.quotetable th, td {
+table.quotetable, tr, td {
 	padding-top:5px;
 	padding-bottom:5px;
-	border-bottom:1px dotted black;
-}
 
+}
+table.quotetable tr:first-child { border-bottom:1px solid #000;}
+table.quotetable td { border-bottom:1px dotted #000; }
+
+tr.companies_table{
+	border-bottom:1px dotted black;
+	padding-bottom:15px;
+}
 /* Login Form Styling */
 #loginform label {
-	font-size:1.4em;
+	font-size:1em;
 	font-family:Lucida Grande, arial, san-serif;
 	font-color:black;
-	padding:5px 5px;
+	padding:1px 5px;
 	vertical-align:middle;
 	display:block;
-	margin:0 0 2px;
-	float:left;
-	width:275px;
+	float:none;
+	width:30%;
 }
 
 #loginform {
-	width:401px;
+	width:70%;
 	padding: 28px;
 }
 
 body.login input#user_session_email, body.login input#user_session_password {
-	width:275px;
+	width:200px;
 	padding:3px;
-	font-size:14px;
+	font-size:1em;
 }
 
 #loginform input[type="text"], input[type="password"] {
 	padding: 5px 5px;
-	margin-bottom: 5px;
-	margin-top:5px;
-	font-size:1.4em;
+	font-size:1em;
 	vertical-align:middle;
-	
+	width:200px;
+	height:7px;
 }
 
 #login_submit { }
@@ -638,11 +653,10 @@ fieldset li {
 	background-color: #F2EFE9;
 }
 fieldset {
-	float : left ;
-	clear : left ;
-	margin : 0 0 1.5em 0;
-	padding : 1em ;	
-	min-height : 30px;
+	float:left;
+	clear:left;
+	margin:0 0 1.5em 0;
+	padding:1em;	
 }
 .clear {
 	overflow : hidden ;
@@ -692,6 +706,7 @@ a.button:active span {
 	color:#666999;
 	font-size: 0.8em;
 }
+
 /* application.css */
 .pretty th .current {
   padding-right: 12px;

@@ -1,12 +1,11 @@
-<div id"header">
+<div class="header">
 	<%= link_to logo , root_path, :class => :headerimg %>
 	<div id="user_status">
       <% if current_user %>
         <%= link_to "Sign out", logout_path %>
         <%= link_to "Profile", current_user %>
       <% else %>
-        <%= link_to "Sign up", signup_path %> or
-        <%= link_to "log in", login_path %>.
+        <%= link_to "Sign up", signup_path, :class => :signin %>    <%= link_to "log in", login_path, :class => :signin %>
       <% end %>
     </div>
 </div>

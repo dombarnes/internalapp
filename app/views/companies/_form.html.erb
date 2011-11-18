@@ -10,45 +10,45 @@
       </ul>
     </div>
   <% end %>
-  
+  <sup>* required fields</sup>
   <div class="field">
-    <%= f.label :company_name %><br />
+	<%= f.label "Company Name*" %>
     <%= f.text_field :company_name %>
   </div>
   <div class="field">
-    <%= f.label :address_1 %><br />
+    <%= f.label :address_1 %>
     <%= f.text_field :address_1 %>
   </div>
   <div class="field">
-    <%= f.label :address_2 %><br />
+    <%= f.label :address_2 %>
     <%= f.text_field :address_2 %>
   </div>
   <div class="field">
-    <%= f.label :city %><br />
+    <%= f.label :city %>
     <%= f.text_field :city %>
   </div>
   <div class="field">
-    <%= f.label :county %><br />
+    <%= f.label :county %>
     <%= f.text_field :county %>
   </div>
   <div class="field">
-    <%= f.label :postcode %><br />
+    <%= f.label :postcode %>
     <%= f.text_field :postcode %>
   </div>
   <div class="field">
-    <%= f.label :telephone_number %><br />
+    <%= f.label :telephone_number %>
     <%= f.telephone_field :telephone_number %>
   </div>
   <div class="field">
-    <%= f.label :source %><br />
-    <%= f.text_field :source %>
+    <%= f.label :source %>
+    <%= f.select(:source, Company::SOURCE_TYPE) %>
   </div>
   <div class="field">
-    <%= f.label :company_type_id %><br />
-  <%= f.collection_select(:company_type_id, CompanyType.all, :id, :company_type, :prompt => "Please select a company type") %>
+	<%= f.label "Company Type*" %>
+  	<%= f.select(:company_type, Company::COMPANY_TYPE, {:prompt => "Select Type..."}) %>
   </div>
   <div class="field">
-    <%= f.label :website %><br />
+    <%= f.label :website %>
     <%= f.text_field :website %>
   </div><br />
   <div class="actions">

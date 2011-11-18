@@ -1,0 +1,19 @@
+<table id="invoiceitems">
+	<tr>
+		<th>Qty</th>
+		<th>Price</th>
+		<th>Description</th>
+		<th>VAT Rate</th>
+		<th>Total</th>
+	</tr>
+<% @items.each do |item| %>
+	 <tr>
+	 	<td><%= item.quantity %></td>
+	    <td><%= item.unit_type %></td>
+	    <td><%= item.unit_price %></td>
+	    <td><%= item.details %></td>
+	    <td><%= item.tax_rate %></td>
+		<td><%= @invoice.total %></td>
+	</tr>
+<% end %>
+</table>

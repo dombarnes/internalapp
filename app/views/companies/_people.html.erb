@@ -1,6 +1,6 @@
 <% @people.each do |person| %>
   <tr>
-    <td><h3><%= link_to person.first_name + " " + person.last_name, person %></h3></td>
+    <td><%= link_to person.first_name + " " + person.last_name, person %></td>
     <td><%= person.position %></td>
   </tr>
 <% end %>

@@ -13,7 +13,7 @@
 <table class="index">
 <% @people.each do |person| %>
   <tr id="row_person">
-    <td><h3><%= link_to person.first_name + " " + person.last_name, person %></h3></td>
+    <td><h3><%= link_to person.first_name + " " + person.last_name, edit_person_path(person) %></h3></td>
     <td><%= person.position %> at <%= link_to Company.find(person.company_id).company_name, Company.find(person.company_id) %></td>
   </tr>
 <% end %>

@@ -1,4 +1,4 @@
-<%= form_for(@invoice) do |f| %>
+<%= form_for(@invoice, :remote => true) do |f| %>
   <% if @invoice.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
@@ -11,10 +11,8 @@
     </div>
   <% end %>
 
-	<%= f.label "Invoice ID" %>
-	<br>
   <div class="field">
-    <%= f.label :invoice_date %><br />
+    <%= f.label :invoice_date %>
     <%= f.date_select :invoice_date, :order =>[:day, :month, :year] %>
   </div>
   <div class="field">
@@ -23,11 +21,11 @@
     <%= f.collection_select(:company_id, Company.all, :id, :company_name ) %>
   </div>
   <div class="field">
-    <%= f.label :purchase_order %><br />
+    <%= f.label :purchase_order %>
     <%= f.text_field :purchase_order %>
   </div>
   <div class="field">
-    <%= f.label :vat_rate %><br />
+    <%= f.label :vat_rate %>
 	<select id="invoices_vat_rate" name="invoice[vat_rate]">
     	<option value="0.150" selected="selected" >15.0%</option>
 		<option value="0.175" selected="selected" >17.5%</option>

@@ -19,7 +19,9 @@ pdf.move_down 20
 
 quoteinfo = [["Customer Name", "#{@ios_quote.customer}"], ["Device Quantity", "#{@ios_quote.device_quantity}"],["Installation Cost", "#{number_to_currency(@ios_quote.install_cost, :unit => "£")}"],["Support Cost", "#{number_to_currency(@ios_quote.support_cost, :unit => "£")}"]]
 pdf.table quoteinfo, :width => 300, :row_colors => ["C3cddf", "DDDDDD"]
-
+pdf.move_down 5
+pdf.font_size 10
+pdf.text "* Costs shown are excluding VAT"
 pdf.move_down 30
 pdf.text "MacByte Support includes the following:"
 pdf.font_size 12

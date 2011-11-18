@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111018131439) do
+ActiveRecord::Schema.define(:version => 20111025220017) do
 
   create_table "adhoc_supports", :force => true do |t|
     t.date     "date",        :null => false
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(:version => 20111018131439) do
     t.string   "source"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "company_type_id"
+    t.string   "company_type"
   end
 
   create_table "company_types", :force => true do |t|

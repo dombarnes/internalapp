@@ -1,81 +1,68 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<p class="right">
   <b>Invoice date:</b>
-  <%= @invoice.invoice_date %>
+  <%= @invoice.invoice_date.strftime('%e %B %Y') %>
 </p>
 
-<p>
+<p class="right">
   <b>Purchase order:</b>
   <%= @invoice.purchase_order %>
 </p>
 
-<p>
-  <b>Date sent:</b>
-  <%= @invoice.date_sent %>
-</p>
+<div id="invoice-address">
+	<p><%= Company.find(@invoice.company_id).company_name %></p>
+	<p><%= Company.find(@invoice.company_id).address_1 %></p>
+	<p><%= Company.find(@invoice.company_id).address_2 %></p>
+	<p><%= Company.find(@invoice.company_id).city %></p>
+	<p><%= Company.find(@invoice.company_id).county %></p>
+	<p><%= Company.find(@invoice.company_id).postcode %></p>
+</div>
 
-<p>
-  <b>Paid:</b>
-  <%= @invoice.paid %>
-</p>
+<% render 'items' %>
 
-<p>
-  <b>Date paid:</b>
-  <%= @invoice.date_paid %>
-</p>
-
-<p>
-  <b>Sub total:</b>
-  <%= @invoice.sub_total %>
-</p>
-
-<p>
-  <b>Vat rate:</b>
-  <%= @invoice.vat_rate %>
-</p>
-
-<p>
-  <b>Vat total:</b>
-  <%= @invoice.vat_total %>
-</p>
-
-<p>
-  <b>Discount total:</b>
-  <%= @invoice.discount_total %>
-</p>
-
-<p>
-  <b>Total:</b>
-  <%= @invoice.total %>
-</p>
-
-<p>
-  <b>Company:</b>
-  <%= @invoice.company_id %>
-</p>
-
-<%= link_to 'New invoice item', new_invoice_invoice_items_path(@invoice) %>
-
-<table id="invoiceitems">
-	<tr>
-		<th>Qty</th>
-		<th>Price</th>
-		<th>Description</th>
-		<th>VAT Rate</th>
-		<th>Total</th>
-	</tr>
-<% @invoice.items.each do |item| %>
-	 <tr>
-	 	<td><%= item.quantity %></td>
-	    <td><%= item.unit_type %></td>
-	    <td><%= item.unit_price %></td>
-	    <td><%= item.detail %></td>
-	    <td><%= item.vat_rate %></td>
-		<td><%= item.total_cost %></td>
-	</tr>
-<% end %>
+<div class="invoice-wrapper">
+<table id="invoice-show">
+<tr>
+  <th><b>Sub total:</b></th>
+  <td class="right"><%= @invoice.sub_total %></td>
+</tr>
+<tr>
+  <th><b>Vat rate:</b></th>
+  <td class="right"><%= @invoice.vat_rate %></td>
+</tr>
+<tr>
+  <th><b>Vat total:</b></th>
+  <td class="right"><%= @invoice.vat_total %></td>
+</tr>
+<tr>
+  <th><b>Discount total:</b></th>
+  <td class="right"><%= @invoice.discount_total %></td>
+</tr>
+<tr>
+  <th><b>Total:</b></th>
+  <td class="right"><%= @invoice.total %></td>
 </table>
+</div>
+
+<div id="invoice-metadata">
+<h3>Invoice Info</h3>
+<table>
+	<th>
+		<td>Date Sent:</td>
+		<td>Paid</td>
+		<td>Date Paid</td>
+	</th>
+	<tr>
+	 <td><%= @invoice.date_sent %></td>
+	 <td><%= @invoice.paid %></td>
+	 <td><%= @invoice.date_paid %></td>
+	</tr>
+</table>
+</div>
+	
+
+<%= link_to 'New invoice item', new_invoice_invoice_item_path(@invoice) %>
 
 
 <%= link_to 'Edit', edit_invoice_path(@invoice) %> |

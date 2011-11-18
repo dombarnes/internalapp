@@ -1,25 +1,25 @@
 <h1>Quotation Values - iOS</h1>
-<%= link_to '← Back to Admin', admin_path %>
+<%= link_to 'Back to Admin', admin_path %>
 <br>
 <table>
   <tr>
     <th>Date</th>
-	  <th>Daily Rate</th>
-	  <th>Install Cost</th>
-	  <th>Annual Cost</th>
-	  <th>Install Time</th>
-	  <th>Delete?</th>
+	<th>Daily Rate</th>
+	<th>Install Cost</th>
+	<th>Annual Cost</th>
+	<th>Install Time</th>
+	<th>Delete?</th>
   </tr>
 <% @ios_values.each do |ios_value| %>
 	<tr>
-		<td><%= link_to ios_value, ios_value.created_at.strftime("%d/%m/%y") %></td>
+		<td><%= link_to ios_value.created_at.strftime("%d/%m/%Y"), ios_value %></td>
 		<td><%= ios_value.daily_rate %></td>
 		<td><%= ios_value.iosdevice_install_setup %></td>
 		<td><%= ios_value.iosdevice_support_cost %></td>
 		<td><%= ios_value.iosdevice_install_time %></td>
 		<td><button id="delete-ios-value">Delete</button></td>
 		<td><a class="dialog" id="dialog-confirm" name="delete" type="delete" href="#" onclick="()" >Delete</a></td>
-		</tr>
+	</tr>
 <% end %>
 </table>
 
@@ -46,4 +46,4 @@
 	</form>
 </div>
 
-<button id="create-ios-value">Add new values</button>	
+<%= button_to 'New Values', new_ios_value_path %>

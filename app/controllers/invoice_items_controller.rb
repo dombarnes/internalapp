@@ -1,4 +1,7 @@
 class InvoiceItemsController < ApplicationController
+  before_filter :require_user
+  helper_method :sort_column, :sort_direction
+  filter_access_to :all
 
   def index
     @items = InvoiceItem.all
@@ -10,7 +13,7 @@ class InvoiceItemsController < ApplicationController
   end
 
   def show
-#    @item = InvoiceItem.find(where[invoice_item.id => @item.id])
+    @item = InvoiceItem.find(:all)  #where[invoice_item.id => @item.id])
     
     respond_to do |format|
       format.html # show.html.erb
@@ -19,7 +22,7 @@ class InvoiceItemsController < ApplicationController
   end
 
   def new
-    @item = @invoice.invoice_item.build
+    @item = InvoiceItem.new
     
     respond_to do |format|
       format.html # new.html.erb
@@ -32,12 +35,10 @@ class InvoiceItemsController < ApplicationController
   end
 
   def create
-    @invoice = current_user.invoices.find(params[:invoice_id])
-    @item = @invoice.invoice_item.build(params[:item])
-
+    @item = InvoiceItem.build(params[:item])
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Invoice was successfully created.' }
+        format.html { redirect_to @invoice, notice: 'Invoice was successfully created.' }
         format.json { render json: @item, status: :created, location: @item }
       else
         format.html { render action: "new" }

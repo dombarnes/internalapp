@@ -1,4 +1,10 @@
 <h1>All companies</h1>
+<h2>Search</h2>
+<%= form_tag companies_path, :method => 'get', :remote => true, :id => "companies_search" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :company_name => nil %>
+  </p>
   
 <div class="data-view">
   <div class="data-nav">
@@ -6,7 +12,7 @@
   </div>
 
 <div class="data-list">
-<table class="pretty">
+<table>
 	<th>
 		<tr>
 			<td></td>
@@ -15,26 +21,16 @@
 		</tr>
 	</th>
 <% @companies.each do |company| %>
-	<tr>
-		<td></td>
-		<td></td>
+	<tr class="companies_table">
+    	<td><%= link_to company.company_name, company %></td>
+    	<td><%= company.telephone_number %></td>
+    	<td><% unless company.city.empty? %>
+			<%= company.city %>, <%= company.county%>
+			<% end %></td>
 	</tr>
-	<tr>
-    <td class="tablename"><%= link_to company.company_name, company %></td>
-    <td class="tablename"><%= company.telephone_number %></td>
-    <td class="tablename"><%= company.city %>, <%= company.county%></td>
-  </tr>
 <% end %>
 </table>
 </div>
+</div>
 
-
-<% content_for :sidebar do %>
-<h2>Search</h2>
-<%= form_tag companies_path, :method => 'get', :remote => true, :id => "companies_search" do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :company_name => nil %>
-  </p>
-<% end %>
 <% end %>
