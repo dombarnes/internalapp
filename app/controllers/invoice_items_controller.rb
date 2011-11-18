@@ -23,7 +23,6 @@ class InvoiceItemsController < ApplicationController
 
   def new
     @item = InvoiceItem.new
-    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @item }
@@ -35,14 +34,16 @@ class InvoiceItemsController < ApplicationController
   end
 
   def create
-    @item = InvoiceItem.build(params[:item])
+    @item = InvoiceItem.new(params[:item])
+    @item.invoice_id = @invoice
+    total
     respond_to do |format|
       if @item.save
         format.html { redirect_to @invoice, notice: 'Invoice was successfully created.' }
         format.json { render json: @item, status: :created, location: @item }
       else
         format.html { render action: "new" }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
+        format.json { render json: @item.errors, status: :unprocessable_entity}
       end
     end
   end

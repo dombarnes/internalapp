@@ -13,7 +13,7 @@ class InvoicesController < ApplicationController
 
   def show
     @invoice = Invoice.find(params[:id])
-    @items = InvoiceItem.where(@invoice.id => :invoice_id).collect
+    @items = InvoiceItem.where(:invoice_id => @invoice.id)
 
     respond_to do |format|
       format.html # show.html.erb

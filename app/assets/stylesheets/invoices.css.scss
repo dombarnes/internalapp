@@ -26,3 +26,14 @@
 }
 .right { text-align:right}
 .left { text-align:left}
+
+table#invoice-items {
+	margin:25px 0;
+	display:table;
+}
+#invoice-items thead{
+	border:2px solid grey;
+}
+#invoice-items tr{
+	border:1px solid grey;
+}

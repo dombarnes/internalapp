@@ -1,11 +1,12 @@
-<table id="invoiceitems">
-	<tr>
-		<th>Qty</th>
-		<th>Price</th>
-		<th>Description</th>
-		<th>VAT Rate</th>
-		<th>Total</th>
-	</tr>
+<table id="invoice-items">
+	<thead>
+		<td>Qty</td>
+		<td>Item</td>
+		<td>Price</td>
+		<td>Description</td>
+		<td>Tax Rate</td>
+		<td>Total</td>
+	</th>
 <% @items.each do |item| %>
 	 <tr>
 	 	<td><%= item.quantity %></td>
