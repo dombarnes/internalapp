@@ -36,10 +36,9 @@ class InvoiceItemsController < ApplicationController
   def create
     @item = InvoiceItem.new(params[:item])
     @item.invoice_id = @invoice
-    total
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @invoice, notice: 'Invoice was successfully created.' }
+        format.html { redirect_to invoices_path(@invoice), notice: 'Invoice was successfully created.' }
         format.json { render json: @item, status: :created, location: @item }
       else
         format.html { render action: "new" }

@@ -16,6 +16,7 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
     @title = @company.company_name
     @people = Person.where(:company_id => @company.id)
+    @new_person = @company.people.create(:company_id => @company.id)
     @adhoc_supports = AdhocSupport.where(:company_id => @company.id)
     respond_to do |format|
       format.html # show.html.erb
@@ -69,9 +70,10 @@ class CompaniesController < ApplicationController
   end
 
   def destroy
+    @company_name = Company.find(params[:id]).company_name
     @company = Company.find(params[:id])
     @company.destroy
-    flash[:notice] = "#{company.company_name} has been deleted"
+    flash[:notice] = "#{@company_name} has been deleted"
     respond_to do |format|
       format.html { redirect_to companies_path }
       format.json { head :ok }

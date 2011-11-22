@@ -23,7 +23,6 @@ $("#dialog-confirm")
 		$("#dialog").dialog("destroy");
 });
 
-
 $(document).ready(function() {
   $('#create_invoice').click(function(e) {
     var url = $(this).attr('href');
@@ -40,6 +39,7 @@ $(document).ready(function() {
   });
 });
 
+$("#dialog-modal").dialog();
 
 $("#dialog-form").dialog({
 	autoOpen: false,
@@ -70,6 +70,7 @@ $("#dialog-form").dialog({
 		allFields.val( "" ).removeClass( "ui-state-error" );
 	}
 });	
+
 $("#create-ios-value")
 		.button()
 		.click(function() {

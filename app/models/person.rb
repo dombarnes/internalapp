@@ -10,4 +10,10 @@ class Person < ActiveRecord::Base
   
   scope :all, order('people.last_name ASC')
 #  scope :staff_members, where('user.role = ?', 'admin', 'staff')
+
+  # def to_param
+  #     "#{id}-#{permalink}"
+  # end
+
+
 end

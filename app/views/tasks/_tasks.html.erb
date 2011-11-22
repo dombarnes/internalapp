@@ -1,0 +1,19 @@
+<h2>Tasks</h2>
+<%= link_to "New Task", new_task_path %>
+<table>
+  <tr>
+    <th>Task</th>
+    <th>Due date</th>
+    <th>Category</th>
+  </tr>
+<% Task.where(:user_id => current_user.id).all.each do |task| %>
+  <tr class="tasklist">
+    <td class="taskitem"><%= link_to task.task, task %></td>
+    <td class="taskdate"><%= task.due_date.strftime("%d/%m/%Y") %></td>
+    <td class="taskcategory"><%= task.category %></td>
+  </tr>
+<% end %>
+</table>
+<div id="more_link">
+<%= link_to "More...", tasks_path %>
+</div>

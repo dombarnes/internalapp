@@ -1,6 +1,7 @@
 class Task < ActiveRecord::Base
   attr_accessible :person_id, :task, :due_date, :category, :private, :completed
-  belongs_to :person
+  # belongs_to :person
+  belongs_to :user
   
   scope :all, order('due_date ASC')
   scope :overdue, lambda { where('due_date < ?', Date.today) }

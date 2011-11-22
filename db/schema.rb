@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111025220017) do
+ActiveRecord::Schema.define(:version => 20111122151238) do
 
   create_table "adhoc_supports", :force => true do |t|
     t.date     "date",        :null => false
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20111025220017) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "company_type"
+    t.string   "permalink"
   end
 
   create_table "company_types", :force => true do |t|
@@ -226,6 +227,7 @@ ActiveRecord::Schema.define(:version => 20111025220017) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "completed"
+    t.integer  "user_id"
   end
 
   create_table "user_sessions", :force => true do |t|

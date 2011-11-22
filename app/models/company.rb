@@ -17,7 +17,10 @@ class Company < ActiveRecord::Base
 #scopes  
   scope :resellers, Company.where(:company_type => "Reseller")
   
-  
+  def to_param
+      "#{id}-#{permalink}"
+  end
+      
   def self.search(search)
     if search
       where('company_name LIKE ?', "%#{search}%")

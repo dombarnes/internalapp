@@ -11,19 +11,19 @@
 <% end %>
 
   <div class="field">
-    <%= f.label :quantity %><br />
+    <%= f.label :quantity %>
     <%= f.text_field :quantity %>
   </div>
   <div class="field">
-    <%= f.label :unit_type %><br />
+    <%= f.label :unit_type %>
     <%= f.text_field :unit_type %>
   </div>
   <div class="field">
-    <%= f.label :details %><br />
+    <%= f.label :details %>
     <%= f.text_field :details %>
   </div>
   <div class="field">
-    <%= f.label :tax_rate %><br />
+    <%= f.label :tax_rate %>
 	<select id="invoices_vat_rate" name="invoice[vat_rate]">
     	<option value="0.150" selected="selected" >15.0%</option>
 		<option value="0.175" selected="selected" >17.5%</option>
@@ -31,8 +31,8 @@
 	</select>
   </div>
   <div class="field">
-    <%= f.label :unit_price %><br />
-    <%= f.text_field :unit_price %>
+    <%= f.label :unit_price %>
+    £<%= f.text_field :unit_price %>
   </div>
 
 

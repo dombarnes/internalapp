@@ -1,5 +1,6 @@
 class InvoiceItem < ActiveRecord::Base
-  validate :quantity, :unit_price, :presence => true
+  validate :quantity, :presence => true
+  validate :unit_price, :presence => true
   validate :unit_price, :numericality => { :greater_than_or_equal_to => 0 }
   validate :quantity, :numericality => { :greater_than => 0 }
   # validate :discount, :numericality => { :greater_than_or_equal_to => 0, :less_than_or_equal_to => 100}

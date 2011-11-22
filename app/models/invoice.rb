@@ -5,7 +5,7 @@ class Invoice < ActiveRecord::Base
   
   belongs_to :company
   
-  has_many :invoice_items, :dependent => :destroy # :class_name => :invoice_items,   accepts_nested_attributes_for :invoice_items, :reject_if => :all_blank, :allow_destroy => true
+  has_many :invoice_items, :through => :invoices, :dependent => :destroy # :class_name => :invoice_items,   accepts_nested_attributes_for :invoice_items, :reject_if => :all_blank, :allow_destroy => true
   
   scope :outstanding, where(:paid => "false")
   scope :overdue, lambda { where('date_sent < ?', Date.today - 30.days)}

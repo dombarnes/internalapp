@@ -3,17 +3,18 @@ Internalapp::Application.routes.draw do
   resources :invoices do
     resources :invoice_items
   end
-  resources :invoice_items
   resources :notes
   resources :contracts
-  resources :tasks
-  resources :people
   resource :user, :as => 'account'  
   resources :adhoc_supports
   resources :users
+  resources :tasks
   resources :roles
 #  resources :admin
-  resources :companies
+  resources :companies do
+    resources :people    
+  end
+  resources :people
   resources :mac_quotes
   resources :mac_values
   resources :ios_quotes
