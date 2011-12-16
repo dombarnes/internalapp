@@ -7,7 +7,7 @@
     <th>Install Cost</th>
     <th>Support Cost</th>
   </tr>
-<% MacQuote.where(:user_id => current_user.id).limit(5).all.each do |mac_quote| %>
+<% MacQuote.where(:user_id => current_user.id).most_recentfive.each do |mac_quote| %>
 	<tr>
 		<td><%= mac_quote.created_at.strftime("%d/%m/%Y") %></td>
 		<td><%= link_to mac_quote.customer_name, mac_quote %></td>

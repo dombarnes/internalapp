@@ -6,20 +6,15 @@ class IosQuotesController < ApplicationController
   def create
     @title = "New Quote"
     @ios_quote = current_user.ios_quotes.build(params[:ios_quote])
-    @ios_value = IosValue.last
+    @ios_quote_value = IosValue.last
 	  @ios_quote.ios_values_id = IosValue.last.id
-    if @ios_quote.support_required = true
-      calculate_ios_support
+    if @ios_quote.support_required = '1'
+      @quote_value = IosValue.where(:id => @ios_quote.ios_values_id)
+      @ios_quote.support_cost = (@ios_quote_value.iosdevice_support_cost * @ios_quote.device_quantity).ceil
     end
-    if @ios_quote.install_required = true
-      calculate_ios_install
+    if @ios_quote.install_required = '1'
+      @ios_quote.install_cost = (((@ios_quote_value.iosdevice_install_time * @ios_quote.device_quantity) + @ios_quote_value.iosdevice_install_setup)/7).ceil  * @ios_quote_value.daily_rate
     end
-    # if @ios_quote.install_required = true
-    #   @ios_quote.install_cost = ((@ios_value.iosdevice_install_setup + (@ios_value.iosdevice_install_time * @ios_quote.device_quantity))/7).ceil * @ios_value.daily_rate
-    # end
-    # if @ios_quote.support_required = true
-    #   @ios_quote.support_cost = (@ios_value.iosdevice_support_cost * @ios_quote.device_quantity)
-    # end
 
     @ios_quote.status = "Pending"
     if @ios_quote.save
@@ -87,11 +82,11 @@ class IosQuotesController < ApplicationController
     @ios_quote = IosQuote.find(params[:id])
   end
    
-  def calculate_ios_install
+  def calculate_ios_install!
     @ios_quote.install_cost = (@ios_value.iosdevice_install_setup + (@ios_value.iosdevice_install_setup * @ios_quote.device_quantity)/7).ceil  * @ios_value.daily_rate
   end
 
-  def calculate_ios_support
+  def calculate_ios_support!
     @ios_value = IosValue.where(:ios_values_id => :id)
     @ios_quote.support_cost == (@ios_value.iosdevice_support_cost * @ios_quote.device_quantity).ceil
   end

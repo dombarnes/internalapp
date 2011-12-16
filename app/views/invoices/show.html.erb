@@ -1,64 +1,65 @@
 <p id="notice"><%= notice %></p>
 
+<div class="right"><img src="/assets/logo.jpg"></div>
+<div class="right" id="invoice-address">
+MacByte Ltd<br />
+47-49 Loveday Street<br />
+Birmingham<br />
+West Midlands<br />
+B67 5QY<br />
+</div>
+
 <p class="right">
   <b>Invoice date:</b>
   <%= @invoice.invoice_date.strftime('%e %B %Y') %>
 </p>
 
-<p class="right">
-  <b>Purchase order:</b>
-  <%= @invoice.purchase_order %>
-</p>
-
 <div id="invoice-address">
-	<p><%= Company.find(@invoice.company_id).company_name %></p>
-	<p><%= Company.find(@invoice.company_id).address_1 %></p>
-	<p><%= Company.find(@invoice.company_id).address_2 %></p>
-	<p><%= Company.find(@invoice.company_id).city %></p>
-	<p><%= Company.find(@invoice.company_id).county %></p>
-	<p><%= Company.find(@invoice.company_id).postcode %></p>
+	<%= Company.find(@invoice.company_id).company_name %><br />
+	<%= Company.find(@invoice.company_id).address_1 %><br />
+	<%= Company.find(@invoice.company_id).address_2 %><br />
+	<%= Company.find(@invoice.company_id).city %><br />
+	<%= Company.find(@invoice.company_id).county %><br />
+	<%= Company.find(@invoice.company_id).postcode %><br />
 </div>
 
 <%= render 'items' %>
 
 <div class="invoice-wrapper">
-<table id="invoice-show">
-<tr>
-  <th><b>Sub total:</b></th>
-  <td class="right"><%= @invoice.sub_total %></td>
-</tr>
-<tr>
-  <th><b>Vat rate:</b></th>
-  <td class="right"><%= @invoice.vat_rate %></td>
-</tr>
-<tr>
-  <th><b>Vat total:</b></th>
-  <td class="right"><%= @invoice.vat_total %></td>
-</tr>
-<tr>
-  <th><b>Discount total:</b></th>
-  <td class="right"><%= @invoice.discount_total %></td>
-</tr>
-<tr>
-  <th><b>Total:</b></th>
-  <td class="right"><%= @invoice.total %></td>
-</table>
+	<table id="invoice-show">
+	<tr>
+	  <th><b>Sub total:</b></th>
+	  <td class="right"><%= @invoice.sub_total %></td>
+	</tr>
+	<tr>
+	  <th><b>VAT rate:</b></th>
+	  <td class="right"><%= number_to_percentage(@invoice.vat_rate, :precision => 1) %></td>
+	</tr>
+	<tr>
+	  <th><b>VAT total:</b></th>
+	  <td class="right"><%= number_to_currency(@invoice.vat_total, :unit => '&pound;') %></td>
+	</tr>
+	<tr>
+	  <th><b>Discount total:</b></th>
+	  <td class="right"><%= @invoice.discount_total %></td>
+	</tr>
+	<tr>
+	  <th><b>Total:</b></th>
+	  <td class="right"><%= @invoice.total %></td>
+	</table>
 </div>
 
 <div id="invoice-metadata">
-<h3>Invoice Info</h3>
-<table>
-	<th>
-		<td>Date Sent:</td>
-		<td>Paid</td>
-		<td>Date Paid</td>
-	</th>
-	<tr>
-	 <td><%= @invoice.date_sent %></td>
-	 <td><%= @invoice.paid %></td>
-	 <td><%= @invoice.date_paid %></td>
-	</tr>
-</table>
+	<h3>Invoice Info</h3>
+	<p>
+	  <b>Purchase order:</b>
+	  <%= @invoice.purchase_order %>
+	</p>
+	<table id="invoice-metadata">
+		<tr><td>Date Sent:</td><td><%= @invoice.date_sent %></td></tr>
+		<tr><td>Paid:</td><td><%= @invoice.paid %></td></tr>
+		<tr><td>Date Paid:</td><td><%= @invoice.date_paid %></td></tr>
+	</table>
 </div>
 	
 

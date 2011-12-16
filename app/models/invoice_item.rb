@@ -8,6 +8,7 @@ class InvoiceItem < ActiveRecord::Base
   attr_accessible :quantity, :unit_type, :unit_price, :details, :tax_rate
   # scope :all, order('due_date ASC')
   attr_accessor :nested
+
   belongs_to :invoice
   
   def total_price

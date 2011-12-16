@@ -4,7 +4,7 @@ class IosQuote < ActiveRecord::Base
   using_access_control
   
   belongs_to :user
-  has_one :ios_values
+  has_one :ios_value
 
   validates :customer, :presence => true
   validates :device_quantity, :presence => true

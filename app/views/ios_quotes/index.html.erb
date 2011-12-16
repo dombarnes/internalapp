@@ -17,8 +17,7 @@
   
 <% @ios_quotes.each do |ios_quote| %>
 	<tr>
-		<td><%= 
-    link_to_if((permitted_to? :update), ios_quote.created_at.strftime("%d/%m/%Y"), { :controller => "ios_quotes", :action => "show", :id => ios_quote}) do
+		<td><%= link_to_if((permitted_to? :update), ios_quote.created_at.strftime("%d/%m/%Y"), { :controller => "ios_quotes", :action => "show", :id => ios_quote}) do
       link_to(ios_quote, ios_quote.created_at.strftime("%d/%m/%Y"), { :controller => "ios_quote", :action => "show", :id => ios_quote})
     end 
     %></td>

@@ -10,11 +10,13 @@
 <% @items.each do |item| %>
 	 <tr>
 	 	<td><%= item.quantity %></td>
-	    <td><%= item.unit_type %></td>
-	    <td><%= item.unit_price %></td>
+	    <td><%= link_to item.unit_type, edit_invoice_invoice_item_path(item) %></td>
+	    <td><%= number_to_currency(item.unit_price, :unit => '&pound;') %></td>
 	    <td><%= item.details %></td>
-	    <td><%= item.tax_rate %></td>
+	    <td><%= number_to_percentage(item.tax_rate, :precision => 1) %></td>
 		<td><%= @invoice.total %></td>
 	</tr>
+	<tr>
+		<td><%= link_to 'Add item', new_invoice_invoice_item_path %></td>
 <% end %>
 </table>

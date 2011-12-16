@@ -37,3 +37,13 @@ table#invoice-items {
 #invoice-items tr{
 	border:1px solid grey;
 }
+#invoice-items td {
+	width:auto;
+}
+#invoice-metadata table {
+	width:220px;
+	padding:10px 0;
+}
+#invoice-metadata td {
+	width:120px;
+}
