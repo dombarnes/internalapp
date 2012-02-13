@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111122151238) do
+ActiveRecord::Schema.define(:version => 20120213172507) do
 
   create_table "adhoc_supports", :force => true do |t|
     t.date     "date",        :null => false
@@ -62,34 +62,6 @@ ActiveRecord::Schema.define(:version => 20111122151238) do
     t.string   "contract_type"
     t.decimal  "cost"
     t.string   "contract_state"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "invoice_items", :force => true do |t|
-    t.integer  "quantity",   :null => false
-    t.string   "unit_type",  :null => false
-    t.string   "details"
-    t.decimal  "unit_price", :null => false
-    t.decimal  "tax_rate",   :null => false
-    t.integer  "invoice_id", :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "invoices", :force => true do |t|
-    t.date     "invoice_date",   :null => false
-    t.string   "purchase_order"
-    t.date     "date_sent"
-    t.boolean  "paid"
-    t.date     "date_paid"
-    t.decimal  "sub_total"
-    t.decimal  "vat_rate"
-    t.decimal  "vat_total"
-    t.decimal  "discount_total"
-    t.decimal  "total"
-    t.integer  "company_id",     :null => false
-    t.string   "status",         :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -216,18 +188,6 @@ ActiveRecord::Schema.define(:version => 20111122151238) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "tasks", :force => true do |t|
-    t.integer  "person_id"
-    t.string   "task"
-    t.date     "due_date"
-    t.string   "category"
-    t.boolean  "private"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "completed"
-    t.integer  "user_id"
   end
 
   create_table "user_sessions", :force => true do |t|

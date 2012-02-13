@@ -1,14 +1,10 @@
 Internalapp::Application.routes.draw do
 
-  resources :invoices do
-    resources :invoice_items
-  end
   resources :notes
   resources :contracts
   resource :user, :as => 'account'  
   resources :adhoc_supports
   resources :users
-  resources :tasks
   resources :roles
 #  resources :admin
   resources :companies do
