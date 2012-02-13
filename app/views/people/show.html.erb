@@ -53,5 +53,7 @@
 <% end %>
 
 <%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Delete', :confirm => 'Are you sure you want to delete this person?', :method => :delete, :remote => :true %>
+<%= link_to 'Delete', :confirm => 'Are you sure you want to delete this person?', :method => :delete, :remote => :true %> |
 <%= link_to 'Add a new task', new_task_path%>
+<br>
+<%= link_to '← Back to people', people_path %>

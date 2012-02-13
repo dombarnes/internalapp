@@ -11,36 +11,35 @@
     </div>
   <% end %>
 
-  <div id="#datepicker">
-    <%= f.label :date %><br />
+  <div id="#datepicker" class="formfield">
+    <%= f.label :date %>
     <%= date_select('adhoc_support', 'date', :order =>[:day, :month, :year]) %>
   </div>
 
-  <div class="field">
-    <%= f.label :job_type %><br />
+  <div class="field formfield">
+    <%= f.label :job_type %>
 	<select id="adhoc_supports_job_type" name="adhoc_support[job_type]">
     	<option value="Full Day" selected="selected" >Full Day</option>
 		<option value="Half Day" selected="selected" >Half Day</option>
 	</select>
   </div>
 
-  <div class="field">
+  <div class="field formfield">
   	<%= f.label :company_name %>
   	<option value="" selected="selected"></option>
   	<%= f.collection_select(:company_id, Company.all, :id, :company_name ) %>
   </div>
   
-  <div class="field">
-    <%= f.label :technicians %><br />
+  <div class="field formfield">
+    <%= f.label :technicians %>
 	<%= f.check_box :technicians %>
   </div>
   
-  <div class="field">
+  <div class="field textwrapper">
     <%= f.label :notes %><br />
     <%= f.text_area :notes %>
   </div>
   <div>
     <%= f.submit "Submit"%>
   </div>
-  <br>
 <% end %>

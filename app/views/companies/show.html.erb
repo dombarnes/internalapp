@@ -1,5 +1,5 @@
 <p>
-  <h2><%= @company.company_name %></h2>| <%= link_to 'Edit', edit_company_path(@company) %>
+  <h2><%= @company.company_name %></h2><%= link_to 'Edit', edit_company_path(@company) %>
 </p>
 <p>
 <b>Address Line 1:</b>
@@ -23,9 +23,7 @@
 </p>
 <p>
 	<b>Company type:</b>
-
-		<%= @company.company_type %>
-
+	<%= @company.company_type %>
 </p>
 <p>
   <b>Website:</b>

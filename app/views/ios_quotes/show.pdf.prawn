@@ -3,8 +3,7 @@ pdf = Prawn::Document.new(:info => { :Title => "iOS Quote for #{@ios_quote.custo
 	encrypt_document(:permissions => {:modify_contents => false, :copy_contents => false})
 end
 		
-
-pdf.move_down 150
+pdf.move_down 100
 pdf.font "Helvetica"
 pdf.font_size 18
 pdf.text "iOS Installation and Support Quote for #{@ios_quote.customer}", :align => :right
@@ -32,7 +31,12 @@ pdf.text "• Unlimited remote support (subject to access)"
 pdf.move_down 10
 pdf.text "Standard Installation includes device activation, update to latest version of iOS, joining to wifi network, "
 
-
+pdf.font_size 14
+pdf.text "Terms and Conditions", :align => :center
+pdf.move_down 10
+pdf.font_size 10
+pdf.text "1. An iOS device is defined as any iPhone 3GS, iPod Touch, or iPad device running iOS 4.0 or greater"
+pdf.text "2. "
 
 pdf.font_size 10
 pdf.bounding_box([pdf.bounds.left + 10,pdf.bounds.bottom + 50], :width => 500, :height => 60) do
@@ -47,11 +51,3 @@ pdf.bounding_box([pdf.bounds.left - 20,pdf.bounds.bottom], :width => 150, :heigh
 	pdf.text "Date produced #{Time.now.strftime("%d/%m/%y")}"
 end
 
-#	start_new_page
-
-pdf.font_size 14
-pdf.text "Terms and Conditions", :align => :center
-pdf.move_down 10
-pdf.font_size 10
-pdf.text "1. An iOS device is defined as any iPhone 3GS, iPod Touch, or iPad device running iOS 4.0 or greater"
-pdf.text "2. "

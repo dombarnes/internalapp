@@ -722,6 +722,11 @@ a.button:active span {
   background-image: url(/images/down_arrow.gif);
 }
 
+.formfield {
+	padding:3px;
+	margin:5px 0;
+}
+
 /* Settings Page */
 .settings_links {
 	color : #666999;

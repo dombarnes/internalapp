@@ -8,11 +8,11 @@ class IosQuotesController < ApplicationController
     @ios_quote = current_user.ios_quotes.build(params[:ios_quote])
     @ios_quote_value = IosValue.last
 	  @ios_quote.ios_values_id = IosValue.last.id
-    if @ios_quote.support_required = '1'
+    if @ios_quote.support_required = "true"
       @quote_value = IosValue.where(:id => @ios_quote.ios_values_id)
       @ios_quote.support_cost = (@ios_quote_value.iosdevice_support_cost * @ios_quote.device_quantity).ceil
     end
-    if @ios_quote.install_required = '1'
+    if @ios_quote.install_required = "true"
       @ios_quote.install_cost = (((@ios_quote_value.iosdevice_install_time * @ios_quote.device_quantity) + @ios_quote_value.iosdevice_install_setup)/7).ceil  * @ios_quote_value.daily_rate
     end
 
@@ -26,7 +26,7 @@ class IosQuotesController < ApplicationController
   end
   
   def index  
-     @ios_quotes = IosQuote.paginate(:per_page => 10, :page => params[:current_user_only])
+     @ios_quotes = IosQuote.recent.paginate(:per_page => 10, :page => params[:current_user_only])
       @title = "iOS Quotes"
       respond_to do |format|
         format.html # index.html.erb
@@ -47,6 +47,14 @@ class IosQuotesController < ApplicationController
   
   def update
 	  @ios_quote = IosQuote.find(params[:id])
+    @ios_quote_value = IosQuote.find(params[:id]).ios_values_id
+    if @ios_quote.support_required = "true"
+
+    end
+    if @ios_quote.install_required = "true"
+      self.calculate_ios_install
+    end
+
     respond_to do |format|
         if @ios_quote.update_attributes(params[:ios_quote])
           format.html { redirect_to(@ios_quote, :notice => 'Your quote was successfully updated.') }
@@ -57,15 +65,7 @@ class IosQuotesController < ApplicationController
         end
       end
   end
-  
-  def mark_as_won
-  	@ios_quote = IosQuote.find(params[:id])
-    @ios_quote.quote_status == "Won"
-    if @ios_quote.update_attributes(params[:ios_quote])
-      redirect_to(ios_quotes_path, :notice => "Quote has been marked as won!")
-    end
-  end
-  
+    
   def new
     @ios_quote = IosQuote.new
     @title = "New iOS Quote"
@@ -82,14 +82,21 @@ class IosQuotesController < ApplicationController
     @ios_quote = IosQuote.find(params[:id])
   end
    
-  def calculate_ios_install!
-    @ios_quote.install_cost = (@ios_value.iosdevice_install_setup + (@ios_value.iosdevice_install_setup * @ios_quote.device_quantity)/7).ceil  * @ios_value.daily_rate
+  def self.calculate_ios_install
+    self.install_cost = (@ios_value.iosdevice_install_setup + (@ios_value.iosdevice_install_setup * self.device_quantity)/7).ceil  * @ios_value.daily_rate
   end
 
-  def calculate_ios_support!
+  def self.calculate_ios_support
     @ios_value = IosValue.where(:ios_values_id => :id)
-    @ios_quote.support_cost == (@ios_value.iosdevice_support_cost * @ios_quote.device_quantity).ceil
+    self.support_cost == (@ios_value.iosdevice_support_cost * self.device_quantity).ceil
   end
    
-   
+  def mark_as_won
+  	@ios_quote = IosQuote.find(params[:id])
+    @ios_quote.quote_status == "Won"
+    if @ios_quote.update_attributes(params[:ios_quote])
+      redirect_to(ios_quotes_path, :notice => "Quote has been marked as won!")
+    end
+  end
+  
 end
