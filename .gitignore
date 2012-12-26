@@ -7,3 +7,5 @@ ability_old.txt
 dropdowns.txt
 General\ Notes.txt
 .sass-cache/
+config/initializers/secret_token.rb
+rspec/*

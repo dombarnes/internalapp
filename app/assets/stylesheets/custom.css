@@ -80,29 +80,54 @@ input[type=checkbox] {
 	height:60px;
 	width:100%;
 	background:#ffffff;
-	background-color:#005782;
+	background-color:#eeeeee;
 	float:left;
-	margin:0 0 0 0;
+	margin:0 0 5px 0;
+	font-family:Lucida Grande, Arial;
 }
+.header a {
+	color:#b88c76;
+	font-size:15px;
+	padding: 0 6px 0 6px;
+	display:block;
+	overflow:hidden;
+	text-decoration:none;
+	line-height:28px;
+}
+
+.header a:visited { 
+	color:#b88c76;
+}
+	
 .headerimg {
 	padding:20px;
 	margin:-5px;
 	float:left;
 	display:block;
+	margin: 10px 0 0 10px;
 }
 
 #user_status {
-	padding : 20px 50px 0 750px;
-	width:300px;
 	float:left;
-	font-size:100%;
+	width:auto;
+/*	font-size:100%;*/
+	margin-top:20px;
 	height:40px;
 }
+#user_status ul {
+  	list-style-type: none;
+  	margin-left:80px;
+  	background:#eeeeee;
+}
+
+#user_status ul li {
+	list-style-type: none;
+	display: inline-block;
+	width:auto;
+}
+
 #user_status a {
-	text-decoration:underline;
-	font-size:0.92em;
-	padding-right:10px;
-	padding-left:10px;
+	text-decoration:none;
 }
 
 /* Navigation */
@@ -113,39 +138,33 @@ input[type=checkbox] {
 
 #global_nav {
 	float: left;
-	line-height:30px;
-  	width:200px;
-  	background:#F0F2EB;
-	margin-top: 12px;
-	margin-left: -6px;
+  	width:auto;
+	margin-top: 20px;
+	height:40px;
 }
 
 #global_nav a {
-	display:block;
+/*	display:block;
 	overflow:hidden;
-	padding: 0 6px 0 40px;
 	text-decoration:none;
 	line-height:28px;
-	font-size:13px;
-}
+*/}
 
 #global_nav ul {
 	font-family:Lucida Grande, Arial;
   	list-style-type: none;
   	margin-left:20px;
-  	margin-top:20px;
-  	background:#F0F2EB;
+  	background:#eeeeee;
 }
 
 #global_nav ul li {
 	list-style-type: none;
 	display: inline-block;
-	height: 40px;
-	width:150px;
+	width:auto;
 }
 
 #global_nav a:visited {
-	color: #09c;
+	color:#b88c76;
 }
 
 #global_nav a:hover {
@@ -624,6 +643,8 @@ tr.companies_table{
 #loginform {
 	width:70%;
 	padding: 28px;
+	margin-left:20%;
+	margin-right:20%;
 }
 
 body.login input#user_session_email, body.login input#user_session_password {

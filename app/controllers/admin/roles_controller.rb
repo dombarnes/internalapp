@@ -1,4 +1,5 @@
 class Admin::RolesController < ApplicationController
+before_filter :require_user
 before_filter {ensure_role 'admin'}
 
   def index

@@ -1,6 +1,7 @@
 authorization do
 
   role :guest do
+    has_omnipotence
     has_permission_on :users, :to => [:create, :new, :activate, :index, :show]
 #    has_permission_on :home, :to => [:read]
   end

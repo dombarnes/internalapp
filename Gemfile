@@ -4,7 +4,7 @@ gem 'rails'
 gem 'bundler'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 #gem 'pg'
-gem 'will_paginate', '3.0.pre2' # page pagination
+gem 'will_paginate', '3.0.3' # page pagination
 gem 'jquery-rails', '>= 1.0.12' #for jQuery UI enhancements
 gem 'rails3-generators'
 gem 'authlogic' # User Authentication
@@ -24,7 +24,7 @@ end
 group :development, :test do
 	gem 'rspec-rails'
 	gem 'faker', '1.0.1'
-	gem 'nokogiri', '1.5.0'
+	gem 'nokogiri', '1.5.5'
 end
 
 group :test do

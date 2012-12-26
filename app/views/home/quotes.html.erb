@@ -1,4 +1,8 @@
 <h2>Quotes Dashboard</h2>
 <%= render 'shared/admin_errors'%>
-<%= render :partial => 'shared/mac_quotes', @user_mac_quotes => { :user_id => current_user.id } %>
-<%= render :partial => 'shared/ios_quotes', @user_ios_quotes => { :user_id => current_user.id } %>
+	<% if current_user %>
+		<%= render :partial => 'shared/mac_quotes', @user_mac_quotes => { :user_id => current_user.id } %>
+		<%= render :partial => 'shared/ios_quotes', @user_ios_quotes => { :user_id => current_user.id } %>
+	<% else %>
+		<%= render :partial =>
+	<% end %>

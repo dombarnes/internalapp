@@ -8,14 +8,6 @@
     <th>Date Due</th>
   </tr>
 
-<% @companies.each do |company| %>
-  <tr>
-    <td><%= link_to invoice.date_sent.strftime("%d/%m/%Y"), invoice %></td>
-    <td><%= company.total %></td>
-    <td><%= company.due_date %></td>
-<% end %>
-</table>
-
 <br />
 
 
