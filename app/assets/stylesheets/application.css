@@ -3,3 +3,164 @@
 *= require_tree .
 *= require custom
 */
+
+/* Header */
+header {
+	margin: 0 auto;
+	background: #F0F2EB;
+	display: block;
+	max-width: 1200px;
+	min-width: 800px;
+
+}
+
+.header {
+	/*padding-top: 5px;*/
+	height: 60px;
+	width: 900px;
+	background-color: #eeeeee;
+	float: left;
+	margin:0 0 5px 0;
+	font-family: Lucida Grande, Arial;
+}
+.header a {
+	color: #b88c76;
+	font-size: 15px;
+	padding: 0 6px 0 6px;
+	display: block;
+	overflow: hidden;
+	text-decoration: none;
+	line-height: 28px;
+}
+
+.header a:visited {
+	color: #b88c76;
+}
+
+.headerimg {
+	padding: 20px;
+	margin:-5px;
+	float: left;
+	display: block;
+	margin: 10px 0 0 10px;
+}
+
+.user_status {
+	float: right;
+	width: auto;
+	margin-top: 20px;
+	height: 40px;
+}
+.user_status ul {
+  	list-style-type: none;
+  	margin-left: 80px;
+  	background-color: #eeeeee;
+}
+
+.user_status ul li {
+	list-style-type: none;
+	display: inline-block;
+	width: auto;
+}
+
+.user_status a {
+	text-decoration:none;
+}
+
+/* Navigation */
+#global_sidebar {
+	width: 215px; /* LC width */
+	right: 215px; /* LC width */
+}
+
+#global_nav {
+	float: left;
+  	width: auto;
+	margin-top: 20px;
+	height:40px;
+}
+
+#global_nav a {
+/*	display:block;
+	overflow:hidden;
+	text-decoration:none;
+	line-height:28px;
+*/}
+
+#global_nav ul {
+	font-family:Lucida Grande, Arial;
+  	list-style-type: none;
+  	margin-left:20px;
+  	background:#eeeeee;
+}
+
+#global_nav ul li {
+	list-style-type: none;
+	display: inline-block;
+	width:auto;
+}
+
+#global_nav a:visited {
+	color:#b88c76;
+}
+
+#global_nav a:hover {
+  text-decoration: underline;
+}
+
+.navigation_link {
+	float: left ;
+	display : block ;
+	font-size : 15px ;
+}
+
+#more_link {
+	margin:2px 3px;
+	float:right;
+}
+
+/* Footer */
+footer {
+	margin: 0 auto;
+	background: #F0F2EB;
+	display: block;
+	max-width: 1200px;
+	min-width: 800px;
+}
+
+#footer {
+  	padding: 20px 0px;
+	height: 30px;
+	background: #f3f3f3;
+	color: #838383;
+	width: 960px;
+	margin: 0px auto;
+	padding-right: 10px;
+}
+
+#footer a {
+	font-weight:normal;
+	text-decoration:none;
+}
+#footer .bottom-nav {
+	float: none;
+	display:inline-block;
+	height: 20px;
+	line-height: 40px;
+	border-right:1px solid #F3F3F3;
+}
+
+#footer #nav li {
+	float: left;
+	border-left: 1px solid #F3F3F3;
+	line-height: 10px;
+	width:auto;
+}
+#footer #nav li a {
+	padding: 15px 10px;
+	font-weight: normal;
+	float:left;
+}
+#footer a {
+	color: #838383;
+}

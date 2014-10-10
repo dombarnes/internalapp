@@ -3,6 +3,7 @@
 //= require jquery_ujs
 //= require_self
 //= require_tree .
+//= require turbolinks
 
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
@@ -54,11 +55,11 @@ $("#dialog-form").dialog({
 			allFields.val('').removeClass( "ui-state-error" );
 			if ( bValid ) {
 				$( "#ios_values tbody" ).append( "<tr>" +
-					"<td>" + daily_rate.val() + "</td>" + 
-					"<td>" + iosdevices_install_setup.val() + "</td>" + 
-					"<td>" + iosdevices_support_cost.val() + "</td>" + 
+					"<td>" + daily_rate.val() + "</td>" +
+					"<td>" + iosdevices_install_setup.val() + "</td>" +
+					"<td>" + iosdevices_support_cost.val() + "</td>" +
 					"<td>" + iosdevices_install_time.val() + "</td>" +
-				"</tr>" ); 
+				"</tr>" );
 				$( this ).dialog( "close" );
 			}
 		},
@@ -69,7 +70,7 @@ $("#dialog-form").dialog({
 	close: function() {
 		allFields.val( "" ).removeClass( "ui-state-error" );
 	}
-});	
+});
 
 $("#create-ios-value")
 		.button()
