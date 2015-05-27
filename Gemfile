@@ -11,13 +11,14 @@ gem 'turbolinks'
 #Custom Additions
 gem 'authlogic' # User Authentication
 gem 'declarative_authorization' # User Authorization
-gem 'will_paginate', '3.0.3' # page pagination
+gem 'will_paginate', '3.0.7' # page pagination
 gem 'jquery-rails', '>= 1.0.12' #for jQuery UI enhancements
 gem 'rails3-generators'
 gem 'ruby_parser'
 gem 'thin' # Web server
 gem 'prawn' # PDF generator
 gem 'prawnto' #for PDF invoices and quotes
+gem 'prawn-table'
 gem 'pdfkit' #for PDF invoices and quotes
 
 gem 'protected_attributes'

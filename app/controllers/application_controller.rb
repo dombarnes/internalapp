@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::Base  
+class ApplicationController < ActionController::Base
   protect_from_forgery
   helper :all
   helper_method :current_user_session, :current_user
@@ -6,16 +6,16 @@ class ApplicationController < ActionController::Base
 
   #For Declarative Authorization
   before_filter :set_current_user
-  
+
   protected
-  
+
   def set_current_user
     Authorization.current_user = current_user
   end
-  
+
   def permission_denied
     flash[:error] = "Sorry, you are not allowed to access that page."
-    redirect_back_or_default(root_path)    
+    redirect_back_or_default(root_path)
   end
 
   private
@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
     return @current_user if defined?(@current_user)
     @current_user = current_user_session && current_user_session.user
   end
-  
+
   def require_user
     unless current_user
       store_location
@@ -64,5 +64,5 @@ class ApplicationController < ActionController::Base
   def sort_direction
         %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
-  
+
 end

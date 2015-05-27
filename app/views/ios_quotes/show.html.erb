@@ -22,12 +22,12 @@
 
 <p>
   <b>Support Cost:</b>
-  <%= number_to_currency(@ios_quote.support_cost, :unit => "&pound;") %>
+  <%= number_to_currency(@ios_quote.support_cost, :unit => "£") %>
 </p>
 
 <p>
   <b>Install Cost:</b>
-  <%= number_to_currency(@ios_quote.install_cost, :unit => "&pound;") %>
+  <%= number_to_currency(@ios_quote.install_cost, :unit => "£") %>
 </p>
 <p>
   <b>Quote Status</b>
@@ -53,7 +53,7 @@
   <div id="edit_button">
   <% if permitted_to? :update %>
     <%= link_to 'Edit', edit_ios_quote_path(@ios_quote) %>
-  <% end %>    
+  <% end %>
     <% if permitted_to? :delete %>
       <%= link_to 'Delete Quote', ios_quote_path(@ios_quote), :confirm => 'Are you sure? This deletion will be permanent.', :method => :delete, :remote => :true %>
     <% end %>

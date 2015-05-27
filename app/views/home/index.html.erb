@@ -3,11 +3,11 @@
   <p>Please use the navigation at the top to move around, or select from the items below.</p>
  	<%= render 'dashboard' %>
 <% else %>
-	<header class="subnav new">
-  <h2><Strong>Internal App</Strong></h2>
-	</header>
-	<div class="joininfo">&nbsp;
-	</div>
+  <header class="subnav new">
+    <h2><Strong>Internal App</Strong></h2>
+  </header>
+  <div class="joininfo">&nbsp;
+  </div>
   <%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
 <% end %>
 

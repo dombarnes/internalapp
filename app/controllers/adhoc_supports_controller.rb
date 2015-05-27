@@ -2,15 +2,14 @@ class AdhocSupportsController < ApplicationController
   before_filter :require_user
   helper_method :sort_column, :sort_direction
   filter_resource_access
-  
+
   def index
-    @adhoc_supports = AdhocSupport.order(sort_column + " " + sort_direction)
+    @adhoc_supports = AdhocSupport.all.order(sort_column + " " + sort_direction).paginate(:page => params[:page])
     @title = "Ad Hoc Support Contracts"
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @adhoc_supports }
     end
-    @adhoc_supports= AdhocSupport.paginate(:page => params[:page])
   end
 
   def show
@@ -23,7 +22,7 @@ class AdhocSupportsController < ApplicationController
 
   def new
     @adhoc_support = AdhocSupport.new
-    
+
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @adhoc_support }
@@ -71,17 +70,17 @@ class AdhocSupportsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
+
   private
     def authenticate
       deny_access unless signed_in?
     end
-  
+
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_path) unless current_user?(@user)
     end
-    
+
     def sort_column
       AdhocSupport.column_names.include?(params[:sort]) ? params[:sort] : "date"
     end

@@ -8,23 +8,21 @@ class Company < ActiveRecord::Base
   has_many :notes
   has_many :adhoc_supports
 
-  scope :all, order('companies.company_name ASC')
+  default_scope { order('company_name ASC') }
+  scope :resellers, Company.where(:company_type => "Reseller")
 
   SOURCE_TYPE = ["Direct"]
   COMPANY_TYPE = ["Reseller", "School", "Limited Company", "Public Sector", "PLC", "Charity", "Freelancer" ]
-
-#scopes  
-  scope :resellers, Company.where(:company_type => "Reseller")
 
   def to_param
       "#{id}-#{permalink}"
   end
 
-  def self.search(search)
+  def self.search(search, sort_column, sort_direction)
     if search
-      where('company_name LIKE ?', "%#{search}%")
+      self.where('company_name LIKE ?', "%#{search}%")
     else
-      scoped
+      self.all.order("#{sort_column} #{sort_direction}")
     end
   end
 

@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
     c.validate_login_field = false # There is no login field, so don't validate it
     c.login_field = :email          # email is the login field
   end
-  
+
   # relationships
   has_many :ios_quotes
   has_many :mac_quotes
@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :login, :first_name, :last_name, :company_name, :job_title, :role_id, :password, :password_confirmation, :active, :remember_me
 
   after_create :assign_role_after_signup # adds default role assignment as specified
-      
+
   def active?
     active
   end
@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
     save
   end
 
-  def deliver_password_reset_instructions!  
+  def deliver_password_reset_instructions!
     reset_perishable_token!
     Notifier.deliver_password_reset_instructions(self)
   end
@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
     reset_perishable_token!
     Notifier.activation_confirmation(self).deliver
   end
-  
+
   def send_new_user_notification!
     Notifier.new_user_notification(self).deliver
   end
@@ -56,11 +56,11 @@ class User < ActiveRecord::Base
   def email_address_with_name
     "#{self.login} <#{self.email}>"
   end
-  
+
   def self.find_by_login_or_email(login)
     find_by_login(login) || find_by_email(login)
   end
-  
+
   def ensure_role(*role_names)
     if signed_in?
       role_names.push 'admin'
@@ -70,12 +70,12 @@ class User < ActiveRecord::Base
       end
     else
       ensure_signed_in
-    end    
+    end
   end
 
 protected
   def assign_role_after_signup
-    Assignment.create(:role_id => Role.find_by_name("reseller").id, :user_id => current_user.id)
+    Assignment.create(:role_id => Role.find_by_name("user").id, :user_id => current_user.id)
   end
 
 end

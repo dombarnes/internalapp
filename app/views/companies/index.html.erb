@@ -5,7 +5,7 @@
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :company_name => nil %>
   </p>
-  
+
 <div class="data-view">
   <div class="data-nav">
     <%= link_to 'New Company', new_company_path %>
@@ -13,13 +13,13 @@
 
 <div class="data-list">
 <table>
-	<th>
-		<tr>
-			<td></td>
-			<td>Telephone</td>
-			<td>Town</td>
+		<thead>
+    <tr class="companies_table">
+			<th><%= sortable "company_name", "Company Name" %></th>
+			<th>Telephone</th>
+			<th>Town</th>
 		</tr>
-	</th>
+  </thead>
 <% @companies.each do |company| %>
 	<tr class="companies_table">
     	<td><%= link_to company.company_name, company %></td>

@@ -7,18 +7,22 @@
     <th>Install Cost</th>
     <th>Support Cost</th>
   </tr>
-<% MacQuote.where(:user_id => current_user.id).most_recentfive.each do |mac_quote| %>
-	<tr>
-		<td><%= mac_quote.created_at.strftime("%d/%m/%Y") %></td>
-		<td><%= link_to mac_quote.customer_name, mac_quote %></td>
-		<td><%= mac_quote.client_quantity %></td>
-		<td><%= number_to_currency(mac_quote.install_cost, :unit => "&pound;") %></td>
-		<td><%= number_to_currency(mac_quote.support_cost, :unit => "&pound;") %></td>
-	</tr>
-<% end %>
+  <% unless @mac_quotes.empty? %>
+    <% @mac_quotes.most_recentfive.each do |mac_quote| %>
+    	<tr>
+    		<td><%= mac_quote.created_at.strftime("%d/%m/%Y") %></td>
+    		<td><%= link_to mac_quote.customer_name, mac_quote %></td>
+    		<td><%= mac_quote.client_quantity %></td>
+    		<td><%= number_to_currency(mac_quote.install_cost, :unit => "&pound;") %></td>
+    		<td><%= number_to_currency(mac_quote.support_cost, :unit => "&pound;") %></td>
+    	</tr>
+    <% end %>
+  <% else %>
+    <tr>
+      <td colspan="5">There are no quotes to show</td>
+    </tr>
+  <% end %>
 </table>
-<%= link_to "Create a new Installation Quote", new_mac_quote_path, :class => "new_item_link" %>
+<%= link_to "Create a new Mac Installation Quote", new_mac_quote_path, :class => "new_item_link" %>
 <div id="more_link">
-<%= link_to "More...", mac_quotes_path %>
-</div>
-
+  <%= link_to "More...", mac_quotes_path %></div>

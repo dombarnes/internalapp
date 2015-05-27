@@ -16,7 +16,12 @@ pdf.font_size 14
 pdf.text "Below you can find your quote details.", :align => :left
 pdf.move_down 20
 
-quoteinfo = [["Customer Name", "#{@ios_quote.customer}"], ["Device Quantity", "#{@ios_quote.device_quantity}"],["Installation Cost", "#{number_to_currency(@ios_quote.install_cost, :unit => "£")}"],["Support Cost", "#{number_to_currency(@ios_quote.support_cost, :unit => "£")}"]]
+quoteinfo = [
+	["Customer Name", "#{@ios_quote.customer}"], 
+	["Device Quantity", "#{@ios_quote.device_quantity}"],
+	["Installation Cost", "#{number_to_currency(@ios_quote.install_cost, :unit => "£")}"],
+	["Support Cost", "#{number_to_currency(@ios_quote.support_cost, :unit => "£")}"]
+]
 pdf.table quoteinfo, :width => 300, :row_colors => ["C3cddf", "DDDDDD"]
 pdf.move_down 5
 pdf.font_size 10
@@ -40,7 +45,7 @@ pdf.text "2. "
 
 pdf.font_size 10
 pdf.bounding_box([pdf.bounds.left + 10,pdf.bounds.bottom + 50], :width => 500, :height => 60) do
-	pdf.text_box "* All quotes are valid for 30 days. Please contact your us for a revised quote if this has expired.", 
+	pdf.text_box "* All quotes are valid for 30 days. Please contact your us for a revised quote if this has expired." 
 end
 
 pdf.bounding_box([pdf.bounds.right - 50,pdf.bounds.bottom], :width => 60, :height => 20) do

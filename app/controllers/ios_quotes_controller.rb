@@ -2,7 +2,7 @@ class IosQuotesController < ApplicationController
   before_filter :require_user
   helper_method :sort_column, :sort_direction
   filter_access_to :all
-  
+
   def create
     @title = "New Quote"
     @ios_quote = current_user.ios_quotes.build(params[:ios_quote])
@@ -14,7 +14,7 @@ class IosQuotesController < ApplicationController
     else
       @ios_quote.install_cost = 0
     end
-    
+
     if @ios_quote.support_required == true
 #      calculate_ios_support
     else
@@ -29,17 +29,17 @@ class IosQuotesController < ApplicationController
       render 'home/ios_quotes'
     end
   end
-  
-  def index  
-     @ios_quotes = IosQuote.recent.paginate(:per_page => 10, :page => params[:current_user_only])
-      @title = "iOS Quotes"
-      respond_to do |format|
-        format.html # index.html.erb
-        format.xml  { render :xml => @ios_quote }
-      end
-      @ios_quote = IosQuote.paginate(:page => params[:page])
+
+  def index
+    @title = "iOS Quotes"
+    @ios_quotes = IosQuote.owned.recent.paginate(:per_page => 10, :page => params[:current_user_only])
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @ios_quote }
+    end
+    @ios_quotes = IosQuote.paginate(:page => params[:page])
   end
-  
+
   def show
     @ios_quote = IosQuote.find(params[:id])
 	  @title = "Quote for " + @ios_quote.customer
@@ -49,7 +49,7 @@ class IosQuotesController < ApplicationController
       format.pdf { render :layout => false }
     end
   end
-  
+
   def update
 	  @ios_quote = IosQuote.find(params[:id])
     @ios_quote_value = IosQuote.find(params[:id]).ios_values_id
@@ -70,12 +70,12 @@ class IosQuotesController < ApplicationController
         end
       end
   end
-    
+
   def new
     @ios_quote = IosQuote.new
     @title = "New iOS Quote"
   end
-  
+
   def destroy
     @ios_quote = IosQuote.find(params[:id]).destroy
     flash[:success] = "Quote deleted"
@@ -86,17 +86,17 @@ class IosQuotesController < ApplicationController
     @title = "Edit Quote"
     @ios_quote = IosQuote.find(params[:id])
   end
-   
+
   def calculate_ios_install(ios_quote, ios_quote_value)
     # ios_quote_value = IosQuote.find(where[:id => self.ios_values_id])
-    install_cost = (((@ios_quote_value.iosdevice_install_time * device_quantity) + iosdevice_install_setup)/7).ceil  * @ios_quote_value.daily_rate
+    # install_cost = (((@ios_quote_value.iosdevice_install_time * device_quantity) + iosdevice_install_setup)/7).ceil  * @ios_quote_value.daily_rate
   end
 
   def calculate_ios_support(ios_quote)
     # @ios_quote_value = IosValue.where(:id => @ios_quote.ios_values_id)
-    support_cost = (@ios_quote_value.iosdevice_support_cost * @ios_quote.device_quantity).ceil
+    # support_cost = (@ios_quote_value.iosdevice_support_cost * @ios_quote.device_quantity).ceil
   end
-   
+
   # def mark_as_won
   # 	@ios_quote = IosQuote.find(params[:id])
   #   @ios_quote.quote_status == "Won"
@@ -104,5 +104,5 @@ class IosQuotesController < ApplicationController
   #     redirect_to(ios_quotes_path, :notice => "Quote has been marked as won!")
   #   end
   # end
-  
+
 end

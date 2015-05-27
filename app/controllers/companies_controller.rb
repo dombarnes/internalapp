@@ -2,9 +2,10 @@ class CompaniesController < ApplicationController
   before_filter :require_user
   helper_method :sort_column, :sort_direction
   filter_resource_access
-  
+
   def index
-    @companies = Company.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:page => params[:page])
+    @companies = Company.search(params[:search], sort_column, sort_direction)
+    # @companies = Company.all.order(sort_column + " " + sort_direction)#.paginate(:page => params[:page])
     @title = "Companies"
     respond_to do |format|
       format.html # index.html.erb
@@ -23,7 +24,7 @@ class CompaniesController < ApplicationController
       format.pdf { render :layout => false }
       format.xml  { render :xml => @company }
     end
-    
+
   end
 
   def new
@@ -79,7 +80,7 @@ class CompaniesController < ApplicationController
       format.json { head :ok }
     end
   end
-  
+
   private
   def authenticate
     deny_access unless signed_in?
@@ -88,14 +89,14 @@ class CompaniesController < ApplicationController
   def correct_user
     @user = User.find(params[:id])
     redirect_to(root_path) unless current_user?(@user)
-  end  
+  end
 
   def sort_column
     Company.column_names.include?(params[:sort]) ? params[:sort] : "company_name"
   end
 
   def sort_direction
-        %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "ACS"
   end
 
 end
