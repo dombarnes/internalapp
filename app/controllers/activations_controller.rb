@@ -1,4 +1,4 @@
-class ActivationslController < ApplicationController
+class ActivationsController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
 
   def new

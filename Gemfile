@@ -1,38 +1,53 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~>4.1.2'
+gem 'rails', '~> 4.2.2'
 gem 'bundler'
-gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'bootstrap-sass'
 gem 'sass-rails'
-gem 'coffee-rails'
 gem 'uglifier'
+gem 'coffee-rails'
+gem 'jquery-rails'
 gem 'turbolinks'
+gem 'jbuilder'
+gem 'bcrypt'
+gem 'faker'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
+gem 'will_paginate',           '~> 3.0.7'
+gem 'bootstrap-will_paginate'
 
 #Custom Additions
 gem 'authlogic' # User Authentication
 gem 'declarative_authorization' # User Authorization
-gem 'will_paginate', '3.0.7' # page pagination
-gem 'jquery-rails', '>= 1.0.12' #for jQuery UI enhancements
-gem 'rails3-generators'
-gem 'ruby_parser'
-gem 'thin' # Web server
+gem 'thin', '~>1.5.0' # Web server
 gem 'prawn' # PDF generator
 gem 'prawnto' #for PDF invoices and quotes
 gem 'prawn-table'
 gem 'pdfkit' #for PDF invoices and quotes
 
+
 gem 'protected_attributes'
 gem 'therubyracer', platforms: :ruby
 
+gem 'sdoc', '0.4.0', group: :doc
+
 group :development, :test do
+	gem 'sqlite3'
+  gem 'byebug'
+  gem 'web-console'
+  gem 'spring'
 	gem 'rspec-rails'
-	gem 'faker', '1.0.1'
-	gem 'nokogiri', '1.5.5'
+	gem 'nokogiri'
+	gem 'mailcatcher', '~> 0.6.1'
 end
 
 group :test do
-#	gem 'factory_girl_rails', '1.0'
 	gem 'rspec'
-#	gem 'webrat', '0.7.1'
 	gem 'spork'
+end
+
+group :production do
+	gem 'pg'
+	gem 'puma'
 end

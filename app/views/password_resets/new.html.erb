@@ -3,9 +3,8 @@
 Fill out the form below and instructions to reset your password will be emailed to you:<br />
 <br />
 
-<% form_tag password_resets_path do %>
-  <label>Email:</label><br />
-  <%= text_field_tag "email" %><br />
-  <br />
-  <%= submit_tag "Reset my password" %>
+<%= form_for(:password_resets, url: password_resets_path) do |f| %>
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+  <%= f.submit "Reset my password" %>
 <% end %>

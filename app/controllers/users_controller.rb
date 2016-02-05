@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   helper_method :sort_column, :sort_direction
-  # before_filter :correct_user, :only => [:edit, :update, :show]
+  before_filter :correct_user, :only => [:edit, :update, :show]
 
   def index
     @users = User.all
@@ -12,18 +12,21 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @assignment = Assignment.create(:role_id => Role.find_by_name("user").id, :user_id => @user.id)
+    # @assignment = Assignment.create(:role_id => Role.find_by_name("user").id, :user_id => @user.id)
     # Saving without session maintenance to skip
     # auto-login which can't happen here because
     # the User has not yet been activated
-    if @user.save_without_session_maintenance
-      @user.send_new_user_notification!
-      @user.send_activation_instructions!
-      format.html { redirect_to root_url, notice: 'Your account has been created. Please check your email for activation instructions.' }
-      format.json { render action: 'show', status: :created, location: @staff }
-    else
-      format.html { render action: 'new' }
-      format.json { render json: @user.errors, status: :unprocessable_entity }
+    respond_to do |format| 
+      if @user.save_without_session_maintenance
+        @user.send_new_user_notification!
+        @user.send_activation_instructions!
+        
+        format.html { redirect_to root_url, notice: 'Your account has been created. Please check your email for activation instructions.' }
+        format.json { render action: 'show', status: :created, location: @user }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -75,8 +78,7 @@ class UsersController < ApplicationController
     end
   end
 
-  private
-
+private
   def redisplay_roles
     respond_to do |format|
       format.html { redirect_to [:admin, @user]}
@@ -89,15 +91,13 @@ class UsersController < ApplicationController
     redirect_to(root_path) unless current_user
   end
 
-private
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:login, :email, :first_name, :company_name, :job_title)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:login, :email, :first_name, :last_name, :company_name, :job_title, :password, :password_confirmation)
+  end
 end

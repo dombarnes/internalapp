@@ -1,0 +1,12 @@
+// Place all the styles related to the Contracts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+input[type="text"],
+input[type="password"] {
+	padding: 2px 2px;
+	margin: 0 0 0 5px;
+	font-size:1.1em;
+	vertical-align:middle;
+	height: auto;
+}

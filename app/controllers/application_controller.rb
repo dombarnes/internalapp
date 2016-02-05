@@ -7,8 +7,7 @@ class ApplicationController < ActionController::Base
   #For Declarative Authorization
   before_filter :set_current_user
 
-  protected
-
+protected
   def set_current_user
     Authorization.current_user = current_user
   end
@@ -18,8 +17,7 @@ class ApplicationController < ActionController::Base
     redirect_back_or_default(root_path)
   end
 
-  private
-
+private
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
     @current_user_session = UserSession.find
