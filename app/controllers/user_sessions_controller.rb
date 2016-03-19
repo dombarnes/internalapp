@@ -12,7 +12,7 @@ class UserSessionsController < ApplicationController
       #flash[:notice] = "Welcome"
       redirect_back_or_default root_url
     else
-      render :action => 'new'
+      render 'new'
     end
   end
 
@@ -24,8 +24,8 @@ class UserSessionsController < ApplicationController
     redirect_to root_url
   end
   
-private
+  private
   def user_session_params
-        params.require(:user_session).permit(:username, :password)
+    params.require(:user_session).permit(:username, :password)
   end
 end

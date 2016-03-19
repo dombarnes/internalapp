@@ -1,7 +1,6 @@
 class ChangeCompanyTypeId < ActiveRecord::Migration
   def up
     change_table :companies do |t|
-      t.rename :company_type_id, :company_type
       t.change :company_type, :string
     end
   end

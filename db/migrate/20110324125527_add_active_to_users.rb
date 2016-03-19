@@ -5,6 +5,5 @@ class AddActiveToUsers < ActiveRecord::Migration
 
   def self.down
     remove_column :users, :active
-    remove_colum :users, :role
   end
 end

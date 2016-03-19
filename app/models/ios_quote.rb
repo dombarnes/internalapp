@@ -1,7 +1,5 @@
 class IosQuote < ActiveRecord::Base
   attr_accessible :customer, :user_id, :device_quantity, :install_required, :support_required, :install_cost, :support_cost, :mobile_config, :ios_values_id, :status
-#  filter_resource_access # Declarative Authorization
-  using_access_control
 
   belongs_to :user
   has_one :ios_value

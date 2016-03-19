@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  before_filter :require_user
+  before_action :authenticate_user!
   filter_resource_access
 
   def index

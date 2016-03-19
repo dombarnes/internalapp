@@ -4,6 +4,8 @@ Made by Dom Barnes
 http://dombarnes.com
 Inspiration from http://www.colourlovers.com/palette/482416/Wasabi_Suicide
 */
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 /* Overall Views*/
 * {
@@ -240,7 +242,7 @@ tr td{
   padding: 5px 5px 5px 15px;
   font-size: 10px;
   margin: -7px;
-  background-color: ##C11B17;
+  background-color: #C11B17;
   color: #000;
 }
 #error_explanation p {
@@ -435,19 +437,17 @@ td.taskdate {width:113px;}
 }
 
 p#helper {
-	font-size : 0.82em ;
-	background : ;
-	width : 60% ;
-	float : right ;
-	display : block ;
-	padding : 2px 2px ;
+	font-size: 0.82em ;
+	width: 60% ;
+	float: right ;
+	display: block ;
+	padding: 2px 2px ;
 
 }
 .field {
-	min-height : 50px;
+	min-height: 50px;
 	margin:2px;
 	font-size:1.2em;
-	text-align:;
 }
 
 /* Quote Values Show Styling*/

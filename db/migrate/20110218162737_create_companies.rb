@@ -10,10 +10,10 @@ class CreateCompanies < ActiveRecord::Migration
       t.string :telephone_number
       t.string :website
       t.string :source
-
+      
       t.timestamps
     end
-    add_index :person, :company_id
+    add_index :people, :company_id
     add_index :adhoc_supports, :company_id
   end
 

@@ -6,8 +6,8 @@ class CreateIosQuotes < ActiveRecord::Migration
       t.boolean :install_required
       t.boolean :support_required
       t.boolean :mobile_config
-      t.decimal :install_cost, {:scale => 2}
-      t.decimal :support_cost, {:scale => 2}
+      t.decimal :install_cost, {scale: 2, precision: 2}
+      t.decimal :support_cost, {scale: 2, precision: 2}
       t.integer :user_id
       t.integer :ios_values_id
       t.string  :status

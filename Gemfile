@@ -14,12 +14,13 @@ gem 'faker'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
+gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails'
 gem 'will_paginate',           '~> 3.0.7'
 gem 'bootstrap-will_paginate'
 
 #Custom Additions
-gem 'authlogic' # User Authentication
-gem 'declarative_authorization' # User Authorization
+# gem 'authlogic' # User Authentication
+# gem 'declarative_authorization' # User Authorization
 gem 'thin', '~>1.5.0' # Web server
 gem 'prawn' # PDF generator
 gem 'prawnto' #for PDF invoices and quotes
