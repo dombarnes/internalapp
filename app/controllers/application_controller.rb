@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  include CanCan::ControllerAdditions
   include SessionsHelper
+  protect_from_forgery with: :exception
   helper :all
   helper_method :current_user_session, :current_user
   #filter_access_to :all

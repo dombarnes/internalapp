@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+# Generic Rais stuff
 gem 'rails', '~> 4.2.2'
 gem 'bundler'
 gem 'bootstrap-sass'
@@ -13,15 +14,18 @@ gem 'bcrypt'
 gem 'faker'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'fog'
-gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails'
-gem 'will_paginate',           '~> 3.0.7'
-gem 'bootstrap-will_paginate'
-gem 'puma'
+gem 'pg'
 
 #Custom Additions
 gem 'authlogic' # User Authentication
-gem 'declarative_authorization' # User Authorization
+# gem 'cancancan', '~> 1.10' # User Authorization
+gem 'declarative_authorization', github: "stffn/declarative_authorization"
+
+gem 'fog' # cloud services library
+gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails'
+gem 'will_paginate',           '~> 3.0.7'
+gem 'bootstrap-will_paginate' # pagination layout
+gem 'puma' # Web Server
 
 gem 'prawn' # PDF generator
 gem 'prawnto' #for PDF invoices and quotes
@@ -34,8 +38,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'sdoc', '0.4.0', group: :doc
 
 group :development, :test do
-	gem 'sqlite3'
-  gem 'byebug'
+	gem 'byebug'
   gem 'web-console'
   gem 'spring'
 	gem 'rspec-rails'
@@ -49,5 +52,5 @@ group :test do
 end
 
 group :production do
-	gem 'pg'
+	
 end
