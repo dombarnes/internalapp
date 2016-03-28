@@ -1,4 +1,10 @@
 class User < ActiveRecord::Base
+  acts_as_authentic do |c|
+    c.crypto_provider = Authlogic::CryptoProviders::BCrypt
+    c.logged_in_timeout = 20.minutes # default is 10.minutes
+  end
+  # has_secure_password
+
   has_many :ios_quotes
   has_many :mac_quotes
   has_many :assignments
@@ -13,8 +19,12 @@ class User < ActiveRecord::Base
   validates :email, presence: true, length: { maximum: 255 }, 
     format: { with: VALID_EMAIL_REGEX },
     uniqueness: { case_sensitive: false }
-  has_secure_password
+  
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+
+  def to_s
+    "#{first_name} #{last_name}"
+  end
 
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -48,9 +58,11 @@ class User < ActiveRecord::Base
     active
   end
 
-  def activate
-    update_attribute(:activate, true)
-    update_attribute(:activated_at, Time.zone.now)
+  def activate!
+    self.active = true
+    save
+    # update_attribute(:activate, true)
+    # update_attribute(:activated_at, Time.zone.now)
   end
 
   def deactivate!
@@ -60,21 +72,21 @@ class User < ActiveRecord::Base
 
   def deliver_password_reset_instructions!
     reset_perishable_token!
-    Notifier.deliver_password_reset_instructions(self).deliver_now
+    UserNotifier.password_reset_instructions(self).deliver_now
   end
 
   def send_activation_instructions!
     reset_perishable_token!
-    Notifier.activation_instructions(self).deliver_now
+    UserNotifier.activation_instructions(self).deliver_now
   end
 
   def send_activation_confirmation!
     reset_perishable_token!
-    Notifier.activation_confirmation(self).deliver_now
+    UserNotifier.activation_confirmation(self).deliver_now
   end
 
   def send_new_user_notification!
-    Notifier.new_user_notification(self).deliver_now
+    UserNotifier.new_user_notification(self).deliver_now
   end
 
   # Returns true if a password reset has expired.
@@ -90,7 +102,7 @@ class User < ActiveRecord::Base
     find_by_login(login) || find_by_email(login)
   end
 
-  private
+private
 # Converts email to all lower-case.
   def downcase_email
     self.email = email.downcase
@@ -98,7 +110,7 @@ class User < ActiveRecord::Base
   # Creates and assigns the activation token and digest.
   def create_activation_digest
     self.activation_token  = User.new_token
-    self.activation_digest = User.digest(activation_token)
+    self.perishable_token = User.digest(activation_token)
   end
 
 end

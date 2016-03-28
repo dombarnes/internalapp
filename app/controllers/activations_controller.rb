@@ -1,11 +1,10 @@
 class ActivationsController < ApplicationController
-  # before_filter :require_no_user, :only => [:new, :create]
+  before_filter :require_no_user, :only => [:new, :create]
 
   def new
-        @user = User.find_using_perishable_token(params[:activation_code], 1.week) || (raise Exception)
-        raise Exception if @user.active?
-      end
-
+    @user = User.find_using_perishable_token(params[:activation_code], 1.week) || (raise Exception)
+    raise Exception if @user.active?
+  end
 
   def create
     @user = User.find_using_perishable_token(params[:activation_code], 1.week) || (raise Exception)
@@ -20,9 +19,8 @@ class ActivationsController < ApplicationController
       render :action => :new
     end
   end
-end
 
-def edit
+  def edit
     user = User.find_by(email: params[:email])
     if user && !user.activated? && user.authenticated?(:activation, params[:id])
       user.activate
@@ -34,4 +32,5 @@ def edit
       redirect_to root_url
     end
   end
+
 end

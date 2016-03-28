@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string    :company_name
       t.string    :job_title
       
-      t.timestamps
+      t.timestamps null: false
     end
   end
 

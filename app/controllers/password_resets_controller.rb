@@ -1,51 +1,48 @@
 class PasswordResetsController < ApplicationController  
-  before_action :get_user,         only: [:edit, :update]
+  before_action :set_user,         only: [:edit, :update]
   before_action :valid_user,       only: [:edit, :update]
   before_action :check_expiration, only: [:edit, :update]
-  # before_filter :load_user_using_perishable_token, :only => [:edit, :update]
-  # before_filter :require_no_user
+  before_filter :load_user_using_perishable_token, :only => [:edit, :update]
+  before_filter :require_no_user
 
   def new  
   end
 
   def create
-    @user = User.find_by(email: params[:password_reset][:email].downcase)
+    @user = User.find_by_email(params[:email])
     if @user
-      @user.create_reset_digest
       @user.deliver_password_reset_instructions!
-      flash[:info] = "Instructions to reset your password have been emailed to you. " +
-        "Please check your email."
-      redirect_to root_url
+      flash[:info] = "Instructions to reset your password have been emailed to you.\nPlease check your email."
+      redirect_to root_path
     else
-      flash[:notice] = "No user was found with that email address"
-      render 'new'
+      flash.now[:error] = "No user was found with email address #{params[:email]}"
+      render :action => :new
     end
   end
 
   def edit  
   end  
   
-  def update  
-    if params[:user][:password].empty?
-      @user.errors.add(:password, "can't be empty")
-      render 'edit'
-    elsif @user.update_attributes(user_params)
-        log_in @user
-    # @user.password = params[:user][:password]  
-    # @user.password_confirmation = params[:user][:password_confirmation]  
-      flash[:success] = "Password has been reset"  
-      redirect_to account_url  
-    else  
-      render 'edit'
-    end  
-  end  
-  
-  private  
+  def update
+    @user.password = params[:password]
+    # Only if your are using password confirmation
+    # @user.password_confirmation = params[:password]
 
+    # Use @user.save_without_session_maintenance instead if you
+    # don't want the user to be signed in automatically.
+    if @user.update_attributes(password_reset_params)
+      flash[:success] = "Your password was successfully updated"
+      redirect_to @user
+    else
+      render :edit
+    end
+  end
+    
+private  
   def load_user_using_perishable_token  
     @user = User.find_using_perishable_token(params[:id])  
     unless @user  
-      flash[:notice] = "We're sorry, but we could not locate your account. " +  
+      flash[:error] = "We're sorry, but we could not locate your account. " +  
       "If you are having issues try copying and pasting the URL " +  
       "from your email into your browser or restarting the " +  
       "reset password process."  
@@ -53,8 +50,9 @@ class PasswordResetsController < ApplicationController
     end  
   end
 
-  def get_user
-    @user = User.find_by(email: params[:email])    
+  def set_user
+    # @user = User.find_by(email: params[:email])    
+    @user = User.find_using_perishable_token(params[:id])
   end
 
   # Confirms a valid user.
@@ -72,8 +70,12 @@ class PasswordResetsController < ApplicationController
       redirect_to new_password_reset_url
     end
   end
+  
+  def password_reset_params
+    params.require(:user).permit(:password, :password_confirmation)
+  end
 
   def user_params
-    params.require(:user).permit(:password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
 end

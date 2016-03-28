@@ -17,16 +17,16 @@ gem 'fog'
 gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails'
 gem 'will_paginate',           '~> 3.0.7'
 gem 'bootstrap-will_paginate'
+gem 'puma'
 
 #Custom Additions
-# gem 'authlogic' # User Authentication
-# gem 'declarative_authorization' # User Authorization
-gem 'thin', '~>1.5.0' # Web server
+gem 'authlogic' # User Authentication
+gem 'declarative_authorization' # User Authorization
+
 gem 'prawn' # PDF generator
 gem 'prawnto' #for PDF invoices and quotes
 gem 'prawn-table'
 gem 'pdfkit' #for PDF invoices and quotes
-
 
 gem 'protected_attributes'
 gem 'therubyracer', platforms: :ruby
@@ -50,5 +50,4 @@ end
 
 group :production do
 	gem 'pg'
-	gem 'puma'
 end
