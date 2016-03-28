@@ -1,5 +1,4 @@
 class MacQuotesController < ApplicationController
-  before_action :authenticate_user!
   helper_method :sort_column, :sort_direction
   filter_access_to :all  
   

@@ -1,31 +1,40 @@
 class User < ActiveRecord::Base
+  has_and_belongs_to_many :roles
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::BCrypt
     c.logged_in_timeout = 20.minutes # default is 10.minutes
   end
   # has_secure_password
-
   has_many :ios_quotes
   has_many :mac_quotes
-  has_many :assignments
-
+  has_many :roles, through: :role_users
+  has_many :role_users
+  
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save  :downcase_email
   before_create :create_activation_digest
   
   validates :first_name,  presence: true, length: { maximum: 50 }
   validates :last_name,  presence: true, length: { maximum: 50 }
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\-.]+\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 }, 
     format: { with: VALID_EMAIL_REGEX },
     uniqueness: { case_sensitive: false }
-  
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
   def to_s
-    "#{first_name} #{last_name}"
+    [first_name, last_name].join(' ')
   end
-
+  
+  def role_symbols
+    (roles || []).map {|r| r.title.to_sym}
+    # if role
+    #     [role.title.downcase.to_sym]
+    # else
+    #   [:guest]
+    # end  
+  end
+  
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
@@ -112,5 +121,4 @@ private
     self.activation_token  = User.new_token
     self.perishable_token = User.digest(activation_token)
   end
-
 end

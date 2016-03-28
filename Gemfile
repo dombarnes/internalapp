@@ -20,12 +20,13 @@ gem 'pg'
 gem 'authlogic' # User Authentication
 # gem 'cancancan', '~> 1.10' # User Authorization
 gem 'declarative_authorization', github: "stffn/declarative_authorization"
+gem 'ruby_parser' 
 
 gem 'fog' # cloud services library
 gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails'
-gem 'will_paginate',           '~> 3.0.7'
+gem 'will_paginate',           '~> 3.1.0'
 gem 'bootstrap-will_paginate' # pagination layout
-gem 'puma' # Web Server
+gem 'puma', '~> 3.1.1' # Web Server
 
 gem 'prawn' # PDF generator
 gem 'prawnto' #for PDF invoices and quotes
@@ -35,7 +36,7 @@ gem 'pdfkit' #for PDF invoices and quotes
 gem 'protected_attributes'
 gem 'therubyracer', platforms: :ruby
 
-gem 'sdoc', '0.4.0', group: :doc
+gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
 	gem 'byebug'

@@ -8,7 +8,7 @@ class IosQuote < ActiveRecord::Base
   validates :device_quantity, :presence => true
 
   scope :recent, -> { order('created_at DESC') }
-  scope :owned, -> { where('user_id = ?', 'current_user.id' ) }
+  scope :owned, -> { where('user_id = ?', 'current_user.id') }
   scope :current_user_only, -> { where('user_id = ?', 'current_user.id') }
   scope :pending_items, -> { where(:quote_status => 'Pending') }
   scope :lost_items, -> { where(:quote_status => 'Lost')}
@@ -19,9 +19,4 @@ class IosQuote < ActiveRecord::Base
   def self.most_recentfive
     order('id DESC').limit(5)
   end
-
-  def self.recent
-    order('created_at DESC')
-  end
-
 end

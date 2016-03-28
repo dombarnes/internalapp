@@ -3,7 +3,6 @@
 <p id="notice"><%= notice %></p>
 <table class="index">
   <tr>
-    <th>Login Name</th>
     <th>Email</th>
     <th>Comany</th>
     <th>Job Title</th>
@@ -13,7 +12,6 @@
 
 <% @users.each do |user| %>
   <tr>
-    <td><%= user.login %></td>
     <td><%= user.email %></td>
     <td><%= user.company_name %></td>
     <td><%= user.job_title %></td>

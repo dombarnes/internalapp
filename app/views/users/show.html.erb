@@ -1,64 +1,48 @@
 <h2>My Profile</h2>
-<p>
-  <b>Email: </b>
-  <%=h @user.email %>
-</p>
-<p>
-  <b>Name:</b>
-  <%=h @user.first_name %> <%=h @user.last_name %>
-</p>
-<p>
-  <b>Company Name: </b>
-  <%=h @user.company_name %>
-</p>
-<p>
-  <b>Job Title: </b>
-  <%=h @user.job_title %>
-</p>
-</ br>
-<p>
-  <b>Last login at: </b>
-  <%=h @user.last_login_at %>
-</p>
+<dd>Email: </dd>
+<dt><%=h @user.email %></dt>
+
+<dd>Name:</dd>
+<dt><%=h @user.to_s %></dt>
+
+<dd>Company Name: </dd>
+<dt><%=h @user.company_name %></dt>
+
+<dd>Job Title: </dd>
+<dt><%=h @user.job_title %></dt>
+
+<dd>Last login at: </dd>
+<dt><%=h @user.last_login_at %></dt>
 
 <% if has_role? :admin %>
-<h4> Admin Info </h4>
-  <p>
-    <b>Role: </b>
-    <p><%= pluralize(@user.roles.size, 'Role') %></p>
-    <ul>
-    	<% @user.roles.each do |role| %>
-    		<li><%= role.name %></li>
-    	<% end %>
-    </ul>
-</p>
-<p>
-  <b>Active: </b>
-  <%=h @user.active %>
-</p>
+<h3>Admin Info</h3>
+  <p><%= pluralize(@user.roles.size, 'Role') %></p>
+  <table>
+    <th>
+      <td>Roles</td>
+    </th>
+  	<% @user.roles.each do |role| %>
+  		<tr>
+        <td><%= role.title.titleize %></td>
+      </tr>
+  	<% end %>
+<dd>Active: </dd>
+<dt><%=h @user.active %></dt>
 
-<p>
-  <b>Login count: </b>
-  <%=h @user.login_count %>
-</p>
+<dd>Login count: </dd>
+<dt><%=h @user.login_count %></dt>
 
-<p>
-  <b>Last request at: </b>
-  <%=h @user.last_request_at %>
-</p>
+<dd>Last request at: </dd>
+<dt><%=h @user.last_request_at %></dt>
 
-<p>
-  <b>Current login at:</b>
-  <%=h @user.current_login_at %>
-</p>
+<dd>Current login at:</dd>
+<dt><%=h @user.current_login_at %></dt>
 
-<p>
-  <b>Last login ip:</b>
-  <%=h @user.last_login_ip %>
-  <p>
-  <b>Current login ip:</b>
-  <%=h @user.current_login_ip %>
-</p>
+<dd>Last login ip:</dd>
+<dt><%=h @user.last_login_ip %></dt>
+
+<dd>Current login ip:</dd>
+<dt><%=h @user.current_login_ip %></dt>
 <% end %>
 
 <p>

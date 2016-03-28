@@ -1,7 +1,16 @@
 class IosQuotesController < ApplicationController
-  before_action :authenticate_user!
   helper_method :sort_column, :sort_direction
   filter_access_to :all
+
+  def index
+    @title = "iOS Quotes"
+    @ios_quotes = IosQuote.owned.recent.paginate(:per_page => 10, :page => params[:current_user_only])
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @ios_quote }
+    end
+    @ios_quotes = IosQuote.paginate(:page => params[:page])
+  end
 
   def create
     @title = "New Quote"
@@ -16,7 +25,7 @@ class IosQuotesController < ApplicationController
     end
 
     if @ios_quote.support_required == true
-#      calculate_ios_support
+# TODO: calculate_ios_support
     else
       @ios_quote.support_cost = 0
     end
@@ -28,16 +37,6 @@ class IosQuotesController < ApplicationController
     else
       render 'home/ios_quotes'
     end
-  end
-
-  def index
-    @title = "iOS Quotes"
-    @ios_quotes = IosQuote.owned.recent.paginate(:per_page => 10, :page => params[:current_user_only])
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @ios_quote }
-    end
-    @ios_quotes = IosQuote.paginate(:page => params[:page])
   end
 
   def show
@@ -104,5 +103,4 @@ class IosQuotesController < ApplicationController
   #     redirect_to(ios_quotes_path, :notice => "Quote has been marked as won!")
   #   end
   # end
-
 end

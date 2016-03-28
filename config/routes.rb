@@ -20,6 +20,7 @@ Internalapp::Application.routes.draw do
   resources :companies do
     resources :people
   end
+  resources :roles
   resources :people
   resources :mac_quotes
   resources :mac_values

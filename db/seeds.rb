@@ -6,13 +6,17 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-# create roles
-# admin_role = Role.create( :name => "admin", :description => "Admin user", :created_at => Time.now)
-# staff_role = Role.create( :name => "staff",:description => "Internal Staff User", :created_at => Time.now)
-# user_role  = Role.create( :name => "user", :description => "Reseller user", :created_at => Time.now)
+# roles = Role.create([
+#   {title: 'admin'},
+#   {title: 'user'}
+# ]) if Role.count == 0
 
-  admin_user = User.create(:login => 'admin_user',
-                           :email => 'admin@example.com',
+# create roles
+admin_role = Role.create( :title => "admin", :created_at => Time.now)
+staff_role = Role.create( :title => "staff", :created_at => Time.now)
+user_role  = Role.create( :title => "user", :created_at => Time.now)
+
+  admin_user = User.create(:email => 'admin@example.com',
                            :first_name => 'Admin',
                            :last_name => 'User',
                            :company_name => 'Internal',
@@ -21,8 +25,8 @@
                            :password_confirmation => 'password',
                            :active => true,
                            :created_at => Time.now)
-  staff_user = User.create(:login => 'staff_user',
-                            :email => 'staff@example.com',
+  
+  staff_user = User.create(:email => 'staff@example.com',
                            :first_name => 'Staff',
                            :last_name => 'User',
                            :company_name => 'Internal',
@@ -31,8 +35,8 @@
                            :password_confirmation => 'password',
                            :active => true,
                            :created_at => Time.now)
-  user = User.create(      :login => 'user',                    
-                           :email => 'user@example.com',        
+  
+  user = User.create(      :email => 'user@example.com',        
                            :first_name => 'Standard',           
                            :last_name => 'User',                
                            :company_name => 'Internal',         
@@ -41,10 +45,6 @@
                            :password_confirmation => 'password',
                            :active => true,                     
                            :created_at => Time.now)             
-
-  # create initial roles
-  # admin_user_role = Assignment.create(:role_id => "1", :user_id => "1")
-  # staff_user_role = Assignment.create(:role_id => "2", :user_id => "2")
 
   # create dummy quote data
   ios_quote_data = IosValue.create( :daily_rate => "100", 

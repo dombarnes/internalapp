@@ -1,6 +1,4 @@
 class Company < ActiveRecord::Base
-  attr_accessible :company_name, :address_1, :address_2, :city, :county, :postcode, :website, :telephone_number, :source, :company_type
-
   validates :company_name, :presence => true
   validates :company_type, :presence => true
 
@@ -9,7 +7,7 @@ class Company < ActiveRecord::Base
   has_many :adhoc_supports
 
   default_scope { order('company_name ASC') }
-  scope :resellers, Company.where(:company_type => "Reseller")
+  scope :resellers, -> { where('company_type' => "Reseller") }
 
   SOURCE_TYPE = ["Direct"]
   COMPANY_TYPE = ["Reseller", "School", "Limited Company", "Public Sector", "PLC", "Charity", "Freelancer" ]

@@ -2,7 +2,7 @@
 <%= link_to ' Back', root_path %><br>
 <br>
 <% if permitted_to? :create, @ios_quote %>
-<%= link_to 'New Quote', new_ios_quote_path %><br>
+  <%= link_to 'New Quote', new_ios_quote_path %><br>
 <% end %>
 <br>
 <table class="quotetable">
@@ -17,7 +17,7 @@
 <% if @ios_quotes %>
   <% @ios_quotes.each do |ios_quote| %>
   	<tr>
-  		<td><%= link_to_if((permitted_to? :update), ios_quote.created_at.strftime("%d/%m/%Y"), { :controller => "ios_quotes", :action => "show", :id => ios_quote}) do
+  		<td><%= link_to_if((permitted_to? :update), ios_quote.created_at.strftime("%d/%m/%Y"), ios_quotes_path(ios_quote) ) do
         link_to(ios_quote, ios_quote.created_at.strftime("%d/%m/%Y"), { :controller => "ios_quote", :action => "show", :id => ios_quote})
       end
       %></td>
@@ -30,7 +30,7 @@
   <% end %>
 <% else %>
   <tr>
-    <td></td>
+    <td>No quotes found</td>
   </tr>
 <% end %>
 </table>
