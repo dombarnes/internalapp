@@ -1,31 +1,46 @@
-<div class="field">
-  <%= form.label :first_name %>
-  <%= form.text_field :first_name %>
-</div>
-<div class="field">
-  <%= form.label :last_name %>
-  <%= form.text_field :last_name %>
-</div>
-<div class="field">
-  <%= form.label :email %>
-  <%= form.text_field :email %>
-</div>
-<div class="field">
-  <%= form.label :password, form.object.new_record? ? nil : "New password" %>  
-  <%= form.password_field :password %>
-</div>
-<div class="field">
-  <%= form.label :password_confirmation %>
-  <%= form.password_field :password_confirmation %>
-</div>
-<div class="roles">
-<% if has_role? :admin %>
-<p>
- <%= form.label :roles %> <br />
-  <% for role in Role.all %>
-      <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
-    <label for="user_role_ids_"><%= role.name %></label> 
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> stopped this user from being saved:</h2>
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
   <% end %>
-</p>
-</div>
+  
+  <div class="field">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password, f.object.new_record? ? nil : "New password" %>  
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  
+  <% if has_role? :admin %>
+  <div class="roles">
+  <p>
+   <%= f.label :roles %> <br />
+    <% for role in Role.all %>
+      <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
+      <%= f.label "user_role_ids_", role.title %>
+    <% end %>
+  </p>
+  </div>
+  <% end %>
+  
 <% end %>

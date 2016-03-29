@@ -59,9 +59,17 @@ module SessionsHelper
   def store_location
     session[:forwarding_url] = request.url if request.get?
   end
-
+  
   def admin_user
-    redirect_back_or(companies_path) unless current_user(:role =>"admin")
+    unless has_role?(:admin)
+      return false
+    end
   end
 
+  def admin_user?
+    unless current_user && current_user.admin?
+      redirect_to root_url
+      return false
+    end
+  end
 end

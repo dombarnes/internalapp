@@ -1,4 +1,5 @@
 class AdhocSupportsController < ApplicationController
+  before_action :set_adhoc_supports, only: [:edit, :update, :show, :destroy]
   helper_method :sort_column, :sort_direction
   filter_resource_access
 
@@ -12,7 +13,6 @@ class AdhocSupportsController < ApplicationController
   end
 
   def show
-    @adhoc_support = AdhocSupport.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @adhoc_support }
@@ -33,7 +33,7 @@ class AdhocSupportsController < ApplicationController
   end
 
   def create
-    @adhoc_support = AdhocSupport.new(params[:adhoc_support])
+    @adhoc_support = AdhocSupport.new(adhoc_support_params)
 
     respond_to do |format|
       if @adhoc_support.save
@@ -47,10 +47,8 @@ class AdhocSupportsController < ApplicationController
   end
 
   def update
-#    @adhoc_support = AdhocSupport.find(params[:id])
-
     respond_to do |format|
-      if @adhoc_support.update_attributes(params[:adhoc_support])
+      if @adhoc_support.update_attributes(adhoc_support_params)
         format.html { redirect_to(@adhoc_support, :notice => 'Adhoc support was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -61,7 +59,6 @@ class AdhocSupportsController < ApplicationController
   end
 
   def destroy
-#    @adhoc_support = AdhocSupport.find(params[:id])
     @adhoc_support.destroy
 
     respond_to do |format|
@@ -71,6 +68,14 @@ class AdhocSupportsController < ApplicationController
   end
 
   private
+    def set_adhoc_supports
+      @adhoc_support = AdhocSupport.find(params[:id])
+    end
+    
+    def adhoc_support_params
+      params.require(:adhoc_support).permit(:date, :job_type, :technicians, :notes, :company_id)
+    end
+    
     def authenticate
       deny_access unless signed_in?
     end

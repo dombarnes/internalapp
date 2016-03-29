@@ -1,6 +1,6 @@
 class ActivationsController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
-
+  helper_method :user_session
   def new
     @user = User.find_using_perishable_token(params[:activation_code], 1.week) || (raise Exception)
     raise Exception if @user.active?
@@ -16,17 +16,17 @@ class ActivationsController < ApplicationController
       @user.deliver_welcome!
       redirect_to root_url
     else
-      render :action => :new
+      render 'new'
     end
   end
 
-  def edit
-    user = User.find_by(email: params[:email])
-    if user && !user.activated? && user.authenticated?(:activation, params[:id])
+  def activate
+    user = User.find_using_perishable_token(params[:activation_code], 1.week) || (raise Exception)
+    if user && !user.active? #&& user.authenticated?(:activation, params[:id])
       user.activate
-      log_in user 
+      log_in(user)
       flash[:success] = "Account activated!"
-      redirect_to user
+      redirect_to profile_path
     else
       flash[:danger] = "Invalid activation link"
       redirect_to root_url

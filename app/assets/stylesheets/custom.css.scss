@@ -4,8 +4,6 @@ Made by Dom Barnes
 http://dombarnes.com
 Inspiration from http://www.colourlovers.com/palette/482416/Wasabi_Suicide
 */
-@import "bootstrap-sprockets";
-@import "bootstrap";
 
 /* Overall Views*/
 * {
@@ -13,16 +11,12 @@ Inspiration from http://www.colourlovers.com/palette/482416/Wasabi_Suicide
 	padding:0;
 }
 body {
-	background-color: #F0F2EB;
 	margin:0;
 	padding:0;
 	border:0; /* This removes the border around the viewport in old versions of IE */
 	width:100%;
 	text-align: left;
-	font-family: "Lucida Grande", "Lucida Sans Unicode", helvetica, arial, verdana, sans-serif;
-}
-a:link, a:visited {
-  color: rgb(0,71,179); /*hsl(216, 100%, 35%)*/
+	font-family: helvetica, arial, verdana, sans-serif;
 }
 
 a img { border: none; }
@@ -39,28 +33,8 @@ h6 { font-size: 10px; font-weight: normal; margin-bottom: 0; }
 ul { list-style: none; }
 li { font-size: 12px; }
 
-#wrapper {
-	margin: 0 auto;
-	background: #F0F2EB;
-	display: block;
-	max-width: 1200px;
-	min-width: 800px;
-}
-
-#content {
-	width: 900px;
-	display:table;
-	margin: 20px 0 50px 0;
-	padding: 30px 30px;
-	position: relative;
-	background:white;
-	border:2px solid lightgrey;
-	-moz-border-radius:5px;
-  	-webkit-border-radius:5px;
-  	border-radius:5px;
-}
 #wrapper h1 {
-	font-size: 200%;
+	font-size: 2em;
 }
 #main {
 	display: block;
@@ -73,31 +47,9 @@ li { font-size: 12px; }
 	line-height: normal ;
 }
 input[type=checkbox] {
-	webkit-appearance :checkbox;
+	-webkit-appearance :checkbox;
 }
 
-
-/* */
-ul {
-	list-style-type: none;
-}
-ol, ul {
-	list-style: none;
-}
-
-/* Links */
-a {
-	text-decoration: none;
-}
-
-a:hover {
-	color: #ccc ;
-	text-decoration: underline;
-}
-
-a:visited {
-	color: #069;
-}
 
 /* Sign up button */
 a.signup_button {
@@ -486,7 +438,6 @@ tr.companies_table{
 /* Login Form Styling */
 #loginform label {
 	font-size:1em;
-	font-family:Lucida Grande, arial, san-serif;
 	font-color:black;
 	padding:1px 5px;
 	vertical-align:middle;
@@ -614,7 +565,6 @@ a.button:active span {
 }
 
 .awesome{
-font-family: Lucida Grande, Arial, Helvetica;
 background: #222 url(/images/alert-overlay.png) repeat-x;
 display: inline-block;
 padding: 5px 10px 6px;

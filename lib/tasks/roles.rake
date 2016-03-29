@@ -7,8 +7,8 @@ namespace :roles do
 
   desc 'Add User to Role'
   task :add_user, [:email, :role_name] => :environment do |cmd, args|
-    user = User.find_by_email args[:email]
-    role = Role.find_by_name args[:role_name]
+    user = User.find_by email: args[:email]
+    role = Role.find_by title: args[:role_name]
     unless user
       puts "No such user #{args[:email]}"
       return
@@ -18,6 +18,6 @@ namespace :roles do
       return
     end
     user.roles.push role
-    puts "added #{role.name} to #{user.last_name}, #{user.first_name}"
+    puts "added #{role.title} to #{user.last_name}, #{user.first_name}"
   end
 end

@@ -3,7 +3,7 @@
 <h3>There are <%= pluralize(@roles.length, 'role') %></h3>
 <ul>
 <% @roles.each do |role| %>
-  <%= role.name %>
+  <%= role.title %>
   <%= link_to "X", @role, :method => :delete, :remote => true, :confirm => 'Are you sure you want to delete the role?' %>
   <br />
 <% end %>

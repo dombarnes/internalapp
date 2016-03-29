@@ -8,11 +8,12 @@ class User < ActiveRecord::Base
   has_many :ios_quotes
   has_many :mac_quotes
   has_many :roles, through: :role_users
-  has_many :role_users
+  has_many :role_users#, dependent: :destroy
   
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save  :downcase_email
   before_create :create_activation_digest
+  # after_create :set_role
   
   validates :first_name,  presence: true, length: { maximum: 50 }
   validates :last_name,  presence: true, length: { maximum: 50 }
@@ -28,13 +29,16 @@ class User < ActiveRecord::Base
   
   def role_symbols
     (roles || []).map {|r| r.title.to_sym}
-    # if role
-    #     [role.title.downcase.to_sym]
-    # else
-    #   [:guest]
-    # end  
   end
   
+  def has_role?(role_name)
+    role.present? && role.to_sym == role_name.to_sym
+  end
+
+  def set_role
+    self.roles = [ :reseller.to_s ]
+  end
+
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
@@ -57,6 +61,12 @@ class User < ActiveRecord::Base
   end
 
   # Returns true if the given token matches the digest.
+  def authenticated?(remember_token)
+    return false if remember_digest.nil?
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
+
+  # Returns true if the given token matches the digest.
   def authenticated?(attribute, token)
     digest = send("#{attribute}_digest")
     return false if digest.nil?
@@ -67,11 +77,9 @@ class User < ActiveRecord::Base
     active
   end
 
-  def activate!
+  def activate
     self.active = true
     save
-    # update_attribute(:activate, true)
-    # update_attribute(:activated_at, Time.zone.now)
   end
 
   def deactivate!
@@ -95,7 +103,7 @@ class User < ActiveRecord::Base
   end
 
   def send_new_user_notification!
-    UserNotifier.new_user_notification(self).deliver_now
+    UserNotifier.new_user_notification(self).deliver_later
   end
 
   # Returns true if a password reset has expired.
@@ -104,7 +112,7 @@ class User < ActiveRecord::Base
   end
 
   def email_address_with_name
-    "#{self.login} <#{self.email}>"
+    "#{self.to_s} <#{self.email}>"
   end
 
   def self.find_by_login_or_email(login)

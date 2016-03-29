@@ -9,11 +9,11 @@ Please do not amend existing values. Instead, add a new entry. Editing old value
 <p>This is for the admin settings, such as changing quote costs, time lengths, etc</p>
 <br>
 <div class="settings_links">
-  <%= link_to 'View iOS Support and Install Values', ios_values_path %><br>
-  <%= link_to 'View Mac Support and Install Values', mac_values_path %><br>
+  <%= link_to 'View iOS Support and Install Values', admin_ios_values_path %><br>
+  <%= link_to 'View Mac Support and Install Values', admin_mac_values_path %><br>
   <% if permitted_to? :manage, :users %>
     <%= link_to 'Manage Users', users_path %><br>
-    <%= link_to 'Manage Roles', roles_path %><br>
+    <%= link_to 'Manage Roles', admin_roles_path %><br>
     <%= link_to 'Manage Authorization Settings', authorization_rules_path %>
   <% end %>
   

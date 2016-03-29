@@ -1,37 +1,44 @@
-<header>
-<div class="header">
-	<%= link_to logo , root_path, :class => :headerimg %>
-  	<div id="global_nav">
-      <ul>
-        <li><%= link_to "Home", root_path %></li>
-        <% if current_user %>
-      <% if permitted_to? :manage, :companies %>
-        <li><%= link_to "Companies", companies_path %></li>
-        <li><%= link_to "People", people_path %></li>
-        <li><%= link_to "Ad Hoc Support", adhoc_supports_path %></li>
-      <% end %>
-      <% if permitted_to? :create, :ios_quotes %>
-        <li><%= link_to "Quotes", ios_quotes_path %></li>
-      <% end %>
-      <% if permitted_to? :manage, :users %>
-      <li><%= link_to "Admin", admin_path %></li>
-      <% end %>
-      <% end %>
-    </ul>
-    </div>
-
-	<div class="user_status">
-		<ul>
-      <% if current_user %>
-        <li><%= link_to "Sign out", logout_path %></li>
-        <li><%= link_to "Profile", current_user %></li>
-      <% else %>
-        <li><%= link_to "Sign up", signup_path, :class => :signin %></li>
-		<li><%= link_to "Login", login_path, :class => :signin %></li>
-      <% end %>
-      <li><%= link_to "Help", help_path %></li>
-	  </ul>
-    </div>
-
-</div>
-</header>
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<%= link_to logo, root_path, class:"navbar-brand" %>
+		</div>
+	  <div id="navbar" class="navbar-collapse collapse">
+	    <ul class="nav navbar-nav">
+	      <li><%= link_to "Home", root_path %></li>
+				<% if current_user %>
+		      <% if permitted_to? :manage, :companies %>
+		        <li><%= link_to "Companies", companies_path %></li>
+		        <li><%= link_to "People", people_path %></li>
+		        <li><%= link_to "Ad Hoc Support", adhoc_supports_path %></li>
+		      <% end %>
+		      <% if permitted_to? :create, :ios_quotes %>
+		        <li><%= link_to "Quotes", ios_quotes_path %></li>
+		      <% end %>
+		      <% if has_role?(:admin) %>
+		      	<li role="presentation" class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+	            <li><%= link_to 'Users', users_path %></li>
+	            <li>><%= link_to 'Roles', admin_roles_path %></li>
+	            <li>><%= link_to 'Authorization', authorization_rules_path %></li>
+	            <li role="separator" class="divider"></li>
+							<li><%= link_to 'iOS Quote Values', admin_ios_values_path %></li>
+							<li><%= link_to 'Mac Quote Values', admin_mac_values_path %></li>
+		      	</ul>
+		      </li>
+		      <% end %>
+	      <% end %>
+	    </ul>
+			<ul class="nav navbar-nav">
+		    <% if current_user %>
+		      <li><%= link_to "Profile", profile_path %></li>
+		      <li><%= link_to "Sign out", logout_path %></li>
+		    <% else %>
+		      <li><%= link_to "Sign up", signup_path, :class => :signin %></li>
+					<li><%= link_to "Login", login_path, :class => :signin %></li>
+		    <% end %>
+			</ul>
+		</div>
+	</div>
+</nav>

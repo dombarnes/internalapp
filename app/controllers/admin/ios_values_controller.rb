@@ -1,4 +1,5 @@
-class IosValuesController < ApplicationController
+class Admin::IosValuesController < ApplicationController
+  before_action :set_ios_values, only: [:update, :destroy, :show]
   helper_method :sort_column, :sort_direction
   filter_resource_access
   
@@ -23,7 +24,7 @@ class IosValuesController < ApplicationController
   end
   
   def create
-      @ios_value = IosValue.create!(params[:ios_value])
+      @ios_value = IosValue.create(ios_values_params)
       
       respond_to do |format|
         if @ios_value.save
@@ -37,7 +38,7 @@ class IosValuesController < ApplicationController
   end
   
   def destroy
-    @ios_value = IosValue.find(params[:id]).destroy
+    @ios_value.destroy
     respond_to do |format|
       format.html {flash[:success] = "Quote Values deleted."
                   redirect_to ios_values_path }
@@ -47,6 +48,14 @@ class IosValuesController < ApplicationController
   
   def show
     @title = "Values"
+  end
+
+private
+  def set_ios_values
     @ios_value = IosValue.find(params[:id])
+  end
+
+  def ios_values_params
+    params.require(:ios_values).permit(:daily_rate, :iosdevice_support_cost, :iosdevice_install_time, :iosdevice_install_setup)
   end
 end

@@ -1,5 +1,4 @@
 class AdhocSupport < ActiveRecord::Base
-  attr_accessible :date, :job_type, :technicians, :notes, :company_id
   has_many :notes
   belongs_to :company
 

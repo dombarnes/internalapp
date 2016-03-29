@@ -9,3 +9,4 @@ General\ Notes.txt
 .sass-cache/
 config/initializers/secret_token.rb
 rspec/*
+dump.rdb

@@ -1,4 +1,5 @@
 class IosQuotesController < ApplicationController
+  before_action :set_ios_quote, only: [:update, :edit, :show, :destroy]
   helper_method :sort_column, :sort_direction
   filter_access_to :all
 
@@ -14,7 +15,7 @@ class IosQuotesController < ApplicationController
 
   def create
     @title = "New Quote"
-    @ios_quote = current_user.ios_quotes.build(params[:ios_quote])
+    @ios_quote = current_user.ios_quotes.build(ios_quote_params)
     @ios_quote_value = IosValue.last
 	  @ios_quote.ios_values_id = IosValue.last.id
 
@@ -40,8 +41,7 @@ class IosQuotesController < ApplicationController
   end
 
   def show
-    @ios_quote = IosQuote.find(params[:id])
-	  @title = "Quote for " + @ios_quote.customer
+    @title = "Quote for " + @ios_quote.customer
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @ios_quote }
@@ -50,7 +50,6 @@ class IosQuotesController < ApplicationController
   end
 
   def update
-	  @ios_quote = IosQuote.find(params[:id])
     @ios_quote_value = IosQuote.find(params[:id]).ios_values_id
     if @ios_quote.support_required = "true"
       calculate_ios_support
@@ -60,7 +59,7 @@ class IosQuotesController < ApplicationController
     end
 
     respond_to do |format|
-        if @ios_quote.update_attributes(params[:ios_quote])
+        if @ios_quote.update_attributes(ios_quote_params)
           format.html { redirect_to(@ios_quote, :notice => 'Your quote was successfully updated.') }
           format.xml  { head :ok }
         else
@@ -76,14 +75,13 @@ class IosQuotesController < ApplicationController
   end
 
   def destroy
-    @ios_quote = IosQuote.find(params[:id]).destroy
+    @ios_quote.destroy
     flash[:success] = "Quote deleted"
     redirect_back_or_default ios_quotes_path
   end
 
   def edit
     @title = "Edit Quote"
-    @ios_quote = IosQuote.find(params[:id])
   end
 
   def calculate_ios_install(ios_quote, ios_quote_value)
@@ -103,4 +101,12 @@ class IosQuotesController < ApplicationController
   #     redirect_to(ios_quotes_path, :notice => "Quote has been marked as won!")
   #   end
   # end
+private
+  def set_ios_quote
+    @ios_quote = IosQuote.find(param[:id])
+  end
+
+  def ios_quote_params
+    params.require(:ios_quote).permit(:customer, :user_id, :device_quantity, :install_required, :support_required, :install_cost, :support_cost, :mobile_config, :ios_values_id, :status)
+  end
 end

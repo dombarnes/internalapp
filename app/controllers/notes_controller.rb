@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  before_action set_note [:show, :edit, :update, :destroy ]
+  before_action :set_note, only: [:show, :edit, :update, :destroy ]
   filter_resource_access
 
   def index

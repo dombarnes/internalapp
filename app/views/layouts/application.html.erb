@@ -1,52 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>ClientBase: <%= @title %></title>
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <meta name="keywords" content="" />
-    <meta name="copyright" content="" />
+<html lang="en-GB">
+<head>
+  <title>ClientBase: <%= @title %></title>
+  <meta charset="utf-8">
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <meta name="keywords" content="" />
+  <meta name="copyright" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <link rel="icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
 
-    <%= csrf_meta_tag %>
-
-    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-
-    <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
-
-  </head>
-  <body>
-    <%= render 'layouts/header' %>
-  	<!-- End Header -->
-	<div id="global_sidebar">
-    <!-- End Navigation -->
-	</div>
-    <!-- End Global Sidebar -->
-  	<div id="wrapper">
-
-  		<div id="content">
-
-        		<div id="main" class="round">
-          		<p class="notice"><%= notice %></p>
-              <p class="alert"><%= alert %></p>
-          		<%= yield %>
-        		</div>
-        		<!-- End Main -->
-
-      	</div>
-      	<!-- End Content -->
-
+  <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+</head>
+<body>
+  <%= render 'layouts/header' %>
+  <div class="container-fluid">
+		<div class="row">
+  		<div class="col-xs-6 col-sm-8 col-md-10 col-md-offset-1">
+        <%= render 'layouts/flashes' %>
+        <%= yield %>
+  		</div>
   	</div>
-  	<!-- End Wrapper -->
-
-    <footer>
-      <div id="footer">
-       <%= render 'layouts/footer' %>
-      </div>
-    </footer>
-     <%= debug(params) if Rails.env.development? %>
-  </body>
+	<!-- End Wrapper -->
+  <footer class="row">
+    <div id="footer">
+     <%= render 'layouts/footer' %>
+    </div>
+  </footer>
+   <%= debug(params) if Rails.env.development? %>
+   </div>
+</body>
 </html>

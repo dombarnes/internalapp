@@ -1,4 +1,5 @@
 class PeopleController < ApplicationController
+  before_action :set_person, only: [:edit, :update, :destroy, :show, :correct_user]
   helper_method :sort_column, :sort_direction
   filter_resource_access
   
@@ -12,9 +13,8 @@ class PeopleController < ApplicationController
   end
 
   def show
-        @title = "People"
-    @person = Person.find(params[:id])
-    @company = Person.find(params[:id]).company
+    @title = "People"
+    @company = @person.company
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @person }
@@ -32,12 +32,11 @@ class PeopleController < ApplicationController
 
   def edit
     @title = "People"
-    @person = Person.find(params[:id])
   end
 
   def create
     @title = "People"
-    @person = Person.new(params[:person])
+    @person = Person.new(person_params)
 
     respond_to do |format|
       if @person.save
@@ -52,7 +51,6 @@ class PeopleController < ApplicationController
 
   def update
     @title = "People"
-    @person = Person.find(params[:id])
     respond_to do |format|
       if @person.update_attributes(params[:person])
         format.html { redirect_to(@person, :notice => 'The person was successfully updated.') }
@@ -66,7 +64,6 @@ class PeopleController < ApplicationController
 
   def destroy
     @title = "People"
-    @person = Person.find(params[:id])
     @person.destroy
     respond_to do |format|
       format.html { redirect_to(peoples_url) }
@@ -74,14 +71,20 @@ class PeopleController < ApplicationController
     end
   end
   
-  private
+ private
   def authenticate
     deny_access unless signed_in?
   end
 
   def correct_user
-    @user = User.find(params[:id])
     redirect_to(root_path) unless current_user?(@user)
   end
   
+  def set_person
+    @user = User.find(params[:id])
+  end  
+
+  def people_params
+    params.require(:people).permit(:company_id, :title, :first_name, :last_name, :position, :telephone_number, :mobile_number, :email_address, :address_1, :address_2, :city, :county, :postcode, :im, :linkedin, :twitter)
+  end
 end
