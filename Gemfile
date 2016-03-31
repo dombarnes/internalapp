@@ -58,7 +58,8 @@ group :development, :test do
   gem "dotenv-rails"
   gem "factory_girl_rails"
   gem "pry-rails"
-  gem "rspec-rails", "~> 3.3.0"
+  gem "rspec-rails", "~> 3.4.0"
+  gem "rubocop"
 end
 
 group :test do

@@ -1,8 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe SessionsController do
-  render_views
-  
+describe SessionsController do  
   describe "GET 'new'" do
     it "should be successful" do
       get :new
@@ -16,7 +14,6 @@ describe SessionsController do
   end
   
   describe "POST" 'create' do
-    
     describe "invalid signin" do
       
       before(:each) do
@@ -57,7 +54,6 @@ describe SessionsController do
       response.should redirect_to(user_path(@user))
     end
   end
-end
         
   describe "DELETE 'destroy'" do      
     it "should sign a user out" do

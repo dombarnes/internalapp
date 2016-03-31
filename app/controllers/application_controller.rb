@@ -5,13 +5,15 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_session, :current_user
   #filter_access_to :all
 
-protected
+  protected
+  
   def permission_denied
-    flash[:error] = "Sorry, you are not allowed to access that page."
+    flash[:error] = 'Sorry, you are not allowed to access that page.'
     redirect_back_or_default(root_path)
   end
 
-private
+  private
+  
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
     @current_user_session = UserSession.find  
@@ -21,11 +23,11 @@ private
     return @current_user if defined?(@current_user)
     @current_user = current_user_session && current_user_session.user
   end
-  
+
   def require_user
     unless current_user
       store_location
-      flash[:notice] = "You must be logged in to access this page"
+      flash[:notice] = 'You must be logged in to access this page'
       redirect_to login_url
       return false
     end
@@ -34,7 +36,7 @@ private
   def require_no_user
     if current_user
       store_location
-      flash[:notice] = "You must be logged out to access this page"
+      flash[:notice] = 'You must be logged out to access this page'
       redirect_to users_url
       return false
     end
@@ -54,7 +56,7 @@ private
   end
 
   def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    %w(asc desc).include?(params[:direction]) ? params[:direction] : 'asc'
   end
 
 end

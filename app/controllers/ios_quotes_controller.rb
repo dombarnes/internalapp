@@ -8,7 +8,7 @@ class IosQuotesController < ApplicationController
     @ios_quotes = IosQuote.owned.recent.paginate(:per_page => 10, :page => params[:current_user_only])
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @ios_quote }
+      format.xml  { render xml: @ios_quote }
     end
     @ios_quotes = IosQuote.paginate(:page => params[:page])
   end
@@ -44,7 +44,7 @@ class IosQuotesController < ApplicationController
     @title = "Quote for " + @ios_quote.customer
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @ios_quote }
+      format.xml  { render xml: @ios_quote }
       format.pdf { render :layout => false }
     end
   end
@@ -60,11 +60,11 @@ class IosQuotesController < ApplicationController
 
     respond_to do |format|
         if @ios_quote.update_attributes(ios_quote_params)
-          format.html { redirect_to(@ios_quote, :notice => 'Your quote was successfully updated.') }
+          format.html { redirect_to(@ios_quote, notice: 'Your quote was successfully updated.') }
           format.xml  { head :ok }
         else
-          format.html { render :action => "edit" }
-          format.xml  { render :xml => @ios_quote.errors, :status => :unprocessable_entity }
+          format.html { render action: "edit" }
+          format.xml  { render xml: @ios_quote.errors, status: :unprocessable_entity }
         end
       end
   end
@@ -98,10 +98,12 @@ class IosQuotesController < ApplicationController
   # 	@ios_quote = IosQuote.find(params[:id])
   #   @ios_quote.quote_status == "Won"
   #   if @ios_quote.update_attributes(params[:ios_quote])
-  #     redirect_to(ios_quotes_path, :notice => "Quote has been marked as won!")
+  #     redirect_to(ios_quotes_path, notice: "Quote has been marked as won!")
   #   end
   # end
-private
+  
+  private
+
   def set_ios_quote
     @ios_quote = IosQuote.find(param[:id])
   end

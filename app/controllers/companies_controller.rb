@@ -5,14 +5,14 @@ class CompaniesController < ApplicationController
 
   def index
     @companies = Company.search(params[:search], sort_column, sort_direction)
-    @title = "Companies"
+    @title = 'Companies'
   end
 
   def show
     @title = @company.company_name
-    @people = Person.where(:company_id => @company.id)
-    @new_person = @company.people.create(:company_id => @company.id)
-    @adhoc_supports = AdhocSupport.where(:company_id => @company.id)
+    @people = Person.where(company_id: @company.id)
+    @new_person = @company.people.create(company_id: @company.id)
+    @adhoc_supports = AdhocSupport.where(company_id: @company.id)
   end
 
   def new
@@ -20,19 +20,19 @@ class CompaniesController < ApplicationController
   end
 
   def edit
-    @title = "Edit Company"
+    @title = 'Edit Company'
   end
 
   def create
     @company = Company.create(company_params)
     respond_to do |format|
       if @company.save
-        format.html { redirect_to @company, :notice => 'Company was successfully saved.' }
-        format.xml  { render :xml => @company, :status => :created, :location => @company }
+        format.html { redirect_to @company, notice: 'Company was successfully saved.' }
+        format.xml  { render xml: @company, status: :created, location: @company }
       else
-        flash[:notice] = "Cannot save this company. Please check all required fields."
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @company.errors, :status => :unprocessable_entity }
+        flash[:notice] = 'Cannot save this company. Please check all required fields.'
+        format.html { render action: "new" }
+        format.xml  { render xml: @company.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -40,11 +40,11 @@ class CompaniesController < ApplicationController
   def update
     respond_to do |format|
       if @company.update_attributes(params[:company])
-        format.html { redirect_to(@company, :notice => 'Company was successfully updated.') }
+        format.html { redirect_to(@company, notice: 'Company was successfully updated.') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @company.errors, :status => :unprocessable_entity }
+        format.html { render action: "edit" }
+        format.xml  { render xml: @company.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -60,7 +60,8 @@ class CompaniesController < ApplicationController
     end
   end
 
-private
+  private
+
   def authenticate
     deny_access unless signed_in?
   end
@@ -71,11 +72,11 @@ private
   end
 
   def sort_column
-    Company.column_names.include?(params[:sort]) ? params[:sort] : "company_name"
+    Company.column_names.include?(params[:sort]) ? params[:sort] : 'company_name'
   end
 
   def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "ASC"
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'ASC'
   end
   
   def set_company

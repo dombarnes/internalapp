@@ -41,11 +41,11 @@ class MacQuotesController < ApplicationController
       end
       respond_to do |format|
         if @mac_quote.update_attributes(params[:ios_quote])
-          format.html { redirect_to(@mac_quote, :notice => 'Your quote was successfully updated.') }
+          format.html { redirect_to(@mac_quote, notice: 'Your quote was successfully updated.') }
           format.xml  { head :ok }
         else
-          format.html { render :action => "edit" }
-          format.xml  { render :xml => @mac_quote.errors, :status => :unprocessable_entity }
+          format.html { render action: "edit" }
+          format.xml  { render xml: @mac_quote.errors, status: :unprocessable_entity }
         end
       end
   end
