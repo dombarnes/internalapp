@@ -10,6 +10,6 @@ require 'rails_helper'
 #     end
 #   end
 # end
-describe NotesHelper do
+RSpec.describe NotesHelper do
   pending "add some examples to (or delete) #{__FILE__}"
 end

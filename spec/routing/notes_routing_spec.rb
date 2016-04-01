@@ -1,6 +1,6 @@
-require "spec_helper"
+require 'rails_helper'
 
-describe NotesController do
+RSpec.describe NotesController do
   describe "routing" do
 
     it "routes to #index" do

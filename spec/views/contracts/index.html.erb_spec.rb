@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "contracts/index.html.erb" do
+RSpec.describe "contracts/index.html.erb" do
   before(:each) do
     assign(:contracts, [
       stub_model(Contract,

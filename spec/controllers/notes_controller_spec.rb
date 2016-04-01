@@ -18,7 +18,7 @@ require 'rails_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe NotesController do
+RSpec.describe NotesController do
 
   # This should return the minimal set of attributes required to create a valid
   # Note. As you add validations to Note, be sure to

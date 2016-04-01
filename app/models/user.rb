@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::BCrypt
     c.logged_in_timeout = 20.minutes # default is 10.minutes
+    c.validates_length_of_password_field_options.merge( length: { minimum: 8 } )
+    c.validate_password_field = true
   end
   # has_secure_password
   has_many :ios_quotes
@@ -21,7 +23,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, length: { maximum: 255 }, 
     format: { with: VALID_EMAIL_REGEX },
     uniqueness: { case_sensitive: false }
-  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
 
   def to_s
     [first_name, last_name].join(' ')

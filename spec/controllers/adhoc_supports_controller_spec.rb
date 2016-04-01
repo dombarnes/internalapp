@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-Rspec.describe AdhocSupportsController do
+RSpec.describe AdhocSupportsController, type: :controller do
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
   }
@@ -17,13 +17,15 @@ Rspec.describe AdhocSupportsController do
   describe "GET 'index'" do
     it "should be successful" do
       get :index
-      response.should be_success
+      expect(response).to be_success
     end
-
-    it "assigns @adhoc_supports" do 
-      get :index
-      expect(assigns(:adhoc_supports)).to eq([adhoc_supports])
-    end
-    
   end
+
+  describe "GET 'new'" do
+    it "should be successful" do
+      get :new
+      expect(response).to be_success
+    end
+  end
+
 end

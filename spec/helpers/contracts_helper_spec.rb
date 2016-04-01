@@ -10,6 +10,6 @@ require 'rails_helper'
 #     end
 #   end
 # end
-describe ContractsHelper do
+RSpec.describe ContractsHelper do
   pending "add some examples to (or delete) #{__FILE__}"
 end

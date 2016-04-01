@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "notes/new.html.erb" do
+RSpec.describe "notes/new.html.erb" do
   before(:each) do
     assign(:note, stub_model(Note,
       :company_id => 1,

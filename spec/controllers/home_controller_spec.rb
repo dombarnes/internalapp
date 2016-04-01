@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe HomeController do
+RSpec.describe HomeController do
 
   describe "GET 'index'" do
     it "should be successful" do

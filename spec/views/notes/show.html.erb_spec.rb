@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "notes/show.html.erb" do
+RSpec.describe "notes/show.html.erb" do
   before(:each) do
     @note = assign(:note, stub_model(Note,
       :company_id => 1,
