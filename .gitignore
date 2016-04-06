@@ -2,7 +2,7 @@
 db/*.sqlite3
 log/*.log
 tmp/**/*
-*/.DS_Store
+**/.DS_Store
 ability_old.txt
 dropdowns.txt
 General\ Notes.txt

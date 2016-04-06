@@ -3,7 +3,7 @@ Internalapp::Application.routes.draw do
   root 'home#index'
   # get 'user_sessions/new'
   get 'signup', to: 'users#new'
-  get 'login', to: 'user_sessions#new' 
+  get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   get 'logout', to: 'user_sessions#destroy'
   get 'activate(/:activation_code)', to: 'activations#activate', :as => :activate_account

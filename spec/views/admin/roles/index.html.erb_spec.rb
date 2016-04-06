@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe "roles/index.html.erb" do
   pending "add some examples to (or delete) #{__FILE__}"

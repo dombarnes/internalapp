@@ -1,23 +1,16 @@
 <h1>Login</h1>
 <div id="loginform">
-<%= form_for @user_session do |f| %>
-  <% if @user_session.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@user_session.errors.count, "error") %> prohibited:</h2>
-    <ul>
-      <% @user_session.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
+  <h2>Please login</h2>
+  <%= simple_form_for(@user_session, html: { class: ".form-horizontal" }) do |f| %>
+    <%= f.error_notification %>
+    
+    <div class="form-inputs">
+      <%= f.input :email, error: "Email address is incorrect or doesn't exist" %>
+      <%= f.input :password, error: 'Please check your password' %>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit, "Login" %>
+    </div>
   <% end %>
-  <%= f.label :email %><br />
-  <%= f.text_field :email %><br />
-  <br />
-  <%= f.label :password %><br />
-  <%= f.password_field :password %><br />
-  <br />
-  <%= f.submit "Login" %>
-<% end %>
   
 <strong>Help:</strong> <%= link_to "I forgot my password.", new_password_resets_path %>

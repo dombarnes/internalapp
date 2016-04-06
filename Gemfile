@@ -17,7 +17,7 @@ gem 'mini_magick'
 gem 'delayed_job_active_record'
 gem 'resque'
 gem 'resque-scheduler'
-
+gem 'simple_form'
 #Custom Additions
 gem 'authlogic' # User Authentication
 # gem 'cancancan', '~> 1.10' # User Authorization
@@ -52,7 +52,7 @@ group :development do
 end
 
 group :development, :test do
-	gem "awesome_print"
+  gem "awesome_print"
   gem "bundler-audit", require: false
   gem "byebug"
   gem "dotenv-rails"

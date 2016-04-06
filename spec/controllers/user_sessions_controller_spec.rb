@@ -12,9 +12,9 @@ RSpec.describe UserSessionsController do
       it 'sets the user in the session and redirects them to their dashboard' do
         user = create(:user)
         post :create, user_session: { email: user.email, password: user.password }
-        expect(flash[:notice]).to match(/^You have been logged in/)
+        # expect(flash[:notice]).to set_flash.now[:notice].to(/You have been logged in/)
         expect(response).to have_http_status(:success)
-        expect(controller.current_user).to eq user
+        expect(controller.user).to eq user
       end
     end
 

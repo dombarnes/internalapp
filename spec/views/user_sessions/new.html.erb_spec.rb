@@ -1,5 +1,9 @@
-require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe "user_sessions/new.html.erb" do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'displays login fields' do
+    render
+
+    expect(rendered).to contain('Please login')
+  end
 end
