@@ -6,10 +6,6 @@ class AdhocSupportsController < ApplicationController
   def index
     @adhoc_supports = AdhocSupport.all.order(sort_column + ' ' + sort_direction).paginate(page: params[:page])
     @title = 'Ad Hoc Support Contracts'
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render xml: @adhoc_supports }
-    end
   end
 
   def show
@@ -41,7 +37,7 @@ class AdhocSupportsController < ApplicationController
 
   def destroy
     @adhoc_support.destroy
-    redirect_to(adhoc_supports_path
+    redirect_to adhoc_supports_path
   end
 
   private
@@ -59,8 +55,7 @@ class AdhocSupportsController < ApplicationController
   end
 
   def correct_user
-    @user = User.find(params[:id])
-    redirect_to(root_path) unless current_user?(@user)
+    redirect_to root_path unless current_user?(@user)
   end
 
   def sort_column
