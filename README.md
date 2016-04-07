@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/dombarnes/internalapp.svg?branch=master)](https://travis-ci.org/dombarnes/internalapp)
 #Internal Client Management
 
 A web based client management system, designed for IT support companies, allowing for management and monitoring of support contracts as well as individual support requests

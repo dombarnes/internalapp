@@ -1,4 +1,8 @@
 language: ruby
 env:
   global:
-    secure: igUfHIKPhOaVQ4uh6K6XDxVR6pGVDOE8g9m+3nm/jXU/jhRog6v2e/yjQ+OJo9qOI7MK0QC3eKhBONRgtg0r/Z0qYRkUenbbItrjc82HCUESKJMMYf2ZLrLkjJs6EtVShCADoK2zJ5m2LhNWlgH/yZHAqu1f4lfMIfjv5qq72Hs=
+    secure: 7091507c9d67d49ab077785bd9338db9ac0e40226f910e9f07b7fcf333f3e0bb01f860fa30925cbbff6c66be428d6e5202bf3ef15bd13b6aa9f26a5d10da6004
+services:
+  - postgres
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
