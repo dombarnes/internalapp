@@ -1,17 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe UserSessionsController do
+  setup :activate_authlogic
   describe '#create' do
     # let(:password) { rand_text(8) }
     # let(:user) { create(:user, password: password) }
     before(:all) do
-      user = build(:user)
+      # Create a new user to test with
+      user = create(:user)
     end
 
     context 'given valid credentials' do
       it 'sets the user in the session and redirects them to their dashboard' do
-        user = create(:user)
-        post :create, user_session: { email: user.email, password: user.password }
+        post '/login', user_session: { email: user.email, password: user.password }
         # expect(flash[:notice]).to set_flash.now[:notice].to(/You have been logged in/)
         expect(response).to have_http_status(:success)
         expect(controller.user).to eq user
