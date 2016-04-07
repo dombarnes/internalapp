@@ -21,7 +21,7 @@ gem 'simple_form'
 #Custom Additions
 gem 'authlogic' # User Authentication
 # gem 'cancancan', '~> 1.10' # User Authorization
-gem 'declarative_authorization', github: "stffn/declarative_authorization"
+gem 'declarative_authorization', github: 'stffn/declarative_authorization'
 gem 'ruby_parser' 
 
 gem 'fog' # cloud services library
@@ -46,31 +46,32 @@ group :development do
   gem 'rails_layout'
   gem 'quiet_assets'
   gem 'rails-erd'
-  gem "spring"
-  gem "spring-commands-rspec"
+  gem 'spring'
+  gem 'spring-commands-rspec'
   gem 'seed_dump'
 end
 
 group :development, :test do
-  gem "awesome_print"
-  gem "bundler-audit", require: false
-  gem "byebug"
-  gem "dotenv-rails"
-  gem "factory_girl_rails"
-  gem "pry-rails"
-  gem "rspec-rails", "~> 3.4.0"
-  gem "rubocop"
+  gem 'awesome_print'
+  gem 'bundler-audit', require: false
+  gem 'byebug'
+  gem 'dotenv-rails'
+  gem 'factory_girl_rails'
+  gem 'pry-rails'
+  gem 'rspec-rails', '~> 3.4.0'
+  gem 'rubocop'
 end
 
 group :test do
-	gem "capybara-webkit", ">= 1.2.0"
-  gem "database_cleaner"
-  gem "formulaic"
-  gem "launchy"
-  gem "shoulda-matchers", require: false
-  gem "simplecov", require: false
-  gem "timecop"
-  gem "webmock"
+	gem 'capybara', '>= 2.2.0'
+	gem 'capybara-webkit', '>= 1.2.0'
+  gem 'database_cleaner'
+  gem 'formulaic'
+  gem 'launchy'
+  gem 'shoulda-matchers', require: false
+  gem 'simplecov', require: false
+  gem 'timecop'
+  gem 'webmock'
 end
 
 group :production do	

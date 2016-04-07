@@ -1,9 +1,9 @@
 <tr>
   <td><%= role.title %></td>
-  <td><%= link_to "Edit", edit_user_role_url(:id => role,
+  <td><%= link_to "Edit", edit_user_role_path(:id => role,
       :user_id => role.user) %></td>
 
-<td><%= link_to "Delete", user_role_url(:id => role,
+<td><%= link_to "Delete", user_role_path(:id => role,
         :user_id => role.user),
         :method => :delete %></td>
 

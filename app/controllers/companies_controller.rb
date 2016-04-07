@@ -25,27 +25,19 @@ class CompaniesController < ApplicationController
 
   def create
     @company = Company.create(company_params)
-    respond_to do |format|
-      if @company.save
-        format.html { redirect_to @company, notice: 'Company was successfully saved.' }
-        format.xml  { render xml: @company, status: :created, location: @company }
-      else
+    if @company.save
+      redirect_to @company, notice: 'Company was successfully saved.'
+    else
         flash[:notice] = 'Cannot save this company. Please check all required fields.'
-        format.html { render action: "new" }
-        format.xml  { render xml: @company.errors, status: :unprocessable_entity }
-      end
+        render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @company.update_attributes(params[:company])
-        format.html { redirect_to(@company, notice: 'Company was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render action: "edit" }
-        format.xml  { render xml: @company.errors, status: :unprocessable_entity }
-      end
+    if @company.update_attributes(params[:company])
+      redirect_to @company, notice: 'Company was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -54,10 +46,7 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
     @company.destroy
     flash[:notice] = "#{@company_name} has been deleted"
-    respond_to do |format|
-      format.html { redirect_to companies_path }
-      format.json { head :ok }
-    end
+    redirect_to companies_path
   end
 
   private

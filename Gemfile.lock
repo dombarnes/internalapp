@@ -498,6 +498,7 @@ DEPENDENCIES
   bootstrap-will_paginate
   bundler-audit
   byebug
+  capybara (>= 2.2.0)
   capybara-webkit (>= 1.2.0)
   carrierwave
   coffee-rails (~> 4.1.0)

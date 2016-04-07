@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ContractsController do
+RSpec.describe ContractsController, type: :controller  do
 
   def valid_attributes
     {}

@@ -6,43 +6,27 @@ class Admin::MacValuesController < ApplicationController
   def index
     @title = "Mac Install and Support Values"
     @mac_values = MacValue.all
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render xml: @mac_values }
-    end
     @mac_values = MacValue.paginate(page: params[:page])
   end
 
   def new
     @title = "New Mac Calculation Values"
     @mac_value = MacValue.new
-    
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render xml: @mac_value }
-    end
   end
     
   def create
-    @mac_value = MacValue.create!(mac_values_params])
+    @mac_value = MacValue.create(mac_values_params)
 
-    respond_to do |format|
-      if @mac_value.save
-        format.html { redirect_to( mac_values_path, notice: 'Quotation Values Saved.') }
-        format.xml  { render xml: @mac_value, status: :created, location: @mac_value }
-      else
-        format.html { render action: 'new' }
-        format.xml  { render xml: @mac_value.errors, status: :unprocessable_entity }
-      end
+    if @mac_value.save
+      redirect_to admin_mac_values_path, notice: 'Quote Values Saved. They will be used for all new quotes.'
+    else
+      render :new
     end
   end
   
   def destroy
     @mac_value.destroy
-    respond_to do |format|
-      format.html { flash[:success] = 'Mac Quote Values deleted.', redirect_to mac_values_path }      }
-      format.js
-    end
+    redirect_to admin_mac_values_path, notice: 'Mac Quote Values deleted' 
   end
   
   def show

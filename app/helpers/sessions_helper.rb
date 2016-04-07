@@ -51,13 +51,13 @@ module SessionsHelper
 
   # Redirects to stored location (or to the default).
   def redirect_back_or(default)
-    redirect_to(session[:forwarding_url] || default)
-    session.delete(:forwarding_url)
+    redirect_to(session[:forwarding_path] || default)
+    session.delete(:forwarding_path)
   end
 
   # Stores the URL trying to be accessed.
   def store_location
-    session[:forwarding_url] = request.url if request.get?
+    session[:forwarding_path] = request.url if request.get?
   end
   
   def admin_user
@@ -68,7 +68,7 @@ module SessionsHelper
 
   def admin_user?
     unless current_user && current_user.admin?
-      redirect_to root_url
+      redirect_to root_path
       return false
     end
   end

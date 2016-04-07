@@ -26,7 +26,7 @@ class IosQuotesController < ApplicationController
     end
 
     if @ios_quote.support_required == true
-# TODO: calculate_ios_support
+      # TODO: calculate_ios_support
     else
       @ios_quote.support_cost = 0
     end
@@ -42,11 +42,6 @@ class IosQuotesController < ApplicationController
 
   def show
     @title = "Quote for " + @ios_quote.customer
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render xml: @ios_quote }
-      format.pdf { render :layout => false }
-    end
   end
 
   def update
@@ -58,15 +53,11 @@ class IosQuotesController < ApplicationController
       calculate_ios_install
     end
 
-    respond_to do |format|
-        if @ios_quote.update_attributes(ios_quote_params)
-          format.html { redirect_to(@ios_quote, notice: 'Your quote was successfully updated.') }
-          format.xml  { head :ok }
-        else
-          format.html { render action: "edit" }
-          format.xml  { render xml: @ios_quote.errors, status: :unprocessable_entity }
-        end
-      end
+    if @ios_quote.update_attributes(ios_quote_params)
+      redirect_to @ios_quote, notice: 'Your quote was successfully updated.'
+    else
+      render :edit 
+    end
   end
 
   def new

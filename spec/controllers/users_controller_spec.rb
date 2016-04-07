@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'authlogic/test_case'
 
-RSpec.describe UsersController do
+RSpec.describe UsersController, type: :controller  do
   setup :activate_authlogic
   
   describe '#show' do  

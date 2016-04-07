@@ -6,7 +6,7 @@ class UserNotifier < ApplicationMailer
 
   def password_reset_instructions(user)
     add_logo!
-    @edit_password_reset_url = edit_password_reset_url(user.perishable_token)
+    @edit_password_reset_path = edit_password_reset_path(user.perishable_token)
     mail(to: user.email_address_with_name,
       subject: "Password Reset Instructions",
       sent_on: Time.now,
@@ -16,7 +16,7 @@ class UserNotifier < ApplicationMailer
 
   def activation_instructions(user)
     add_logo!
-    @account_activation_url = activate_account_url(user.perishable_token)
+    @account_activation_path = activate_account_path(user.perishable_token)
     mail(to: user.email_address_with_name,
       subject: "Activation Instructions",
       )

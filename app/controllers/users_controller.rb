@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     if @user.save
       @user.send_new_user_notification!
       @user.send_activation_instructions!
-      redirect_to root_url
+      redirect_to root_path
     else
       render 'new'
     end
@@ -37,15 +37,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @user.update_attributes(user_params)
-        format.html { redirect_to users_path, notice: "Account updated!"}
-        format.json { render action: 'show', status: :created, location: @user}
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @staff.errors, status: :unprocessable_entity }
-        @title = "Edit User"
-      end
+    if @user.update_attributes(user_params)
+      redirect_to users_path, notice: 'Account updated!'
+    else
+      render :new
+      @title = "Edit User"
     end
   end
   
@@ -58,7 +54,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     flash[:success] = "User deleted."
-    redirect_to users_url
+    redirect_to users_path
   end
 
   def self.search(search)

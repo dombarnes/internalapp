@@ -16,7 +16,7 @@ class MacQuotesController < ApplicationController
       flash[:success] = "Quote saved!"
       redirect_to mac_quotes_path
     else
-      render 'home/index'
+      render :index
     end
   end
   
@@ -33,27 +33,22 @@ class MacQuotesController < ApplicationController
   def update
     @mac_quote = MacQuote.find(params[:id])
   	@mac_value = @mac_quote.mac_values_id
-      if install_required == "1"
+    if install_required == "1"
 #        @mac_quote.install_cost = 
-      end
-      if support_required == "1"
+    end
+    if support_required == "1"
 #        @ios_quote.support_cost =
-      end
-      respond_to do |format|
-        if @mac_quote.update_attributes(params[:ios_quote])
-          format.html { redirect_to(@mac_quote, notice: 'Your quote was successfully updated.') }
-          format.xml  { head :ok }
-        else
-          format.html { render action: "edit" }
-          format.xml  { render xml: @mac_quote.errors, status: :unprocessable_entity }
-        end
-      end
+    end
+    if @mac_quote.update_attributes(params[:ios_quote])
+      redirect_to @mac_quote, notice: 'Your quote was successfully updated.'
+    else
+      render :edit
+    end
   end
   
   def show
     @mac_quote = MacQuote.find(params[:id])
-	  @title = "Quote for " + @mac_quote.customer
-    
+	  @title = "Quote for #{@mac_quote.customer}"
   end
  
   def index

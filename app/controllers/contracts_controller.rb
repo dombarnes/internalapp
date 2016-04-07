@@ -1,22 +1,13 @@
 class ContractsController < ApplicationController
   filter_resource_access
+  # TODO Modernise controller
 
   def index
     @contracts = Contract.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @contracts }
-    end
   end
 
   def show
     @contract = Contract.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @contract }
-    end
   end
 
   def new
@@ -65,7 +56,7 @@ class ContractsController < ApplicationController
     @contract.destroy
 
     respond_to do |format|
-      format.html { redirect_to contracts_url }
+      format.html { redirect_to contracts_path }
       format.json { head :ok }
     end
   end

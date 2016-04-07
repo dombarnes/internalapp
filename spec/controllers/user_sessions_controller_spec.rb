@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe UserSessionsController do
+RSpec.describe UserSessionsController, type: :controller  do
   setup :activate_authlogic
   describe '#create' do
     # let(:password) { rand_text(8) }

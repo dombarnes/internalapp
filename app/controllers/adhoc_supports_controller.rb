@@ -13,19 +13,10 @@ class AdhocSupportsController < ApplicationController
   end
 
   def show
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render xml: @adhoc_support }
-    end
   end
 
   def new
     @adhoc_support = AdhocSupport.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render xml: @adhoc_support }
-    end
   end
 
   def edit
@@ -33,37 +24,24 @@ class AdhocSupportsController < ApplicationController
 
   def create
     @adhoc_support = AdhocSupport.new(adhoc_support_params)
-
-    respond_to do |format|
-      if @adhoc_support.save
-        format.html { redirect_to(@adhoc_support, notice: 'Adhoc support was successfully created.') }
-        format.xml  { render xml: @adhoc_support, status: :created, location: @adhoc_support }
-      else
-        format.html { render action: 'new' }
-        format.xml  { render xml: @adhoc_support.errors, status: :unprocessable_entity }
-      end
+    if @adhoc_support.save
+      redirect_to @adhoc_support, notice: 'Ad-Hoc support was successfully created.'
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @adhoc_support.update_attributes(adhoc_support_params)
-        format.html { redirect_to(@adhoc_support, notice: 'Adhoc support was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render action: 'edit' }
-        format.xml  { render xml: @adhoc_support.errors, status: :unprocessable_entity }
-      end
+    if @adhoc_support.update(adhoc_support_params)
+      redirect_to @adhoc_support, notice: 'Ad-Hoc Entry was successfully updated.'
+    else
+      render :edit
     end
   end
 
   def destroy
     @adhoc_support.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(adhoc_supports_url) }
-      format.xml  { head :ok }
-    end
+    redirect_to(adhoc_supports_path
   end
 
   private

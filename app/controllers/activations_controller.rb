@@ -15,7 +15,7 @@ class ActivationsController < ApplicationController
       flash[:notice] = 'Your account has been activated!'
       UserSession.create(@user, false) # Log user in manually
       @user.deliver_welcome!
-      redirect_to root_url
+      redirect_to root_path
     else
       flash[:error] = "Unable to activate your account."
       render 'new'
@@ -31,7 +31,7 @@ class ActivationsController < ApplicationController
       redirect_to profile_path
     else
       flash[:danger] = 'Invalid activation link'
-      redirect_to root_url
+      redirect_to root_path
     end
   end
 
