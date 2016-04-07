@@ -1,20 +1,22 @@
-require 'spec_helper'
+require 'rails_helper'
 
-RSpec.describe UsersController do
-  render_views
+RSpec.describe "activations/new" do
+  before (:all) do
+    @user = build(:user)
+  end
 
-  describe '#new' do  
-    before (:all) do
-      @user = build(:user)
-      UserSession.create(@user)
+  context 'given valid details' do   
+    it 'should have the right title' do
+      render
+      expect(rendered).to have_selector('h1', text: "Activate your account")
     end
-
-    context 'given valid details' do   
-      it 'should have the right title' do
-        get :show, :id => @user
-        expect(response).to have_selector('h1', :content => "Activate your account")
-      end
-    end
-  end #show
+  end
   
-end
+  context 'given an invalid activation code' do
+    it 'should fail and warn user' do
+      render
+      expect(flash[:error])
+    end
+  end
+
+end #show

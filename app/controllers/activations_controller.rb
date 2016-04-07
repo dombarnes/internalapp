@@ -17,6 +17,7 @@ class ActivationsController < ApplicationController
       @user.deliver_welcome!
       redirect_to root_url
     else
+      flash[:error] = "Unable to activate your account."
       render 'new'
     end
   end
