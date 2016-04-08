@@ -18,7 +18,7 @@ class Admin::IosValuesController < ApplicationController
     @ios_value = IosValue.create(ios_values_params)
       
     if @ios_value.save
-      redirect_to ios_values_path, notice: 'New values were saved. These will affect all future quotes.'
+      redirect_to admin_ios_values_path, notice: 'New values were saved. These will affect all future quotes.'
     else
       render :new
     end
@@ -26,7 +26,7 @@ class Admin::IosValuesController < ApplicationController
   
   def destroy
     @ios_value.destroy
-    redirect_to ios_values_path, notice: 'Quote Values deleted.'
+    redirect_to admin_ios_values_path, notice: 'Quote Values deleted.'
   end
   
   def show
@@ -42,5 +42,4 @@ class Admin::IosValuesController < ApplicationController
   def ios_values_params
     params.require(:ios_values).permit(:daily_rate, :iosdevice_support_cost, :iosdevice_install_time, :iosdevice_install_setup)
   end
-
 end

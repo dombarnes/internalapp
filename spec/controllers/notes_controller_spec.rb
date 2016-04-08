@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe NotesController, type: :controller  do
 
-  # This should return the minimal set of attributes required to create a valid
+  # This to return the minimal set of attributes required to create a valid
   # Note. As you add validations to Note, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
@@ -13,7 +13,7 @@ RSpec.describe NotesController, type: :controller  do
     it "assigns all notes as @notes" do
       note = Note.create! valid_attributes
       get :index
-      assigns(:notes).should eq([note])
+      assigns(:notes).to eq([note])
     end
   end
 
@@ -21,14 +21,14 @@ RSpec.describe NotesController, type: :controller  do
     it "assigns the requested note as @note" do
       note = Note.create! valid_attributes
       get :show, :id => note.id.to_s
-      assigns(:note).should eq(note)
+      assigns(:note).to eq(note)
     end
   end
 
   describe "GET new" do
     it "assigns a new note as @note" do
       get :new
-      assigns(:note).should be_a_new(Note)
+      assigns(:note).to be_a_new(Note)
     end
   end
 
@@ -36,7 +36,7 @@ RSpec.describe NotesController, type: :controller  do
     it "assigns the requested note as @note" do
       note = Note.create! valid_attributes
       get :edit, :id => note.id.to_s
-      assigns(:note).should eq(note)
+      assigns(:note).to eq(note)
     end
   end
 
@@ -50,13 +50,13 @@ RSpec.describe NotesController, type: :controller  do
 
       it "assigns a newly created note as @note" do
         post :create, :note => valid_attributes
-        assigns(:note).should be_a(Note)
-        assigns(:note).should be_persisted
+        assigns(:note).to be_a(Note)
+        assigns(:note).to be_persisted
       end
 
       it "redirects to the created note" do
         post :create, :note => valid_attributes
-        response.should redirect_to(Note.last)
+        expect(response).to redirect_to(Note.last)
       end
     end
 
@@ -65,14 +65,14 @@ RSpec.describe NotesController, type: :controller  do
         # Trigger the behavior that occurs when invalid params are submitted
         Note.any_instance.stub(:save).and_return(false)
         post :create, :note => {}
-        assigns(:note).should be_a_new(Note)
+        assigns(:note).to be_a_new(Note)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Note.any_instance.stub(:save).and_return(false)
         post :create, :note => {}
-        response.should render_template("new")
+        expect(response).to render_template("new")
       end
     end
   end
@@ -85,20 +85,20 @@ RSpec.describe NotesController, type: :controller  do
         # specifies that the Note created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Note.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
+        Note.any_instance.to_receive(:update_attributes).with({'these' => 'params'})
         put :update, :id => note.id, :note => {'these' => 'params'}
       end
 
       it "assigns the requested note as @note" do
         note = Note.create! valid_attributes
         put :update, :id => note.id, :note => valid_attributes
-        assigns(:note).should eq(note)
+        assigns(:note).to eq(note)
       end
 
       it "redirects to the note" do
         note = Note.create! valid_attributes
         put :update, :id => note.id, :note => valid_attributes
-        response.should redirect_to(note)
+        expect(response).to redirect_to(note)
       end
     end
 
@@ -108,7 +108,7 @@ RSpec.describe NotesController, type: :controller  do
         # Trigger the behavior that occurs when invalid params are submitted
         Note.any_instance.stub(:save).and_return(false)
         put :update, :id => note.id.to_s, :note => {}
-        assigns(:note).should eq(note)
+        assigns(:note).to eq(note)
       end
 
       it "re-renders the 'edit' template" do
@@ -116,7 +116,7 @@ RSpec.describe NotesController, type: :controller  do
         # Trigger the behavior that occurs when invalid params are submitted
         Note.any_instance.stub(:save).and_return(false)
         put :update, :id => note.id.to_s, :note => {}
-        response.should render_template("edit")
+        expect(response).to render_template("edit")
       end
     end
   end
@@ -132,7 +132,7 @@ RSpec.describe NotesController, type: :controller  do
     it "redirects to the notes list" do
       note = Note.create! valid_attributes
       delete :destroy, :id => note.id.to_s
-      response.should redirect_to(notes_url)
+      expect(response).to redirect_to(notes_url)
     end
   end
 

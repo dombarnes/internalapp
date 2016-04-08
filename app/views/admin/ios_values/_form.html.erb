@@ -1,36 +1,16 @@
-<%= form_for(@ios_value) do |f| %>
-  <% if @ios_value.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@ios_value.errors.count, "error") %> prohibited this client from being saved:</h2>
-      <ul>
-      <% @ios_value.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label "Daily Rate (£)" %>
-    <%= f.text_field :daily_rate, :size => 8 %>
+<%= simple_form_for [Admin, @ios_value] do |f| %>
+  <%= f.error_notification %>
+  
+  <div class="form-inputs">
+    <%= f.input :daily_rate, label: "Daily Rate (£)" %>
     <p id="helper">Enter the daily rate for this service</p>
-  </div>
-  <div class="field">
-    <%= f.label "Installation Time" %>
-    <%= f.text_field :iosdevice_install_time, :size => 8 %>
+    <%= f.input :iosdevice_install_time, label: "Installation Time" %>
     <p id="helper">Enter the projected time required to perform this task per device</p>
-  </div>
-  <div class="field">
-    <%= f.label "Annual Support Cost" %>
-    <%= f.text_field :iosdevice_support_cost, :size => 8 %>
+    <%= f.input :iosdevice_support_cost, label: "Annual Support Cost" %>
     <p id="helper">Enter the projected time required to perform this task per device</p>
-  </div>
-  <div class="field">
-    <%= f.label "Initial Setup Time" %>
-    <%= f.text_field :iosdevice_install_setup, :size => 8 %>
+    <%= f.input :iosdevice_install_setup, label: "Initial Setup Time" %>
     <p id="helper">Enter the projected time required to perform this task</p>
-  </div>
-  <%= f.submit %>
-  <a href="#" onclick="$('#client_form').submit(); return false;"><span>Submit</span></a>
+    <%= f.button :submit, value: "Save Values" %>
+  <!-- <a href="#" onclick="$('#client_form').submit(); return false;"><span>Submit</span></a> -->
   </div>
 <% end %>

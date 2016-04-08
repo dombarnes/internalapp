@@ -5,14 +5,14 @@ RSpec.describe HomeController, type: :controller  do
   describe "GET 'index'" do
     it "should be successful" do
       get 'index'
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
   describe "GET 'help'" do
     it "should be successful" do
       get 'help'
-      response.should be_success
+      expect(response).to be_success
     end
   end
 

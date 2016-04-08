@@ -1,14 +1,6 @@
-<%= form_for(@mac_value) do |f| %>
-  <% if @mac_value.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@mac_value.errors.count, "error") %> prohibited this client from being saved:</h2>
-      <ul>
-      <% @mac_value.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for [Admin, @mac_value] do |f| %>
+  <% f.error_notification %>
+  
 <div class="macvalues">
   <div class="field">
     <%= f.label "Mac Install Time" %>

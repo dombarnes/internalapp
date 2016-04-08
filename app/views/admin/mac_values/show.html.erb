@@ -4,86 +4,86 @@
 </p>
 <table class="quotevalues">
 <tr>
-<th>Daily Rate (£)</th>
-<td><%= @mac_value.day_rate %></td>
+  <th>Daily Rate (£)</th>
+  <td><%= @mac_value.day_rate %></td>
 </tr>
 <tr>
-<th>User Creation Time</th>
-<td><%= @mac_value.new_user_setup_time %></td>
+  <th>User Creation Time</th>
+  <td><%= @mac_value.new_user_setup_time %></td>
 </tr>
 <tr>
-<th>AD Integration</th>
-<td><%= @mac_value.ad_integration_time %></td>
+  <th>AD Integration</th>
+  <td><%= @mac_value.ad_integration_time %></td>
 </tr>
 <tr>
-<th>DeployStudio Setup Time</th>
-<td><%= @mac_value.deploy_studio_setup_time %></td>
+  <th>DeployStudio Setup Time</th>
+  <td><%= @mac_value.deploy_studio_setup_time %></td>
 </tr>
 <tr>
-<th>Airport Configuration Time</th>
-<td><%= @mac_value.airport_setup_time %></td>
+  <th>Airport Configuration Time</th>
+  <td><%= @mac_value.airport_setup_time %></td>
 </tr>
 <tr>
-<th>Print Server Setup Time</th>
-<td><%= @mac_value.print_server_time %></td>
+  <th>Print Server Setup Time</th>
+  <td><%= @mac_value.print_server_time %></td>
 </tr>
 <tr>
-<th>iWork Install Time</th>
-<td><%= @mac_value.iwork_time %></td>
+  <th>iWork Install Time</th>
+  <td><%= @mac_value.iwork_time %></td>
 </tr>
 <tr>
-<th>Microsoft Office Install Time</th>
-<td><%= @mac_value.office_time %></td>
+  <th>Microsoft Office Install Time</th>
+  <td><%= @mac_value.office_time %></td>
 </tr>
 <tr>
-<th>Final Cut Express Install Time</th>
-<td><%= @mac_value.fce_time %></td>
+  <th>Final Cut Express Install Time</th>
+  <td><%= @mac_value.fce_time %></td>
 </tr>
 <tr>
-<th>Final Cut Pro Install Time</th>
-<td><%= @mac_value.fcp_time %></td>
+  <th>Final Cut Pro Install Time</th>
+  <td><%= @mac_value.fcp_time %></td>
 </tr>
 <tr>
-<th>ARD Install Time</th>
-<td><%= @mac_value.ard_time %></td>
+  <th>ARD Install Time</th>
+  <td><%= @mac_value.ard_time %></td>
 </tr>
 <tr>
-<th>Logic Express Install Time</th>
-<td><%= @mac_value.logicx_time %></td>
+  <th>Logic Express Install Time</th>
+  <td><%= @mac_value.logicx_time %></td>
 </tr>
 <tr>
-<th>Logic Pro Install Time</th>
-<td><%= @mac_value.logicp_time %></td>
+  <th>Logic Pro Install Time</th>
+  <td><%= @mac_value.logicp_time %></td>
 </tr>
 <tr>
-<th>Adobe CS5 Install Time</th>
-<td><%= @mac_value.cs5_time %></td>
+  <th>Adobe CS5 Install Time</th>
+  <td><%= @mac_value.cs5_time %></td>
 </tr>
 <tr>
-<th>Aperture Install Time</th>
-<td><%= @mac_value.aperture_time %></td>
+  <th>Aperture Install Time</th>
+  <td><%= @mac_value.aperture_time %></td>
 </tr>
 <tr>
-<th>Consulting Time Cost</th>
-<td><%= @mac_value.consulting_time %></td>
+  <th>Consulting Time Cost</th>
+  <td><%= @mac_value.consulting_time %></td>
 </tr>
 <tr>
-<th>Daily Rate</th>
-<td><%= @mac_value.day_rate %></td>
+  <th>Daily Rate</th>
+  <td><%= @mac_value.day_rate %></td>
 </tr>
 <tr>
-<th>Mac Support Cost (Annually)</th>
-<td><%= @mac_value.mac_support_cost %></td>
+  <th>Mac Support Cost (Annually)</th>
+  <td><%= @mac_value.mac_support_cost %></td>
 </tr>
 <tr>
-<th>Server Support Cost (Annually)</th>
-<td><%= @mac_value.server_support_cost %></td>
+  <th>Server Support Cost (Annually)</th>
+  <td><%= @mac_value.server_support_cost %></td>
 </tr>
 </table>
 </div>
-<%= link_to '← Back', mac_values_path %>
+<%= link_to '← Back', admin_mac_values_path %>
 <% if permitted_to? :delete %>
-  <%= link_to "Delete", @mac_value, :confirm => "Are you sure you wish to delete this entry? Doing so will render any associated quotes unable to update.", :method => :delete, :remote => true, :title => "Delete Mac Quote Values" %>
+  <%= link_to "Delete", @mac_value, confirm: "Are you sure you wish to delete this entry? Doing so will render any associated quotes unable to update.", method: :delete, remote: true, title: "Delete Mac Quote Values" %>
   <% end %>
   
 <div id="jquery_confirm"
